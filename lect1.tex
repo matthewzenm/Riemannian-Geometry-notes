@@ -1,0 +1,225 @@
+\chapter{Differentiable Manifolds}
+In this lecture, we review some basic notions of differentiable manifolds.
+
+\section{Differentiable Manifolds and Maps}
+
+\begin{defn}
+    Let $M^n$ be a Hausdorff space with countable topological basis.
+    If there exists an open cover $\{U_\alpha\}$ of $M$, and homeomorphisms $\varphi_\alpha:U_\alpha\to\varphi_\alpha(U_\alpha)$ onto its image $\varphi_\alpha(U_\alpha)\subset\mathbb{R}^n$ open, such that
+    \begin{enumerate}[(1)]
+        \item $M=\bigcup_\alpha U_\alpha$,
+        \item if $U_\alpha\cap U_\beta\neq\varnothing$, then $\varphi_\alpha^{-1}\circ\varphi_\beta:\varphi_\beta(U_\alpha\cap U_\beta)\to\varphi_\alpha(U_\alpha\cap U_\beta)$ is differentiable (we mean $C^\infty$ here),
+    \end{enumerate}
+    then $M$ is called an \textbf{$n$-dimensional differentiable manifold}.
+
+    Moreover, we call $(U_\alpha,\varphi_\alpha)$ a \textbf{local chart}, $\{(U_\alpha,\varphi_\alpha)\}$ an \textbf{atlas}, and we say the atlas induces a \textbf{differentiable structure} on $M$.
+\end{defn}
+
+\begin{rem}
+    We often assume the atlas is \emph{maximal}, that is, there is no more local chart being compatible with the atlas.
+\end{rem}
+
+\begin{eg}We illustrate some examples of differentiable manifolds.
+    \begin{enumerate}[(1)]
+        \item $\mathbb{R}^n$ itself is a differentiable manifolds, with single local chart $(\mathbb{R}^n,\mathrm{id})$.
+        \item $\mathbb{S}^n:=\{x\in\mathbb{R}^{n+1}|\ (x^1)^2+\cdots+(x^{n+1})^2=1\}$.
+        We use stereographic projection as local chart. Define the stereographic projection from north pole
+        \begin{align*}
+            \varphi_N:&\mathbb{S}^n\backslash\{(0,\cdots,0,1)\}\to\mathbb{R}^n\\
+            &x\mapsto\left(\frac{x^1}{1+x^{n+1}},\cdots,\frac{x^n}{1+x^{n+1}}\right)
+        \end{align*}
+        Similarly define $\varphi_S$ to be stereographic projection from the south pole.
+        Then we have
+        \begin{align*}
+            \varphi_S\circ\varphi_N^{-1}:\mathbb{R}\backslash\{0\}&\to\mathbb{R}\backslash\{0\}\\
+            (y^1,\cdots,y^n)&\mapsto\left(\frac{y^1}{\sum_i(y^i)^2},\cdots,\frac{y^n}{\sum_i(y^i)^2}\right)
+        \end{align*}
+        is clearly differentiable.
+        \item Let $M_1^{n_1},M_2^{n_2}$ be differentiable manifolds, then $M_1\times M_2$ has the \textbf{product manifold} structure.
+        To be precise, let $M_1,M_2$ have atlas $\{U_\alpha,\varphi_\alpha\},\{(V_\beta,\psi_\beta)\}$, then $M_1\times M_2$ has atlas $(U_\alpha\times V_\beta,\varphi_\alpha\times\psi_\beta)$.
+        In particular, we have
+        \begin{itemize}
+            \item (flat) $n$-torus $\mathbb{T}^n=\mathbb{S}^1\times\cdots\times\mathbb{S}^1$ ($n$ times);
+            \item cylinder $\mathbb{S}^1\times\mathbb{R}$ (or generally $\mathbb{S}^k\times\mathbb{R}^{n-k}$).
+        \end{itemize}
+        \item Real projective space $\mathbb{RP}^n$.
+        Let equivalence relation $\sim$ on $\mathbb{R}^{n+1}\backslash\{0\}$ be $x\sim y\iff x=\lambda y,\ \lambda\neq 0$.
+        Then define $\mathbb{RP}^n=(\mathbb{R}^{n+1}\backslash\{0\})/\sim$.
+        We now define the differentiable structure on $\mathbb{RP}^n$.
+        Let $U_i=\{x\in\mathbb{RP}^n:\ x=[x^1,\cdots,x^{n+1}],\ x^i\neq 0\}$, and
+        \begin{align*}
+            \varphi_i:U_i&\to\mathbb{R}^n\\
+            x&\mapsto\left(\frac{x^1}{x^i},\cdots,\frac{x^{i-1}}{x^i},\frac{x^{i+1}}{x^i},\cdots,\frac{x^{n+1}}{x^i}\right)
+        \end{align*}
+        We check $\varphi_j\circ\varphi_i^{-1}$ on $U_i\cap U_j$.
+        We may assume $i<j$, then
+        \begin{align*}
+            \varphi_j\circ\varphi_i^{-1}(y^1,\cdots,y^n)&=\varphi_j\left([y^1,\cdots,y^{i-1},1,y^{i+1},\cdots,y^n]\right)\\
+            &=\left(\frac{y^1}{y^j},\cdots,\frac{y^{i-1}}{y^j},\frac{1}{y^j},\frac{y^{i+1}}{y^j},\cdots,\frac{y^n}{y^j}\right)
+        \end{align*}
+        is differentiable.
+    \end{enumerate}
+\end{eg}
+
+We now give the definition of differentiable maps.
+\begin{defn}
+    A map $f:M\to N$ is \textbf{differentiable} at $p\in M$ if there exists local chart $(U,\varphi)$ of $p$ and $(V,\psi)$ of $f(p)$, such that $\psi\circ f\circ\varphi^{-1}$ is differentiable at $\varphi(p)$.
+\end{defn}
+
+\begin{rem}
+    \begin{enumerate}[(1)]
+        \item If $\tilde{\varphi},\tilde{\psi}$ are another chart at $p$ and $f(p)$, then we have
+        \[\tilde{\psi}\circ f\circ\tilde{\varphi}^{-1}=(\tilde{\psi}\circ\psi^{-1})\circ(\psi\circ f\circ\varphi^{-1})\circ(\varphi\circ\tilde{\varphi})\]
+        is still differentiable at $p$ by the compatiblility of charts, so differentiable maps are well-defined.
+        \item When $N=\mathbb{R}$, $f$ is also called a \textbf{differentiable function}. 
+    \end{enumerate}
+\end{rem}
+
+\begin{symb}
+    We use $C^\infty(M,N)$ to denote the $\mathbb{R}$-vector space of differentiable maps between $M$ and $N$,
+    $C^\infty(M)$ to denote the $\mathbb{R}$-algebra of differentiable functions on $M$.
+    We use $C^\infty_p(M)$ to denote the $\mathbb{R}$-algebra of germs of differentiable functions at $p$.
+    We often use $\gamma:I\subset\mathbb{R}\to M$ to denote a \textbf{differentiable curve} on $M$.
+\end{symb}
+
+\section{Tangent Spaces and Tangent Maps}
+
+\begin{defn}
+    Let $\gamma:I\to M$ be a curve, $\gamma(0)=p$.
+    We define the \textbf{tangent vector along $\gamma$ at $p$} as a mapping $\dot{\gamma}(0):C^\infty_p(M)\to\mathbb{R}$, $\dot{\gamma}(0)f=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)$.
+    Then we define the \textbf{tangent space at $p$}
+    \[T_pM:=\{\dot{\gamma}(0)|\ \gamma:I\to M\ \text{differentiable},\ \gamma(0)=o=p\}.\]
+\end{defn}
+
+\begin{prop}
+    We have the \textbf{Leibniz rule} $\dot{\gamma}(0)(fg)=(\dot{\gamma}(0)g)f(p)+(\dot{\gamma}(0)f)g(p)$.
+    So a tangent vector is a \emph{derivative} on $C^\infty_p(M)$.
+\end{prop}
+
+We now calculate the local representation of a tangent vector.
+Fix a chart $\varphi=(x^1,\cdots,x^n)$, we have
+\begin{equation}
+    \begin{aligned}
+        \dot{\gamma}(0)f&=\left.\frac{\d}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)\\
+        &=\left.\frac{\d}{\d{t}}\right|_{t=0}(f\circ\varphi^{-1})\circ(\varphi\circ\gamma)(t)\\
+        &=\sum_{i=1}^n\left.\frac{\partial{}}{\partial{x^i}}\right|_{\varphi(p)}(f\circ\varphi^{-1})\left.\frac{\d{}}{\d{t}}\right|_{t=0}x^i(\gamma(t))\quad\text{(Chain rule)}
+    \end{aligned}\label{local derivative}
+\end{equation}
+
+Using equation~\eqref{local derivative}, we can describe $T_pM$ as a vector space.
+\begin{prop}
+    $T_pM$ is a real vector space of dimension $n$.
+    Moreover, given a local chart $\varphi=(x^1,\cdots,x^n)$, we have
+    \[T_pM=\Span\left\{\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right\}\]
+    where $\partial{}/\partial{x^i}|_p$ is the tangent vector of $\sigma_i(t)=\varphi^{-1}(\varphi(p)+te_i)$, $e_i=(0,\cdots,1,\cdots,0)$ with only $i$-th component being $1$.
+    Thus we have
+    \[\left.\frac{\partial{}}{\partial{x^i}}\right|_pf=\left.\frac{\partial{}}{\partial{x^i}}(f\circ\varphi^{-1})\right|_\varphi(p)\]
+\end{prop}
+\begin{proof}
+    Clearly $T_pM$ has natural vector space structure.
+    Thus by the definition of $\left.\frac{\partial{}}{\partial{x^i}}\right|_p$'s, $\Span\left\{\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right\}\subset T_pM$.
+    For the converse inclusion, let $v\in T_pM$, then there is a curve $\gamma:I\to M$ with $\dot{\gamma}(0)=v$.
+    Then by~\eqref{local derivative}, $\dot{\gamma}(0)$ is a linear combination of $\left.\frac{\partial{}}{\partial{x^i}}\right|_p$'s, hence $T_pM\subset\Span\left\{\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right\}$.
+\end{proof}
+
+\begin{defn}[Tangent maps]
+    Let $f:M\to N$ be a differentiable map, we define $f_{*p}:T_pM\to T_{f(p)}M$ as
+    \[f_{*p}(v)(g)=v(g\circ f)\]
+    for any $g\in C^\infty_{f(p)}N$.
+    In particular, if $N=\mathbb{R}$, given $v\in T_pM$, let $\dot{\gamma}(0)=v$, then $f_{*p}(v)=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)$.
+\end{defn}
+
+Again we can look at the local representation of $f_{*p}$.
+Let $\varphi=(x^1,\cdots,x^n)$, $\psi=(y^1,\cdots,y^m)$ be local charts containing $p$ and $f(p)$.
+Let $v=\sum_{i=1}^nv^i\left.\frac{\partial{}}{\partial{x^i}}\right|_p=\dot{\sigma}(0)$, then $\left.\frac{\d{}}{\d{t}}\right|_{t=0}(\varphi\circ\sigma)(t)=(v^1,\cdots,v^n)$.
+Thus we have
+\begin{align*}
+    f_{*p}(v)(g)&=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(g\circ f\circ\sigma)(t)\\
+    &=\sum_{i,j}\left.\frac{\partial{}}{\partial{y^j}}(g\circ\psi^{-1})\right|_{\psi\circ f(p)}\left.\frac{\partial{}}{\partial{x^i}}(\psi\circ f\circ\varphi^{-1})^j\right|_{\varphi(p)}\left.\frac{\d{}}{\d{t}}\right|_{t=0}(\varphi\circ\sigma)^i(t)\\
+    &=\sum_{i,j}v^i\left.\frac{\partial{}}{\partial{x^i}}(\psi\circ f\circ\varphi^{-1})^j\right|_{\varphi(p)}\left.\frac{\partial{}}{\partial{y^j}}\right|_{f(p)}g
+\end{align*}
+In particular, we have
+\[f_{*p}\left(\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right)=\sum_j\left.\frac{\partial{}}{\partial{x^i}}(\psi\circ f\circ\varphi^{-1})^j\right|_{\varphi(p)}\left.\frac{\partial{}}{\partial{y^j}}\right|_{f(p)}\]
+
+We can easy to verity the following chain rule:
+\begin{prop}
+    Let $f:M\to N$, $g:N\to P$ be differentiable maps, then we have $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
+\end{prop}
+
+\begin{defn}[Diffeomorphism]
+    A map $f:M\to N$ is called a \textbf{diffeomorphism} if $f$ is bijective, and $f,f^{-1}$ are both differentiable.
+\end{defn}
+
+\begin{prop}\label{diffeo to iso}
+    If $f:M\to N$ is a diffeomorphism, then $f_{*p}:T_pM\to T_{f(p)}N$ is an isomorphism.
+\end{prop}
+
+This proposition can be easily proved by chain rule.
+
+\begin{rem}
+    \begin{enumerate}[(1)]
+        \item The Proposition~\ref{diffeo to iso}~shows that dimension of a manifold is well-defined in the category $(\text{differentiable manifolds},\text{differentiable maps})$.
+        \item Since we can do calculus locally on manifolds, the \emph{Inverse function theorem} is valid on differentiable manifolds.
+        That is, if $f_{*p}:T_pM\to T_{f(p)}N$ is an isomorphism, then $f:M\to N$ is a local diffeomorphism at $p$.
+    \end{enumerate}
+\end{rem}
+
+\section{Tangent Bundles and Vector Fields}
+\begin{defn}[Tangent bundle]
+    Assume differentiable manifold $M^n$ has atlas $\{U_\alpha,\varphi_\alpha\}$, define
+    \begin{gather*}
+        TM:=\sqcup_{p\in M}T_pM\\
+        \pi:TM\to M,\ (p,v)\mapsto p
+    \end{gather*}
+    We give an atlas of $TM$ to make it into a $2n$-dimensional differentiable manifold.
+    Let
+    \begin{align*}
+        \Phi_\alpha&:\sqcup_{p\in U_\alpha}T_pM\to\mathbb{R}^{2n}\\
+        &(p,v)\mapsto(\varphi_\alpha(p),(v^1,\cdots,v^n))
+    \end{align*}
+    where $v=\sum_{i=1}^nv^i\left.\frac{\partial{}}{\partial{x^i}}\right|_p$.
+    Let's check
+    \begin{gather*}
+        \Phi_\beta\circ\Phi_\alpha^{-1}:\varphi_{\alpha}(U_\alpha\cap U_\beta)\times\mathbb{R}^n\to\varphi_\beta(U_\alpha\cap U_\beta)\times\mathbb{R}^n\\
+        (x^1,\cdots,x^n,v^1,\cdots,v^n)\mapsto\left(\varphi_\beta\circ\varphi_\alpha^{-1}(x),\sum_{i=1}^n\frac{\partial(\varphi_\beta\circ\varphi_\alpha^{-1})^1}{\partial{x^i}}v^i,\cdots,\sum_{i=1}^n\frac{\partial(\varphi_\beta\circ\varphi_\alpha^{-1})^n}{\partial{x^i}}v^i\right)
+    \end{gather*}
+    Clearly it is differentiable, then $\{(\pi^{-1}(U_\alpha),\Phi_\alpha)\}$ induces a differentiable structure on $TM$.
+
+    We call $T_pM$ a \textbf{fiber} over $p$, and $\pi:TM\to M$ the projection.
+\end{defn}
+
+\begin{defn}[Vector field]
+    A \textbf{vector field} is a differentiable map $X:M\to TM$ such that $X(p)\in T_pM$.
+\end{defn}
+
+\begin{symb}
+    We use $\mathfrak{X}(M)$ to denote the collection of vector fields on $M$.
+\end{symb}
+
+\begin{prop}
+    $X\in\mathfrak{X}(M^n)$ if and only if in any local chart $(U,\varphi)$, we have $X(p)=\sum_{i=1}^nX^i(p)\left.\frac{\partial{}}{\partial{x^i}}\right|_p$ for $X^i\in C^\infty(U)$, $i=1,2,\cdots,n$.
+\end{prop}
+
+This proposition is equivalent to $X$ can be a mapping $C^\infty(M)\to C^\infty(M)$ defined by $Xf(p)=X(p)f$.
+
+\begin{defn}[Lie bracket]
+    For $X,Y\in\mathfrak{X}(M)$, define $[X,Y]=XY-YX$, then $[X,Y]\in\mathfrak{X}(M)$.
+\end{defn}
+\begin{rem}
+    We explain the definition more explicitly.
+    If we act two vector fields on the product of two functions, we have
+    \begin{align*}
+        (XY)_p(fg)&=X_p(Y(fg))=X_p(gYf+fYg)\\
+        &=\boxed{X_pg\cdot Y_pf+X_pf\cdot Y_pg}+g(p)X_pYf+f(p)X_pYg
+    \end{align*}
+    The boxed thing is bad, it spoils Leibniz rule.
+    But if we substract $YX_p(fg)$, the boxed thing is cancelled.
+    So $XY-YX\in\mathfrak{X}(M)$.
+\end{rem}
+
+\begin{prop}
+    On some local chart, we have $\left[\left.\frac{\partial{}}{\partial{x^i}}\right|_p,\left.\frac{\partial{}}{\partial{x^j}}\right|_p\right]=0$.
+\end{prop}
+\begin{proof}
+    This is equivalent to mixed partial derivative is commutative for smooth functions in $\mathbb{R}^n$.
+\end{proof}

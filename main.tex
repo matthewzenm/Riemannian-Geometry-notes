@@ -1,0 +1,44 @@
+\documentclass[draft]{book}
+
+\usepackage[paper=b5paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[frame]{\Huge\bfseries}{Lecture\,\thechapter}{1em}{}{}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem{eg}{Example}[chapter]
+\newtheorem{symb}[eg]{Notation}
+\theoremstyle{plain}
+\newtheorem{thm}[eg]{Theorem}
+\newtheorem{prop}[eg]{Proposition}
+\newtheorem{lem}[eg]{Lemma}
+\newtheorem{cor}[eg]{Corollary}
+\theoremstyle{remark}
+\newtheorem{rem}[eg]{Remark}
+
+\DeclareMathOperator{\Span}{Span}
+
+\usepackage{fixdif}
+\usepackage[colorlinks]{hyperref}
+
+\title{{\normalsize 2024 BICMR Summer School on Differential Geometry}\\ Riemannian Geometry}
+\author{Prof. Xia Chao\\ Notes taken by Zeng Mengchen}
+\date{29 July to 9 August, 2024}
+
+\begin{document}
+\maketitle
+
+% \frontmatter
+% \input{preface.tex}
+
+\mainmatter
+\input{lect1.tex}
+
+\end{document}
