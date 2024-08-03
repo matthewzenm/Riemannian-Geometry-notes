@@ -1,0 +1,225 @@
+\chapter{Metric and Connection}
+
+In this lecture we introduce the Riemannian metric on a differentiable manifold, and the connection compatible with metric, i.e., Levi--Civita connection.
+Moreover, we introduce the covariant derivative of a vector field along a curve, and parallel transport of vectors along a curve.
+
+\begin{symb}
+    From now on we adopt \emph{Einstein summation convention}:
+    any index appear twice as both upper index and lower index means taking summation respective to the index.
+    For example, a vector field on a local chart can be expressed as
+    \[X=X^i\frac{\partial{}}{\partial{x^i}}=\sum_{i=1}^nX^i\frac{\partial{}}{\partial{x^i}}\]
+\end{symb}
+
+\section{Riemannian Metric}
+
+\begin{defn}
+    Let $M^n$ be a differentiable manifold.
+    A \textbf{Riemannian metric} on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
+    \begin{enumerate}
+        \item $g_p(X,Y)=g_p(Y,X)$;
+        \item $g_p(X,X)\geq 0$, $g_p(X,X)=0\iff X=0$.
+    \end{enumerate}
+    ``Smooth'' means in any local chart $(U,\varphi)$ we have
+    \[g_{ij}(p)=g\left(\left.\frac{\partial{}}{\partial{x^i}}\right|_p,\left.\frac{\partial{}}{\partial{x^j}}\right|_p\right)\]
+    is smooth about $p$ for any indices $i,j$.
+    Then $g$ is a symmetric positive definite $(0,2)$-tensor
+    \[g=g_{ij}\d{x^i}\otimes\d{x^j}\]
+\end{defn}
+
+\begin{prop}
+    Any differentiable manifold $M$ admits a Riemannian metric.
+\end{prop}
+\begin{proof}
+    We use partition of unity.
+    Let $\{U_\alpha,x_\alpha^i\}$ be a locally finite atlas of $M$, $\{\phi_\alpha\}$ be a partition of unity subordinate to $\{U_\alpha\}$, i.e., $\operatorname{supp}\phi_\alpha\subset\subset U_\alpha$ and $\sum_\alpha\phi_\alpha=1$.
+    On the local chart $(U_\alpha,x_\alpha^i)$, let $g_\alpha=\sum_{i=1}^n\d{x_\alpha^i}\otimes\d{x_\alpha^i}$.
+    Set
+    \[g=\sum_{\alpha}\phi_\alpha g_\alpha,\]
+    we can check $g$ is indeed a Riemannian metric on $M$.
+\end{proof}
+
+\begin{rem}
+    For an $n$-form $\omega\in\bigwedge^nM$ with $\operatorname{supp}\omega$ compact, we can define its integral as
+    \[\int_M\omega=\sum_\alpha\int_M\phi_\alpha\omega\]
+    One can check the definition is independent from the choice of partition of unity.
+\end{rem}
+
+\begin{eg}
+    \begin{enumerate}[(1)]
+        \item $\mathbb{R}^n$ has the Euclidean metric $g=\sum_{i=1}^n\d{x^i}\otimes\d{x^i}$, $g_{ij}=\delta_{ij}$.
+        \item Let $f:M\to(N,h)$ be an immersion, then we define $f^*h(X,Y)|_p=h(f_{*p}X,f_{*p}Y)$, $f^*h$ is the induced metric from $h$ by immersion.
+        \item Let $f:(M,g)\to(N,h)$ be an immersion, if $g=f^*h$, then $f$ is called a \textbf{local isometry}.
+        If $f:M\to N$ is a diffeomorphism, then $f$ is called an \textbf{isometry}.
+        \item The standard metric on $\mathbb{S}^n$ is the induced metric by the embedding $i:\mathbb{S}^n\hookrightarrow(\mathbb{R}^{n+1},\delta_{ij})$.
+        \item If $(M_1,g_1),(M_2,g_2)$ are Riemannian manifolds, then their product manifold has product metric $g_1\times g_2$.
+        In particular, equip $S^1$ with standard metric $g$, $(\mathbb{T}^n,g^n)=(\mathbb{S}^1\times\cdots\times\mathbb{S}^1,g\times\cdots\times g)$ is the flat torus (we will explain the word ``flat'' later).
+        \item Let $f:M\to(N,g)$ be a covering map, then $f^*g$ is a Riemannian metric on $M$, called Riemannian covering map.
+        In particular, let $\Isom(M):=\{f:M\to M|\ f\ \text{is isometry}\}$ denote the isometry group of $M$, $\Gamma\subset\Isom(M)$ be a subgroup, then $M/\Gamma$ is a manifold, and $f:M\to M/\Gamma$ is a Riemannian covering map.
+        Examples of this manner are
+        \begin{itemize}
+            \item $\mathbb{T}^n=\mathbb{R}^n/\mathbb{Z}^n$;
+            \item $\mathbb{RP}^n=\mathbb{S}^n/\{\mathrm{id},A\}$, where $A$ is the antipodal map.
+        \end{itemize}
+    \end{enumerate}
+\end{eg}
+
+\section{Metric Structure}
+
+\begin{defn}
+    Let $\gamma:[0,1]\to M$ be a curve, define its \textbf{length} to be
+    \begin{align*}
+        L(\gamma)&:=\int_0^1|\dot{\gamma}(t)|\d{t}\\
+        &=\int_0^1\sqrt{g(\gamma(t))(\dot{\gamma}(t),\dot{\gamma}(t))}\d{t}
+    \end{align*}
+    Let $p,q\in M$, define their \textbf{distance} to be
+    \[d(p,q)=\inf_{\gamma\in C_{p,q}}L(\gamma)\]
+    where $C_{p,q}$ denotes the collection of all smooth curve joining $p$ and $q$.
+\end{defn}
+
+\begin{prop}
+    The distance function $d:M\times M\to\mathbb{R}$ has the following properties:
+    \begin{enumerate}[(1)]
+        \item $d(p,q)\geq 0$, and $d(p,q)=0\iff p=q$;
+        \item $d(p,q)=d(q,p)$;
+        \item $d(p,r)\leq d(r,q)+d(p,q)$.
+    \end{enumerate}
+    Thus the distance function makes $M$ into a metric space.
+\end{prop}
+\begin{proof}
+    Only need to show $d(p,q)=0\iff p=q$, all else are trivial.
+    We assume $p\neq q$, need to show $d(p,q)>0$.
+    Let $\gamma:[0,1]\to M$ be any curve joining $p$ and $q$.
+    Choose a local chart $(U,\varphi)$ such that $\varphi(U)=B_r(0)$, $q\notin U$.
+    By Jordan--Brouwer Separation Theorem, $\gamma$ must intersect $\partial{U}$ at $s:=\gamma(c)$.
+    Then we have
+    \[L(\gamma)\geq L(\gamma|_{[0,c]})=\int_0^c\sqrt{g_{ij}\dot{x}^i(\gamma(t))\dot{x}^j(\gamma(t))}\d{t}\]
+    Regarding $g:\overline{U}\times\mathbb{S}^{n-1}\to\mathbb{R}$, $g$ is a continuous function on a compact set, thus it attains its minimum $g(x)(v,v)\geq m$, and $m>0$ since $v\in\mathbb{S}^{n-1}\neq 0$.
+    Thus we have
+    \[L(\gamma|_{[0,c]})\geq m\int_0^c|\dot{x}(\gamma(t))|\d{t}\geq mr>0\]
+    $mr$ does not depend on $\gamma$, hence $d(p,q)\geq mr>0$.
+\end{proof}
+
+\begin{prop}
+    $(M,d)$ with metric topology coincides with its original topology.
+\end{prop}
+
+For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd ed., Theo\-rem 13.29.
+
+\section{Levi--Civita Connection}
+
+\begin{defn}(Affine connection)
+    Let $M$ be a differentiable manifold, if the operator $\nabla:\mathfrak{X}(M)\times\mathfrak{X}(M)\to\mathfrak{X}(M)$, denoting $\nabla_XY$, satisfies
+    \begin{enumerate}[(1)]
+        \item $\nabla_{(fX+gY)}Z=f\nabla_XZ+g\nabla_YZ$ for $f,g\in C^\infty(M)$,
+        \item $\nabla_X(Y+Z)=\nabla_XY+\nabla_XZ$,
+        \item $\nabla_X(fY)=(Xf)Y+f\nabla_XY$,
+    \end{enumerate}
+    then $\nabla$ is called an \textbf{affine connection} on $M$.
+\end{defn}
+
+\begin{defn}
+    An affine connection $\nabla$ on Riemannian manifold $(M,g)$ is called \textbf{Levi--Civita connection} if it satisfies
+    \begin{itemize}
+        \item[(LC1)] $Xg(Y,Z)=g(\nabla_XY,Z)+g(Y,\nabla_XZ)$,
+        \item[(LC2)] $\nabla_XY-\nabla_YX-[X,Y]=0$.
+    \end{itemize}
+\end{defn}
+
+\begin{prop}
+    On a Riemannian manifold $(M,g)$ there exists a unique Levi--Civita connection.
+\end{prop}
+\begin{proof}
+    We have the Koszul formula:
+    \begin{align*}
+        2g(\nabla_XY,Z)=&Xg(Y,Z)+Yg(X,Z)-Zg(X,Y)\\
+        &+g([X,Y],Z)-g([X,Z],Y)-g([Y,Z],X)
+    \end{align*}
+    The formula shows Levi--Civita connection is unique, and can be used as the definition of Levi--Civita connection.
+\end{proof}
+
+We check Levi--Civita connection locally.
+First we introduce the Christoffel symbols:
+\[\nabla_{\frac{\partial{}}{\partial{x^i}}}\frac{\partial{}}{\partial{x^j}}=\Gamma^k_{ij}\frac{\partial{}}{\partial{x^k}}\]
+Then (LC1) is equivalent to
+\[\frac{\partial{g_{ij}}}{\partial{x^k}}=\Gamma^l_{ki}g_{lj}+\Gamma^l_{kj}g_{li}\]
+(LC2) is equivalent to
+\[\Gamma^k_{ij}=\Gamma^k_{ji}\]
+
+Let vector fields $X=X^i\frac{\partial{}}{\partial{x^i}},Y=Y^i\frac{\partial{}}{\partial{x^i}}$, then we have
+\begin{equation}
+    \nabla_XY=X^i\left(\frac{\partial{Y^k}}{\partial{x^i}}+Y^j\Gamma^k_{ij}\right)\frac{\partial{}}{\partial{x^k}}\label{nabla XY}
+\end{equation}
+This shows that $\nabla_XY(p)$ depends only on $X(p)$ and the value of $Y$ along the curve $\gamma(t)$ with $\gamma(0)=p,\dot{\gamma}(0)=X(p)$.
+Using this, we can introduce the covariant derivative of vector fields along curves.
+
+\section{Covariant Derivative}
+\begin{defn}
+    Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
+    Then define
+    \[\frac{\nabla}{\d{t}}Y:=\nabla_{\dot{\gamma}(t)}Y\]
+\end{defn}
+
+We look at covariant derivative locally.
+Choose a local chart $(U,\varphi)$, let $Y=Y^i\frac{\partial{}}{\partial{x^i}}$, $\dot{\gamma}(t)=\dot{\gamma}^i(t)\frac{\partial{}}{\partial{x^i}}$, then by equation~\eqref{nabla XY}, we have
+\begin{equation}
+    \begin{aligned}
+        \frac{\nabla}{\d{t}}Y&=\dot{\gamma}^i(t)\left(\frac{\partial{Y^k(t)}}{\partial{x^i}}+Y^j(t)\Gamma^k_{ij}(\gamma(t))\right)\frac{\partial{}}{\partial{x^k}}\\
+        &=\left(\dot{Y}^k(t)+Y^j(t)\dot{\gamma}^i(t)\Gamma^k_{ij}(\gamma(t))\right)\frac{\partial{}}{\partial{x^k}}\quad\text{(chain rule)}
+    \end{aligned}\label{parallel}
+\end{equation}
+
+\begin{defn}[Parallel transport]
+    Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
+    If $\nabla Y/\d{t}=0$, then we call $Y$ is \textbf{parallel} along $\gamma$.
+\end{defn}
+
+\begin{prop}
+    Given a curve $\gamma:[0,1]\to M$ and an initial vector $Y_{\gamma(0)}\in T_{\gamma(0)}M$, then there exists a unique parallel vector field along $\gamma$ with initial vector $Y_{\gamma(0)}$.
+\end{prop}
+\begin{proof}
+    Parallel transport satisfies~\eqref{parallel}, and it is a second order ordinary differential equation.
+    By the unique existence theorem of solution of ODEs, the proposition is proved.
+\end{proof}
+
+\begin{defn}
+    Let $\gamma:[0,1]\to M$ be a curve, $\gamma(0)=p,\gamma(1)=q$, we define a mapping $P_\gamma:T_pM\to T_qM$ as follows:
+    Let $Y_0\in T_pM$, there exsits a unique parallel vector field $Y$ along $\gamma$ with $Y(0)=Y_0$, then we define $P_\gamma(Y_0)=Y(1)$.
+    Clearly $P_\gamma$ is linear.
+\end{defn}
+
+\begin{prop}
+    $P_\gamma$ is an isometry, hence an isomorphism.
+\end{prop}
+\begin{prop}
+    Using notation above, let $X_0,Y_0\in T_pM$, $X,Y$ are parallel vector field along $\gamma$ with $X(0)=X_0,Y(0)=Y_0$.
+    Then we have
+    \[\frac{\d{}}{\d{t}}g(X,Y)=g(\nabla_{\dot{\gamma}(t)}X,Y)+g(X,\nabla_{\dot{\gamma}(t)}Y)=0,\]
+    since $X,Y$ are parallel.
+    Thus $g(X,Y)$ is constant, we have $g(X_0,Y_0)=g(P_\gamma(X_0),P_\gamma(Y_0))$.
+\end{prop}
+
+The last proposition reveals the meaning of the word ``connection'', it means $\nabla$ ``connects'' different tangent spaces.
+\begin{prop}
+    Let $\gamma:[0,1]\to M$ be a curve with $\gamma(0)=p$, $X,Y$ be vector fields with $X(p)=\dot{\gamma}(0)$.
+    Then $\nabla_XY(p)=\left.\frac{\d{}}{\d{t}}\right|_{t=0}P^{-1}_\gamma(Y(\gamma(t)))$.
+\end{prop}
+\begin{proof}
+    Let $\{e_1(t),\cdots,e_n(t)\}$ be a parallel basis along $\gamma$, then $\nabla_{\dot{\gamma}(t)}e_i(t)=0$, in particular, $\nabla_{\dot{\gamma}(0)}e_i(0)=0$.
+    Let $Y(\gamma(t))=Y^i(\gamma(t))e_i(t)$, thus
+    \begin{align*}
+        \nabla_XY(p)&=\nabla_{\dot{\gamma}(0)}Y^i(\gamma(0))e_i(0)\\
+        &=\dot{\gamma}(0)Y^i(\gamma(0))e_i(0)+Y^i(0)\nabla_{\dot{\gamma}(0)}e_i(0)\\
+        &=\left(\left.\frac{\d{}}{\d{t}}\right|_{t=0}Y^i(\gamma(t))\right)e_i
+    \end{align*}
+    On the other hand, parallel transport gives
+    \[P^{-1}_{\gamma}(Y(\gamma(t)))=Y^i(\gamma(t))e_i(0),\]
+    hence
+    \begin{align*}
+        \left.\frac{\d{}}{\d{t}}\right|_{t=0}P^{-1}_\gamma(Y(\gamma(t)))&=\left(\left.\frac{\d{}}{\d{t}}\right|_{t=0}Y^i(\gamma(t))\right)e_i\\
+        &=\nabla_XY(p)\qedhere
+    \end{align*}
+\end{proof}
+
+\begin{rem}
+    The symbol $\frac{\nabla}{\d{t}}$ is rarely used in literature, so we will simply use $\nabla_{\dot{\gamma}(t)}X$ to denote covariant derivative.
+\end{rem}
