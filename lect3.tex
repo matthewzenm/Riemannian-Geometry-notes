@@ -1,0 +1,370 @@
+\chapter{Geodesics and Curvature}
+In this lecture, we first introduce the concepts of geodesics and exponential maps.
+By differentiating exponential map, we can introduce the concept of curvature and Jacobi fields.
+Using exponential map, we can also introduce geodesic normal coordinate and geodesic polar coordinate.
+As an application, we will use geodesic polar coordinate to show geodesics are locally length-minimizing.
+Finally, we will introduce the notion of conjugate points.
+
+\section{Geodesics and Exponential Maps}
+\begin{defn}
+    A curve $\gamma:[0,1]\to M$ is called a \textbf{geodesic} if $\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0$.
+\end{defn}
+
+\begin{rem}
+    Geodesics are constant speed, i.e., $|\dot{\gamma}(t)|\equiv\text{const}$.
+    This can be shown by $\frac{\d{}}{\d{t}}\langle\dot{\gamma}(t),\dot{\gamma}(t)\rangle=2\langle\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t),\dot{\gamma}(t)\rangle=0$.
+\end{rem}
+
+In a local chart $(U,\varphi)$, let $\varphi\circ\gamma(t)=(x^1(t),\cdots,x^n(t))$, then $\dot{\gamma}(t)=\dot{x}^i(t)\left.\frac{\partial{}}{\partial{x^i}}\right|_{\gamma(t)}$.
+Thus the geodesic equation is
+\[\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0\iff\ddot{x}^k(t)+\Gamma^k_{ij}(\gamma(t))\dot{x}^i(t)\dot{x}^j(t)=0,\ k=1,\cdots,n,\]
+with $\gamma(0)=p,\dot{\gamma}(0)=v\in T_pM$.
+
+Since the solution of an ODE relies continuously on initial value, we have the following proposition.
+\begin{prop}\label{geodesic in nbhd}
+    For any $p\in M$, there exists a neighborhood $V$ of $p$, such that there exists $\delta>0,\varepsilon>0$ and a differentiable map $\gamma:(-\delta,\delta)\times\mathscr{U}\to M$, where $\mathscr{U}=\{(q,v)\in TV|\ q\in V,\ v\in T_pM,\ |v|<\varepsilon\}$, such that $\gamma(t;q,v)$ is a geodesic with $\gamma(0)=q,\dot{\gamma}(0)=v$.
+\end{prop}
+The idea of the proof is the ODE theorem we mentioned above, but the proof is not simply using only ODE theory.
+A proof of an equivalent proposition can be found in Wu Hung--Hsi, et.\ al.'s \emph{Introduction to Riemannian Geometry} Chapter 3, Lemma 1.
+
+Observe that $\gamma(\lambda t;p,v)=\gamma(t;p,\lambda v)$.
+Denote $\gamma(t;p,v)=\gamma_v(t)$, then above observation can be written as $\gamma_{\lambda v}(t)=\gamma_v(\lambda t)$.
+Therefore, we can shorten the initial vector to lenghten the domain of geodesic.
+
+\begin{defn}[Exponential map]
+    Let $U\subset T_pM$ be a neighborhood of origin, such that for any $v\in U$, $\gamma_v(1)$ is defined (such neighborhood exists by Proposition~\ref{geodesic in nbhd}).
+    We define the \textbf{exponential map} at p to be
+    \begin{align*}
+        \exp_p:U&\to M\\
+        v&\mapsto\gamma_v(1)
+    \end{align*}
+\end{defn}
+
+\begin{rem}
+    We rescale the initial vector and can obtain
+    \[\exp_p(v)=\gamma_v(1)=\gamma_{v/|v|}(|v|)\]
+    This means the exponential map act on $v$ is moving forward distance $|v|$ along the geodesic with initial direction $v/|v|$.
+\end{rem}
+
+\begin{prop}
+    $\exp_{p*}|_0:T_0(T_pM)\to T_pM$ is identity (we identify $T_0(T_pM)$ with $T_pM$).
+\end{prop}
+\begin{proof}
+    We have
+    \[\exp_{p*}|_0(v)=\left.\frac{\d{}}{\d{t}}\right|_{t=0}\exp_p(tv)=v.\qedhere\]
+\end{proof}
+
+\begin{cor}
+    There is a ball $B_\varepsilon(0)\subset T_pM$ such that $\exp_p:B_\varepsilon(0)\to M$ is a diffeomorphism onto its image.
+\end{cor}
+\begin{proof}
+    Since $\exp_{p*}|_0$ is identity, it is nondegenerate, the corollary follows by Inverse Function Theorem.
+\end{proof}
+
+\begin{eg}
+    \begin{enumerate}[(1)]
+        \item We know that the geodesics on $\mathbb{S}^n$ are great circles, hence $\exp_p$ is defined on the whole $T_pM$.
+        But $\exp_p$ is not injective, since $\exp_p(0)=\exp_p(2\pi v)=p$ for unit vector $v$ in $T_pM$.
+        \item Let $M=\mathbb{S}^1\times\mathbb{R}$ be the cylinder.
+        We know from elementary differential geometry that the geodesics on cylinder are directrix circles, helices and generatrix lines.
+        Then in local chart $(e^{2\pi it},s)\mapsto(t,s)$, we know the $\exp_p$ is not injective in the direction $(1,0)$, and injective in other directions.
+    \end{enumerate}
+\end{eg}
+
+\begin{defn}
+    If $\exp_p$ can be defined on whole $T_pM$ for any $p\in M$, we say $M$ is \textbf{geodesically complete}.
+\end{defn}
+
+We have the following important theorem.
+
+\begin{thm}[Hopf--Rinow]
+    Let $M$ be a Riemannian manifold, the following are equivalent:
+    \begin{enumerate}[(1)]
+        \item $M$ is geodesically complete.
+        \item $\exp_p:T_pM\to M$ is well-defined for some $p\in M$.
+        \item The \emph{Heine--Borel property} holds, that is, any closed bounded set is compact on $M$.
+        \item $M$ is complete as a metric space, that is, any Cauchy sequence converges.
+    \end{enumerate}
+\end{thm}
+
+We will not prove Hopf--Rinow theorem here.
+For a proof, one can refer to Peter Petersen's \emph{Riemannian Geometry}, 3rd ed., Theorem 5.7.1.
+
+\section{Curvature}\label{sect of curv}
+
+We know $\exp_{p*}|_0$ is identity, and we want to ask:
+\begin{ques}
+    What is $\exp_{p*}|_v:T_v(T_pM)\to T_{\exp_{p}(v)}M$?
+\end{ques}
+
+To calculate $\exp_{p*}|_v(\xi)$, we choose a line $v+s\xi$, and then
+\[\exp_{p*}|_v(\xi)=\left.\frac{\d{}}{\d{s}}\right|_{s=0}\exp_p(v+s\xi)\]
+Now we can introduce a family of geodesics $\gamma(t,s)=\gamma_s(t)=\exp_p(t(v+s\xi))$, and denote $\gamma(t)=\gamma(t,0)$.
+Let $J_s(t)=\frac{\partial{}}{\partial{s}}\gamma(t,s)$, then $\dot{J}_s(t)=\nabla_{\dot{\gamma}_s(t)}\frac{\partial{\gamma}}{\partial{s}}$.
+Since $\nabla_{\dot{\gamma}_s(t)}\frac{\partial{\gamma}}{\partial{t}}=0$, we have
+\begin{align*}
+    \ddot{J}_s(t)&=\nabla_{\dot{\gamma}_s(t)}\nabla_{\dot{\gamma}_s(t)}\frac{\partial{\gamma}}{\partial{s}}\\
+    &=\nabla_{\dot{\gamma}_s(t)}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}\quad\text{(torsion-freeness)}\\
+    &=\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}-\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{t}}.
+\end{align*}
+Denote
+\[R\left(\frac{\partial{\gamma}}{\partial{t}},\frac{\partial{\gamma}}{\partial{s}}\right)=\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\nabla_{\frac{\partial{\gamma}}{\partial{t}}}-\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}+\nabla_{\left[\frac{\partial{\gamma}}{\partial t},\frac{\partial{\gamma}}{\partial{s}}\right]},\]
+then we have
+\[\frac{\partial^2{}}{\partial{t^2}}J_s(t)+R\left(\frac{\partial{\gamma}}{\partial{t}},\frac{\partial{\gamma}}{\partial{s}}\right)\frac{\partial{\gamma}}{\partial{t}}=0.\]
+Let $s=0$, we have
+\[\ddot{J}(t)+R(\dot{\gamma}(t),J(t))\dot{\gamma}(t)=0.\]
+We make it into a definition.
+
+\begin{defn}[Riemann curvature tensor]
+    Let $R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)\to\mathfrak{X}(M)$ defined by
+    \[R(X,Y)Z=\nabla_Y\nabla_XZ-\nabla_X\nabla_YZ+\nabla_{[X,Y]}Z.\]
+\end{defn}
+
+We also look at Riemann curvature tensor locally.
+Tedious calculation will show Riemann curvature tensor is truly tensorial.
+Using a more simple notation $\partial_i=\partial{}/\partial{x^i}$, we have
+\begin{align*}
+    R(\partial_i,\partial_j)\partial_k&=\nabla_{\partial_j}\nabla_{\partial_i}\partial_k-\nabla_{\partial_i}\nabla_{\partial_j}\partial_k\\
+    &=\nabla_{\partial_j}(\Gamma^l_{ik}\partial_l)-\nabla_{\partial_i}(\Gamma^l_{jk}\partial_l),
+\end{align*}
+and
+\begin{align*}
+    R_{ijk}^l&=(\partial_j\Gamma^l_{ik}-\partial_i\Gamma^l_{jk}+\Gamma^m_{ik}\Gamma^l_{jm}-\Gamma^m_{jk}\Gamma^l_{im})\partial_l\\
+    &=\partial^2g+\partial g*\partial g
+\end{align*}
+We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
+
+\begin{eg}
+    $(\mathbb{R},\delta)$ has $R\equiv 0$.
+    Any metric admits zero curvature is call \textbf{flat}.
+\end{eg}
+
+\begin{prop}
+    Riemann curvature tensor has following symmetric properties: For $X,Y,Z,W\in\mathfrak{X}(M)$, we have
+    \begin{enumerate}[(1)]
+        \item $R(X,Y,Z,W)=-R(Y,X,Z,W)=-R(X,Y,W,Z)=R(Z,W,X,Y)$;
+        \item $R(X,Y,Z,W)+R(Y,Z,X,W)+R(Z,X,Y,W)=0$ (First Bianchi Identity).
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    Tedious calculation.
+\end{proof}
+
+\begin{defn}[Sectional curvature]
+    Let $p\in M$, $\pi\subset T_pM$ be a $2$-plane, $\pi=\Span\{X,Y\}$.
+    Then define the sectional curvature at $p$ of $\pi$ as
+    \[K_p(\pi):=\frac{R(X,Y,X,Y)}{|X|^2|Y|^2-\langle X,Y\rangle^2}.\]
+\end{defn}
+
+\begin{rem}
+    One can show sectional curvature does not depend on the choice of basis.
+    A proof can be found in Manfredo do Carmo's \emph{Riemannian Geometry}, Proposition 3.1.
+\end{rem}
+
+\begin{prop}
+    Let $M$ be a Riemannian manifold.
+    $R(X,Y,Z,W)$ as a $(0,4)$-tensor is determined by all $K_p(\pi)$.
+\end{prop}
+For a proof, see Wu Hung--Hsi et. al., \emph{Introduction to Riemannian Geometry}, Chapter 2 Lemma 2.
+
+We mention one little observation.
+If all sectional curvature at $p$ is constant $K_p$, then
+\[R_p(X,Y,Z,W)=K_p(\langle X,Z\rangle\langle Y,W\rangle-\langle X,W\rangle\langle Y,Z\rangle)\]
+
+For a theorem about constant sectoinal curvature, we mention here Schur's Theorem.
+\begin{thm}[Schur]
+    Let $(M^n,g)$ be a Riemannian manifold, $n\geq 3$.
+    If $K_p(\pi)$ is independent of $\pi\subset T_pM$ for any $p\in M$, then $M$ has constant sectional curvature.
+\end{thm}
+
+We define another two important curvature.
+\begin{defn}[Ricci curvature]
+    Let $(M^n,g)$ be a Riemannian manifold.
+    Define $\Ric{}:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
+    \[\Ric_p(X)=\sum_{i=1}^nR_p(e_i,X)e_i,\]
+    where $\{e_i\}$ is an orthonormal frame around $p$.
+    It's easy to check the definition is independent from the choice of orthonormal frame, and $\Ric$ is self-adjoint.
+\end{defn}
+
+\begin{defn}[Scalar curvature]
+    Let $(M^n,g)$ be a Riemannian manifold.
+    We define $\Scal{}\in C^\infty(M)$ as
+    \[\Scal(p)=\sum_{i=1}^n\langle\Ric_p(e_i),e_i(p)\rangle\]
+    for an orthonormal frame $\{e_i\}$ around $p$.
+\end{defn}
+
+\begin{defn}
+    Let $(M,g)$ be a Riemannian manifold, if $\Ric{}=\lambda(p)g$ for a $\lambda\in C^\infty(M)$, we call $M$ an \textbf{Einstein manifold}.
+\end{defn}
+
+We also mention here
+\begin{thm}[Schur]
+    Let $M^n$ be an Einstein manifold with $n\geq 3$, then $M$ has constant scalar curvature.    
+\end{thm}
+
+\section{Jacobi Fields}
+
+\begin{defn}
+    Let $\gamma$ be a geodesic, a vector field $J$ along $\gamma$ is called a \textbf{Jacobi field} if $\ddot{J}+R(\dot{\gamma},J)\dot{\gamma}=0$.
+\end{defn}
+
+Let $\{e_i(t)\}$ be a parallel orthonormal frame along $\gamma$, $J(t)=\sum_if_i(t)e_i(t)$.
+Define $a_{ij}(t)=\langle R(\dot{\gamma}(t),e_i(t))\dot{\gamma}(t),e_j(t)\rangle$, then the qeuation for Jacobi field is equivalent to
+\[\ddot{f}_i(t)+\sum_ja_ij(t)f_j(t)=0,\ i=1,2,\cdots,n.\]
+By ODE theory, given $f_i(0),\dot{f}_i(0)$, $i=1,2,\cdots,n$, the $f_i(t)$'s are uniquely determined.
+Translating into language of Jacobi field, we have a Jacobi field is uniquely determined by $J(0)$ and $\dot{J}(0)$.
+
+\begin{symb}
+    Let $\gamma$ be a geodesic on a Riemannian manifold $M$, the vector space of Jacobi fields along $\gamma$ is denoted by $\mathscr{J}(\gamma)$.
+\end{symb}
+
+Above discussion can be summarized as the following proposition.
+
+\begin{prop}
+    Let $M^n$ be a Riemannian manifold, $\gamma$ be a geodesic, then $\dim\mathscr{J}(\gamma)=2n$.
+\end{prop}
+
+The next proposition shows only the Jacobi field at tangential direction are interesting.
+\begin{prop}\label{decomposition of Jacobi fields}
+    Let $J$ be a Jacobi field along $\gamma$, we have the decomposition $J(t)=J^\perp(t)+(at+b)\dot{\gamma}(t)$, where $J^\perp(t)\perp\dot{\gamma}(t)$. 
+\end{prop}
+\begin{proof}
+    We have
+    \begin{align*}
+        \frac{\d^2{}}{\d{t^2}}\langle J(t),\dot{\gamma}(t)\rangle&=\langle\ddot{J}(t),\dot{\gamma}(t)\rangle\\
+        &=-\langle R(\dot{\gamma},J)\dot{\gamma},\dot{\gamma}\rangle\\
+        &=0.\qedhere
+    \end{align*}
+\end{proof}
+
+We have the following Gauss Lemma.
+\begin{prop}[Gauss Lemma]
+    $\langle\exp_{p*}|_v(\xi),\dot{\gamma}_v(1)\rangle=\langle\gamma,v\rangle$.
+\end{prop}
+\begin{proof}
+    Let one-parameter geodesic family $\gamma(t,s)=\exp_p(t(v+s\xi))$, then using the calculation in the beginning of section~\ref{sect of curv}, we have
+    \begin{align*}
+        J(t)=\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\gamma(t,s)&=\exp_{p*}|_{tv}(t\xi)\\
+        &=t\exp_{p*}|_{tv}(\xi).
+    \end{align*}
+    Moreover, we have $\langle J(t),\dot{\gamma}_v(t)\rangle=at+b$ (Proposition~\ref{decomposition of Jacobi fields}),
+    \begin{align*}
+        a&=\left.\frac{\d{}}{\d{t}}\right|_{t=0}\langle J(t),\dot{\gamma}_v(t)\rangle=\langle\dot{J}(0),\dot{\gamma}_v(0)\rangle+\langle J(0),\nabla_v\dot{\gamma}_v(t)\rangle\\
+        &=\langle\dot{J}(0),v\rangle=\left\langle\left.\left(\exp_{p*}|_{tv}(\xi)+t\frac{\d{}}{\d{t}}\exp_{p*}|_{tv}(\xi)\right)\right|_{t=0},v\right\rangle\\
+        &=\langle\exp_{p*}|_0(\xi),v\rangle=\langle\xi,v\rangle,
+    \end{align*}
+    and $b=\langle J(0),v\rangle=0$.
+    But we have
+    \[t\langle\exp_{p*}|_{tv}(\xi),\dot{\gamma}_v(t)\rangle=\langle J(t),\dot{\gamma}_v(t)\rangle=\langle\xi,v\rangle t.\]
+    Let $t=1$ we obtain the conclusion.
+\end{proof}
+
+\begin{eg}
+    We calculate the Jacobi field on Riemannian manifolds admit a constant sectional curvature.
+    By scaling the metric, we can assume $K=0,1,-1$.
+    The corresponding simply connected complete Riemannian manifolds are called \textbf{space forms}, which are $\mathbb{R}^n,\mathbb{S}^n,\mathbb{H}^n$.
+    The Jacobi field equation is
+    \[\begin{cases}
+        \ddot{J}(t)+KJ(t)=0,\\
+        J(0)=0,\dot{J}(0)=\xi.
+    \end{cases}\]
+    Let $\xi(t)$ be the parallel transport along a geodesic with $\xi(0)=\xi$, then solving the equation by eigenvalue method, we obtain
+    \[J(t)=\begin{cases}
+        t\xi(t), & K=0,\\
+        \sin(t)\xi(t), & K=1,\\
+        \sinh(t)\xi(t), & K=-1.
+    \end{cases}\]
+\end{eg}
+
+\section{Some Local Charts}
+In this section, we adopt the traditional terminology ``coordinate'' to mean chart.
+
+First we introduce the geodesic normal coordinate.
+Given a Riemannian manifold $(M,g)$ and $p\in M$, there exists an $\varepsilon>0$ such that $\exp_p:B_\varepsilon(0)\to\exp_p(B_\varepsilon(0))=:B_\varepsilon(p)$ is an diffeomorphism.
+Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha^i\}$ be the dual basis of $\{e_i\}$, then we construct the \textbf{geodesic normal coordinate}
+\[q\in B_\varepsilon(p)\mapsto(\alpha^1(\exp_p^{-1}(q)),\cdots,\alpha^n(\exp_p^{-1}(q))).\]
+
+\begin{prop}
+    Under geodesic normal coordinate, we have
+    \[g_{ij}(p)=\delta_{ij},\ \Gamma^k_{ij}(p)=0\]
+\end{prop}
+\begin{proof}
+    Since $\exp_p$ is a diffeomorphism, we have $\left.\frac{\partial{}}{\partial{x^i}}\right|_p=\exp_{p*}|_0(e_i)=e_i$, hence $g_{ij}=g_p(e_i,e_j)=\delta_{ij}$.
+    Moreover, let $x(t)=ty$ for $y\in T_pM\backslash\{0\}$, then $x(t)$ is the coordinate of some geodesic in $B_\varepsilon(p)$, thus it satisfies the equation
+    \[\ddot{x}^k(t)+\Gamma^k_{ij}(x(t))\dot{x}^i(t)\dot{x}^j(t)=0.\]
+    Since $\ddot{x}^k(t)=0$, $\dot{x}^i(t)=y^i\neq 0$, we must have $\Gamma^k_{ij}(ty)=0$.
+    Let $y\to 0$ and we obtain the conclusion.
+\end{proof}
+
+Next we introduce the geodesic polar coordinate.
+Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean space $(T_pM,g_p)$, and we define the \textbf{geodesic polar coordinate} by
+\[q\in B_\varepsilon(p)\backslash\{p\}\mapsto(r(\exp_p^{-1}(q)),\theta^1(\exp_p^{-1}(q)),\cdots,\theta^{n-1}(\exp_p^{-1}(q))).\]
+
+\begin{prop}
+    Under geodesic polar coordinate, we have
+    \[g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{r}}\right)=1,\ g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)=0\]
+\end{prop}
+\begin{proof}
+    To make things clear, we write the inverse of geodesic polar coordinate as
+    \[F:(r,\omega)\mapsto\exp_p(r\omega)\]
+    for $r\in(0,+\infty),\omega\in\mathbb{S}^{n-1}$.
+    Then we use $\partial_r,\partial_{\theta^1},\cdots,\partial_{\theta^{n-1}}$ to denote the tangent vectors in $(0,+\infty)\times\mathbb{S}^{n-1}$, we have
+    \begin{align*}
+        &\frac{\partial{}}{\partial{r}}=F_*(\partial_r)\\
+        &\frac{\partial{}}{\partial{\theta^i}}=F_*(\partial_\theta^i),\ i=1,\cdots,n.
+    \end{align*}
+    First we know $\partial_r$ is the tangent vector of direction $r\omega$, hence $\partial{}/\partial{r}$ is the tangent vector of a unit-speed radial geodesic, that is
+    \[g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{r}}\right)=1.\]
+    Moreover, we have
+    \begin{align*}
+        \frac{\partial{}}{\partial{r}}g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)&=g\left(\nabla_{\frac{\partial{}}{\partial{r}}}\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)+g\left(\frac{\partial{}}{\partial{r}},\nabla_{\frac{\partial{}}{\partial{r}}}\frac{\partial{}}{\partial{\theta^i}}\right)\\
+        &=g\left(\frac{\partial{}}{\partial{r}},\nabla_{\frac{\partial{}}{\partial{r}}}\frac{\partial{}}{\partial{\theta^i}}\right)\\
+        &=g\left(\frac{\partial{}}{\partial{r}},\nabla_{\frac{\partial{}}{\partial{\theta^i}}}\frac{\partial{}}{\partial{r}}\right)\quad\text{(torsion-freeness)}\\
+        &=\frac{1}{2}\frac{\partial{}}{\partial{\theta^i}}g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{r}}\right)\\
+        &=0,
+    \end{align*}
+    hence $g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)$ is constant.
+    But if we let $r\to 0$, we have $\partial{}/\partial{\theta^i}\to 0$, therefore
+    \[g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)=0\qedhere\]
+\end{proof}
+
+\begin{cor}
+    Under geodesic polar coordinate, the metric tensor has local expression
+    \[g=\d{r^2}+g_{ij}(r,\theta)\d{\theta^i}\otimes\d{\theta^j}\]
+\end{cor}
+
+As an application, we prove geodesics are locally length-minimizing.
+\begin{prop}
+    Let $\gamma:[0,1]\to M$ be a geodesic in $B_\varepsilon(p)$, $\tilde{\gamma}:[0,1]\to M$ be any curve in $B_\varepsilon(p)$ with $\gamma(0)=\tilde{\gamma}(0)=p$, $\gamma(1)=\tilde{\gamma}(1)=q$.
+    Then $L(\gamma)\leq L(\tilde{\gamma})$.
+\end{prop}
+\begin{proof}
+    Let $q=\exp_p(v)$, $\varphi$ be the geodesic polar coordinate, then we have
+    \[\gamma(t)=(tr_0,\omega_0),\ \tilde{\gamma}(t)=(r(t),\omega(t))\]
+    such that $\omega_0,\omega(t)\in\mathbb{S}^{n-1}$, $r(1)=r_0$.
+    Therefore
+    \begin{align*}
+        L(\gamma)&=\int_0^1g_{\gamma(t)}(\dot{\gamma}(t),\dot{\gamma}(t))\d{t}\\
+        &=\int_0^1|v|\d{t}=r_0\\
+        L(\tilde{\gamma})&=\int_0^1(|\dot{r}(t)|^2+g_{ij}\dot{\theta}^i(t)\dot{\theta}^j(t))^{1/2}\d{t}\\
+        &\geq\int_0^1|\dot{r}(t)|\d{t}\\
+        &\geq\int_0^1\dot{r}(t)=r_0\qedhere
+    \end{align*}
+\end{proof}
+
+\section{Conjugate Points}
+
+\begin{defn}[Conjugate points]
+    If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \textbf{conjugate point} of $p$ along $\gamma$.
+\end{defn}
+
+\begin{prop}
+    We have $\exp_p$ is degenerate at $\gamma(t_0)$ if and only if there is a Jacobi field $J$ not identically equal to $0$ such that $J(0)=J(t_0)=0$.
+\end{prop}
+\begin{proof}
+    $\exp_{p*}|_{\dot{\gamma}_v(t_0)}(\xi)=0$ if and only if $J(t)=\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\exp_p(t(v+s\xi))$ satisfies $J(0)=J(t)=0$.
+\end{proof}
+
+\begin{rem}
+    This proposition shows conjugate is symmetric.
+\end{rem}

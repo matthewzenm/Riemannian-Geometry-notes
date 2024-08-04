@@ -5,8 +5,10 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[shortlabels]{enumitem}
+\usepackage{indentfirst}
 \usepackage{times}
 \usepackage{mathptmx}
+\usepackage{mathrsfs}
 
 \usepackage{titlesec}
 \titleformat{\chapter}[frame]{\huge\bfseries}{Lecture\,\thechapter}{1em}{}{}
@@ -26,6 +28,8 @@
 
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Scal}{Scal}
 
 \usepackage{fixdif}
 \usepackage[colorlinks]{hyperref}
@@ -37,11 +41,13 @@
 \begin{document}
 \maketitle
 
-% \frontmatter
+\frontmatter
+\tableofcontents
 % \input{preface.tex}
 
 \mainmatter
 \input{lect1.tex}
 \input{lect2.tex}
+\input{lect3.tex}
 
 \end{document}
