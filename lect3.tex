@@ -29,7 +29,7 @@ A proof of an equivalent proposition can be found in Wu Hung--Hsi, et.\ al.'s \e
 
 Observe that $\gamma(\lambda t;p,v)=\gamma(t;p,\lambda v)$.
 Denote $\gamma(t;p,v)=\gamma_v(t)$, then above observation can be written as $\gamma_{\lambda v}(t)=\gamma_v(\lambda t)$.
-Therefore, we can shorten the initial vector to lenghten the domain of geodesic.
+Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
 
 \begin{defn}[Exponential map]
     Let $U\subset T_pM$ be a neighborhood of origin, such that for any $v\in U$, $\gamma_v(1)$ is defined (such neighborhood exists by Proposition~\ref{geodesic in nbhd}).
@@ -41,7 +41,7 @@ Therefore, we can shorten the initial vector to lenghten the domain of geodesic.
 \end{defn}
 
 \begin{rem}
-    We rescale the initial vector and can obtain
+    We scale the initial vector and can obtain
     \[\exp_p(v)=\gamma_v(1)=\gamma_{v/|v|}(|v|)\]
     This means the exponential map act on $v$ is moving forward distance $|v|$ along the geodesic with initial direction $v/|v|$.
 \end{rem}
@@ -180,7 +180,7 @@ For a theorem about constant sectoinal curvature, we mention here Schur's Theore
 We define another two important curvature.
 \begin{defn}[Ricci curvature]
     Let $(M^n,g)$ be a Riemannian manifold.
-    Define $\Ric{}:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
+    Define \textbf{Ricci curvature tensor} $\Ric:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
     \[\Ric_p(X)=\sum_{i=1}^nR_p(e_i,X)e_i,\]
     where $\{e_i\}$ is an orthonormal frame around $p$.
     It's easy to check the definition is independent from the choice of orthonormal frame, and $\Ric$ is self-adjoint.
@@ -188,13 +188,13 @@ We define another two important curvature.
 
 \begin{defn}[Scalar curvature]
     Let $(M^n,g)$ be a Riemannian manifold.
-    We define $\Scal{}\in C^\infty(M)$ as
+    We define \textbf{Scalar curvature} $\Scal\in C^\infty(M)$ as
     \[\Scal(p)=\sum_{i=1}^n\langle\Ric_p(e_i),e_i(p)\rangle\]
     for an orthonormal frame $\{e_i\}$ around $p$.
 \end{defn}
 
 \begin{defn}
-    Let $(M,g)$ be a Riemannian manifold, if $\Ric{}=\lambda(p)g$ for a $\lambda\in C^\infty(M)$, we call $M$ an \textbf{Einstein manifold}.
+    Let $(M,g)$ be a Riemannian manifold, if $\Ric=\lambda(p)g$ for a $\lambda\in C^\infty(M)$, we call $M$ an \textbf{Einstein manifold}.
 \end{defn}
 
 We also mention here
@@ -311,7 +311,7 @@ Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean spac
     Then we use $\partial_r,\partial_{\theta^1},\cdots,\partial_{\theta^{n-1}}$ to denote the tangent vectors in $(0,+\infty)\times\mathbb{S}^{n-1}$, we have
     \begin{align*}
         &\frac{\partial{}}{\partial{r}}=F_*(\partial_r)\\
-        &\frac{\partial{}}{\partial{\theta^i}}=F_*(\partial_\theta^i),\ i=1,\cdots,n.
+        &\frac{\partial{}}{\partial{\theta^i}}=F_*(\partial_{\theta^i}),\ i=1,\cdots,n.
     \end{align*}
     First we know $\partial_r$ is the tangent vector of direction $r\omega$, hence $\partial{}/\partial{r}$ is the tangent vector of a unit-speed radial geodesic, that is
     \[g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{r}}\right)=1.\]
@@ -334,7 +334,7 @@ Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean spac
 \end{cor}
 
 As an application, we prove geodesics are locally length-minimizing.
-\begin{prop}
+\begin{prop}\label{locally length-min}
     Let $\gamma:[0,1]\to M$ be a geodesic in $B_\varepsilon(p)$, $\tilde{\gamma}:[0,1]\to M$ be any curve in $B_\varepsilon(p)$ with $\gamma(0)=\tilde{\gamma}(0)=p$, $\gamma(1)=\tilde{\gamma}(1)=q$.
     Then $L(\gamma)\leq L(\tilde{\gamma})$.
 \end{prop}

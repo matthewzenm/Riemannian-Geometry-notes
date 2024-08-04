@@ -1,0 +1,261 @@
+\chapter{Variation Formula and Index Form}
+In this lecture we introduce the variation of energy.
+The variation formulae are closely related to minimizing property of geodesics.
+As an application of second variation formula, we introduce the Bonnet--Myers Theorem.
+Regarding the second variation formula as a quadric form, we have the notion of index form.
+We will explain the relation between index form and conjugate points.
+Finally, we will briefly mention the Morse Index Theorem.
+
+Let $\gamma:[0,a]\to M$ be a curve, we define two functional
+\begin{align*}
+    &L(\gamma)=\int_0^a|\dot{\gamma}(t)|\d{t}\\
+    &E(\gamma)=\int_0^a\frac{1}{2}|\dot{\gamma}(t)|^2\d{t}.
+\end{align*}
+Then by Cauchy--Schwarz inequality, we have
+\[L(\gamma)^2\leq 2aE(\gamma),\]
+with equality holds if and only if $|\dot{\gamma}(t)|=\text{const}$.
+\begin{prop}\label{length-min implies energy-min}
+    If $\gamma$ is a length-minimizing geodesic, then $\gamma$ is energy-minimizing.
+\end{prop}
+\begin{proof}
+    Let $\tilde{\gamma}$ be another curve, then
+    \[2aE(\gamma)=L^2(\gamma)\leq L^2(\tilde{\gamma})\leq 2aE(\tilde{\gamma})\qedhere\]
+\end{proof}
+
+Our aim is to prove the converse.
+\begin{prop}\label{energy-min implies length-min}
+    If $\gamma$ is energy-minimizing, then $\gamma$ is a length-minimizing geodesic.
+\end{prop}
+
+\section{First Variation Formula}
+
+\begin{defn}[Variation]
+    Let $\gamma_0:[0,a]\to M$ be a curve, a \textbf{variation} of $\gamma_0$ is a differentiable map $\gamma:[0,a]\times(-\varepsilon,\varepsilon)\to M$ such that $\gamma(t,0)=\gamma_0(t)$.
+    If $\gamma(0,s)=\gamma_0(0)$, $\gamma(a,s)=\gamma_0(a)$ for any $s\in(-\varepsilon,\varepsilon)$, then we call it a \textbf{proper variation}.
+    We call $\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\gamma(t,s)=:V(t)$ the \textbf{variation vector field}.
+\end{defn}
+
+\begin{prop}[First variation formula]
+    Let $\gamma(t,s)$ be a variation, its energy $\displaystyle E(s)=\int_0^a\frac{1}{2}\left|\frac{\partial{}}{\partial{t}}\gamma(t,s)\right|^2\d{t}$, then we have
+    \[E'(0)=\left.\langle V,\dot{\gamma}\rangle\right|^a_0-\int_0^a\left\langle V(t),\nabla_{\dot{\gamma}_0(t)}\dot{\gamma}_0(t)\right\rangle\d{t}.\]
+\end{prop}
+\begin{proof}
+    We calculate
+    \begin{align*}
+        \frac{\d{}}{\d{s}}E(s)&=\int_0^a\left\langle\frac{\partial{\gamma}}{\partial{t}},\nabla_{\frac{\partial{}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}\right\rangle\d{t} &\\
+        &=\int_0^a\left\langle\frac{\partial{\gamma}}{\partial{t}},\nabla_{\frac{\partial{}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{s}}\right\rangle\d{t} &\text{(LC2)}\\
+        &=\int_0^a\left(\frac{\partial}{\partial{t}}\left\langle\frac{\partial{\gamma}}{\partial{t}},\frac{\partial{\gamma}}{\partial{s}}\right\rangle-\left\langle\frac{\partial{\gamma}}{\partial{s}},\nabla_{\frac{\partial{}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{t}}\right\rangle\right)\d{t}. &\text{(LC1)}
+    \end{align*}
+    Take $s=0$, we obtain
+    \begin{align*}
+        E'(0)&=\int_0^a\left(\frac{\partial{}}{\partial{t}}\langle V(t),\dot{\gamma}_0(t)\rangle-\langle V(t),\nabla_{\dot{\gamma}_0(t)}\dot{\gamma}_0(t)\right)\d{t}\\
+        &=\left.\langle V,\dot{\gamma}\rangle\right|^a_0-\int_0^a\left\langle V(t),\nabla_{\dot{\gamma}_0(t)}\dot{\gamma}_0(t)\right\rangle\d{t}.\qedhere
+    \end{align*}
+\end{proof}
+
+\begin{cor}\label{critical pt for energy var}
+    $E'(0)=0$ for all proper variation if and only if $\nabla_{\dot{\gamma}_0(t)}\dot{\gamma}_0(t)=0$, that is, $\gamma_0$ is a geodesic.
+\end{cor}
+
+Now we can give a proof of energy-minimizing curves are length-minimizing geode\-sics.
+\begin{proof}[Proof of Proposition~\ref{energy-min implies length-min}]
+    Let $\gamma:[0,a]\to M$ be a curve such that for any $\tilde{\gamma}:[0,1]\to M$ with $\gamma(0)=\tilde{\gamma}(0)$, $\gamma(1)=\tilde{\gamma}(1)$, the inequality $E(\gamma)\leq E(\tilde{\gamma})$ holds, we show that $L(\gamma)\leq L(\tilde{\gamma})$.
+    Let $\gamma(t,s)$ be any variation with $\gamma(t,0)=\gamma$, then $\gamma$ is a critical point of $E(s)$.
+    Hence by Corollary~\ref{critical pt for energy var}, $\gamma$ is a geodesic.
+    Then we can reparameterize $\tilde{\gamma}$ into arc-length, obtaining $\hat{\tilde{\gamma}}$.
+    Therefore
+    \[L^2(\gamma)=2aE(\gamma)\leq 2aE\left(\hat{\tilde{\gamma}}\right)=L^2\left(\hat{\tilde{\gamma}}\right)=L^2(\tilde{\gamma})\qedhere\]
+\end{proof}
+
+\section{Second Variation Formula}
+
+Since we concentrate on critical points of variation of energy, we define second variation formula only for geodesics.
+
+\begin{prop}[Second variation formula]
+    Let $\gamma_0:[0,a]\to M$ be a geodesic, then
+    \[E''(0)=\int_0^a\left(|\dot{V}(t)|^2-\langle R(\dot{\gamma}_0(t),V(t))\dot{\gamma}_0(t),V(t)\rangle\right)\d{t}+\boxed{\langle\nabla_{V(t)}V(t),\dot{\gamma}_0(t)\rangle|_0^a}.\]
+    The boxed term is called \textbf{boundary term}, and it vanishes when the variation is proper.
+\end{prop}
+\begin{proof}
+    We take the expression of $E'(s)$ from the proof of first variation formula and differentiate
+    \begin{align*}
+        E''(s)&=\int_0^a\frac{\partial{}}{\partial{s}}\left\langle\frac{\partial\gamma}{\partial{t}},\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial\gamma}{\partial{t}}\right\rangle\d{t}\\
+        &=\int_0^a\left(\left\langle\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}},\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}\right\rangle+\left\langle\frac{\partial\gamma}{\partial{t}},\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}\right\rangle\right)\d{t},
+    \end{align*}
+    where
+    \[\left\langle\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}},\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}\right\rangle=\left\langle\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{s}},\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{s}}\right\rangle=|\dot{V}(t)|^2\]
+    and
+    \[\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{t}}=\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\nabla_{\frac{\partial{\gamma}}{\partial{t}}}\frac{\partial{\gamma}}{\partial{s}}=\nabla_{\frac{\partial{}}{\partial{t}}}\nabla_{\frac{\partial{\gamma}}{\partial{s}}}\frac{\partial{\gamma}}{\partial{s}}-R\left(\frac{\partial\gamma}{\partial{s}},\frac{\partial\gamma}{\partial{t}}\right)\frac{\partial\gamma}{\partial{s}}\]
+    Thus
+    \[E''(s)=\int_0^a\left(|\dot{V}(t)|^2-\langle R(\dot{\gamma},V)\dot{\gamma},V\rangle+\frac{\partial{}}{\partial{t}}\left\langle\frac{\partial{\gamma}}{\partial{t}},\nabla_{\frac{\partial\gamma}{\partial{s}}}\frac{\partial{\gamma}}{\partial{s}}\right\rangle-{\left\langle\nabla_{\frac{\partial\gamma}{\partial{t}}}\frac{\partial\gamma}{\partial{t}},\nabla_{\frac{\partial\gamma}{\partial{s}}},\frac{\partial{\gamma}}{\partial{s}}\right\rangle}\right)\d{t},\]
+    the last term is $0$, hence second variation formula holds by taking $s=0$.
+\end{proof}
+
+We now use second variation formula to prove the famous Bonnet--Myers Theorem.
+\begin{thm}[Bonnet--Myers]
+    Let $(M^n,g)$ be a complete Riemannian manifold with $\Ric\geq(n-1)Kg>0$,
+    then $\operatorname{diam}(M,g)\leq\pi/\sqrt{K}$.
+    In particular, $M$ is compact.
+\end{thm}
+\begin{proof}
+    We can scale the metric and assume $K=1$.
+    We prove the theorem by contradiction.
+
+    Assume there exists $p,q\in M$ joined by length-minimizing geodesic $\gamma:[0,1]\to M$, with $d(p,q)=L(\gamma)>\pi$.
+    Since $\gamma$ is length-minimizing, $E''(0)(V,V)\geq 0$ for any proper variation vector field $V$.
+    Let $\{e_1(t),\cdots,e_{n-1}(t),\dot{\gamma}(t)/|\dot{\gamma}(t)|\}$ be a parallel orthonormal frame along $\gamma$, and set $V_i(t)=\sin(\pi t)e_i(t)$, $i=1,\cdots,n-1$.
+    Then $V_i(0)=V_i(1)=0$ for each $i=1,\cdots,n-1$, $V_i$'s are proper variation vector field.
+    Thus we have
+    \begin{align*}
+        E''(0)(V_i,V_i)&=\int_0^1(|\dot{V}_i(t)|^2-\langle R(\dot{\gamma}(t),V(t))\dot{\gamma}(t),V(t)\rangle)\d{t}\\
+        &=\int_0^1(-\langle V_i,\ddot{V}_i\rangle-\langle R(\dot{\gamma}(t),V(t))\dot{\gamma}(t),V(t)\rangle)\d{t}\quad\text{(integration by parts)}\\
+        &=\int_0^1(\pi^2\sin^2(\pi t)-\sin^2(\pi t)L^2(\gamma)K(e_n,e_i))\d{t}
+    \end{align*}
+    Take summation we have
+    \begin{align*}
+        \sum_{i=1}^{n-1}E''(0)(V_i,V_i)&=\int_0^1\sin^2(\pi t)((n-1)\pi^2-L^2(\gamma)\langle\Ric(e_n),e_n\rangle)\d{t}\\
+        &\leq\int_0^1(n-1)\sin^2(\pi t)(\pi^2-L^2(\gamma))\d{t}\\
+        &<0
+    \end{align*}
+    Then there must exist a $V_i$ such that $E''(0)(V_i,V_i)<0$, contradiction!
+    Hence we proved $\operatorname{diam}(M)\leq\pi$.
+    Moreover, by Hopf--Rinow theorem, $M$ is bounded implies $M$ is compact ($M$ is automatically closed as a topological space).
+\end{proof}
+
+Involving some theory of covering spaces, we have the following corollary.
+\begin{cor}
+    The universal covering $\tilde{M}\to M$ is compact.
+    Moreover, $\pi_1(M)$ is finite.
+\end{cor}
+\begin{proof}
+    We can lift $g$ to $\tilde{M}$ to make $\pi:\tilde{M}\to M$ a Riemannian covering, then $\pi^*g$ also admits a Ricci curvature bounded below.
+    By Bonnet--Myers theorem, $\tilde{M}$ is compact.
+    For the next claim, let $p\in M$, then $\pi^{-1}(p)$ is a discret closed set in $\tilde{M}$, hence must be finite.
+    Then the covering map is of finite sheet, $\pi_1(\tilde{M})$ has finite index in $\pi_1(M)$.
+    But $\pi_1(\tilde{M})$ is trivial, $\pi_1(M)$ must be finite.
+\end{proof}
+
+\begin{rem}
+    \begin{enumerate}[(1)]
+        \item We cannot weaken the condition to $K=0$, in fact, even $\operatorname{Sect}>0$ is not enough.
+        The surface $z=x^2+y^2$ in $\mathbb{R}^3$ is an counterexample.
+        \item If $(M^n,g)$ satisfies $\Ric\geq(n-1)g$ and $\operatorname{diam}(M,g)=\pi$, then $M$ must isometric to $\mathbb{S}^n$.
+        This is Cheng's Maximal Diameter Theorem.
+    \end{enumerate}
+\end{rem}
+
+\section{Index Form}
+
+\begin{defn}[Index form]
+    Let $\gamma:[0,a]\to M$ be a geodesic.
+    The \textbf{index form} of $\gamma$ is a biliear form on $\mathscr{V}:=\{\text{vector fields along }\gamma\}$ defined by
+    \[I(X,Y)=\int_0^a(\langle\dot{X},\dot{Y}\rangle-\langle R(\dot{\gamma},{X})\dot{\gamma},{Y}\rangle)\d{t}\]
+\end{defn}
+
+\begin{lem}\label{jacobi field and index form}
+    Let $U\in\mathscr{V}_0:=\{Y\in\mathscr{V}|\ Y(0)=Y(a)=0\}$, then $U$ is a Jacobi field if and only if $I(U,Y)=0$ for any $Y\in\mathscr{V}_0$.
+\end{lem}
+\begin{proof}
+    First we observe
+    \[I(U,Y)=-\int_0^a\langle\ddot{V}+R(\dot{\gamma},V)\dot{\gamma},Y\rangle\d{t}\]
+    If $V$ is a Jacobi field, then $\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}=0$, which implies $I(U,Y)=0$.
+    Conversely, if $I(U,Y)=0$ for any $Y\in\mathscr{V}_0$, we choose $Y=\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}$, then
+    \[0=-\int_0^a|\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}|^2\d{t},\]
+    this implies $\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}=0$, that is, $V$ is a Jacobi field.
+\end{proof}
+
+We observe if a Jacobi field $J$ is not in $\mathscr{V}_0$, the above integration by parts is changed into
+\begin{equation}
+    \begin{aligned}
+        I(Y,J)&=\langle Y,\dot{J}\rangle|_0^a-\int_0^a\langle\ddot{V}+R(\dot{\gamma},V)\dot{\gamma},Y\rangle\\
+        &=\langle Y,\dot{J}\rangle|_0^a
+    \end{aligned}\label{jacobi field and index form 2}
+\end{equation}
+This will be useful in some calculation.
+
+Next theorem shows the positive definiteness of $I$ is related to conjugate points.
+\begin{thm}\label{prejacobi}
+    Let $\gamma[0,a]\to M$ be a geodesic, $I$ be its index form.
+    \begin{enumerate}[(1)]
+        \item If $\gamma$ has no conjugate points of $\gamma(0)$, then $I$ is positive definite on $\mathscr{V}_0$.
+        \item If $\gamma(a)$ is the only conjugate point of $\gamma(0)$, then $I$ is positive semidefinite but not positive definite.
+        \item If there is a $t_0<a$ such that $\gamma(t_0)$ is conjugate to $\gamma(0)$, then there is a $U\in\mathscr{V}$ such that $I(U,U)<0$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}[Proof of Theorem~\ref{prejacobi}~(1)]\footnote{This proof is not the proof provided on class.}
+    Let $\gamma(0)=p$, $\tilde{\gamma}$ is the radial line in $T_pM$ defined by $\tilde{\gamma}(t)=\dot{\gamma}(0)t$.
+    Since $\gamma$ has no conjugate points of $\gamma(0)$, the exponential map $\exp_p$ is not degenerate on the whole $\tilde\gamma$.
+    Hence there is a neighborhood $U$ of $\tilde{\gamma}([0,a])$ such that $\exp_p:U\to M$ is an immersion.
+    Now by carefully modifying the proof of Proposition~\ref{locally length-min}, we have $\gamma$ is the length-minimizing curve in $\exp_p(U)$.
+    Hence by Proposition~\ref{length-min implies energy-min}, $\gamma$ also minimizes energy.
+    Let $\gamma(t,s):[0,a]\times(-\varepsilon,\varepsilon)\to M$ be any proper variation of $\gamma$, by taking $\varepsilon$ small enough we can assume every $\gamma_s$ is in $\exp_p(U)$.
+    Then we have
+    \[E''(0)=\lim_{s\to 0}\frac{E(-s)+E(s)-2E(0)}{s^2}\geq 0.\]
+    Since $E''(0)(V,V)=I(V,V)$ for any variation vector field $V$, we have $I(V,V)\geq 0$ for all $V\in\mathscr{V}_0$.
+    Now we must show that $I(V,V)=0$ implies $V=0$.
+    Let $I(V,V)=0$, $X\in\mathscr{V}_0$ and $\delta>0$, we have
+    \[0\leq I(V+\delta X,V+\delta X)=I(V,V)+2\delta I(V,X)+\delta^2 I(X,X),\]
+    this implies
+    \[2I(V,X)+\delta I(X,X)\geq 0,\]
+    let $\delta\to 0$, we obtain $I(V,X)\geq 0$ for all $X\in\mathscr{V}_0$.
+    Similarly, consider $I(V-\delta X,V-\delta X)$, we obtain $I(V,X)\leq 0$ for all $X\in\mathscr{V}_0$.
+    This means $I(V,X)=0$ for all $X\in\mathscr{V}_0$.
+    By Proposition~\ref{jacobi field and index form}, $V$ is a Jacobi field.
+    But $\gamma$ has no conjugate points of $\gamma(0)$, $V$ must identically equal to $0$.
+    This proves $I$ being positive definite.
+\end{proof}
+
+Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{Index Lemma}.
+\begin{prop}[Index Lemma]
+    Assume $\gamma$ is a geodesic without conjugate points.
+    Let $U\in\mathscr{V}$ with $U(0)=0$, $J$ be a Jacobi field such that $J(0)=0$, $J(a)=U(a)$, then $I(J,J)\leq I(U,U)$.
+    The equality holds if and only if $U=J$.
+\end{prop}
+\begin{proof}
+    Since $U-J\in\mathscr{V}_0$, by Theorem~\ref{prejacobi}~(1), we have $I(U-J,U-J)\geq 0$ with equality holds if and only if $U=J$. Then
+    \[I(U-J,U-J)=I(U,U)-2I(U,J)+I(J,J)\]
+    But $I(U,J)=\langle U,\dot{J}\rangle|_0^a=\langle J,\dot{J}\rangle|_0^a=I(J,J)$, thus
+    \[I(U,U)\geq I(J,J)\qedhere\]
+\end{proof}
+
+\begin{proof}[Proof of the rest of Theorem~\ref{prejacobi}]
+    (2) For any $0<t_0<a$, let $I_{[0,t_0]}$ denote
+    \[I_{[0,t_0]}(X,Y)=\int_0^{t_0}(\langle\dot{X},\dot{Y}\rangle+\langle R(\dot{\gamma},X)\dot{\gamma},Y\rangle)\d{t}.\]
+    Then for any $X\in\mathscr{V}_0|_{[0,t_0]}$, by (1) we have $I_{[0,t_0]}(X,X)\geq 0$.
+    We now construct $\tau_{t_0}(U)$ for any $U\in\mathscr{V}_0$.
+    Let $\{e_i(t)\}$ be a parallel frame, $U(t)=\sum_{i=1}^nf_i(t)e_i(t)$.
+    Then we define
+    \[\tau_{t_0}(U)(t)=\sum_{i=1}^nf\left(\frac{a}{t_0}t\right)e_i\left(\frac{a}{t_0}t\right)\in\mathscr{V}_0|_{[0,t_0]}.\]
+    Thus we have
+    \[I_{[0,t_0]}(\tau_{t_0}(U),\tau_{t_0}(U))\geq 0,\]
+    let $t_0\to a$ then we obtain the conclusion.
+    Moreover, since $\gamma(a)$ is conjugate to $\gamma(0)$, there is a Jacobi field $J$ with $J(0)=J(a)=0$, $J\not\equiv 0$, and $I(J,J)=\langle J,\dot{J}\rangle|^a_0=0$.
+    This shows $I$ is positive semidefinite but not positive define.\\
+    (3) Since $\gamma(t_0)$ is conjugate to $\gamma(0)$, there exists a Jacobi field $J_1$ along $\gamma|_{[0,t_0]}$ such that $J_1(0)=J_1(t_0)=0$.
+    Let
+    \[V(t)=\begin{cases}
+        J_1(t), & t\in[0,t_0],\\
+        0, & t\in[t_0,a].
+    \end{cases}\]
+    Let $\delta>0$ so small that $\gamma|_{[t_0-\delta,t_0+\delta]}$ is contained in a normal neighborhood of $\gamma(t_0)$, then there exists a Jacobi field $J_2$ along $\gamma|_{[t_0-\delta,t_0+\delta]}$ with $J_2(t_0-\delta)=J_1(t_0-\delta)$, $J_2(t_0+\delta)=0$.
+    Define
+    \[U(t)=\begin{cases}
+        J_1(t), & t\in[0,t_0-\delta],\\
+        J_2(t), & t\in[t_0-\delta,t_0+\delta],\\
+        0, & t\in[t_0+\delta,a].
+    \end{cases}\]
+    Then we have $I(V,V)=I_{[0,t_0]}(J_1,J_1)=0$, and\footnote{Actually we allow piecewise smooth curve in variation and index form.}
+    \begin{align*}
+        I(U,U)&=I_{[0,t_0-\delta]}(J_1,J_1)+I_{[t_0-\delta,t_0+\delta]}(J_2,J_2)\\
+        &<I_{[0,t_0-\delta]}(V,V)+I_{[t_0-\delta,t_0+\delta]}(V,V)\quad\text{(Index Lemma)}\\
+        &=I(V,V)\\
+        &=0\qedhere
+    \end{align*}
+\end{proof}
+
+Finally we mention something about \emph{Morse index}.
+Define Morse index
+\[\operatorname{ind}(\gamma)=\max\{\dim S|\ S\leq\mathscr{V}_0,\ I\text{ is negative definite on }S\}\]
+The famous \emph{Morse Index Theorem} claims
+\[\operatorname{ind}(\gamma)=\#\{\text{conjugate points (counting multiplicity)}\}<+\infty\]
+For more information, one can refer to John Milnor's \emph{Morse Theory}.
