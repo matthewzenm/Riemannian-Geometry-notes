@@ -1,0 +1,103 @@
+\chapter{Comparison Theorems}
+
+\section{Rauch Comparison Theorem}
+
+We first state and prove the Rauch comparison theorem.
+
+\begin{thm}[Rauch comparison]\label{Rauch}
+    Let $M^n,\tilde{M}^n$ be Riemannian manifolds, $\gamma:[0,a]\to M$, $\tilde{\gamma}:[0,a]\to\tilde{M}$ be unit speed geodesics, and $J,\tilde{J}$ be Jacobi fields along $\gamma,\tilde{\gamma}$ respectively, such that $J(0)=\tilde{J}(0)=0$, $\langle\dot{J}(0),\dot{\gamma}(0)\rangle=\left\langle\dot{\tilde{J}}(0),\dot{\tilde{\gamma}}(0)\right\rangle$, $|\dot{J}(0)|=\left|\dot{\tilde{J}}(0)\right|$.
+    Assume that
+    \begin{enumerate}[(1)]
+        \item $\gamma$ has no conjugate points of $\gamma(0)$ along $\gamma$;
+        \item $K_\gamma(\dot{\gamma},v)\geq K_{\tilde{\gamma}}\left(\dot{\tilde{\gamma}},\tilde{v}\right)$ with $|v|=|\tilde{v}|=1$.
+    \end{enumerate}
+    Then $|J(t)|\leq|\tilde{J}(t)|$ for all $t\in[0,a]$.
+\end{thm}
+
+\begin{rem}
+    Before giving the proof of the theorem, we notice that when $\dim M=\dim\tilde{M}=2$, the theorem reduces to the Liouville--Sturm comparison theorem in ODE theory.
+\end{rem}
+
+\begin{proof}[Proof of Theorem~\ref{Rauch}]
+    Decompose $J,\tilde{J}$ into $J^\perp(t)+(at+b)\dot{\gamma}(t)$, $\tilde{J}^\perp(t)+(\tilde{a}t+\tilde{b})\dot{\tilde{\gamma}}(t)$ respectively.
+    Since $J(0)=\tilde{J}(0)=0$, we have $b=\tilde{b}=0$;
+    Moreover, since $\langle\dot{J}(0),\dot{\gamma}(0)\rangle=\left\langle\dot{\tilde{J}}(0),\dot{\tilde{\gamma}}(0)\right\rangle$, we have $a=\tilde{a}$.
+    Since $|J^\perp|^2=|J|^2-(at)^2$, $|\tilde{J}^\perp|^2=|\tilde{J}|^2-(\tilde{a}t)^2$,
+    we can just compare $J^\perp$ and $\tilde{J}^\perp$.
+    So we assume without loss of generality that $J,\tilde{J}$ are normal Jacobi fields, that is, $\dot{J}(0)\perp\dot{\gamma}(0)$, $\dot{\tilde{J}}(0)\perp\dot{\tilde{\gamma}}(0)$.
+
+    Let $f(t)=|J(t)|^2$, $\tilde{f}(t)=|\tilde{J}(t)|^2$.
+    By l'Hospital's rule, we have
+    \[\lim_{\varepsilon\to 0}\frac{\tilde{f}(\varepsilon)}{f(\varepsilon)}=1,\]
+    hence only need to show $\tilde{f}/f$ is monotonically increasing, which is equivalent to
+    \[\frac{\dot{\tilde{f}}}{\tilde{f}}\geq\frac{\dot{f}}{f}\iff\frac{\left\langle\dot{\tilde{J}},\tilde{J}\right\rangle}{\left|\tilde{J}\right|^2}\geq\frac{\langle\dot{J},J\rangle}{|J|^2}.\]
+    We can check the last inequality pointwisely, so we can scale the Jacobi fields to make $|\tilde{J}|=|J|$.
+    Then we write the inequality into a lemma.
+\end{proof}
+
+\begin{lem}
+    If $J,\tilde{J}$ are Jacobi fields along $\gamma,\tilde{\gamma}$ respectively, with $J(0)=\tilde{J}(0)=0$, $\dot{J}(0)\perp\dot{\gamma}(0)$, $\dot{\tilde{J}}(0)\perp\dot{\tilde{\gamma}}(0)$, and $|J(c)|=|\tilde{J}(c)|$.
+    Moreover, the conditions (1) and (2) in Theorem~\ref{Rauch}~hold, then $\left\langle\dot{\tilde{J}}(c),\tilde{J}(c)\right\rangle\geq\langle\dot{J}(c),J(c)\rangle$.
+\end{lem}
+\begin{proof}
+    First we notice that
+    \[\langle\dot{J}(c),J(c)\rangle=I_{[0,c]}(J,J),\ \left\langle\dot{\tilde{J}}(c),\tilde{J}(c)\right\rangle=I_{[0,c]}\left(\tilde{J},\tilde{J}\right).\]
+    From now on we will simply use $I$ as $I_{[0,c]}$.
+    (Here we abuse the notation, using same $I$ to denote index form on different curves.
+    We will write the curve in subscript in case of ambiguous if necessary.)
+    Let $\{e_1(t),\cdots,e_{n-1}(t),\dot{\gamma}(t)\}$, $\left\{\tilde{e}_1(t),\cdots,\tilde{e}_{n-1}(t),\dot{\tilde{\gamma}}(t)\right\}$ be parallel orthonormal frames along $\gamma,\tilde{\gamma}$ respectively, such that $J(c)=\alpha e_1(c)$, $\tilde{J}(c)=\alpha\tilde{e}_1(c)$.
+    Let
+    \[J(t)=\sum_{i=1}^{n-1}h_i(t)e_i(t),\ \tilde{J}(t)=\sum_{i=1}^{n-1}\tilde{h}_i(t)\tilde{e}_i(t),\]
+    then $h_i(c)=\tilde{h}_i(c)=0$, $i=2,\cdots,n-1$.
+    Define $U(t)=\sum_{i=1}^{n-1}\tilde{h}_i(t)e_i(t)$ along $\gamma$, then $U(c)=J(c)$, $U(0)=J(0)=0$, $|U(t)|=|\tilde{J}(T)|$.
+    Thus by Index Lemma, $I_\gamma(J,J)\leq I_\gamma(U,U)$.
+    However, we have
+    \begin{align*}
+        I_\gamma(U,U)&=\int_0^c(|\dot{U}|^2-\langle R(\dot{\gamma},U)\dot{\gamma},U\rangle)\d{t}\\
+        &=\int_0^c\left(\left|\dot{\tilde{J}}\right|^2-|U|^2K(\dot{\gamma},U/|U|)\right)\d{t}\\
+        &\leq\int_0^c\left(\left|\dot{\tilde{J}}\right|^2-\left|\tilde{J}\right|K\left(\dot{\tilde{\gamma}},\tilde{J}/|\tilde{J}|\right)\right)\d{t}\\
+        &=I_{\tilde{\gamma}}(\tilde{J},\tilde{J})
+    \end{align*}
+    Thus we have $\left\langle\dot{\tilde{J}}(c),\tilde{J}(c)\right\rangle\geq\langle\dot{J}(c),J(c)\rangle$.
+\end{proof}
+
+\begin{cor}
+    If Riemannian manifold $(M^n,g)$ satisfies $\operatorname{Sect}\leq 0$, then $|J(t)|\geq t$, that is, $\left|\exp_{p*}|_v(w)\right|\geq|w|$.
+\end{cor}
+\begin{proof}
+    Compare $(M^n,g)$ with Euclidean space $(\mathbb{R}^n,\delta)$.
+\end{proof}
+
+The corollary implies the following important theorem.
+\begin{thm}\label{C-H 1}
+    Let $M$ be a complete Riemannian manifold with $\operatorname{Sect}\leq 0$, $p\in M$ be any point.
+    Then $M$ has no conjugate points of $p$.
+\end{thm}
+
+Theorem~\ref{C-H 1}~is known as the first part of the celebrated Cartan--Hadamard Theorem.
+We state the rest part of the theorem as follows.
+\begin{thm}[Cartan--Hadamard]
+    Let $M^n$ be a complete Riemannian manifold with $\operatorname{Sect}\leq 0$, then the universal cover of $M$ is diffeomorphic to $\mathbb{R}^n$.
+\end{thm}
+\begin{proof}[Part of the Proof]
+    Without loss of generality, we assume $M$ is simply connected.
+    Then we only need to show $M$ is diffeomorphic to $\mathbb{R}^n$.
+    Since $M$ is complete, $\exp_p:T_pM\to M$ is surjective, and by Theorem~\ref{C-H 1}, the $\exp_p$ is nondegenerate.
+    Thus $\exp_p$ is a local isometry between $(T_pM,\exp_p^*g)\to(M,g)$.
+    We show that $\exp_p^*g$ is complete.
+    Let $\gamma_v(t):[0,+\infty)\to T_pM, t\mapsto vt$ for any unit vector $v\in T_pM$, then $\exp_p(\gamma)$ is a geodesic in $(M,g)$.
+    By the definition of $\exp_p^*g$, $\gamma_v(t)$ is a geodesic in $(T_pM,\exp_p^*g)$, hence the exponential map $\exp_0:T_0(T_pM)\to T_pM$ is well-defined at $0\in T_pM$.
+    Hence by Hopf--Rinow Theorem, $\exp_p^*g$ is complete.
+    Now the proof reduces to the following proposition.
+\end{proof}
+
+\begin{prop}
+    Let $f:M\to N$ be local isometry between Riemannian manifolds, with $M$ complete.
+    Then $N$ is complete and $f$ is a covering map.
+\end{prop}
+
+We stop here, and refer to Peter Peterson's \emph{Riemannian Geometry}, 3rd ed., Lemma 5.6.4.
+
+We mention something more.
+Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
+This can be found in Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 5.

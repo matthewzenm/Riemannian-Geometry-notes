@@ -168,13 +168,13 @@ This proposition can be easily proved by chain rule.
 \begin{defn}[Tangent bundle]
     Assume differentiable manifold $M^n$ has atlas $\{U_\alpha,\varphi_\alpha\}$, define
     \begin{gather*}
-        TM:=\sqcup_{p\in M}T_pM\\
+        TM:=\bigsqcup_{p\in M}T_pM\\
         \pi:TM\to M,\ (p,v)\mapsto p
     \end{gather*}
     We give an atlas of $TM$ to make it into a $2n$-dimensional differentiable manifold.
     Let
     \begin{align*}
-        \Phi_\alpha&:\sqcup_{p\in U_\alpha}T_pM\to\mathbb{R}^{2n}\\
+        \Phi_\alpha&:\bigsqcup_{p\in U_\alpha}T_pM\to\mathbb{R}^{2n}\\
         &(p,v)\mapsto(\varphi_\alpha(p),(v^1,\cdots,v^n))
     \end{align*}
     where $v=\sum_{i=1}^nv^i\left.\frac{\partial{}}{\partial{x^i}}\right|_p$.
