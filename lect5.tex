@@ -101,3 +101,152 @@ We stop here, and refer to Peter Peterson's \emph{Riemannian Geometry}, 3rd ed.,
 We mention something more.
 Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
 This can be found in Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 5.
+
+\section{Covariant Derivative of Tensors}
+We interrupt our discussion on comparison theorems and turn to covariant derivative of tensors.
+This is a relatively independent discussion from our main theme, but will be used later discussion.
+For simplicity, we consider only covariant tensors.
+
+\begin{defn}
+    Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \textbf{covariant derivative} of $T$ as
+    \[\nabla_XT(Y_1,\cdots,Y_r)=XT(Y_1,\cdots,Y_r)-\sum_{i=1}^rT(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\]
+    for any vector fields $Y_1,\cdots,Y_r$.
+    Notice that if $T$ is a function (i.e., $(0,0)$-tensor), the minus summation term does not exist.
+    Moreover, we define the \textbf{covariant differential} of $T$ as
+    \[\nabla T(Y_1,\cdots,Y_r,X)=\nabla_XT(Y_1,\cdots,Y_r).\]
+\end{defn}
+
+One can check $\nabla T$ is indeed tensorial, and satisfies Leibniz rule, that is
+\[\nabla(T\otimes S)=(\nabla T)\otimes S+T\otimes(\nabla S).\]
+
+We look at covariant derivative locally.
+It's known that $(0,r)$-tensors have a basis
+\[\{\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}\}_{1\leq i_1,\cdots,i_r\leq n},\]
+(We will not prove here, please refer to any book on differentiable manifolds)
+so we let
+\[T=T_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}},\]
+and write
+\[\nabla_{\partial_k}T=T_{i_1\cdots i_r;k}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}.\]
+Let's compute the coefficient. First we compute
+\[\nabla_{\partial_i}\d{x^j}=a_k\d{x^k},\]
+then
+\begin{align*}
+    a_k&=\nabla_{\partial_i}\d{x^j}(\partial_k)\\
+    &=-\d{x^j}(\nabla_{\partial_i}\partial_k)\\
+    &=-\d{x^j}(\Gamma^l_{ik}\partial_l)\\
+    &=-\Gamma^j_{ik},
+\end{align*}
+that is,
+\[\nabla_{\partial_i}d{x^j}=-\Gamma^j_{ik}d{x^k}.\]
+Using this, we can compute
+\begin{align*}
+    &\nabla_{\partial_k}(T_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}})\\
+    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}+T_{i_1\cdots i_r}\sum_{l=1}^r\d{x^{i_1}}\otimes\cdots\otimes(\nabla_{\partial_k}\d{x^{i_j}})\otimes\cdots\otimes\d{x^{i_r}}\\
+    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}+T_{i_1\cdots i_r}\sum_{l=1}^r\d{x^{i_1}}\otimes\cdots\otimes(-\Gamma^{i_j}_{kp}\d{x^p})\otimes\cdots\otimes\d{x^{i_r}}\\
+    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}-\sum_{l=1}^rT_{i_1\cdots i_{l-1}pi_{l+1}\cdots i_r}\Gamma^p_{ki_l}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}},
+\end{align*}
+hence we have
+\[T_{i_1\cdots i_r;k}=\partial_kT_{i_1\cdots i_r}-\sum_{l=1}^rT_{i_1\cdots i_{l-1}pi_{l+1}\cdots i_r}\Gamma^p_{ki_l}.\]
+
+Moreover, we can consider second covariant derivative.
+\begin{symb}
+    We use the symbol $\nabla^2_{X,Y}T$ to denote the tensor 
+    \[\nabla^2_{X,Y}T(Y_1,\cdots,Y_r)=\nabla(\nabla T)(Y_1,\cdots,Y_r,Y,X).\]
+\end{symb}
+
+\begin{prop}
+    We have
+    \begin{equation}
+        \nabla^2_{X,Y}T=\nabla_X(\nabla_YT)-\nabla_{\nabla_XY}T.\label{2nd cov}
+    \end{equation}
+\end{prop}
+\begin{proof}
+    We have
+    \begin{align*}
+        &\nabla^2_{X,Y}T(Y_1,\cdots,Y_r)\\
+        =&\nabla(\nabla T)(Y_1,\cdots,Y_r,Y,X)\\
+        =&\nabla_X(\nabla T)(Y_1,\cdots,Y_r,Y)\\
+        =&X(\nabla T)(Y_1,\cdots,Y_r,Y)-\sum_{i=1}^r(\nabla T)(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r,Y)\\
+        &-(\nabla T)(Y_1,\cdots,Y_r,\nabla_XY)\\
+        =&X(\nabla_YT)(Y_1,\cdots,Y_r)-\sum_{i=1}^r(\nabla_YT)(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\\
+        &-(\nabla_{\nabla_XY}T)(Y_1,\cdots,Y_r)\\
+        =&\nabla_X(\nabla_YT)(Y_1,\cdots,Y_r)-(\nabla_{\nabla_XY}T)(Y_1,\cdots,Y_r).\qedhere
+    \end{align*}
+\end{proof}
+
+Next we discuss curvature of tensors.
+
+\begin{defn}[Curvature operator]
+    Let $X,Y$ be vector fields, define an endomorphism $R(X,Y)$ of $(0,r)$-tensors as
+    \[R(X,Y)T=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T.\]
+\end{defn}
+
+\begin{prop}[Ricci identity]
+    For a $(0,r)$-tensor $T$ and vector fields $X,Y$, we have
+    \[(\nabla^2_{Y,X}-\nabla^2_{X,Y})T=R(X,Y)T\]
+\end{prop}
+\begin{proof}
+    Using equation~\ref{2nd cov}, we have
+    \begin{align*}
+        (\nabla^2_{Y,X}-\nabla^2_{X,Y})T&=\nabla_Y\nabla_XT-\nabla_{\nabla_YX}T-\nabla_X\nabla_YT+\nabla_{\nabla_XY}T\\
+        &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{(\nabla_XY-\nabla_YX)}T\\
+        &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T\quad\text{(torsion-freeness)}\\
+        &=R(X,Y)T.\qedhere
+    \end{align*}
+\end{proof}
+
+Now we introduce some differential operators.
+
+\begin{defn}
+    If $S$ is a symmetric $(0,2)$-tensor on  a Riemannian manifold $(M,g)$, we define the \textbf{trace} of $S$ to be
+    \[\tr_g(S)|_p=\sum_{i=1}^nS_p(e_i,e_i),\ \forall p\in M\]
+    for any orthonormal basis $\{e_i\}$ of $T_pM$.
+    It can be checked that the definition does not depend on the choice of orthonormal basis.
+    By this definition, trace is a smooth function on $M$.
+\end{defn}
+
+\begin{defn}
+    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
+    Define the \textbf{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
+    Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \textbf{Laplacian} of $f$, denoted by $\Delta f$.
+\end{defn}
+
+\begin{prop}
+    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
+    Then we have
+    \[\nabla^2f(X,Y)=Y(Xf)-(\nabla_YX)(f).\]
+\end{prop}
+\begin{proof}
+    This is just the equation~\ref{2nd cov}.
+\end{proof}
+
+We introduce the gradient of a function.
+\begin{defn}
+    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
+    Then we define the \textbf{gradient} of $f$ to be the vector field $\nabla f$ defined by $g(\nabla f,X)=Xf$ for any $X\in\mathfrak{X}(M)$.
+\end{defn}
+
+We now give the local expression of $\nabla f$ (and show the existence of $\nabla f$ as a by-product).
+Let $\nabla f=f^i\partial_i$, then we have
+\[g(f,\partial_j)=f^ig_{ij}=\partial_jf.\]
+Then use $g^{ij}$ to denote the inverse matrix of $g_{ij}$, we have
+\[f^i=g^{ij}\partial_jf,\]
+that is,
+\[\nabla f=g^{ij}\frac{\partial f}{\partial x^{j}}\frac{\partial{}}{\partial{x^i}}.\]
+
+Finally we define the norm of a symmetric $(0,2)$-tensor.
+This will be used in Bochner formula in next lecture.
+
+\begin{defn}
+    Let $S$ be a symmetric $(0,2)$-tensor.
+    At $p\in M$, let $\{e_i\}$ be an orthonormal basis, $\{f^i\}$ be its dual basis.
+    Let $S=S_{ij}f^i\otimes f^j$, then define the norm of $S$ to be
+    \[|S|^2:=\sum_{i,j}|S_{ij}|^2.\]
+\end{defn}
+
+We also write the norm of $S$ in general coordinates.
+One can check under general $g$ we have
+\[|S|^2=g^{ij}g^{kl}S_{ij}S_{kl},\]
+for $S=S_{ij}\d{x^i}\otimes\d{x^j}$.
+
+\section{Distance Function and Cut Points}
