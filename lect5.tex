@@ -39,7 +39,7 @@ We first state and prove the Rauch comparison theorem.
     Then we write the inequality into a lemma.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{compare jacobi fields}
     If $J,\tilde{J}$ are Jacobi fields along $\gamma,\tilde{\gamma}$ respectively, with $J(0)=\tilde{J}(0)=0$, $\dot{J}(0)\perp\dot{\gamma}(0)$, $\dot{\tilde{J}}(0)\perp\dot{\tilde{\gamma}}(0)$, and $|J(c)|=|\tilde{J}(c)|$.
     Moreover, the conditions (1) and (2) in Theorem~\ref{Rauch}~hold, then $\left\langle\dot{\tilde{J}}(c),\tilde{J}(c)\right\rangle\geq\langle\dot{J}(c),J(c)\rangle$.
 \end{lem}
@@ -158,7 +158,7 @@ The following proposition characterizes cut points.
         Then the south pole is conjugate to north pole, as well as the cut point of north pole.
         \item Let $M=\mathbb{RP}^n$.
         For simplicity we take $n=2$.
-        We regard $\mathbb{RP}^2$ as the upper hemisphere with identifying equator's antipodal points (This is actually CW decompostion).
+        We regard $\mathbb{RP}^2$ as the upper hemisphere with identifying equator's antipodal points (This is actually CW decomposition).
         Then from the north pole we move along a ``great circle'' to a point $q$ on the equator, the path is a length-minimizing geodesic.
         However, the path on the same ``great circle'' but on the other side is also a length-minimizing geodesic, so $p$ is the cut point of north pole (along this geodesic).
         But by the naturality of exponential map, $q$ is not conjugate to north pole, so this is an example of cut point not being conjugate point.
@@ -253,7 +253,7 @@ But we have more to say.
 
 Now we compute the Hessian of $d_p$ for some situation.
 
-\begin{prop}
+\begin{prop}\label{hess dp in tangential}
     We have $\nabla^2d_p(\nabla d_p,X)=0$ for any $X\in T_qM$, $q\in M\backslash(\{p\}\cup\Cut(p))$.
 \end{prop}
 \begin{proof}
@@ -266,7 +266,7 @@ Now we compute the Hessian of $d_p$ for some situation.
     \end{align*}
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{hess dp in other}
     Let $J$ be a Jacobi field along geodesic $\gamma$ such that $J(0)=0$, $J\perp\dot{\gamma}$.
     Then
     \[\nabla^2d_p|_{\gamma(t)}(J(t),J(t))=\langle\dot{J}(t),J(t)\rangle\quad(t<\tau(\dot{\gamma}(0)))\]
@@ -283,3 +283,159 @@ Now we compute the Hessian of $d_p$ for some situation.
 \end{proof}
 
 Now we are well-prepared to march towards Hessian comparison theorem and Lap\-lace comparison theorem.
+
+\section{Hessian and Laplace Comparison Theorems}
+
+We first state and prove Hessian comparison theorem.
+\begin{thm}[Hessian comparison]
+    Let $\gamma:[0,l]\to M$, $\tilde{\gamma}:[0,l]\to M$ be geodesics without cut points of $\gamma(0)$ and $\tilde{\gamma}(0)$ respectively.
+    Assume $K_{\gamma(t)}(\dot{\gamma}(t),v)\geq K_{\tilde{\gamma}(t)}\left(\dot{\tilde{\gamma}}(t),\tilde{v}\right)$ for $|v|=|\tilde{v}|=1$.
+    Then $\nabla^2d_p(X,X)\leq\tilde{\nabla}^2\tilde{d}_{\tilde{p}}\left(\tilde{X},\tilde{X}\right)$, for all $X\in T_{\gamma(t)}M$, $\tilde{X}\in T_{\tilde{\gamma}(t)}M$, with $|X|=|\tilde{X}|$, $\langle X,\dot{\gamma}\rangle=\left\langle\tilde{X},\dot{\tilde{\gamma}}\right\rangle$.
+\end{thm}
+\begin{proof}
+    By Proposition~\ref{hess dp in tangential}, we can assume without loss of generality that $X\perp\dot{\gamma}$, $\tilde{X}\perp\dot{\tilde{\gamma}}$.
+    Let $J,\tilde{J}$ be normal Jacobi fields on $\gamma,\tilde{\gamma}$ such that $J(0)=0,J(t)=X$ and $\tilde{J}=0,\tilde{J}(t)=\tilde{X}$.
+    Then by Proposition~\ref{hess dp in other}, we have
+    \[\nabla^2d_p(X,X)=\langle\dot{J}(t),J(t)\rangle,\ \tilde{\nabla}^2\tilde{d}_{\tilde{p}}\left(\tilde{X},\tilde{X}\right)=\left\langle\dot{\tilde{J}}(t),\tilde{J}(t)\right\rangle.\]
+    Now $J,\tilde{J}$ satisfy the assumptions of Lemma~\ref{compare jacobi fields}, hence we have
+    \[\nabla^2d_p(X,X)=\langle\dot{J}(t),J(t)\rangle\leq\left\langle\dot{\tilde{J}}(t),\tilde{J}(t)\right\rangle=\tilde{\nabla}^2\tilde{d}_{\tilde{p}}\left(\tilde{X},\tilde{X}\right).\qedhere\]
+\end{proof}
+
+\begin{eg}
+    We compute $\nabla^2d_p$ on constant sectional curvature manifolds.
+    As usual we scale the metric to make $K=0,1,-1$.
+    Then the results are
+    \[\nabla^2d_p=\begin{cases}
+        \frac{1}{d_p}(g-\d(d_p)\otimes\d(d_p)), & K=0,\\
+        \cot{d_p}(g-\d(d_p)\otimes\d(d_p)), & K=1,\\
+        \coth{d_p}(g-\d(d_p)\otimes\d(d_p)), & K=-1,
+    \end{cases}\]
+    where $g$ is the metric tensor, and $\d(d_p)$ is the exterior differential of $d_p$.
+\end{eg}
+
+Now we state the Laplace comparison theorem.
+\begin{thm}
+    Let $(M^n,g)$ be a Riemannian manifold, $M_K^n$ be a Riemannian manifold with constant sectional curvature $K$.
+    Let $\gamma:[0,l]\to M$, $\gamma_K:[0,l]\to M$ be geodesics without cut points.
+    Assume $\Ric{M}\geq(n-1)Kg$, then $\Delta d_p|_{\gamma(l)}\leq\Delta_kd_k|_{\gamma_K(l)}$.
+\end{thm}
+
+\begin{rem}
+    Before giving the proof, we give some remark on the theorem.
+    The theorem has a relatively weaker assumption that only Ricci curvature is bounded below, so we cannot copy the proof of Rauch comparison theorem as we did in Hessian comparison theorem.
+    Moreover, the conclusion is also weakened (only compare to space forms) correspondingly.
+    However, we can modify the proof of Bonnet--Myers theorem to obtain a proof of Laplace comparison theorem.
+\end{rem}
+\begin{proof}
+    Let $\{e_1,\cdots,e_{n-1},e_n=\dot{\gamma}(l)\}$, $\{e_1^K,\cdots,e_{n-1}^K,e_n^K=\dot{\gamma}_K(l)\}$ be orthonormal bases of $T_{\gamma(l)}M$, $T_{\gamma_K(l)}M_K$ respectively.
+    Let $J_i,J_i^K$ be Jacobi fields such that $J_i(0)=0,J_i(l)=e_i$ and $J_i^K(0)=0,J_i^K(l)=e_i^K$, for $i=1,\cdots,n-1$.
+    Then by Proposition~\ref{hess dp in tangential}~and Proposition~\ref{hess dp in other}, we have
+    \begin{align*}
+        \Delta d_p|_{\gamma(l)}&=\sum_{i=1}^{n-1}\nabla^2d_p|_{\gamma(l)}(J_i,J_i)\\
+        &=\sum_{i=1}^{n-1}\langle\dot{J},J\rangle\\
+        &=\sum_{i=1}^{n-1}I(J_i,J_i),
+    \end{align*}
+    and similarly $\Delta_Kd_K=\sum_{i=1}^{n-1}I(J_i^K,J_i^K)$.
+    We need to show that 
+    \[\sum_{i=1}^{n-1}I(J_i,J_i)\leq\sum_{i=1}^{n-1}I(J_i^K,J_i^K).\]
+    Let $\{e_i(t)\}$, $\{e_i^K(t)\}$ be parallel, then
+    \[J^K_i(t)=\sum_{j=1}^{n-1}h_{ij}(t)e_j^K(t),\ i=1,\cdots,n-1,\]
+    where $h_{ij}(t)=f_K(t)\delta_{ij}$, $\ddot{f}_K+Kf_K=0$.
+    Define $U_i=\sum_{j=1}^{n-1}h_{ij}(t)e_j(t)$ along $\gamma$ in $M$, $i=1,\cdots,n-1$.
+    Then $J_i(0)=U_i(0)=0$, $J_i(l)=U_i(l)$.
+    By Index Lemma, we have
+    \[\sum_{i=1}^{n-1}I(J_i,J_i)\leq\sum_{i=1}^{n-1}(U_i,U_i).\]
+    Moreover, we have
+    \begin{gather*}
+        I(U_i,U_i)=\int_0^l\left(|\dot{U}_i|^2-\langle R(\dot{\gamma},U_i)\dot{\gamma},U_i\rangle\right)\d{t},\\
+        I(J_i^K,J_i^K)=\int_0^l\left(|\dot{J}_i^K|^2-\left\langle R(\dot{\gamma}_K,J_i^K)\dot{\gamma}_K,J_i^K\right\rangle\right)\d{t},
+    \end{gather*}
+    and $|\dot{U}_i|^2=|\dot{J}_i^K|^2$ for $i=1,\cdots,n-1$.
+    Now we have
+    \begin{align*}
+        \sum_{i=1}^{n-1}\langle R(\dot{\gamma},U_i)\dot{\gamma},U_i\rangle&=f_K^2(t)\langle R(\dot{\gamma},e_i)\dot{\gamma},e_i\rangle\\
+        &=f^2_K(t)\langle\Ric(\dot{\gamma}),\dot{\gamma}\rangle\\
+        &\geq f^2_K(t)(n-1)\\
+        &=\sum_{i=1}^{n-1}\left\langle R(\dot{\gamma}_K,J_i^K)\dot{\gamma}_K,J_i^K\right\rangle.
+    \end{align*}
+    This implies the conclusion.
+\end{proof}
+
+\begin{rem}
+    \begin{enumerate}[(1)]
+        \item There is a conclusion that if $q$ lies in the geodesic sphere $B_r(p)=\{d_p=r\}$, then $\Delta d_p(q)=H_{B_r(p)}(q)$, where $H_{B_r(p)}(q)$ is the mean curvature of $B_r(p)$ at $q$.
+        So Laplace comparison theorem can be also regarded as a comparison theorem of mean curvature.
+        \item We notice that the equality holds in Laplace comparison theorem if and only if $K(\dot{\gamma},v)=K$ for any $|v|=1$, $v\perp\dot{\gamma}$.
+        \item The case of $K=0$ is $\Delta d_p\leq\frac{n-1}{d_p}$.
+        This inequality also holds in the sence of distribution, that is, for any $\varphi\in C^\infty_c(M)$, $\varphi\geq 0$, we have
+        \[\int_Md_p\Delta\varphi\leq\int_M\frac{n-1}{d_p}\cdot\varphi.\]
+        For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Proposition 1.1.
+    \end{enumerate}
+\end{rem}
+
+\section{Volume Comparison Theorem}
+In this section we assume all the manifolds appear are orientable.
+
+We first introduce the Riemann volume form.
+\begin{defn}
+    Let $(M^n,g)$ be a Riemannian manifold, define an $n$-form $\d\Vol_g$ as 
+    \[\d\Vol_g(e_1,\cdots,e_n)=1\]
+    for an orthonormal basis $\{e_i\}$ in $T_pM$ for any $p\in M$.
+    $\d\Vol_g$ is call \textbf{Riemann volume form}.
+\end{defn}
+
+Since if $(e_1',\cdots,e_n')=(e_1,\cdots,e_n)A$, for any $n$-form $\omega$ we have
+\[\omega(e_1',\cdots,e_n')=(\det{A})\omega(e_1,\cdots,e_n),\]
+the Riemann volume form is well-defined.
+
+Locally we have
+\[\d\Vol_g=\sqrt{\det(g_{ij})}\d{x^1}\wedge\cdots\wedge\d{x^n}.\]
+
+\begin{defn}
+    Let $\Omega\subset M$, the \textbf{volume} of $\Omega$ is defined as
+    \[\Vol(\Omega):=\int_\Omega\d\Vol_g.\]
+    If $M$ is compact, we can also define
+    \[\Vol(M):=\int_M\d\Vol_g.\]
+\end{defn}
+
+Integration on manifold is defined by partition of unity, this is almost impossible to compute.
+However, we have a local chart $(\Sigma(p),\exp_p^{-1})$ with $M\backslash\Sigma(p)$ is of zero-measure.
+So we have
+\[\int_M\d\Vol_g=\int_{\exp_p(\Sigma(p))}\d\Vol_g=\int_{\Sigma(p)}\exp_p^*(\d\Vol_g).\]
+
+We now calculate Riemann volume form in geodesic polar coordinate.
+Let $J_i$ be Jacobi fields with $J_i(0)=0$, $J_i(r,\theta)=\partial_{\theta^i}$ for $i=1,\cdots,n$.
+Then
+\[\d\Vol_g=\sqrt{\det(g_{ij})}\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{theta^{n-1}},\]
+and denote $\mathscr{J}=\sqrt{\det(g_{ij})}$.
+
+\begin{prop}
+    We have $\frac{\partial{}}{\partial{r}}\log\mathscr{J}=\Delta d_p$.
+\end{prop}
+\begin{proof}
+    We calculate
+    \begin{align*}
+        \frac{\partial{}}{\partial{r}}\log\mathscr{J}&=\frac{1}{2}\frac{1}{\det(g_{ij})}\det(g_{ij})g^{ij}(\langle\dot{J}_i,J_j\rangle+\langle J_i,\dot{J_j}\rangle)\\
+        &=g^{ij}\langle\dot{J}_i,J_j\rangle\\
+        &=\tr_g\nabla^2 d_p\\
+        &=\Delta d_p
+    \end{align*}
+    The third equality uses both Proposition~\ref{hess dp in tangential}~and Proposition~\ref{hess dp in other}.
+\end{proof}
+
+Thus we have the following Bishop's theorem.
+\begin{thm}[Bishop]
+    Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
+    Let $\gamma:[0,l]\to M$ be a geodesic without cut points.
+    Then $\frac{\mathscr{J}}{\mathscr{J}_K}(r)$ is nonincreasing with respective to $r$.
+    ($\mathscr{J},\mathscr{J}_K$ is defined as above.)
+\end{thm}
+\begin{proof}
+    We have
+    \begin{align*}
+        \frac{\partial{}}{\partial{r}}\log\frac{\mathscr{J}}{\mathscr{J}_K}&=\frac{\partial{}}{\partial{r}}\log\mathscr{J}-\frac{\partial{}}{\partial{r}}\log\mathscr{J}_K\\
+        &=\Delta d_p-\Delta_Kd_K\\
+        &\leq 0
+    \end{align*}
+    by Laplace comparison theorem.
+\end{proof}
