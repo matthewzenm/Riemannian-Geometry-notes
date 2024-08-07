@@ -1,4 +1,4 @@
-\documentclass[draft]{book}
+\documentclass[]{book}
 
 \usepackage[paper=b5paper]{geometry}
 \usepackage{amsmath}
@@ -9,9 +9,10 @@
 \usepackage{times}
 \usepackage{mathptmx}
 \usepackage{mathrsfs}
+\usepackage{anyfontsize}
 
 \usepackage{titlesec}
-\titleformat{\chapter}[frame]{\huge\bfseries}{Lecture\,\thechapter}{1em}{}{}
+\titleformat{\chapter}[frame]{\huge\bfseries}{Chapter\,\thechapter}{1em}{}{}
 
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
@@ -31,6 +32,8 @@
 \DeclareMathOperator{\Ric}{Ric}
 \DeclareMathOperator{\Scal}{Scal}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Cut}{Cut}
+\DeclareMathOperator{\inj}{inj}
 
 \usepackage{fixdif}
 \usepackage[colorlinks]{hyperref}
@@ -52,5 +55,8 @@
 \input{lect3.tex}
 \input{lect4.tex}
 \input{lect5.tex}
+
+\appendix
+\input{tensor.tex}
 
 \end{document}

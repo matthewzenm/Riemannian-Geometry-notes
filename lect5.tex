@@ -1,4 +1,8 @@
 \chapter{Comparison Theorems}
+In this lecture, we first state and prove Rauch comparison theorem.
+Then we discuss cut points and distance function, as preparation for Hessian and Laplace comparison theorem.
+Using Rauch comparison theorem as a model, we then state and prove Hessian, Laplace and Bishop--Gromov relative comparison theorems.
+Finally, as an application, we prove Cheng's maximal radius theorem.
 
 \section{Rauch Comparison Theorem}
 
@@ -102,151 +106,180 @@ We mention something more.
 Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
 This can be found in Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 5.
 
-\section{Covariant Derivative of Tensors}
-We interrupt our discussion on comparison theorems and turn to covariant derivative of tensors.
-This is a relatively independent discussion from our main theme, but will be used later discussion.
-For simplicity, we consider only covariant tensors.
+\section{Cut Points and Distance Function}
+
+From this section, we assume the Riemannian manifold $(M,g)$ appear in the context is complete.
+
+We start this section by an example.
+
+\begin{eg}
+    Consider the cylinder $M=\mathbb{S}^1\times\mathbb{R}$.
+    $M$ is flat, that is, has constant sectional curvature $0$, hence has no conjugate points (Cartan--Hadamard).
+    Let $\gamma:[0,2\pi]\to M$ be a generatrix circle, then $\gamma$ is a geodesic.
+    Denote $p=\gamma(0)$, $q=\gamma(\pi)$.
+    Then $\gamma|_{[0,\pi]}$ is a length-minimizing geodesic joining $p$ and $q$.
+    But it is not the only length-minimizing geodesic joining $p$ and $q$, since $-\gamma|_{[\pi,2\pi]}$ is another one.
+    Then $q$ spoils the uniqueness of length-minimizing geodesic starts from $p$, without being conjugate to $p$.
+    This inspires us to define the notion of \emph{cut points}.
+\end{eg}
+
+Given $v\in T_pM$, $|v|=1$, $\gamma_v:[0,+\infty)\to M$ be a geodesic with $\gamma(0)=p$, $\dot{\gamma}_v(0)=v$.
+Notice that $\gamma_v|_{[0,t_0]}$ is length-minimizing if $d(p,\gamma_v(t_0))=t_0$.
+If $\gamma_v$ contains conjugate points, then $\gamma_v$ is in general not locally length-minimizing.
 
 \begin{defn}
-    Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \textbf{covariant derivative} of $T$ as
-    \[\nabla_XT(Y_1,\cdots,Y_r)=XT(Y_1,\cdots,Y_r)-\sum_{i=1}^rT(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\]
-    for any vector fields $Y_1,\cdots,Y_r$.
-    Notice that if $T$ is a function (i.e., $(0,0)$-tensor), the minus summation term does not exist.
-    Moreover, we define the \textbf{covariant differential} of $T$ as
-    \[\nabla T(Y_1,\cdots,Y_r,X)=\nabla_XT(Y_1,\cdots,Y_r).\]
+    Under above settings, let $t_0=\sup\{t\in(0,+\infty)|\ d(p,\gamma_v(t))=t\}$.
+    If $t_0<+\infty$, we call $\gamma_v(t_0)$ the \textbf{cut point} of $p$ along $\gamma_v$.
+    Define $\Cut(p)$ to be the set of all cut points of $p$, called the \textbf{cut locus} of $p$.
 \end{defn}
 
-One can check $\nabla T$ is indeed tensorial, and satisfies Leibniz rule, that is
-\[\nabla(T\otimes S)=(\nabla T)\otimes S+T\otimes(\nabla S).\]
-
-We look at covariant derivative locally.
-It's known that $(0,r)$-tensors have a basis
-\[\{\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}\}_{1\leq i_1,\cdots,i_r\leq n},\]
-(We will not prove here, please refer to any book on differentiable manifolds)
-so we let
-\[T=T_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}},\]
-and write
-\[\nabla_{\partial_k}T=T_{i_1\cdots i_r;k}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}.\]
-Let's compute the coefficient. First we compute
-\[\nabla_{\partial_i}\d{x^j}=a_k\d{x^k},\]
-then
-\begin{align*}
-    a_k&=\nabla_{\partial_i}\d{x^j}(\partial_k)\\
-    &=-\d{x^j}(\nabla_{\partial_i}\partial_k)\\
-    &=-\d{x^j}(\Gamma^l_{ik}\partial_l)\\
-    &=-\Gamma^j_{ik},
-\end{align*}
-that is,
-\[\nabla_{\partial_i}d{x^j}=-\Gamma^j_{ik}d{x^k}.\]
-Using this, we can compute
-\begin{align*}
-    &\nabla_{\partial_k}(T_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}})\\
-    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}+T_{i_1\cdots i_r}\sum_{l=1}^r\d{x^{i_1}}\otimes\cdots\otimes(\nabla_{\partial_k}\d{x^{i_j}})\otimes\cdots\otimes\d{x^{i_r}}\\
-    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}+T_{i_1\cdots i_r}\sum_{l=1}^r\d{x^{i_1}}\otimes\cdots\otimes(-\Gamma^{i_j}_{kp}\d{x^p})\otimes\cdots\otimes\d{x^{i_r}}\\
-    =&\partial_kT_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}-\sum_{l=1}^rT_{i_1\cdots i_{l-1}pi_{l+1}\cdots i_r}\Gamma^p_{ki_l}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}},
-\end{align*}
-hence we have
-\[T_{i_1\cdots i_r;k}=\partial_kT_{i_1\cdots i_r}-\sum_{l=1}^rT_{i_1\cdots i_{l-1}pi_{l+1}\cdots i_r}\Gamma^p_{ki_l}.\]
-
-Moreover, we can consider second covariant derivative.
-\begin{symb}
-    We use the symbol $\nabla^2_{X,Y}T$ to denote the tensor 
-    \[\nabla^2_{X,Y}T(Y_1,\cdots,Y_r)=\nabla(\nabla T)(Y_1,\cdots,Y_r,Y,X).\]
-\end{symb}
+By definition and Jacobi's theorem, the first conjugate point (if exists) must be the cut point.
+But converse is in general not true (See Example~\ref{eg of cut pts}.)
+The following proposition characterizes cut points.
 
 \begin{prop}
-    We have
-    \begin{equation}
-        \nabla^2_{X,Y}T=\nabla_X(\nabla_YT)-\nabla_{\nabla_XY}T.\label{2nd cov}
-    \end{equation}
+    Let $\gamma$ be a unit speed geodesic.
+    If $\gamma(t_0)$ is the cut point of $p$ along $\gamma$, then either $\gamma(t_0)$ is conjugate to $p$ along $\gamma$, or there exists two length-minimizing geodesics from $p$ to $\gamma(t_0)$.
 \end{prop}
 \begin{proof}
-    We have
+    Let the initial vector of $\gamma$ be $v$.
+    Choose a sequence $\{t_i\}$ decreasingly converges to $t_0$.
+    Let $\sigma_i$ be the unit speed length-minimizing geodesic joining $p$ and $\gamma(t_i)$, with initial vector $v_i$.
+    Define $b_i=d(p,\gamma(t_i))=L(\sigma_i)$, then $\sigma_i$ is defined on $[0,b_i]$.
+    Hence up to a subsequence, we have $b_iv_i\to t_0y$, where $|y|=1$.
+    If $v\neq y$, then $\sigma_i\to\sigma(t)=\exp_p(ty)$ (up to a subsequence), thus $\sigma,\gamma$ are two length-minimizing geodesics joining $p$ and $\gamma(t_0)$.
+    If $v=y$, then $\exp_p(b_iv_i)=\gamma(t_i)=\exp_(t_iv)$, $\exp_p$ is not one-to-one near $t_0y$.
+    Hence $\exp_{p*}|_{t_0y}$ is degenerate, at $\exp_p(t_0y)=\gamma(t_0)$, that is, $\gamma(t_0)$ is conjugate to $p$.
+\end{proof}
+
+\begin{eg}\label{eg of cut pts}
+    \begin{enumerate}[(1)]
+        \item Let $M=\mathbb{S}^n$.
+        Then the south pole is conjugate to north pole, as well as the cut point of north pole.
+        \item Let $M=\mathbb{RP}^n$.
+        For simplicity we take $n=2$.
+        We regard $\mathbb{RP}^2$ as the upper hemisphere with identifying equator's antipodal points (This is actually CW decompostion).
+        Then from the north pole we move along a ``great circle'' to a point $q$ on the equator, the path is a length-minimizing geodesic.
+        However, the path on the same ``great circle'' but on the other side is also a length-minimizing geodesic, so $p$ is the cut point of north pole (along this geodesic).
+        But by the naturality of exponential map, $q$ is not conjugate to north pole, so this is an example of cut point not being conjugate point.
+        \item Let $M=\mathbb{R}^2/\mathbb{Z}^2$ be the flat torus.
+        Let $[0,1]\times[0,1]$ be the fundamental region, and denote $p=(0,0)=(0,1)$.
+        Then $\gamma(t)=(t,0)$ is a geodesic.
+        Notice that if $t_0>1/2$, $\gamma(t)$ is not the length-minimizing geodesic joining $p$ and $(t_0,0)$, since $\sigma(t)=(1-t,0)$ is the length-minimizing geodesic joining $p$ and $(t_0,0)$.
+        By the same reason, we have the cut locus of $p$ is $\{1/2\}\times[0,1/2]\cup[0,1/2]\times\{1/2\}$.
+    \end{enumerate}
+\end{eg}
+
+Let $S_p\subset T_pM$ be the unit sphere.
+For any $v\in S_p$, denote $\gamma_v:[0,+\infty)\to M$ be the geodesic with $\dot{\gamma}(0)=v$.
+We define a function
+\[\tau:S_p\to(0,+\infty],\ \tau(v)=\begin{cases}
+    +\infty, & \gamma_v\ \text{contains no cut point},\\
+    t_0, & \gamma_v(t_0)\ \text{is the cut point of }p.
+\end{cases}\]
+
+We have the following properties of $\tau$ and cut locus.
+\begin{prop}
+    Let $\tau$ be defined as above. We have
+    \begin{enumerate}[(1)]
+        \item $\tau$ is a continuous function.
+        \item $\Cut(p)$ is closed in $M$.
+        \item $\Cut(p)$ is of zero-measure.
+    \end{enumerate}
+\end{prop}
+The proof is complicated, so we refer to Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 10.
+
+\begin{prop}
+    Denote $\Sigma(p)=\{tv|\ v\in S_p,\ t\in[0,\tau(v))\}$, then
+    \[\exp_p:\Sigma(p)\to\exp_p(\Sigma(p))\]
+    is a diffeomorphism, and $M=\exp_p(\Sigma(0))\sqcup\Cut(p)$.
+\end{prop}
+\begin{proof}
+    Since there is no cut points of $p$ in $\Sigma(p)$ by the definition of $\tau$, there is no conjugate points of $p$ in $\Sigma(p)$.
+    Hence $\exp_{p*}$ is nondegenerate in $\Sigma(p)$, $\exp_{p}$ is an immersion.
+    We need to show $\exp_p$ is one-to-one.
+    For if not, let $\exp_p(t_1v_1)=\exp_p(t_2v_2)=:q$ for $v_1\neq v_2$.
+    Let $\gamma_1(t)=\exp_p(tv_1)$, $\gamma_2(t)=\exp_p(tv_2)$.
+    Since $M\backslash\Cut(p)$ is open, there is a neighborhood of $q$ contained in $\Sigma(p)$, hence there is an $\varepsilon>0$ such that $\gamma_2(t_2+\varepsilon)=:r\in\Sigma(p)$.
+    Then $\gamma_1\cup\gamma_2|_{[t_2,t_2+\varepsilon]}$ realizes the length-minimizing path from $p$ to $r$, hence by the first variation formula, it is a geodesic.
+    But $\gamma_1\cup\gamma_2|_{[t_2,t_2+\varepsilon]}$ is not smooth at $q$ (otherwise $-\dot{\gamma}_1(t_1)=-\dot{\gamma}_2(t_2)$ will lead to the same geodesic), contradicting to a geodesic must be smooth.
+    Thus we proved the first claim.
+
+    The second claim is clear.
+\end{proof}
+
+Now we define the injective radius of a point and a manifold.
+\begin{defn}
+    Let $M$ be a Riemannian manifold, $p\in M$, we define the \textbf{injective radius} by
+    \begin{gather*}
+        \inj(p):=\sup\{r\in(0,+\infty)|\ B_r(p)\subset\Sigma(p)\}\\
+        \inj(M):=\inf_{p\in M}\inj(p)
+    \end{gather*}
+\end{defn}
+
+A simple observation leads to the following property.
+\begin{prop}
+    If $M$ is compact, then $\inj(M)>0$.
+\end{prop}
+
+However, if the manifold is not compact, the injective radius may be $0$.
+\begin{eg}
+    Let's consider the surface of revolution by rotating $y=1/x$ $(x>0)$ around $x$-axis, then the point $(x,1/x,0)$ has injective radius $\pi/x$, which converges to $0$ as $x\to+\infty$.
+    Hence the surface has injective radius $0$.
+\end{eg}
+
+We now discuss some differential properties of distance function.
+
+Let $p\in M$, denote $d_p:M\to\mathbb{R}$, $d_p(q)=d(p,q)$.
+By triangle inequality, $d_p$ is Lipschitz continuous.
+But we have more to say.
+\begin{prop}\label{dp smooth}
+    Let $p\in M$, we have $d_p\in C^\infty(M\backslash(\{p\}\cup\Cut(p)))$.
+    Moreover, $|\nabla d_p|=1$ at where $d_p$ is smooth.
+\end{prop}
+\begin{proof}
+    We just need to calculate $\nabla d_p$ in $M\backslash(\{p\}\cup\Cut(p))$.
+    Let $q\in M\backslash(\{p\}\cup\Cut(p))$, and $\exp_p(lv)=q$, $|v|=1$.
+    Then there exists a neighborhood $U\subset T_pM$ of $\{tv\in T_pM|\ t\in[0,l]\}$ such that $\exp_p(U)\subset M\backslash\Cut(p)$.
+    Now for $z\in U$, we have $d(\exp_p(z),p)=|z|$.
+    Thus by taking the geodesic polar coordinate $(U,\varphi)$, we have $d_p(\varphi^{-1}(r,\theta))=r$.
+    Therefore we have
     \begin{align*}
-        &\nabla^2_{X,Y}T(Y_1,\cdots,Y_r)\\
-        =&\nabla(\nabla T)(Y_1,\cdots,Y_r,Y,X)\\
-        =&\nabla_X(\nabla T)(Y_1,\cdots,Y_r,Y)\\
-        =&X(\nabla T)(Y_1,\cdots,Y_r,Y)-\sum_{i=1}^r(\nabla T)(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r,Y)\\
-        &-(\nabla T)(Y_1,\cdots,Y_r,\nabla_XY)\\
-        =&X(\nabla_YT)(Y_1,\cdots,Y_r)-\sum_{i=1}^r(\nabla_YT)(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\\
-        &-(\nabla_{\nabla_XY}T)(Y_1,\cdots,Y_r)\\
-        =&\nabla_X(\nabla_YT)(Y_1,\cdots,Y_r)-(\nabla_{\nabla_XY}T)(Y_1,\cdots,Y_r).\qedhere
+        \nabla d_p=g^{rr}\frac{\partial{d_p}}{\partial{r}}\frac{\partial{}}{\partial{r}}+g^{ij}\frac{\partial{d_p}}{\partial{\theta^i}}\frac{\partial{}}{\partial{\theta^j}}=\frac{\partial{}}{\partial{r}}.
+    \end{align*}
+    (Recall $g=\d{r^2}+g_{ij}\d{\theta^i}\otimes\d{\theta^j}$ under polar coordinate.)
+    Thus $d_p$ is smooth at $q\in M\backslash(\{p\}\cup\Cut(p))$, and $|\nabla d_p|=1$.
+\end{proof}
+
+Now we compute the Hessian of $d_p$ for some situation.
+
+\begin{prop}
+    We have $\nabla^2d_p(\nabla d_p,X)=0$ for any $X\in T_qM$, $q\in M\backslash(\{p\}\cup\Cut(p))$.
+\end{prop}
+\begin{proof}
+    Let's just calculate
+    \begin{align*}
+        \nabla^2d_p(\nabla d_p,X)&=X(\nabla d_p)(d_p)-(\nabla_X(\nabla d_p))(d_p)\\
+        &=X\langle\nabla d_p,\nabla d_p\rangle-\langle\nabla_X(\nabla d_p),\nabla d_p\rangle\\
+        &=X\langle\nabla d_p,\nabla d_p\rangle-\frac{1}{2}X\langle\nabla d_p,\nabla d_p\rangle\\
+        &=0.\quad\text{(Since $|\nabla d_p|=1$)}\qedhere
     \end{align*}
 \end{proof}
 
-Next we discuss curvature of tensors.
-
-\begin{defn}[Curvature operator]
-    Let $X,Y$ be vector fields, define an endomorphism $R(X,Y)$ of $(0,r)$-tensors as
-    \[R(X,Y)T=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T.\]
-\end{defn}
-
-\begin{prop}[Ricci identity]
-    For a $(0,r)$-tensor $T$ and vector fields $X,Y$, we have
-    \[(\nabla^2_{Y,X}-\nabla^2_{X,Y})T=R(X,Y)T\]
+\begin{prop}
+    Let $J$ be a Jacobi field along geodesic $\gamma$ such that $J(0)=0$, $J\perp\dot{\gamma}$.
+    Then
+    \[\nabla^2d_p|_{\gamma(t)}(J(t),J(t))=\langle\dot{J}(t),J(t)\rangle\quad(t<\tau(\dot{\gamma}(0)))\]
 \end{prop}
 \begin{proof}
-    Using equation~\ref{2nd cov}, we have
+    First we notice that $\nabla d_p=\dot{\gamma}$ (One can show this by using geodesic polar coordinate as in Proposition~\ref{dp smooth}).
+    Then let's calculate
     \begin{align*}
-        (\nabla^2_{Y,X}-\nabla^2_{X,Y})T&=\nabla_Y\nabla_XT-\nabla_{\nabla_YX}T-\nabla_X\nabla_YT+\nabla_{\nabla_XY}T\\
-        &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{(\nabla_XY-\nabla_YX)}T\\
-        &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T\quad\text{(torsion-freeness)}\\
-        &=R(X,Y)T.\qedhere
+        \nabla^2d_p|_{\gamma(t)}(J(t),J(t))&=J\langle J,\nabla d_p\rangle-\langle\nabla_JJ,\nabla d_p\rangle\\
+        &=\langle J,\nabla_J(\nabla d_p)\rangle\\
+        &=\langle J,\nabla_{\nabla d_p}J\rangle\quad\text{(torsion-freeness)}\\
+        &=\langle J,\dot{J}\rangle.\qedhere
     \end{align*}
 \end{proof}
 
-Now we introduce some differential operators.
-
-\begin{defn}
-    If $S$ is a symmetric $(0,2)$-tensor on  a Riemannian manifold $(M,g)$, we define the \textbf{trace} of $S$ to be
-    \[\tr_g(S)|_p=\sum_{i=1}^nS_p(e_i,e_i),\ \forall p\in M\]
-    for any orthonormal basis $\{e_i\}$ of $T_pM$.
-    It can be checked that the definition does not depend on the choice of orthonormal basis.
-    By this definition, trace is a smooth function on $M$.
-\end{defn}
-
-\begin{defn}
-    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
-    Define the \textbf{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
-    Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \textbf{Laplacian} of $f$, denoted by $\Delta f$.
-\end{defn}
-
-\begin{prop}
-    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
-    Then we have
-    \[\nabla^2f(X,Y)=Y(Xf)-(\nabla_YX)(f).\]
-\end{prop}
-\begin{proof}
-    This is just the equation~\ref{2nd cov}.
-\end{proof}
-
-We introduce the gradient of a function.
-\begin{defn}
-    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
-    Then we define the \textbf{gradient} of $f$ to be the vector field $\nabla f$ defined by $g(\nabla f,X)=Xf$ for any $X\in\mathfrak{X}(M)$.
-\end{defn}
-
-We now give the local expression of $\nabla f$ (and show the existence of $\nabla f$ as a by-product).
-Let $\nabla f=f^i\partial_i$, then we have
-\[g(f,\partial_j)=f^ig_{ij}=\partial_jf.\]
-Then use $g^{ij}$ to denote the inverse matrix of $g_{ij}$, we have
-\[f^i=g^{ij}\partial_jf,\]
-that is,
-\[\nabla f=g^{ij}\frac{\partial f}{\partial x^{j}}\frac{\partial{}}{\partial{x^i}}.\]
-
-Finally we define the norm of a symmetric $(0,2)$-tensor.
-This will be used in Bochner formula in next lecture.
-
-\begin{defn}
-    Let $S$ be a symmetric $(0,2)$-tensor.
-    At $p\in M$, let $\{e_i\}$ be an orthonormal basis, $\{f^i\}$ be its dual basis.
-    Let $S=S_{ij}f^i\otimes f^j$, then define the norm of $S$ to be
-    \[|S|^2:=\sum_{i,j}|S_{ij}|^2.\]
-\end{defn}
-
-We also write the norm of $S$ in general coordinates.
-One can check under general $g$ we have
-\[|S|^2=g^{ij}g^{kl}S_{ij}S_{kl},\]
-for $S=S_{ij}\d{x^i}\otimes\d{x^j}$.
-
-\section{Distance Function and Cut Points}
+Now we are well-prepared to march towards Hessian comparison theorem and Lap\-lace comparison theorem.
