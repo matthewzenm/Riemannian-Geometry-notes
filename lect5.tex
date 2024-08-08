@@ -317,7 +317,7 @@ Now we state the Laplace comparison theorem.
 \begin{thm}
     Let $(M^n,g)$ be a Riemannian manifold, $M_K^n$ be a Riemannian manifold with constant sectional curvature $K$.
     Let $\gamma:[0,l]\to M$, $\gamma_K:[0,l]\to M$ be geodesics without cut points.
-    Assume $\Ric{M}\geq(n-1)Kg$, then $\Delta d_p|_{\gamma(l)}\leq\Delta_kd_k|_{\gamma_K(l)}$.
+    Assume $\Ric\geq(n-1)Kg$, then $\Delta d_p|_{\gamma(l)}\leq\Delta_kd_k|_{\gamma_K(l)}$.
 \end{thm}
 
 \begin{rem}
@@ -369,7 +369,7 @@ Now we state the Laplace comparison theorem.
         \item The case of $K=0$ is $\Delta d_p\leq\frac{n-1}{d_p}$.
         This inequality also holds in the sence of distribution, that is, for any $\varphi\in C^\infty_c(M)$, $\varphi\geq 0$, we have
         \[\int_Md_p\Delta\varphi\leq\int_M\frac{n-1}{d_p}\cdot\varphi.\]
-        For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Proposition 1.1.
+        For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Proposition 1.1 in Chapter 1.
     \end{enumerate}
 \end{rem}
 
@@ -406,7 +406,7 @@ So we have
 We now calculate Riemann volume form in geodesic polar coordinate.
 Let $J_i$ be Jacobi fields with $J_i(0)=0$, $J_i(r,\theta)=\partial_{\theta^i}$ for $i=1,\cdots,n$.
 Then
-\[\d\Vol_g=\sqrt{\det(g_{ij})}\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{theta^{n-1}},\]
+\[\d\Vol_g=\sqrt{\det(g_{ij})}\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{\theta^{n-1}},\]
 and denote $\mathscr{J}=\sqrt{\det(g_{ij})}$.
 
 \begin{prop}
@@ -424,7 +424,7 @@ and denote $\mathscr{J}=\sqrt{\det(g_{ij})}$.
 \end{proof}
 
 Thus we have the following Bishop's theorem.
-\begin{thm}[Bishop]
+\begin{thm}[Bishop]\label{Bishop}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
     Let $\gamma:[0,l]\to M$ be a geodesic without cut points.
     Then $\frac{\mathscr{J}}{\mathscr{J}_K}(r)$ is nonincreasing with respective to $r$.
@@ -439,3 +439,109 @@ Thus we have the following Bishop's theorem.
     \end{align*}
     by Laplace comparison theorem.
 \end{proof}
+
+Now we can state and prove Bishop--Gromov comparison theorem, which is also known as volume comparison theorem.
+\begin{thm}[Bishop--Gromov comparison]\label{Bishop Gromov}
+    Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
+    Define geodesic annuli $A_{s,r}(p):=\{\exp_p(tv)|\ s<t<\min{r,t_v},\ v\in S_p\}$ and annuli $A^K_{r,s}$ in constant sectional curvature space $M_K$ with radii $r<s$.
+    Then we have
+    \[\frac{\Vol(A_{r_3,r_4}(p))}{\Vol_K(A^K_{r_3,r_4})}\leq\frac{\Vol(A_{r_1,r_2}(p))}{\Vol_K(A^K_{r_1,r_2})}\]
+    provided $r_1<\min\{r_2,r_3\}<\max\{r_2,r_3\}<r_4$.
+\end{thm}
+
+\begin{cor}
+    \begin{enumerate}[(1)]
+        \item Let $r_1=r_3=0$ in Theorem~\ref{Bishop Gromov}, we have
+        \[\frac{\Vol(B_{r_2}(p))}{\Vol_K(B_{r_2}^K)}\leq\frac{\Vol(B_{r_1}(p))}{\Vol_K(B_{r_1}^K)}\]
+        provided $r_1<r_2$.
+        \item Moreover, let $r_1\to 0$, we have $\Vol(B_r(p))\leq\Vol_K(B_r^K)$.
+    \end{enumerate}
+\end{cor}
+
+Before proving the theorem, we need a lemma from calculus.
+\begin{lem}
+    If $f(t),g(t)>0$, $f/g$ is nonincreasing, then
+    \[\frac{\int_s^rf(t)\d{t}}{\int_s^rg(t)\d{t}}\]
+    is nonincreasing with respective to $r,s$.
+\end{lem}
+\begin{proof}
+    We show the function is nonincreasing with respective to one variable, the other is similar.
+    Let $s<r_1<r_2$, we need to show $\int_s^{r_1}f\int_s^{r_2}g\geq\int_s^{r_2}f\int_s^{r_1}g$.
+    We have
+    \begin{align*}
+        \int_s^{r_1}f\int_s^{r_2}g-\int_s^{r_2}f\int_s^{r_1}g&=\int_s^{r_1}f\left(\int_s^{r_1}g+\int_{r_1}^{r_2}g\right)-\left(\int_s^{r_1}f+\int_{r_1}^{r_2}f\right)\int_s^{r_1}g\\
+        &=\int_s^{r_1}f\int_{r_1}^{r_2}g-\int_{r_1}^{r_2}f\int_s^{r_1}g
+    \end{align*}
+    By Intermediate Value Theorem, there exists $s\leq t_1\leq r_1\leq t_2\leq r_2$ such that
+    \[\frac{\int_s^{r_1}f}{\int_s^{r_1}g}=\frac{f(t_1)}{g(t_1)}\geq\frac{f(t_2)}{g(t_2)}=\frac{\int_{r_1}^{r_2}f}{\int_{r_1}^{r_2}g}.\]
+    Hence the lemma is proved.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{Bishop Gromov}]
+    We just need to show $\Vol(A_{s,r}(p))/\Vol(A_{s,r}^K)$ is nonincreasing with respective to $r,s$.
+    Using geodesic polar coordinate, denote
+    \[\chi(r,\theta)=\begin{cases}
+        1, & r<t_\theta,\\
+        0, & r\geq t_\theta,
+    \end{cases}\]
+    and
+    \[\chi_K(t)=\begin{cases}
+        1, & K\leq 0,\\
+        \begin{cases}
+            1, & t\leq\pi/\sqrt{K},\\
+            0, & t>\pi/\sqrt{K},
+        \end{cases} & K>0.
+    \end{cases}\]
+    Then by Bonnet--Myers theorem, $t_\theta<\pi/\sqrt{K}$ if $K>0$, then $\frac{\chi}{\chi_K}(t,\theta)$ is nonincreasing with respective to $t$.
+    Now we have
+    \begin{align*}
+        \frac{\Vol(A_{s,r}(p))}{\Vol_K(A^K_{s,r})}&=\frac{\int_{S_p}\int_r^s\chi(r,\theta)\mathscr{J}(r,\theta)\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{\theta^{n-1}}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\\
+        &=\frac{1}{\Vol{\mathbb{S}^{n-1}}}\int_{S_p}\frac{\int_r^s\chi(t,\theta)\mathscr{J}(t,\theta)\d{t}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\d{\theta}
+    \end{align*}
+    Using Theorem~\ref{Bishop}, we have $\frac{\chi\mathscr{J}}{\chi_K\mathscr{J}_K}$ is nonincreasing (with respective to $t$).
+    Then the theorem follows by above lemma.
+\end{proof}
+
+As a corollary, we have another theorem of Bishop.
+\begin{thm}[Bishop]
+    Let Riemannian manifold $(M^n,g)$ satisfy $\Ric\geq(n-1)Kg>0$, then $\Vol(M)\leq\Vol(\mathbb{S}^n(1/\sqrt{K}))$.
+    The equality holds if and only if $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
+\end{thm}
+\begin{proof}
+    The inequality holds from Bonnet--Myers theorem and volume comparison theorem.
+    The equality holds if and only if the equality holds in Lapalce comparison theorem, that is, $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
+\end{proof}
+
+The important application of volume comparison theorem is Cheng's maximal radius theorem.
+\begin{thm}[Cheng]
+    If $(M^n,g)$ is a Riemannian manifold with $\Ric\geq(n-1)Kg$, and $\operatorname{diam}(M)=\pi/\sqrt{K}$, then $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
+\end{thm}
+\begin{proof}
+    We scale the metric to let $K=1$.
+    Since $M$ is compact by Bonnet--Myers theorem, there exists $p,q\in M$ such that $d(p,q)=\pi$.
+    Consider $B_r(p)$ and $B_{\pi-r}(q)$, by triangle inequality, we have $B_r(p)\cap B_{\pi-r}(q)=\varnothing$.
+    Hence we have
+    \begin{align*}
+        \Vol(M)&\geq\Vol(B_r(p))+\Vol(B_{\pi-r}(q))\\
+        &=\frac{\Vol(B_r(p))}{\Vol_1(B_r^1)}\cdot\Vol_1(B_r^1)+\frac{\Vol(B_{\pi-r}(q))}{\Vol_1(B_{\pi-r}^1)}\cdot\Vol_1(B_{\pi-r}^1)\\
+        &\geq\frac{\Vol(B_\pi(p))}{\Vol_1(B_\pi^1)}\cdot\Vol_1(B_r^1)+\frac{\Vol(B_\pi(q))}{\Vol_1(B_\pi^1)}\cdot\Vol_1(B_{\pi-r}^1)\\
+        &=\frac{\Vol(M)}{\Vol(\mathbb{S}^n)}(\Vol_1(B_r^1)+\Vol_1(B_{\pi-r}^1))\\
+        &=\Vol(M),
+    \end{align*}
+    where the second inequality is Bishop--Gromov comparison theorem, and last equality is $\Vol_1(B_r^1)+\Vol_1(B_{\pi-r}^1)=\Vol(\mathbb{S}^n)$ on $\mathbb{S}^n$.
+    Hence the equality in Bishop--Gromov comparison theorem holds, that is, the equality in Laplace comparison theorem holds.
+    Then $M$ must be isometric to $\mathbb{S}^n$.
+\end{proof}
+
+As for noncompact manifolds, volume comparison theorem has following corollary.
+
+\begin{cor}
+    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol(B_r(p))\leq\omega_nr^n=\Vol_0(B_r^0)$.
+\end{cor}
+
+The corollary gives an upper bound of the growth of the volume of geodesic ball.
+Moreover, the following Calabi--Yau theorem (not the one in complex geometry) gives a lower bound.
+\begin{thm}[Calabi--Yau]
+    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol(B_r(p))\geq C(n)\Vol(B_1(p))r$.
+\end{thm}
+For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Theorem 4.1 in Chapter 1.

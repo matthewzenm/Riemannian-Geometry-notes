@@ -1,10 +1,160 @@
 \chapter{Some Background on Tensors}
 We now supply some background materials on tensors.
-We first discuss the covariant derivative of tensors.
-Then we define Hessian, Laplacian and gradient of a function.
-Finally, we define the norm of symmetric $(0,2)$-tensors.
+% We first discuss the covariant derivative of tensors.
+% Then we define Hessian, Laplacian and gradient of a function.
+% Finally, we define the norm of symmetric $(0,2)$-tensors.
 
-For simplicity, we consider only covariant tensors.
+% For simplicity, we consider only covariant tensors.
+
+\section{Basic Notions}
+
+First we introduce the notion of tensors and differential forms.
+In this section, we will not give proof of any proposition, please refer to any book on differentiable manifolds for proofs.
+\begin{defn}
+    Let $M$ be a differentiable manifold.
+    An \textbf{$(r,s)$-tensor} $T$ is a $C^\infty(M)$-multi\-linear map
+    \[T:\underbrace{\mathfrak{X}(M)^*\times\cdots\times\mathfrak{X}(M)^*}_{r}\times\underbrace{\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)}_{s}\to C^\infty(M),\]
+    where $\mathfrak{X}(M)^*$ denotes the dual module of $\mathfrak{X}(M)$ over $C^\infty(M)$.
+    $(0,s)$-tensors are called \textbf{covariant tensors}, and $(r,0)$-tensors are called \textbf{contravariant tensors}.
+\end{defn}
+
+\begin{rem}
+    We often define $(0,0)$-tensors to be smooth functions, and identify $(1,0)$-tensors with vector fields.
+\end{rem}
+
+\begin{defn}
+    Let $\omega,\eta\in\mathfrak{X}(M)^*$.
+    The \textbf{tensor product} of $\omega,\eta$, denoted by $\omega\otimes\eta$, is defined as
+    \begin{align*}
+        \omega\otimes\eta:\mathfrak{X}(M)\times\mathfrak{X}(M)&\to C^\infty(M)\\
+        (X,Y)&\mapsto\omega(X)\cdot\eta(Y).
+    \end{align*}
+    Clearly tensor product is associative, and distributive to addition.
+    We can also define tensor product for contravariant tensors.
+\end{defn}
+
+\begin{prop}
+    Let $\mathfrak{T}^{r,s}(M)$ be the $C^\infty(M^n)$ module of $(r,s)$-tensors.
+    Then on a local chart $(U,\varphi)$, $\mathfrak{T}^{r,s}|_U$ is free with basis
+    \[\left\{\frac{\partial{}}{\partial{x^{i_1}}}\otimes\cdots\otimes\frac{\partial{}}{\partial{x^{i_r}}}\otimes\d{x^{j_1}}\otimes\cdots\otimes\d{x^{j_s}}\right\}\]
+    for all indices $1\leq i_1,\cdots,i_r\leq n$, $1\leq j_1,\cdots,j_s\leq n$, where
+    \[\d{x^i}\left(\frac{\partial{}}{\partial{x^j}}\right)=\delta_{ij}.\]
+\end{prop}
+
+\begin{defn}
+    A \textbf{differential form} on $M$ of order $r$ is a skew-symmetric $(0,r)$-tensor.
+    The space of differential form of order $r$ is denoted by $\bigwedge\nolimits^rM$.
+\end{defn}
+
+\begin{prop}
+    There is a map
+    $\pi:\mathfrak{T}^r(M)\to\bigwedge\nolimits^rM$ as a quotient map of $C^\infty(M)$ modules given by
+    \[\omega(X_1,\cdots,X_r)\mapsto\frac{1}{r!}\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)\omega\left(X_{\sigma(1)},\cdots,X_{\sigma(r)}\right)\]
+    for any $(0,r)$-tensor $\omega$ and $X_i\in\mathfrak{X}(M)$, $i=1,\cdots,r$.
+\end{prop}
+
+\begin{defn}
+    We have a bilinear map $\wedge:\bigwedge\nolimits^r(M)\times\bigwedge\nolimits^s(M)\to\bigwedge\nolimits^{r+s}(M)$ defined by the commutative diagram
+    \[\begin{tikzcd}
+        \mathfrak{T}^r(M)\times\mathfrak{T}^s(M) \ar[r,"\otimes"] \ar[d,"\pi\times\pi"] & \mathfrak{T}^{r+s}(M) \ar[d,"\pi"] \\
+        \bigwedge\nolimits^r(M)\times\bigwedge\nolimits^s(M) \ar[r,"\wedge"] & \bigwedge\nolimits^{r+s}(M)
+    \end{tikzcd}\]
+\end{defn}
+
+\begin{prop}
+    Under a local chart $(U,\varphi)$, $\left.\bigwedge\nolimits^r(M)\right|_U$ has a basis
+    \[\{\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}\}\]
+    for indices $1\leq i_1<\cdots<i_r\leq n$.
+\end{prop}
+
+\begin{defn}
+    We define the \textbf{exterior differential} of a form $\omega$ by writing
+    \[\omega=\omega_{i_1\cdots i_r}\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}\]
+    on a local chart and define
+    \begin{align*}
+        \d\omega&:=\d{\omega_{i_1\cdots i_r}}\wedge\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}\\
+        &:=\frac{\partial\omega_{i_1\cdots i_r}}{\partial{x^i}}\d{x^i}\wedge\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}.
+    \end{align*}
+    One can check this definition does not depend on the choice of local chart.
+\end{defn}
+
+\section{Musical Isomorphisms}
+Let $(M^n,g)$ be a Riemannian manifold.
+For simplicity, we only discuss the musical isomorphisms of $(1,0)$- and $(0,1)$-tensors.
+
+\begin{defn}
+    Let $X$ be a vector field (i.e.\ $(1,0)$-tensor), and on a local chart we have $X=X^i\partial_i$.
+    Then we define a $(0,1)$-tensor $X^\flat$ by
+    \[X^\flat_j=g_{ij}X^i.\]
+    One can check this definition does not depend on the choice of local chart.
+    Then $X\mapsto X^\flat$ gives an isomorphism of $\mathfrak{X}(M)\to\mathfrak{X}(M)^*$.
+\end{defn}
+
+\begin{defn}
+    Let $\omega$ be a $1$-form, we define $\omega^\sharp$ to be the vector field such that for any $1$-form $\eta$, we have
+    \[\eta(\omega^\sharp)=\omega(\eta^\flat).\]
+    Then $\omega\mapsto\omega^\sharp$ gives an isomorphism of $\mathfrak{X}(M)^*\to\mathfrak{X}(M)$.
+\end{defn}
+
+Locally, if $\omega=\omega_i\d{x^i}$, we have $(\omega^\sharp)^j=g^{ij}\omega_i$.
+
+Notice that the indices of $X^\flat$ are lowered and of $\omega^\sharp$ are raised, this explains why we use musical notation to define these isomorphisms.
+
+Using raising index, we can define the gradient of a function.
+\begin{defn}
+    Let $f\in C^\infty(M)$.
+    The \textbf{gradient} of $f$ is defined as $\nabla f:=(\d{f})^\sharp$.
+\end{defn}
+
+By definition, $\nabla f$ has local expression
+\[\nabla f=g^{ij}\frac{\partial f}{\partial{x^i}}\frac{\partial{}}{\partial{x^j}}.\]
+
+\section{Contraction and Trace}
+
+\begin{defn}
+    Let $T$ be a $(r,s)$-tensor, by \textbf{contract $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
+    \begin{align*}
+        &(\tr_{ij}T)_p(\omega_1,\cdots,\widehat{\omega_i},\cdots,\omega_r,X_1,\cdots,\widehat{X_j},\cdots,X_s)\\
+        =&\sum_{k=1}^nT_p(\omega_1,\cdots,\omega_{i-1},\eta_k,\omega_{i+1},\cdots,\omega_r,X_1,\cdots,X_{j-1},e_k,X_{j+1},\cdots,X_s)
+    \end{align*}
+    with $\{e_k\}_{k=1}^n$ be an orthonormal basis of $T_pM$ and $\{\eta_k\}_{k=1}^n$ be the dual basis.
+\end{defn}
+
+Respective to a local chart, if the tensor has local expression
+\[T=T_{\mu_1\cdots\mu_s}^{\nu_1\cdots\nu_r}\frac{\partial{}}{\partial{x^{\nu_1}}}\otimes\cdots\otimes\frac{\partial{}}{\partial{x^{\nu_r}}}\otimes\d{x^{\mu_1}}\otimes\cdots\otimes\d{x^{\mu_s}},\]
+then $\tr_{ij}T$ has local expression
+\[(\tr_{ij}T)_{\mu_1\cdots\widehat{\mu_{j}}\cdots\mu_s}^{\nu_1\cdots\widehat{\nu_{i}}\cdots\nu_r}=T_{\mu_1\cdots\mu_{j-1}m\mu_{j+1}\cdots\mu_s}^{\nu_1\cdots\nu_{i-1}m\nu_{i+1}\cdots\nu_r}\]
+
+\begin{defn}
+    If $L$ is a $(1,1)$-tensor, we define its \textbf{trace} by $\tr{L}=\tr_{11}L$.
+\end{defn}
+
+We know that a symmetric $(0,2)$-tensor $S$ (i.e.\ a bilinear form) is one-to-one corresponding to a $(1,1)$-tensor $L$ (i.e.\ a linear transformation), the correspondence is given by
+\[S(x,x)=g(x,L(x))\]
+and on a local chart
+\[L^i_j=g^{ik}S_{jk}.\]
+Then we have the definition
+
+\begin{defn}
+    The trace of a symmetric $(0,2)$-tensor is defined as the trace of its corresponding $(1,1)$-tensor.
+\end{defn}
+
+We look at the trace of symmetric $(0,2)$-tensor locally.
+We have
+\[\tr{S}=L^i_i=g^{ij}S_{ij}.\]
+
+We use trace to define the norm of a symmetric $(0,2)$-tensor.
+\begin{defn}
+    Let $S$ be a symmetric $(0,2)$-tensor, with corresponding linear transformation $L$.
+    Then we define its norm by $|S|^2:=\tr(L\circ L)$.
+\end{defn}
+
+Locally, we have
+\[(L\circ L)^i_j=L^i_kL^k_j\]
+then contract the indices we have
+\[\tr(L\circ L)=L^i_jL^j_i=(g^{ik}S_{kj})(g^{jl}S_{li})=g^{ik}g^{jl}S_{li}S_{kj}.\]
+
+\section{Covariant Derivative}
 
 \begin{defn}
     Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \textbf{covariant derivative} of $T$ as
@@ -19,10 +169,7 @@ One can check $\nabla T$ is indeed tensorial, and satisfies Leibniz rule, that i
 \[\nabla(T\otimes S)=(\nabla T)\otimes S+T\otimes(\nabla S).\]
 
 We look at covariant derivative locally.
-It's known that $(0,r)$-tensors have a basis
-\[\{\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}\}_{1\leq i_1,\cdots,i_r\leq n},\]
-(We will not prove here, please refer to any book on differentiable manifolds)
-so we let
+Let
 \[T=T_{i_1\cdots i_r}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}},\]
 and write
 \[\nabla_{\partial_k}T=T_{i_1\cdots i_r;k}\d{x^{i_1}}\otimes\cdots\otimes\d{x^{i_r}}.\]
@@ -97,16 +244,6 @@ Next we discuss curvature of tensors.
 Now we introduce some differential operators.
 
 \begin{defn}
-    If $S$ is a symmetric $(0,2)$-tensor on  a Riemannian manifold $(M,g)$, we define the \textbf{trace} of $S$ to be
-    \[\tr_g(S)|_p=\sum_{i=1}^nS_p(e_i,e_i),\ \forall p\in M\]
-    for any orthonormal basis $\{e_i\}$ of $T_pM$.
-    It can be checked that the definition does not depend on the choice of orthonormal basis.
-    By this definition, trace is a smooth function on $M$.
-\end{defn}
-
-If $S=S_{ij}\d{x^i}\otimes\d{x^j}$, then one can check that $\tr_g(S)=g^{ij}S_{ij}$.
-
-\begin{defn}
     Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
     Define the \textbf{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
     Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \textbf{Laplacian} of $f$, denoted by $\Delta f$.
@@ -120,31 +257,3 @@ If $S=S_{ij}\d{x^i}\otimes\d{x^j}$, then one can check that $\tr_g(S)=g^{ij}S_{i
 \begin{proof}
     This is just the equation~\ref{2nd cov}.
 \end{proof}
-
-We introduce the gradient of a function.
-\begin{defn}
-    Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
-    Then we define the \textbf{gradient} of $f$ to be the vector field $\nabla f$ defined by $g(\nabla f,X)=Xf$ for any $X\in\mathfrak{X}(M)$.
-\end{defn}
-
-We now give the local expression of $\nabla f$ (and show the existence of $\nabla f$ as a by-product).
-Let $\nabla f=f^i\partial_i$, then we have
-\[g(f,\partial_j)=f^ig_{ij}=\partial_jf.\]
-Then use $g^{ij}$ to denote the inverse matrix of $g_{ij}$, we have
-\[f^i=g^{ij}\partial_jf,\]
-that is,
-\[\nabla f=g^{ij}\frac{\partial f}{\partial x^{j}}\frac{\partial{}}{\partial{x^i}}.\]
-
-Finally we define the norm of a symmetric $(0,2)$-tensor.
-
-\begin{defn}
-    Let $S$ be a symmetric $(0,2)$-tensor.
-    At $p\in M$, let $\{e_i\}$ be an orthonormal basis, $\{f^i\}$ be its dual basis.
-    Let $S=S_{ij}f^i\otimes f^j$, then define the norm of $S$ to be
-    \[|S|^2:=\sum_{i,j}|S_{ij}|^2.\]
-\end{defn}
-
-We also write the norm of $S$ in general coordinates.
-One can check under general $g$ we have
-\[|S|^2=g^{il}g^{jk}S_{ij}S_{kl},\]
-for $S=S_{ij}\d{x^i}\otimes\d{x^j}$.
