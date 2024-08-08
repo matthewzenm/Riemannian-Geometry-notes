@@ -227,9 +227,11 @@ Next we discuss curvature of tensors.
     \[R(X,Y)T=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T.\]
 \end{defn}
 
-\begin{prop}[Ricci identity]
+\begin{prop}[Ricci identity]\label{Ricci identity}
     For a $(0,r)$-tensor $T$ and vector fields $X,Y$, we have
-    \[(\nabla^2_{Y,X}-\nabla^2_{X,Y})T=R(X,Y)T\]
+    \begin{align*}
+        (\nabla^2_{Y,X}-\nabla^2_{X,Y})T=R(X,Y)T=-\sum_{i=1}^nT(Y_1,\cdots,R(X,Y)Y_i,\cdots,Y_r)
+    \end{align*}
 \end{prop}
 \begin{proof}
     Using equation~\ref{2nd cov}, we have
@@ -237,8 +239,14 @@ Next we discuss curvature of tensors.
         (\nabla^2_{Y,X}-\nabla^2_{X,Y})T&=\nabla_Y\nabla_XT-\nabla_{\nabla_YX}T-\nabla_X\nabla_YT+\nabla_{\nabla_XY}T\\
         &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{(\nabla_XY-\nabla_YX)}T\\
         &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T\quad\text{(torsion-freeness)}\\
-        &=R(X,Y)T.\qedhere
+        &=R(X,Y)T.
     \end{align*}
+    The latter equality holds since $R(X,Y)$ satisfies Leibniz law, then we have
+    \begin{align*}
+        (R(X,Y)T)(Y_1,\cdots,Y_r)&=R(X,Y)T(Y_1,\cdots,Y_r)-\sum_{i=1}^nT(Y_1,\cdots,R(X,Y)Y_i,\cdots,Y_r)\\
+        &=-\sum_{i=1}^nT(Y_1,\cdots,R(X,Y)Y_i,\cdots,Y_r),
+    \end{align*}
+    the second equality holds since $T(Y_1,\cdots,Y_r)$ is a function.
 \end{proof}
 
 Now we introduce some differential operators.

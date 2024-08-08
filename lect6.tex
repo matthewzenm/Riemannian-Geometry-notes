@@ -8,3 +8,46 @@ We will give another proof of Laplace comparison theorem using Bochner formula, 
     Let $M$ be a Riemannian manifold, $f\in C^\infty(M)$. Then we have
     \[\Delta\frac{1}{2}|\nabla f|^2=|\nabla^2 f|^2+\langle\nabla\Delta f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\]
 \end{thm}
+
+We first need a lemma.
+\begin{lem}
+    Under geodesic normal coordinate around $p$, the Ricci identity (Proposition~\ref{Ricci identity}) of $1$-form is equivalent to
+    \[f_{;kij}-f_{;kji}=-f_{;l}R^l_{ijk},\]
+    where $f_{;i}$ means $\partial_if$.
+\end{lem}
+\begin{proof}
+    First we notice that
+    \begin{align*}
+        \nabla_{\partial_i}\nabla_{\partial_j}\d{f}&=\nabla_{\partial_i}(\partial_jf_{;k}\d{x^k}+f_{;k}\d{x^k})\\
+        &=\partial_i\partial_jf_{;k}\d{x^k}-\nabla_{\partial_i}\Gamma_{jl}^k\d{x^l}\\
+        &=f_{;kji}\d{x^k}
+    \end{align*}
+    since all $\Gamma^k_{jl}=0$ at $p$.
+    Then we have
+    \begin{align*}
+        (R(\partial_i,\partial_j)\d{f})(\partial_k)&=(\nabla_{\partial_j}\nabla_{\partial_i}-\nabla_{\partial_i}\nabla_{\partial_j}+\nabla_{[\partial_i,\partial_j]})\d{f}(\partial_k)\\
+        &=(f_{;kij}-f_{;kji}).
+    \end{align*}
+    On the other hand, we have
+    \begin{align*}
+        (R(\partial_i,\partial_j)\d{f})(\partial_k)&=-\d{f}(R(\partial_i,\partial_j)\partial_k)\\
+        &=-\d{f}(R_{ijk}^l\partial_l)\\
+        &=-f_{;m}\d{x^m}(R_{ijk}^l\partial_l)\\
+        &=-f_{;l}R_{ijk}^l,
+    \end{align*}
+    hence the equality holds.
+\end{proof}
+
+\begin{proof}[Proof of Bochner formula]
+    Under geodesic normal coordinate we have the following calculation
+    \begin{align*}
+        \Delta\frac{1}{2}|\nabla f|^2&=\sum_{i,j}\left(\frac{1}{2}f^2_{;j}\right)_{;ii}\\
+        &=\sum_{i,j}(f_{;j}f_{;ji})_{;i}\\
+        &=\sum_{i,j}(f^2_{;ji}+f_{;j}f_{;jii})\\
+        &=\sum_{i,j}(f^2_{;ij}+f_{;j}f_{;iji})\quad\text{(Hessian is interchangeable)}\\
+        &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;j}(f_{;iij}-f_{;k}R_{jii}^k)\quad\text{(Ricci identity)}\\
+        &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;j}f_{;iij}+\sum_{i,j}f_{;k}R_{iji}^k\\
+        &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;iij}f_{;j}+\sum_{j}f_{;j}f_{;k}\Ric_j^k\\
+        &=|\nabla f|^2+\langle\Delta\nabla f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\qedhere
+    \end{align*}
+\end{proof}
