@@ -1,1 +1,175 @@
-\chapter{Heintze--Karcher Theorem}
+\chapter{Heintze--Karcher Comparison Theorem}
+
+Now we finished our tour in basic classes, and enter the topic classes.
+We first go through geometry of submanifolds rapidly, and then provide the Heintze--Karcher comparison theorem.
+After this, we give two applications:
+Alexandorv's theorem on constan mean curvature (CMC) hypersurface and Levy--Gromov isoperimetric inequality.
+
+\section{Geometry of Submanifolds}
+
+Let $f:\Sigma^k\hookrightarrow(M^n,g)$ be a immersion, equip $\Sigma$ with pullback metric $f^*g$ (still denoted by $g$ for simplicity).
+There is a decomposition $\nabla_XY=(\nabla_XY)^\top+(\nabla_XY)^\perp$ for $X,Y\in\mathfrak{X}(\Sigma)$, and simple observation shows
+\begin{prop}
+    Let $\nabla^\Sigma$ be the Levi--Civita connection on $\Sigma$, then $\nabla^\Sigma$ is given by
+    \[\nabla^\Sigma_XY=(\nabla_XY)^\top\]
+    for $X,Y\in\mathfrak{X}(\Sigma)$.
+\end{prop}
+
+Now we need the conception of normal bundle.
+\begin{defn}
+    Let $\Sigma$ be a submanifold of $M$, then for any $p\in\Sigma$, we have the decomposition
+    \[T_pM=T_p\Sigma+N_p\Sigma,\]
+    where $N_p\Sigma$ is the orthogonal complement of $T_p\Sigma$.
+    Then define the \textbf{normal bundle} of $\Sigma$ to be
+    \[N\Sigma=\bigsqcup_{p\in\Sigma}N_p\Sigma.\]
+    It is similar to tangent bundle to give differentiable structure on $N\Sigma$.
+    Let $\pi:N\Sigma\to\Sigma$ be the natural projection, we define
+    \[\Gamma(N\Sigma)=\{s:\Sigma\to N\Sigma|\ s\text{ smooth and }\pi\circ s=\mathrm{id}\}.\]
+\end{defn}
+
+Thus we can define the second fundamental form of a submanifold.
+\begin{defn}
+    Let $\Sigma$ be a submanifold of $M$, then we define the \textbf{second fundamental form} of $\Sigma$ to be
+    \begin{align*}
+        \II:\mathfrak{X}(\Sigma)\times\mathfrak{X}(\Sigma)&\to\Gamma(N\Sigma)\\
+        (X,Y)&\mapsto(\nabla_XY)^\perp.
+    \end{align*}
+\end{defn}
+
+Since $\II(X,Y)-\II(Y,X)=(\nabla_XY)^\perp-(\nabla_YX)^\perp=([X,Y])^\perp=0$, the second fundamental form is symmetric.
+Moreover, we can define the shape operator.
+\begin{defn}
+    For a fixed $\xi\in\Gamma(N\Sigma)$, we define
+    \begin{align*}
+        S_\xi:\mathfrak{X}(\Sigma)&\to\mathfrak{X}(\Sigma)\\
+        X&\mapsto\nabla_X\xi-(\nabla_X\xi)^\perp.
+    \end{align*}
+\end{defn}
+
+We have the following Weingarten formula.
+\begin{prop}
+    For $\xi\in\Gamma(N\Sigma)$ and $X,Y\in\mathfrak{X}(\Sigma)$, we have
+    \[\langle S_\xi(X),Y\rangle=\langle\II(X,Y),-\xi\rangle.\]
+    In particular, $S_\xi$ is symmetric.
+\end{prop}
+\begin{proof}
+    We have the calculation
+    \begin{align*}
+        \langle S_\xi(X),Y\rangle&=\langle\nabla_X\xi-(\nabla_X\xi)^\perp,Y\rangle\\
+        &=\langle\nabla_X\xi,Y\rangle-\langle(\nabla_X\xi)^\perp,Y\rangle\\
+        &=X\langle\xi,Y\rangle-\langle\xi,\nabla_XY\rangle\\
+        &=\langle-\xi,\nabla_XY\rangle=\langle-\xi,(\nabla_XY)^\perp\rangle\\
+        &=\langle\II(X,Y),-\xi\rangle.\qedhere
+    \end{align*}
+\end{proof}
+
+We mention here the Gauss--Codazzi equations.
+The proof is pure calculation, so we omit the proof and without having effect on our course.
+\begin{thm}
+    Let $\Sigma\subset M$ be Riemannian manifolds, then we have\\
+    Gauss equation
+    \[R^\Sigma(X,Y,Z,W)=R^M(X,Y,Z,W)+\langle\II(X,Z),\II(Y,W)\rangle-\langle\II(X,W),\II(Y,Z)\rangle;\]
+    Codazzi equation
+    \[R^M(X,Y,Z,\xi)=(\nabla_Y\II)(X,Z,\xi)-(\nabla_X\II)(Y,Z,\xi),\]
+    where $\II(X,Y,\xi)=\langle\II(X,Y),\xi\rangle$.
+\end{thm}
+
+Lastly, we define the mean curvature of a submanifold.
+\begin{defn}
+    Let $\Sigma$ be a submanifold of $M$, with second fundamental form $\II$.
+    Then the \textbf{mean curvature vector} of $\Sigma$ is defined as
+    \[\vec{H}(p)=\tr\II|_p=\sum_{i=1}^k\II(e_i,e_i),\]
+    where $\{e_i\}$ is an orthonormal basis at $p\in\Sigma$.
+
+    In particular, if $\Sigma$ is a hypersurface (i.e.\ of codimension $1$) and two-sided (i.e.\ there is a normal unit vector field $N\in\Gamma(N\Sigma)$), then we have
+    \[\vec{H}=HN,\ \II=hN,\]
+    where $H$ is a function on $\Sigma$, and $h$ is a symmetric $(0,2)$-tensor on $\Sigma$.
+\end{defn}
+
+\begin{eg}
+    Consider $\mathbb{S}^{n-1}\subset\mathbb{R}^n$.
+    Choose the inward unit normal vector field $N(x)=-x$, then we have
+    \[\nabla_XN=X(-x)=-X.\]
+    Hence we have $h_{ij}=\delta_{ij}$, and $H=n-1$.
+\end{eg}
+
+\section{The theorem}
+
+Before we state the theorem, we need some preparation.
+
+Let $\Sigma^{n-1}\subset(M^n,g)$ be an embedded closed hypersurface, with $\Ric^M\geq(n-1)Kg$.
+Let $\Omega$ be a region enclosed by $\Sigma$, and $N$ be an inward unit normal vector field on $\Sigma$.
+Consider for $p\in\Sigma$, let $\gamma_{N(p)}(t)=\exp_p(tN(p))$.
+Define
+\[\tau(p)=\sup\{t\in(0,+\infty)|\ d(\gamma_{N(p)},\Sigma)=t\},\]
+then Kasue showed in 1980s that
+\[\Cut(\Sigma)=\{q\in M|\ q=\exp_p(\tau(p)N(p))\}\]
+is of zero-measure.
+
+Then we state the theorem.
+\begin{thm}[Heintze--Karcher]
+    Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
+    Let $\Sigma\subset M$ be an embedded closed hypersurface that encloses $\Omega$.
+    Then
+    \[\Vol(\Omega)\leq\int_\Sigma\int_0^{\tau(p)}\left(\sn'_K(r)-\frac{H(p)}{n-1}\sn_K(r)\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p),\]
+    where
+    \[\sn_K(r)=\begin{cases}
+        \frac{1}{\sqrt{K}}\sin(\sqrt{K}r), & K>0,\\
+        r, & K=0,\\
+        \frac{1}{\sqrt{-K}}\sinh(\sqrt{-K}r), & K<0.
+    \end{cases}\]
+\end{thm}
+\begin{proof}
+    Under Fermi coordinate $(q,r)\mapsto\exp_p(rN(p))$, we have the metric $g=\d{r}^2+g_{\Sigma}$, and the volume form of $M$ can be written
+    \[\d\Vol_g(p,r)=\mathscr{J}(p,r)\d{r}\d\Vol_{\Sigma}(p).\]
+    Let $d_\Sigma$ be the distance function to $\Sigma$, then one can show similarly to Proposition~\ref{Laplace of distance function}~that
+    \[\Delta d_\Sigma(p,r)=\frac{\partial{}}{\partial{r}}\log\mathscr{J}(p,r).\]
+    Denote $\Phi=\mathscr{J}^{\frac{1}{n-1}}$, similarly there holds $\frac{\partial^2{}}{\partial{r^2}}\Phi(p,r)+K\Phi(p,r)\leq 0$ by $\Ric\geq(n-1)Kg$ and Bochner formula.
+    We need to calculate $\frac{\partial{}}{\partial{r}}\Phi(p,0)$.
+    We know that $\Phi(p,0)=1$, then we have (we omit $p$)
+    \begin{align*}
+        \Phi'(0)&=\frac{1}{n-1}\mathscr{J}^{\frac{2-n}{n-1}}(0)\mathscr{J}'(0)\\
+        &=\frac{1}{n-1}\mathscr{J}'(0)\\
+        &=\frac{1}{n-1}\left.\frac{\partial{}}{\partial{r}}\right|_{r=0}\sqrt{\det((g_\Sigma)_{ij})}\\
+        &=\frac{1}{n-1}\left(\frac{1}{2}\cdot\frac{1}{\sqrt{\det((g_r)_{ij})}}\det((g_r)_{ij})g^{kl}(\langle\nabla_{\partial r}\partial_l,\partial_k\rangle+\langle\partial_k,\nabla_{\partial r}\partial_l\rangle)\right)\\
+        &=\frac{1}{n-1}\left(\mathscr{J}(0)g^{kl}\langle\nabla_{\partial r}\partial_l,\partial_k\rangle\right)\\
+        &=\frac{1}{n-1}\left(g^{kl}\langle\nabla_{\partial l}\partial_r,\partial_k\rangle\right)\\
+        &=\frac{1}{n-1}\left(g^{kl}\langle S_{\partial r}(\partial l),\partial_k\rangle\right)\\
+        &=\frac{1}{n-1}\left(g^{kl}(-h_{lk})\right)\\
+        &=-\frac{1}{n-1}\tr{h}=-\frac{H(p)}{n-1}.
+    \end{align*}
+    Then let $\Phi_K$ satisfy $\frac{\partial^2{}}{\partial{r^2}}\Phi_K(p,r)+K\Phi_K(p,r)=0$, $\Phi_K(p,0)=0$, $\Phi_K'(p,0)=-\frac{1}{n-1}H(p)$.
+    Then we have
+    \[\Phi_K(p,r)=\sn_K'(r)-\frac{1}{n-1}H(p)\sn_K(r),\]
+    and the theorem follows from Sturm--Liouville comparison theorem.
+\end{proof}
+
+\begin{rem}
+    \begin{enumerate}[(1)]
+        \item More precise estimation can show that
+        \[\Vol(\Omega)\leq\int_\Sigma\int_0^{\tau(p)}\prod_{i=1}^{n-1}(\sn'_K(r)-\kappa_i(p)\sn_K(r))\d{r}\d\Vol_\Sigma(p),\]
+        where $\kappa_i$ are the principal curvatures.
+        This implies Heintze--Karcher's estimate by AM-GM inequality.
+        \item $\Phi_K^{n-1}(p,r)\d{r}\d\Vol_\Sigma$ cannot be regarded as volume form of $M_K$.
+    \end{enumerate}
+\end{rem}
+
+\section{Alexandorv's Theorem}
+
+The first application of Heintze--Karcher volume estimate is Alexandorv's theorem on CMC hypersurface.
+
+Before we start to discuss the theorem, we first need to discuss the first variation formula of area functional (we use area to denote the volume of a hypersurface), in order to introduce the notion of minimal surfaces.
+
+\begin{prop}[First variation formula for area]
+    Let $\varphi:\Sigma^k\hookrightarrow(M^n,g)$ is an isometric immersion.
+    Let area functional be
+    \[A(\Sigma^k)=\int_{\Sigma^k}\d{A_{\varphi^*g}}.\]
+    Let $f:\Sigma\times(-\varepsilon,\varepsilon)\to M$ be a family of immersions, denote $f(\Sigma,t)=\Sigma_t$.
+    Let $X:=\left.\frac{\partial{}}{\partial{t}}\right|_{t=0}f\in TM$ be the variation vector field, and suppose $\operatorname{supp}X$ is compact.
+    Then we have
+    \[\left.\frac{\d{}}{\d{t}}\right|_{t=0}A(\Sigma_t)=-\int_\Sigma\langle\vec{H},X\rangle\d{A_\Sigma}.\]
+\end{prop}
+\begin{proof}
+    Let $f^*_tg=g_t$.
+    Then we have
+\end{proof}

@@ -76,6 +76,97 @@ As a first application, we use Bochner formula to provide an alternative proof o
     Let $\Phi=\mathscr{J}^{1/(n-1)}$, then the equation~\eqref{eq in bishop}~is equivalent to
     \[\ddot{\Phi}+K\Phi\leq 0.\]
     However, let $\Phi_K=\mathscr{J}_K^{1/(n-1)}$, we have $\ddot{\Phi}_K+K\Phi_K=0$, and $\Phi_K(0)=\Phi(0)=0, \Phi'_K(0)=\Phi'(0)=1$.
-    Then by ODE theory, we have $\Phi/\Phi_K$ is nonincreasing.
+    Then by Sturm--Liouville comparison theorem, we have $\Phi/\Phi_K$ is nonincreasing.
     This derives $\mathscr{J}/\mathscr{J}_K$ is nonincreasing.
+\end{proof}
+
+\begin{rem}
+    From the original proof of Bishop's theorem, we know it is equivalent to Laplace comparison theorem.
+    Hence this argument also gives a new proof of Laplace comparison theorem.
+\end{rem}
+
+\section{Spliting Theorem}
+
+\begin{thm}[Cheeger--Gromoll]
+    Let $M$ be a complete Riemannian manifold with $\Ric\geq 0$.
+    Assume $M$ admits a line, that is, there is a unit speed geodesic $\gamma:\mathbb{R}\to M$ such that $d(\gamma(t),\gamma(s))=|t-s|$.
+    Then $M$ is isometric to $(\mathbb{R}\times N,g=\d{t^2}+g_N)$.
+\end{thm}
+
+\begin{cor}
+    Under the same assumption, $M$ is isometric to $\mathbb{R}^k\times N^{n-k}$, where $N^{n-k}$ does not contain any line.
+\end{cor}
+
+Before we start the proof, we first state some results from theory of partial differential equations.
+\begin{thm}[Maximum principle]
+    If $f\in H^2(M)$ satisfies $\Delta f\leq 0$ in weak sense, and $f$ attains its local minimum, then $f$ is constant.
+\end{thm}
+
+\begin{thm}[Weyl's lemma]
+    If $f\in H^2(M)$ satisfies $\Delta f=0$, then $f$ is smooth and harmonic.
+\end{thm}
+
+\begin{proof}
+    The proof uses the \emph{Busemann function}.
+    We first define and discuss some properties of Busemann function.
+
+    Fix $t\in\mathbb{R}$, for $x\in M$, define $b^+_t(x)=d(x,\gamma(t))-t$.
+    Then by triangle inequality, if $t_1>t_2$, then
+    \[b_{t_1}^+(x)-b_{t_2}^+(x)=d(x,\gamma(t_1))-d(x,\gamma(t_2))-(t_1-t_2)\leq 0,\]
+    hence $b_t^+$ is nonincreasing with respective to $t$.
+    Moreover, we have $b_t^+(x)\geq-d(x,\gamma(0))$ by triangle inequality, hence $b_t^+$ is bounded below.
+    Therefore, for any fixed $x$ the limit $\lim_{t\to+\infty}b^+_t(x)$ exists, and we defined it as $B^+(x)$.
+    Similarly we define $b^-_t(x)=d(x,\gamma(-t))-t$, and thus $B^-(x)=\lim_{t\to+\infty}b^-_t(x)$ is well-defined.
+
+    Now we discuss the properties of $B^+$ and $B^-$.
+    We first have
+    \[B^+(x)+B^-(x)=\lim_{t\to+\infty}(d(x,\gamma(t))+d(x,\gamma(-t))-2t)\geq 0,\]
+    and the equality holds when $x\in\gamma(\mathbb{R})$.
+    Moreover, by Laplace comparison theorme we have
+    \[\Delta b^+_t\leq\frac{n-1}{b^+_t+t},\]
+    hence for any test function $\varphi\in C^\infty_c(M)$, $\varphi\geq 0$ we have
+    \begin{align*}
+        \int_Mb^+_t\Delta\varphi&=\int_M\varphi\Delta b^+_t=\int_M\varphi\Delta d(x,\gamma(t))\\
+        &\leq\int_M\varphi\cdot\frac{n-1}{b^+_t+t}.
+    \end{align*}
+    By Lebesgue Dominated Convergence Theorem, let $t\to+\infty$ we have
+    \[\int_M\varphi\Delta B^+=\int_M B^+\Delta\varphi\leq 0,\]
+    then $\Delta B^+\leq 0$ in weak sense.
+    Similarly $\Delta B^-\leq 0$ in weak sense.
+    Hence $\Delta(B^++B^-)\leq 0$, $B^++B^-\geq 0$, and $(B^++B^-)(\gamma(t_0))=0$.
+    Then $B^++B^-$ satisfies the assumption of maximum principle, this implies $B^++B^-\equiv 0$ on $M$.
+    Thus $\Delta B^+=\Delta B^-=0$, by Weyl's lemma $B^+$ and $B^-$ are smooth and harmonic.
+    Moreover, since $|\nabla d(x,\gamma(t))|=1$ holds almost everywhere, we have $|B^+|=1$.
+    Using Bochner formula, we have
+    \[0=\Delta\frac{1}{2}|\nabla B^+|^2=|\nabla^2B^+|^2+\langle\nabla\Delta B^+,\nabla B^+\rangle+\langle\Ric(\nabla B^+),\nabla B^+\rangle\geq|\nabla^2B^+|^2,\]
+    hence $\nabla^2B^+=0$.
+
+    Now we come to the geometric part.
+    Let $s\in\mathbb{R}$ be a regular value of $B^+$, define $N=\{x\in M|\ B^+(x)=s\}$, then $N$ is a regular submanifold of codimension $1$ by Implicit Function Theorem.
+    Now we introduce the map
+    \begin{align*}
+        f:\mathbb{R}\times N&\to M\\
+        (t,p)&\mapsto\exp_{B^+(p)}(t\nabla B^+(p)).
+    \end{align*}
+    Since $\nabla^2B^+=0$, $\nabla B^+$ is parallel, so we can give $f^{-1}(x)$ of $x\in M$ by taking the integral curve of $\nabla f$ passing $x$ and trace back to $N$, ODE theory shows $f^{-1}$ is smooth.
+    Therefore $f$ is a diffeomorphism.
+    We need to show $f$ induces a product metric on $\mathbb{R}\times N$.
+    Let $(U,\varphi)$ be a local chart of $N$, with coordinate $(x^1,\cdots,x^{n-1})$, define the Fermi coordinate $(x^1,\cdots,x^{n-1},t)$ by
+    \[(x^1,\cdots,x^{n-1},t)\mapsto\exp_{\varphi^{-1}(x^1,\cdots,x^{n-1})}(t\nabla B^+(\varphi^{-1}(x^1,\cdots,x^{n-1}))).\]
+    Then we have
+    \[g\left(\frac{\partial{}}{\partial{t}},\frac{\partial{}}{\partial{t}}\right)=|\nabla B^+|^2=1,\]
+    and
+    \[g\left(\frac{\partial{}}{\partial{t}},\frac{\partial{}}{\partial{x^i}}\right)=g\left(\nabla B^+,\frac{\partial{}}{\partial{x^i}}\right)=0\]
+    for $i=1,\cdots,n-1$.
+    We need to show $g_{ij}=g(\partial_i,\partial_j)$ is independent from $t$, that is,
+    \begin{align*}
+        \frac{\partial{}}{\partial{t}}g\left(\frac{\partial{}}{\partial{x^i}},\frac{\partial{}}{\partial{x^j}}\right)=0.
+    \end{align*}
+    However, since $\nabla B^+$ is parallel, we have
+    \begin{align*}
+        \frac{\partial{}}{\partial{t}}g\left(\frac{\partial{}}{\partial{x^i}},\frac{\partial{}}{\partial{x^j}}\right)&=g\left(\nabla_{\frac{\partial{}}{\partial{t}}}\frac{\partial{}}{\partial{x^i}},\frac{\partial{}}{\partial{x^j}}\right)+g\left(\nabla_{\frac{\partial{}}{\partial{t}}}\frac{\partial{}}{\partial{x^j}},\frac{\partial{}}{\partial{x^i}}\right)\\
+        &=g\left(\nabla_{\frac{\partial{}}{\partial{x^i}}}(\nabla B^+),\frac{\partial{}}{\partial{x^j}}\right)+g\left(\nabla_{\frac{\partial{}}{\partial{x^j}}}(\nabla B^+),\frac{\partial{}}{\partial{x^i}}\right)\\
+        &=0.
+    \end{align*}
+    This finishes our proof.
 \end{proof}
