@@ -51,3 +51,31 @@ We first need a lemma.
         &=|\nabla f|^2+\langle\Delta\nabla f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\qedhere
     \end{align*}
 \end{proof}
+
+As a first application, we use Bochner formula to provide an alternative proof of Bishop's theorem (Theorem~\ref{Bishop}).
+\begin{proof}[Alternative proof of Theorem~\ref{Bishop}]
+    We apply Bochner formula on distance function $d_p$.
+    Notice that $|\nabla d_p|=1$, thus we have
+    \[0=|\nabla^2d_p|^2+\langle\nabla\Delta d_p,\nabla d_p\rangle+\langle\Ric(\nabla d_p),\nabla d_p\rangle.\]
+    Now we use the geodesic polar coordinate.
+    First let $L$ by the corresponding linear transformation of $\nabla^2d_p$, by Proposition~\ref{hess dp in tangential}~and Proposition~\ref{hess dp in other}, we know that $L$ has $n-1$ nonzero eigenvalue, say $\lambda_1,\cdots,\lambda_{n-1}$.
+    Then by Cauchy--Schwartz inequality, we have
+    \begin{align*}
+        |\nabla^2d_p|^2&=\tr(L\circ L)=\sum_{k=1}^{n-1}\lambda^2_k\\
+        &\geq\frac{1}{n-1}\left(\sum_{k=1}^{n-1}\lambda_k\right)^2=\frac{1}{n-1}(\tr L)^2\\
+        &=\frac{1}{n-1}(\Delta d_p)^2.
+    \end{align*}
+    Next, we notice that $\nabla d_p=\partial_r$, hence
+    \[\langle\nabla\Delta d_p,\nabla d_p\rangle=\langle\partial_r(\Delta d_p)\partial_r,\partial_r\rangle=\frac{\partial(\Delta d_p)}{\partial{r}}.\]
+    Moreover, by the assumption, we have
+    \[\langle\Ric(\nabla d_p),\nabla d_p\rangle\geq(n-1)K\langle\nabla d_p,\nabla d_p\rangle=(n-1)K.\]
+    Add three equalities together, and since $\Delta d_p=\partial_r(\log\mathscr{J})$, we have
+    \begin{equation}
+        \frac{\partial^2{}}{\partial{r^2}}(\log\mathscr{J})+\frac{1}{n-1}\left(\frac{\partial{}}{\partial{r}}\log\mathscr{J}\right)+(n-1)K\leq 0.\label{eq in bishop}
+    \end{equation}
+    Let $\Phi=\mathscr{J}^{1/(n-1)}$, then the equation~\eqref{eq in bishop}~is equivalent to
+    \[\ddot{\Phi}+K\Phi\leq 0.\]
+    However, let $\Phi_K=\mathscr{J}_K^{1/(n-1)}$, we have $\ddot{\Phi}_K+K\Phi_K=0$, and $\Phi_K(0)=\Phi(0)=0, \Phi'_K(0)=\Phi'(0)=1$.
+    Then by ODE theory, we have $\Phi/\Phi_K$ is nonincreasing.
+    This derives $\mathscr{J}/\mathscr{J}_K$ is nonincreasing.
+\end{proof}
