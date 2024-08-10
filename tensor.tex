@@ -270,3 +270,11 @@ Now we introduce some differential operators.
     Let $M$ be a differentiable manifold, $X\in\mathfrak{X}(M)$.
     Then we define the \textbf{divergence} of $X$ to be $\tr(Y\mapsto\nabla_YX)$.
 \end{defn}
+
+\begin{thm}[Divergence theorem]
+    Let $\Omega$ be a region in $\mathbb{R}^n$ with $\Sigma:=\partial\Omega$ smooth.
+    Let $X\in\mathfrak{X}(\Omega)$, then we have
+    \[\int_\Sigma\langle X,N\rangle\d{A}=\int_\Omega\div{X}\d\Vol,\]
+    where $N$ is the outward unit normal vector field of $\Sigma$.
+\end{thm}
+Please refer to any book on calculus for the proof.
