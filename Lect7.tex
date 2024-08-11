@@ -7,7 +7,7 @@ Alexandorv's theorem on constan mean curvature (CMC) hypersurface and Levy--Grom
 
 \section{Geometry of Submanifolds}
 
-Let $f:\Sigma^k\hookrightarrow(M^n,g)$ be a immersion, equip $\Sigma$ with pullback metric $f^*g$ (still denoted by $g$ for simplicity).
+Let $f:\Sigma^k\hookrightarrow(M^n,g)$ be an immersion, equip $\Sigma$ with pullback metric $f^*g$ (still denoted by $g$ for simplicity).
 There is a decomposition $\nabla_XY=(\nabla_XY)^\top+(\nabla_XY)^\perp$ for $X,Y\in\mathfrak{X}(\Sigma)$, and simple observation shows
 \begin{prop}
     Let $\nabla^\Sigma$ be the Levi--Civita connection on $\Sigma$, then $\nabla^\Sigma$ is given by
@@ -93,6 +93,11 @@ Lastly, we define the mean curvature of a submanifold.
     Hence we have $h_{ij}=\delta_{ij}$, and $H=n-1$.
 \end{eg}
 
+\begin{defn}
+    Let $\Sigma\subset M$ be an two-sided hypersurface, $N$ be a unit normal vector field of $\Sigma$.
+    Then the eigenvalues of $S_N$ are called \textbf{principal curvatures}.
+\end{defn}
+
 \section{The theorem}
 
 Before we state the theorem, we need some preparation.
@@ -143,11 +148,12 @@ Then we state the theorem.
     Then we have
     \[\Phi_K(p,r)=\sn_K'(r)-\frac{1}{n-1}H(p)\sn_K(r),\]
     and the theorem follows from Sturm--Liouville comparison theorem.
-    If the equality holds, we trace back where $\ddot{\Phi}+\Phi=0$ holds.
-    This is in the argument at Bochner formula which asserts that $\nabla^2d_\Sigma(p,r)$ has equal eigenvalues.
-    However, since musical isomorphism commutes with covariant derivative, we just need to check
-    \[\nabla_X(\nabla d_\Sigma)=\nabla_X\partial_r=S_{\partial_r}(X),\]
-    that is, the eigenvalues of second fundamental form of $\partial\Omega$ is equal.
+    If the equality holds, we trace back where $\ddot{\Phi}+K\Phi=0$ holds.
+    This is in the argument at Bochner formula part which asserts that $\nabla^2d_\Sigma(p,r)$ has equal eigenvalues.
+    However, since musical isomorphism commutes with covariant derivative, we just need to check bilinear form
+    \[\langle\nabla_X(\nabla d_\Sigma),Y\rangle=\langle\nabla_X\partial_r,Y\rangle=\langle S_{\partial_r}(X),Y\rangle=-h(X,Y)\]
+    for $X,Y\in\mathfrak{X}(\Sigma)$.
+    That is, the eigenvalues of second fundamental form of $\partial\Omega$ is equal.
     Hence $\partial\Omega$ is umbilical.
 \end{proof}
 
@@ -276,8 +282,8 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     We have
     \begin{align*}
         nH\Vol(\Omega)&=H\int_\Omega n &\\
-        &=\int_\Omega\div\nolimits_{\mathbb{R}^n}x &\\
-        &=-\int_\Sigma\langle x,N\rangle & \text{(Divergence theorem)}\\
+        &=H\int_\Omega\div\nolimits_{\mathbb{R}^n}x &\\
+        &=-H\int_\Sigma\langle x,N\rangle & \text{(Divergence theorem)}\\
         &=(n-1)|\Sigma|. & \text{(Minkowski's formula)}
     \end{align*}
     Then $\Vol(\Omega)=\frac{n-1}{n}\int_\Sigma\frac{1}{H}$.
@@ -290,3 +296,116 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     A first counterexample was given by Wente in 1986, called Wente's torus.
     Kapouleas constructed CMC immersions for any topology in 1990.
 \end{rem}
+
+\section{Levy--Gromov Isoperimetric Inequality}
+
+We introduce another application of Heintze--Karcher volume estimate, which is the isoperimetric inequality of Levy and Gromov.
+
+We first recall isoperimetric problem.
+In $\mathbb{R}^n$, among $C^1$ bounded domain with fixed volume, round ball minimizes the boundary area.
+Schmidt proved in 1930s, that in $\mathbb{S}^n$ the same result holds.
+
+First we need a conception.
+\begin{defn}
+    Let $(M^n,g)$ be a Riemannian manifold, $v\in(0,\Vol(M))$.
+    Then we define the \textbf{isoperimetric profile} to be
+    \[I_M(v)=\inf\{A(\partial\Omega)|\ \Omega\subset M^n,\ \Vol(\Omega)=v\}.\]
+\end{defn}
+\begin{eg}
+    The isoperimetric profile of $\mathbb{R}^n$ is easy, one can calculate
+    \[I_{\mathbb{R}^n}(v)=n|B_1|^{1/n}v^{(n-1)/n}.\]
+\end{eg}
+
+By abuse of notation, we have the following geometric quantity:
+Take $\beta\in(0,1]$, consider $B(\beta)$ be a geodesic ball on $\mathbb{S}^n$ such that $\Vol(B(\beta))=\beta\Vol(\mathbb{S}^n)$.
+Then we denote
+\[I(\beta)=\frac{A(\partial B(\beta))}{\Vol(\mathbb{S}^n)}.\]
+
+Now we can state Levy and Gromov's isometric inequality.
+\begin{thm}[Levy--Gromov]\label{Levy Gromov}
+    Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg>0$.
+    Let $\Omega\subset M$ be a bounded region such that $\Vol(\Omega)=\beta\Vol(M)$.
+    Then
+    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq I(\beta)=\frac{A(\partial B(\beta))}{\Vol(\mathbb{S}^n)}.\]
+    That is, $I_M(\beta)\geq I(\beta)$.
+    The equality holds if and only if $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
+\end{thm}
+
+\begin{rem}\label{rem under L-G}
+    Befoe proving the theorem, we need some remark.
+    Let $\Omega$ be an isoperimetric region, that is, $\Omega$ minimizes $A(\partial\Omega)$.
+    We want to ask its existence and regularity problems.
+    Firstly, since $M$ is positively curved, Bonnet--Myers theorem implies $M$ is compact, and calculus of variation shows isoperimetric region exists.
+    Secondly, geometric measure theory shows $H_{\partial\Omega}$ is constant for regular points.
+    These discussions are far beyond our scope, so we just mention them here.
+\end{rem}
+
+\begin{proof}[Proof of Theorem~\ref{Levy Gromov}]
+    As usual, we scale the metric to let $K=1$.
+    Compare $M$ to $M_1$, we have
+    \[0\leq\Phi(r)\leq\cos{r}-\frac{H_0}{n-1}\sin{r}.\]
+    Hence the distance function must satisfy
+    \[\tau(p)\leq\cot^{-1}\left(\frac{H_0}{n-1}\right)=:r_0.\]
+    Then by Heintze--Karcher volume estimate, we have
+    \[\Vol(\Omega)\leq\int_{\partial\Omega}\int_0^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\d\Vol_{\partial\Omega}.\]
+    The integrand of outer integral is a constant by Remark~\ref{rem under L-G}, hence we have
+    \begin{align*}
+        \Vol(\Omega)&\leq A(\partial\Omega)\int_{0}^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\\
+        &=A(\partial\Omega)\frac{\Vol(B_{r_0})}{A(\partial B_{r_0})},
+    \end{align*}
+    where $B_{r_0}$ is the geodesic ball of radius $r_0$ in $\mathbb{S}^n$.
+    Set $a(r_0)=\frac{A(\partial B_{r_0})}{\Vol(B_{r_0})}$, the above inequality can be written
+    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq\beta a(r_0).\]
+    Same work on $\Omega^c$ shows
+    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq(1-\beta)a(\pi-r_0).\]
+    Hence
+    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq\inf\{\beta a(r_0),(1-\beta)a(\pi-r_0)\},\]
+    and monotonicity shows the infimum is attained when $\beta a(t_0)=(1-\beta)a(\pi-t_0)$ for some $t_0$, and in this situation we can calculate that $\beta a(r_0)=I(\beta)$.
+    Hence we have the inequality
+    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq I(\beta).\]
+    If the equality holds, then the equality holds in Heintze--Karcher volume estimate, this shows $M$ is isometric to $\mathbb{S}^n$.
+\end{proof}
+
+\begin{rem}
+    Bayle gave an alternative proof in his doctoral thesis in 2004.
+    He uses the function
+    \[f(v)=I^{\frac{n}{n-1}}_M(v)\]
+    and uses second variation formula for area functional to obtain
+    \[f''(v)\leq nf(v)^{-\frac{n-2}{n}}.\]
+    Moreover, if $M=\mathbb{S}^n$, then the equality holds.
+    Thus one can use comparison theorem in ODE theory to obtain the result.
+
+    Klatag (2017) applies this method to metric measure space $\mathrm{RCD}(K,n)$ using optimal transport.
+\end{rem}
+
+As a finale, we quote some remarkable works of Brendle.
+
+\begin{thm}[Brendle]
+    If $M$ is a noncompact, complete Riemannian manifold with $\Ric\geq 0$.
+    Assume $M$ has Euclidean volume growth.
+    Let $\Omega\subset M$ bounded, then
+    \[A(\partial\Omega)^{\frac{n}{n-1}}\geq n|B_1|^{1/n}\Vol(\Omega)^{\frac{n-1}{n}}\theta^{1/n},\]
+    where
+    \[\theta=\lim_{r\to\infty}\frac{\Vol(B_r)}{|B_1|r^n}\]
+    is the asymptotic volume ratio of $M$.
+    The equality holds if and only if $\Omega\subset\mathbb{R}^n$.
+\end{thm}
+
+Cabre used ABP (Alexandorv--Bakelman--Pucci) method to prove isoperimetric inequality in $\mathbb{R}^n$, Brendle generalized Cabre's proof to the following theorem.
+
+\begin{thm}[Brendle]
+    Let $\Sigma^n\subset\mathbb{R}^{n+k}$ be a minimal submanifold.
+    Then
+    \[|\partial\Sigma|\geq n|B_1|^{1/n}\Vol(\Sigma)^{\frac{n-1}{n}}\]
+    when $k\leq 2$.
+    The equality holds if and only if $\Sigma\cong\mathbb{B}^n\subset\mathbb{R}^n$.
+\end{thm}
+
+Our last theorem is
+
+\begin{thm}[Brendle]
+    We have
+    \[\int_\Sigma H+|\partial\Sigma|\geq n|B_1|^{1/n}|\Sigma|^\frac{n-1}{n}.\]
+\end{thm}
+
+Please refer to \emph{The Isoperimetric Inequality} (Brendle--Eichmair, 2024) for detailed discussion.
