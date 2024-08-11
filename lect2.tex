@@ -12,9 +12,9 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 
 \section{Riemannian Metric}
 
-\begin{defn}
+\begin{defn}\index{metric}
     Let $M^n$ be a differentiable manifold.
-    A \textbf{Riemannian metric} on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
+    A \textbf{metric} (or Riemannian metric) on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
     \begin{enumerate}
         \item $g_p(X,Y)=g_p(Y,X)$;
         \item $g_p(X,X)\geq 0$, $g_p(X,X)=0\iff X=0$.
@@ -26,7 +26,7 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
     \[g=g_{ij}\d{x^i}\otimes\d{x^j}\]
 \end{defn}
 
-\begin{prop}
+\begin{prop}\index{metric!existence}
     Any differentiable manifold $M$ admits a Riemannian metric.
 \end{prop}
 \begin{proof}
@@ -65,7 +65,7 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 
 \section{Metric Structure}
 
-\begin{defn}
+\begin{defn}\index{distance}
     Let $\gamma:[0,1]\to M$ be a curve, define its \textbf{length} to be
     \begin{align*}
         L(\gamma)&:=\int_0^1|\dot{\gamma}(t)|\d{t}\\
@@ -107,7 +107,7 @@ For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd
 
 \section{Levi--Civita Connection}
 
-\begin{defn}(Affine connection)
+\begin{defn}(Affine connection)\index{affine connection}
     Let $M$ be a differentiable manifold, if the operator $\nabla:\mathfrak{X}(M)\times\mathfrak{X}(M)\to\mathfrak{X}(M)$, denoting $\nabla_XY$, satisfies
     \begin{enumerate}[(1)]
         \item $\nabla_{(fX+gY)}Z=f\nabla_XZ+g\nabla_YZ$ for $f,g\in C^\infty(M)$,
@@ -117,7 +117,7 @@ For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd
     then $\nabla$ is called an \textbf{affine connection} on $M$.
 \end{defn}
 
-\begin{defn}
+\begin{defn}\index{Levi--Civita connection}
     An affine connection $\nabla$ on Riemannian manifold $(M,g)$ is called \textbf{Levi--Civita connection} if it satisfies
     \begin{itemize}
         \item[(LC1)] $Xg(Y,Z)=g(\nabla_XY,Z)+g(Y,\nabla_XZ)$,
@@ -125,7 +125,7 @@ For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd
     \end{itemize}
 \end{defn}
 
-\begin{prop}
+\begin{prop}\index{Levi--Civita connection!unique existence}
     On a Riemannian manifold $(M,g)$ there exists a unique Levi--Civita connection.
 \end{prop}
 \begin{proof}
@@ -138,7 +138,7 @@ For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd
 \end{proof}
 
 We check Levi--Civita connection locally.
-First we introduce the Christoffel symbols:
+First we introduce the Christoffel symbols:\index{Christoffel symbol}
 \[\nabla_{\frac{\partial{}}{\partial{x^i}}}\frac{\partial{}}{\partial{x^j}}=\Gamma^k_{ij}\frac{\partial{}}{\partial{x^k}}\]
 Then (LC1) is equivalent to
 \[\frac{\partial{g_{ij}}}{\partial{x^k}}=\Gamma^l_{ki}g_{lj}+\Gamma^l_{kj}g_{li}\]
@@ -158,7 +158,7 @@ This shows that $\nabla_XY(p)$ depends only on $X(p)$ and the value of $Y$ along
 Using this, we can introduce the covariant derivative of vector fields along curves.
 
 \section{Covariant Derivative}
-\begin{defn}
+\begin{defn}\index{covariant derivative}
     Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
     Then define
     \[\frac{\nabla}{\d{t}}Y:=\nabla_{\dot{\gamma}(t)}Y\]
@@ -173,12 +173,12 @@ Choose a local chart $(U,\varphi)$, let $Y=Y^i\frac{\partial{}}{\partial{x^i}}$,
     \end{aligned}\label{parallel}
 \end{equation}
 
-\begin{defn}[Parallel transport]
+\begin{defn}[Parallel transport]\index{parallel transport}
     Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
     If $\nabla Y/\d{t}=0$, then we call $Y$ is \textbf{parallel} along $\gamma$.
 \end{defn}
 
-\begin{prop}
+\begin{prop}\label{parallel transport!existence}
     Given a curve $\gamma:[0,1]\to M$ and an initial vector $Y_{\gamma(0)}\in T_{\gamma(0)}M$, then there exists a unique parallel vector field along $\gamma$ with initial vector $Y_{\gamma(0)}$.
 \end{prop}
 \begin{proof}

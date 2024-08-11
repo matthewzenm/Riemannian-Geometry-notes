@@ -15,6 +15,9 @@
 \usepackage{titlesec}
 % \titleformat{\chapter}[frame]{\huge\bfseries}{Chapter\,\thechapter}{1em}{}{}
 
+\usepackage{imakeidx}
+\makeindex[intoc]
+
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
 \newtheorem{eg}{Example}[chapter]
@@ -27,6 +30,7 @@
 \theoremstyle{remark}
 \newtheorem{rem}[eg]{Remark}
 \newtheorem*{ques}{Question}
+\newtheorem*{pro}{Problem}
 
 \DeclareMathOperator{\Span}{Span}
 \DeclareMathOperator{\Isom}{Isom}
@@ -54,6 +58,7 @@
 
 \frontmatter
 \tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
 % \input{preface.tex}
 
 \mainmatter
@@ -64,9 +69,10 @@
 \input{lect5.tex}
 \input{lect6.tex}
 \input{Lect7.tex}
-% \input{lect8.tex}
+\input{lect8.tex}
 
 \appendix
 \input{tensor.tex}
+\printindex
 
 \end{document}

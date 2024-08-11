@@ -4,13 +4,13 @@ We will give another proof of Laplace comparison theorem using Bochner formula, 
 
 \section{Bochner Formula}
 
-\begin{thm}[Bochner formula]
+\begin{thm}[Bochner formula]\index{Bochner formula}
     Let $M$ be a Riemannian manifold, $f\in C^\infty(M)$. Then we have
     \[\Delta\frac{1}{2}|\nabla f|^2=|\nabla^2 f|^2+\langle\nabla\Delta f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\]
 \end{thm}
 
 We first need a lemma.
-\begin{lem}
+\begin{lem}\index{Ricci identity!in normal coordinate}
     Under geodesic normal coordinate around $p$, the Ricci identity (Proposition~\ref{Ricci identity}) of $1$-form is equivalent to
     \[f_{;kij}-f_{;kji}=-f_{;l}R^l_{ijk},\]
     where $f_{;i}$ means $\partial_if$.
@@ -87,7 +87,7 @@ As a first application, we use Bochner formula to provide an alternative proof o
 
 \section{Spliting Theorem}
 
-\begin{thm}[Cheeger--Gromoll]\label{Cheeger Gromoll}
+\begin{thm}[Cheeger--Gromoll]\label{Cheeger Gromoll}\index{theorem!Cheeger--Gromoll}\index{theorem!splitting}
     Let $M$ be a complete Riemannian manifold with $\Ric\geq 0$.
     Assume $M$ admits a line, that is, there is a unit speed geodesic $\gamma:\mathbb{R}\to M$ such that $d(\gamma(t),\gamma(s))=|t-s|$.
     Then $M$ is isometric to $(\mathbb{R}\times N,g=\d{t^2}+g_N)$.
@@ -98,11 +98,11 @@ As a first application, we use Bochner formula to provide an alternative proof o
 \end{cor}
 
 Before we start the proof, we first state some results from theory of partial differential equations.
-\begin{thm}[Maximum principle]
+\begin{thm}[Maximum principle]\index{theorem!maximum principle}
     If $f\in H^2(M)$ satisfies $\Delta f\leq 0$ in weak sense, and $f$ attains its local minimum, then $f$ is constant.
 \end{thm}
 
-\begin{thm}[Weyl's lemma]
+\begin{thm}[Weyl's lemma]\index{lemma!Weyl}
     If $f\in H^2(M)$ satisfies $\Delta f=0$, then $f$ is smooth and harmonic.
 \end{thm}
 

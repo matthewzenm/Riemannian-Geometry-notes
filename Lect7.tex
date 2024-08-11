@@ -9,14 +9,14 @@ Alexandorv's theorem on constan mean curvature (CMC) hypersurface and Levy--Grom
 
 Let $f:\Sigma^k\hookrightarrow(M^n,g)$ be an immersion, equip $\Sigma$ with pullback metric $f^*g$ (still denoted by $g$ for simplicity).
 There is a decomposition $\nabla_XY=(\nabla_XY)^\top+(\nabla_XY)^\perp$ for $X,Y\in\mathfrak{X}(\Sigma)$, and simple observation shows
-\begin{prop}
+\begin{prop}\index{Levi--Civita connection!of submanifold}
     Let $\nabla^\Sigma$ be the Levi--Civita connection on $\Sigma$, then $\nabla^\Sigma$ is given by
     \[\nabla^\Sigma_XY=(\nabla_XY)^\top\]
     for $X,Y\in\mathfrak{X}(\Sigma)$.
 \end{prop}
 
 Now we need the conception of normal bundle.
-\begin{defn}
+\begin{defn}\index{normal bundle}
     Let $\Sigma$ be a submanifold of $M$, then for any $p\in\Sigma$, we have the decomposition
     \[T_pM=T_p\Sigma+N_p\Sigma,\]
     where $N_p\Sigma$ is the orthogonal complement of $T_p\Sigma$.
@@ -28,7 +28,7 @@ Now we need the conception of normal bundle.
 \end{defn}
 
 Thus we can define the second fundamental form of a submanifold.
-\begin{defn}
+\begin{defn}\index{second fundamental form}
     Let $\Sigma$ be a submanifold of $M$, then we define the \textbf{second fundamental form} of $\Sigma$ to be
     \begin{align*}
         \II:\mathfrak{X}(\Sigma)\times\mathfrak{X}(\Sigma)&\to\Gamma(N\Sigma)\\
@@ -38,7 +38,7 @@ Thus we can define the second fundamental form of a submanifold.
 
 Since $\II(X,Y)-\II(Y,X)=(\nabla_XY)^\perp-(\nabla_YX)^\perp=([X,Y])^\perp=0$, the second fundamental form is symmetric.
 Moreover, we can define the shape operator.
-\begin{defn}
+\begin{defn}\index{shape operator}
     For a fixed $\xi\in\Gamma(N\Sigma)$, we define
     \begin{align*}
         S_\xi:\mathfrak{X}(\Sigma)&\to\mathfrak{X}(\Sigma)\\
@@ -47,7 +47,7 @@ Moreover, we can define the shape operator.
 \end{defn}
 
 We have the following Weingarten formula.
-\begin{prop}
+\begin{prop}\index{Weingarten formula}
     For $\xi\in\Gamma(N\Sigma)$ and $X,Y\in\mathfrak{X}(\Sigma)$, we have
     \[\langle S_\xi(X),Y\rangle=\langle\II(X,Y),-\xi\rangle.\]
     In particular, $S_\xi$ is symmetric.
@@ -65,7 +65,7 @@ We have the following Weingarten formula.
 
 We mention here the Gauss--Codazzi equations.
 The proof is pure calculation, so we omit the proof and without having effect on our course.
-\begin{thm}
+\begin{thm}\index{theorem!Gauss--Codazzi}
     Let $\Sigma\subset M$ be Riemannian manifolds, then we have\\
     Gauss equation
     \[R^\Sigma(X,Y,Z,W)=R^M(X,Y,Z,W)+\langle\II(X,Z),\II(Y,W)\rangle-\langle\II(X,W),\II(Y,Z)\rangle;\]
@@ -75,7 +75,7 @@ The proof is pure calculation, so we omit the proof and without having effect on
 \end{thm}
 
 Lastly, we define the mean curvature of a submanifold.
-\begin{defn}
+\begin{defn}\index{mean curvature}
     Let $\Sigma$ be a submanifold of $M$, with second fundamental form $\II$.
     Then the \textbf{mean curvature vector} of $\Sigma$ is defined as
     \[\vec{H}(p)=\tr\II|_p=\sum_{i=1}^k\II(e_i,e_i),\]
@@ -93,7 +93,7 @@ Lastly, we define the mean curvature of a submanifold.
     Hence we have $h_{ij}=\delta_{ij}$, and $H=n-1$.
 \end{eg}
 
-\begin{defn}
+\begin{defn}\index{principal curvature}
     Let $\Sigma\subset M$ be an two-sided hypersurface, $N$ be a unit normal vector field of $\Sigma$.
     Then the eigenvalues of $S_N$ are called \textbf{principal curvatures}.
 \end{defn}
@@ -112,7 +112,7 @@ then Kasue showed in 1980s that
 is of zero-measure.
 
 Then we state the theorem.
-\begin{thm}[Heintze--Karcher]
+\begin{thm}[Heintze--Karcher]\index{theorem!Heintze--Karcher}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
     Let $\Sigma\subset M$ be an embedded closed hypersurface that encloses $\Omega$.
     Then
@@ -173,8 +173,8 @@ The first application of Heintze--Karcher volume estimate is Alexandorv's theore
 
 Before we start to discuss the theorem, we first need to discuss the first variation formula of area functional (we use area to denote the volume of a submanifold), in order to introduce the notion of minimal submanifolds.
 
-\begin{prop}[First variation formula for area]
-    \footnote{This version is different from which on class. We introduce the notion of normal variation, instead of $\operatorname{supp}X$ being compact.}
+\begin{prop}[First variation formula for area]\index{first variation formula!for area}
+    \footnote{This version is different from which on class. We introduce the notion of proper variation, instead of $\operatorname{supp}X$ being compact.}
     Let $\varphi:\Sigma^k\hookrightarrow(M^n,g)$ is an isometric immersion.
     Let area functional be
     \[A(\Sigma^k)=\int_{\Sigma^k}\d{A_{\varphi^*g}}.\]
@@ -207,7 +207,7 @@ Before we start to discuss the theorem, we first need to discuss the first varia
 \end{cor}
 
 Thus we can have the notion of minimal submanifold.
-\begin{defn}
+\begin{defn}\index{minimal submanifold}
     Let $\Sigma$ be a submanifold of $M$, if $\Sigma$ has constant mean curvature $0$, then $\Sigma$ is called a \textbf{minimal submanifold}.
 \end{defn}
 
@@ -216,7 +216,7 @@ Thus we can have the notion of minimal submanifold.
 \end{rem}
 
 Now we state Alexandorv's theorem.
-\begin{thm}[Alexandorv]
+\begin{thm}[Alexandorv]\index{theorem!Alexandorv}
     Any embedded closed constant mean curvature (CMC) hypersurface in $\mathbb{R}^n$ is a round sphere.
 \end{thm}
 
@@ -227,7 +227,7 @@ Now we state Alexandorv's theorem.
 
 Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formula as preparation.
 
-\begin{thm}[Ros]
+\begin{thm}[Ros]\index{theorem!Ros}
     Let $(M,g)$ be a compact Riemannian manifold with $\Ric\geq 0$.
     Let $\Sigma=\partial M$, and assume $\Sigma$ is a CMC submanifold with $H_\Sigma>0$.
     Then
@@ -249,7 +249,7 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     The equality holds if and only if the equality in Heintze--Karcher theorem holds, that is, $\Sigma$ is umbilical. 
 \end{proof}
 
-\begin{thm}[Minkowski's formula]
+\begin{thm}[Minkowski's formula]\index{Minkowski's formula}
     Let $\Sigma^{n-1}\hookrightarrow\mathbb{R}^n$ be a closed hypersurface. Then
     \[\int_\Sigma(H\langle x,N\rangle+n-1)\d{A}=0,\]
     where $x$ is the position function, and $N$ is the inward unit normal vector field.
@@ -322,7 +322,7 @@ Then we denote
 \[I(\beta)=\frac{A(\partial B(\beta))}{\Vol(\mathbb{S}^n)}.\]
 
 Now we can state Levy and Gromov's isometric inequality.
-\begin{thm}[Levy--Gromov]\label{Levy Gromov}
+\begin{thm}[Levy--Gromov]\label{Levy Gromov}\index{theorem!Levy--Gromov}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg>0$.
     Let $\Omega\subset M$ be a bounded region such that $\Vol(\Omega)=\beta\Vol(M)$.
     Then
@@ -380,7 +380,7 @@ Now we can state Levy and Gromov's isometric inequality.
 
 As a finale, we quote some remarkable works of Brendle.
 
-\begin{thm}[Brendle]
+\begin{thm}[Brendle]\index{theorem!Brendle}
     If $M$ is a noncompact, complete Riemannian manifold with $\Ric\geq 0$.
     Assume $M$ has Euclidean volume growth.
     Let $\Omega\subset M$ bounded, then
@@ -393,7 +393,7 @@ As a finale, we quote some remarkable works of Brendle.
 
 Cabre used ABP (Alexandorv--Bakelman--Pucci) method to prove isoperimetric inequality in $\mathbb{R}^n$, Brendle generalized Cabre's proof to the following theorem.
 
-\begin{thm}[Brendle]
+\begin{thm}[Brendle]\index{theorem!Brendle}
     Let $\Sigma^n\subset\mathbb{R}^{n+k}$ be a minimal submanifold.
     Then
     \[|\partial\Sigma|\geq n|B_1|^{1/n}\Vol(\Sigma)^{\frac{n-1}{n}}\]
@@ -403,7 +403,7 @@ Cabre used ABP (Alexandorv--Bakelman--Pucci) method to prove isoperimetric inequ
 
 Our last theorem is
 
-\begin{thm}[Brendle]
+\begin{thm}[Brendle]\index{theorem!Brendle}
     We have
     \[\int_\Sigma H+|\partial\Sigma|\geq n|B_1|^{1/n}|\Sigma|^\frac{n-1}{n}.\]
 \end{thm}

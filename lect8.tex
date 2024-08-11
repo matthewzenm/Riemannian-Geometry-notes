@@ -1,1 +1,239 @@
 \chapter{A Little Thing on Bernstein Problem}
+In our last topic class we discuss the Bernstein problem for minimal surfaces.
+We first introduce some motivation for the problem.
+
+Let $u:\Omega\subset\mathbb{R}^{n-1}\to\mathbb{R}$ be a function, then its graph $(x^1,\cdots,x^{n-1},u(x^1,\cdots,x^{n-1}))$ is a minimal surface if and only if it satisfies the following \textbf{minimal surface equation} (MSE):
+\[\div\left(\frac{\nabla u}{\sqrt{1+|\nabla u|^2}}\right)=0.\]
+When $n=3$, MSE is found by Lagrange in 1762.
+
+If we do not restrict us on graph, then we have the following Plateau problem.
+\begin{pro}[Plateau]
+    Let $\Gamma\subset\mathbb{R}^3$ be a simple closed curve, find an area-minimizing surface $\Sigma\subset\mathbb{R}^3$ such that $\partial\Sigma=\Gamma$.
+\end{pro}
+
+This was solved by Douglas--Rado in 1930s.
+Please refer to Struwe's \emph{Calculus of Variation} for more discussion.
+
+But for minimal graph (i.e.\ a minimal surface that is a graph), we have the following Bernstein's theorem.
+\begin{thm}[Bernstein, 1916]
+    Let $u:\mathbb{R}^2\to\mathbb{R}$ be a function that satisfies MSE (called \textbf{entire graph}), then $u$ is an affine function, that is
+    \[u(x)=\vec{a}\cdot x+b.\]
+\end{thm}
+
+Then we have the Bernstein problem.
+\begin{pro}[Bernstein]
+    Let $u:\mathbb{R}^{n-1}\to\mathbb{R}$ be an entire graph in $\mathbb{R}^n$.
+    Is the graph of $u$ an affine graph?
+    In other words, is entire minimal graph in $\mathbb{R}^n$ a hyperplane?
+\end{pro}
+
+Bernstein problem is also solved.
+The timeline is
+\begin{itemize}
+    \item Bernstein solved $n=3$ case in 1916.
+    \item Fleming gave an important alternative method in 1960s.
+    \item De Giorgi solved $n=4$ case enlightened by Fleming.
+    \item Almgren solved $n=5$ case in 1966.
+    \item J.\ Simons solved $n\leq 8$ cases in 1968.
+    \item The problem is false when $n\geq 9$.
+    Counterexample was given by Bombien--de~Giorgi--Ginsti in 1969.
+\end{itemize}
+
+We have the following fact.
+\begin{prop}
+    A minimal graph in $\mathbb{R}^n$ is area-minimizing.
+\end{prop}
+\begin{proof}
+    We need to show if $\Sigma_u$ is a minimal graph, $\Sigma$ is a surface such that $\partial\Sigma=\partial\Sigma_u$, then $|\Sigma_u|\leq|\Sigma|$.
+    Define a vector field $X\in\mathfrak{X}(\mathbb{R}^n)$, such that
+    \[X(x^1,\cdots,x^n)=\frac{(-\nabla u,1)}{\sqrt{1+|\nabla u|^2}}.\]
+    Since $X$ has nothing to do with $x^n$, we have
+    \[\div{X}=\div\nolimits_{\mathbb{R}^{n-1}}\left(\frac{\nabla u}{\sqrt{1+|\nabla u|^2}}\right)=0.\]
+    Let $\Omega$ be the domain enclosed by $\Sigma_u$ and $\Sigma$, $\nu_\Sigma$ and $\nu_{\Sigma_u}$ be the outward unit normal vector field of $\Sigma$ and $\Sigma_u$.
+    Then by divergence theorem, we have
+    \begin{align*}
+        0&=\int_\Omega\div\nolimits_{\mathbb{R}^n}X\\
+        &=\int_\Sigma\langle X,\nu_\Sigma\rangle+\int_{\Sigma_u}\langle X,\nu_{\Sigma_u}\rangle.
+    \end{align*}
+    Since $\nu_{\Sigma_u}=\frac{(\nabla u,-1)}{\sqrt{1+|\nabla u|^2}}$, we have $\langle X,\nu_{\Sigma_u}\rangle=-1$.
+    Thus by Cauchy--Schwarz inequality, we have
+    \[|\Sigma_u|\leq\int_\Sigma\langle X,\nu_\Sigma\rangle\leq\int_\Sigma|X||\nu_\Sigma|=|\Sigma|.\qedhere\]
+\end{proof}
+
+\begin{rem}
+    This fact is closely related to calibrated geometry.
+    We refer to Harvey and Lawson's \emph{Calibrated Geometries} (1982).
+\end{rem}
+
+\begin{cor}
+    Let $\Sigma_u$ be an entire minimal graph, and $B_R\subset\mathbb{R}^n$.
+    Then
+    \[A(\Sigma_n\cap B_r)\leq\frac{1}{2}\omega_{n-1}R^{n-1},\]
+    that is, $\Sigma_u$ has Euclidean area growth.
+\end{cor}
+\begin{proof}
+    $\Sigma\cap B_R$ separates $B_R$ into upper part $B^1_R$ and lower part $B^2_R$.
+    Then we have
+    \[|\Sigma_u|\leq\min\{|\partial B^1_R|,|\partial B^2_R|\}\leq\frac{1}{2}\omega_{n-1}R^{n-1}.\qedhere\]
+\end{proof}
+
+We now discuss the conception of stability.
+This is used to solve the problem that when minimal surfaces actually minimizes area.
+\begin{defn}[Stability]
+    We call the surface $\Sigma$ is \textbf{stable} if for any proper variation $f:\Sigma\times(-\varepsilon,\varepsilon)\to M$ the second variation is nonnegative, that is,
+    \[\left.\frac{\d^2{}}{\d{t^2}}\right|_{t=0}|\Sigma_t|=\int_\Sigma(|\nabla^\perp X|^2-|\langle\II,X\rangle|^2-\tr_\Sigma\langle R^M(\bullet,X)\bullet,X\rangle)\geq 0,\]
+    where $X$ is the variation vector field.
+    When $\Sigma$ has codimension $1$, let $X=\varphi N$ with $N$ be a unit normal vector field, $\varphi\in C^\infty_c(\Sigma)$.
+    Then the condition is equivalent to
+    \[\int_\Sigma(|\nabla\varphi|^2-|h|^2\varphi^2-\Ric(N,N)\varphi^2)\geq 0\]
+    or
+    \[\int_\Sigma-\varphi(\Delta+|h|^2+\Ric(N,N))\varphi\geq 0,\]
+    where $(\Delta+|h|^2+\Ric(N,N))$ is the \textbf{Jacobi operator}.
+\end{defn}
+
+About stability, we have the following theorem.
+\begin{thm}[Fischer--Colbrie--Schoen]
+    A surface $\Sigma$ is stable if and only if there is a $u\in C^\infty(\Sigma)$ with $u>0$, such that
+    \[(\Delta+|h|^2+\Ric(N,N))u=0.\]
+\end{thm}
+
+We now give a proof of $2$-dimensional Bernstein problem.
+This is a corollary of following theorem.
+\begin{thm}\label{prebernstein}
+    Let $u:\Omega\subset\mathbb{R}^2\to\mathbb{R}$ be a minimal graph, $B^2_R\subset\Omega$.
+    Then
+    \[\int_{B^3_{\sqrt{R}}\cap\Sigma_u}|h|^2\leq\frac{C}{\log{R}}.\]
+\end{thm}
+
+\begin{proof}
+    Since minimal graph minimizes area, the second variation of area must be positive, and thus minimal graph is stable.
+    Therefore for any $\varphi\in C^\infty_c(\Sigma)$
+    \[\int_\Sigma|h|^2\varphi^2\leq\int_\Sigma|\nabla_\Sigma\varphi|^2.\]
+    Choose
+    \[\varphi(x)=\begin{cases}
+        1, & |x|\leq\sqrt{R},\\
+        2\left(1-\frac{\log|x|}{\log{R}}\right), & \sqrt{R}\leq|X|\leq R,\\
+        0, & |x|\geq R,
+    \end{cases}\]
+    then we have an estimate
+    \[|\nabla_\Sigma\varphi|\leq|\nabla_{\mathbb{R}^3}\varphi|\leq\frac{1}{\log{R}}\cdot\frac{1}{|x|}.\]
+    Therefore we have
+    \[\int_{\Sigma\cap B^3_R}|\nabla_\Sigma\varphi|^2\leq\sum_{k=\log{R}/2}^{\log{R}}\int_{\Sigma\cap(B^3_{e^k}\backslash B^3_{e^{k-1}})}\frac{1}{(\log{R})^2}\cdot\frac{1}{|x|^2}.\]
+    (We are mainly estimating the order of $h$, so we can adjust $R$ to make $\log{R}$ an integer.)
+    But we have
+    \[|\Sigma\cap B^3_{e^k}|\leq ce^{2k},\ \frac{1}{(\log{R})^2}\cdot\frac{1}{|x|^2}\leq e^{-2(k-1)},\]
+    hence
+    \begin{align*}
+        \int_{\Sigma\cap B^3_R}|\nabla_\Sigma\varphi|^2&\leq ce^2\log{R}\cdot\frac{1}{(\log{R})^2}\\
+        &=\frac{C}{\log{R}}.\qedhere
+    \end{align*}
+\end{proof}
+\begin{rem}
+    This argument is called logarithm cutoff argument.
+\end{rem}
+
+Before we procced our discuss, we need the following monotonicity formula.
+\begin{thm}[Monotonicity formula]
+    Let $\Sigma^k\subset\mathbb{R}^n$ be a minimal submanifold, $x_0\in\mathbb{R}^n$.
+    Then for $r>s$ we have
+    \[\frac{|\Sigma^k\cap B^n_r(x_0)|}{r^k}-\frac{|\Sigma^k\cap B^n_s(x_0)|}{r^k}=\int_{(B^n_r(x_0)\backslash B^n_s(x_0))\cap\Sigma}\frac{|(x-x_0)^\perp|^2}{|x-x_0|^{k+2}}\d{A}.\]
+\end{thm}
+\begin{proof}
+    Without loss of generality we assume $x_0=0$.
+    We have
+    \[\frac{\d{}}{\d{r}}\left(\frac{|\Sigma^k\cap B_r|}{r^k}\right)=r^{-k}\int_{\Sigma\cap\partial B_r}\frac{1}{|\nabla_\Sigma|x||}-kr^{-k-1}|\Sigma\cap B_r|,\]
+    here we use the coarea formula
+    \[|\Sigma^k\cap B_r|=|\{x\in\Sigma|\ |x|\leq r\}=\int_0^r\int_{\Sigma\cap\partial B_r}\frac{1}{|\nabla_\Sigma|x||},\]
+    a proof can be found on Mei Jiaqiang's \emph{Mathematical Analysis}.
+    Since $\Sigma^k$ is minimal, we have $\div\nolimits_{\Sigma\cap B_r}(x^\perp)=0$ as in Minkowski's formula.
+    Then
+    \begin{align*}
+        k|\Sigma\cap B_r|&=\int_{\Sigma\cap B_r}\div\nolimits_{\Sigma}(x)\\
+        &=\int_{\Sigma\cap B_r}\div\nolimits_{\Sigma}(x^\top)\\
+        &=\int_{\Sigma\cap\partial B_r}\langle x^\top,\mu\rangle\quad\text{($\mu$ is the outward unit normal vector field)}\\
+        &=\int_{\Sigma\cap\partial B_r}|x^\top|\quad\text{($\mu=x^\top/|x^\top|$)}\\
+        &=r\int_{\Sigma\cap\partial B_r}\frac{|\nabla_\Sigma|x||^2}{|\nabla_\Sigma|x||}\quad\text{($|x^\top|=|\nabla_\Sigma|x||\cdot|x|$)}\\
+        &=\frac{1}{r}\int_{\Sigma\cap\partial B_r}\frac{|x|^2-|x^\perp|^2}{|\nabla_\Sigma|x||}\\
+        &=r\int_{\Sigma\cap\partial B_r}\frac{1}{|\nabla_\Sigma|x||}-\frac{1}{r}\int_{\Sigma\cap\partial B_r}\frac{|x^\perp|^2}{|\nabla_\Sigma|x||}.
+    \end{align*}
+    Hence
+    \[\frac{\d{}}{\d{r}}\left(\frac{|\Sigma\cap B_r}{r^k}\right)=r^{-k-2}\int_{\Sigma\cap\partial B_r}\frac{|x^\perp|^2}{|\nabla_\Sigma|x||}.\qedhere\]
+\end{proof}
+
+Monotonicity formula is useful with the notion of cone.
+We now introduce the conception of cone.
+
+\begin{defn}
+    Let $\Sigma^{k-1}\subset\mathbb{S}^{n-1}$ be a $(k-1)$-dimensional submanifold in $\mathbb{S}^{n-1}$.
+    Then the \textbf{cone} over $\Sigma$ is defined as
+    \[\mathscr{C}_\Sigma:=\left\{x\in\mathbb{R}^n\left|\ \frac{x}{|x|}\in\Sigma\right.\right\}.\]
+\end{defn}
+
+There is a fact that
+\begin{prop}
+    $\Sigma\subset\mathbb{S}^{n-1}$ is minimal if and only if $\mathscr{C}_\Sigma$ is a minimal cone.
+\end{prop}
+
+One can observe that for a cone $\mathscr{C}$, $\frac{|\mathscr{C}\cap B_r|}{r^k}$ is constant.
+Conversely, by monotonicity formula, for a minimal submanifold $\Sigma\subset\mathbb{R}^n$ the following are equivalent:
+\begin{enumerate}[(1)]
+    \item $\frac{|\Sigma\cap B_r|}{r^k}$ is constant;
+    \item $x^\perp\equiv 0$;
+    \item $\Sigma$ is a cone.
+\end{enumerate}
+
+Now we can outline the proof of Bernstein problem.
+\begin{enumerate}
+    \item Fleming:
+    If every area-minimizing cone is flat, then the area-minimizing hypersurface in $\mathbb{R}^n$ is flat.
+    This is proved by blow-down argument.
+    Choose $p\in\Sigma$, let $\Sigma_r:=\frac{1}{r}(\Sigma\backslash\{p\})$.
+    Let $r\to\infty$, $\Sigma_r$ converges to $\mathscr{C}$.
+    By geometric measure theory, $\mathscr{C}$ is a set of finite perimeter.
+    We need to show $\mathscr{C}$ is area-minimizing.
+    We have
+    \[\frac{|\mathscr{C}\cap B_r|}{R^{n-1}}=\lim_{r\to\infty}\frac{|\Sigma_r\cap B_R|}{R^{n-1}}=\lim_{r\to\infty}\frac{|\Sigma\cap B_{Rr}|}{(Rr)^{n-1}}=\theta_R=\text{const}.\]
+    Thus $\mathscr{C}$ is a cone.
+    By assumption, $\mathscr{C}$ is flat, then $\frac{|\mathscr{C}\cap B_R|}{R^{n-1}}=\omega_{n-1}$.
+    Therefore
+    \[\omega_{n-1}\leq\frac{|\Sigma\cap B_r|}{r^{n-1}}\leq\lim_{r\to\infty}\frac{\Sigma\cap B_r}{r^{n-1}}=\frac{|\mathscr{C}\cap B_r|}{r^{n-1}}=\omega_{n-1},\]
+    hence $\Sigma$ is a cone, and therefore is flat.
+    \item Simons 1968:
+    Area-minimizing cone with possible singularity at $0$ in $\mathbb{R}^n$ ($n\leq 7$) is flat.
+    Roughly speaking, the proof is analysing stability and the following Simons' inequality\footnote{We think Prof.\ Xia mistakenly wrote ``identity''.}
+    \[\Delta_\Sigma|h|^2\geq -2|h|^4+2\left(1+\frac{2}{n-1}\right)|\nabla_\Sigma|h||^2.\]
+    \item De Giorgi then solved $n=8$ case.\footnote{Prof.\ Xia provided a vague argument, so we omit it here.}
+    \item In $\mathbb{R}^8$ we have the Simons cone $\{(x,y)\in\mathbb{R}^4\times\mathbb{R}^4|\ |x|=|y|\}$ being area-minimizing but not flat.
+\end{enumerate}
+
+Finally we discuss the stable Bernstein problem.
+\begin{pro}[Stable Bernstein]
+    Let $\Sigma^{n-1}\subset\mathbb{R}^n$ ($n\leq 7$) be a stable complete two-sided minimal hypersurface.
+    Is $\Sigma$ flat?
+\end{pro}
+
+We have the following progress.
+\begin{itemize}
+    \item $n=3$ case is solved by Fischer--Colbrie--Schoen--do~Carmo--Peng in 1980.
+    \item $n=4$ case is solved by Chodosh--Li in 2021.
+    Catino--Mastrolia--Roncoroni gave an alternative approach in 2023.
+    \item $n=5$ case is solved by Chodosh--Li--Stryker in 2024/01.
+    \item $n=6$ case is solved by Mazet in 2024/05.
+    \item $n=7$ case is still open.
+\end{itemize}
+
+On the other hand, we have the following results.
+\begin{itemize}
+    \item Schoen--Simon--Yau 1976: Assume $|\Sigma\cap B_R|\leq CR^{n-1}|$, then stable Bernstein problem is true for $n\leq 6$.
+    \item Bellettini 2023: the $n=7$ case of extensions of above theorem is true.
+\end{itemize}
+These two results uses de Giorgi--Mozer iteration on Simons inequality.
+
+At last we give some reference books.
+\begin{itemize}
+    \item Colding--Minicozi: \emph{A Course in Minimal Surface}.
+    \item L. Simon: \emph{Geometric Measure Theory}.
+    \item F. Maggi: \emph{Geometric Measure Theory}.
+    \item Y. Xin: \emph{Geometry of Submanifold}.
+    \item Chodosh: Lecture notes.   
+\end{itemize}

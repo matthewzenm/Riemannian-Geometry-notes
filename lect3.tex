@@ -6,7 +6,7 @@ As an application, we will use geodesic polar coordinate to show geodesics are l
 Finally, we will introduce the notion of conjugate points.
 
 \section{Geodesics and Exponential Maps}
-\begin{defn}
+\begin{defn}\index{geodesic}
     A curve $\gamma:[0,1]\to M$ is called a \textbf{geodesic} if $\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0$.
 \end{defn}
 
@@ -31,7 +31,7 @@ Observe that $\gamma(\lambda t;p,v)=\gamma(t;p,\lambda v)$.
 Denote $\gamma(t;p,v)=\gamma_v(t)$, then above observation can be written as $\gamma_{\lambda v}(t)=\gamma_v(\lambda t)$.
 Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
 
-\begin{defn}[Exponential map]
+\begin{defn}[Exponential map]\index{exponential map}
     Let $U\subset T_pM$ be a neighborhood of origin, such that for any $v\in U$, $\gamma_v(1)$ is defined (such neighborhood exists by Proposition~\ref{geodesic in nbhd}).
     We define the \textbf{exponential map} at p to be
     \begin{align*}
@@ -71,13 +71,13 @@ Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
     \end{enumerate}
 \end{eg}
 
-\begin{defn}
+\begin{defn}\label{geodesically completeness}
     If $\exp_p$ can be defined on whole $T_pM$ for any $p\in M$, we say $M$ is \textbf{geodesically complete}.
 \end{defn}
 
 We have the following important theorem.
 
-\begin{thm}[Hopf--Rinow]
+\begin{thm}[Hopf--Rinow]\index{theorem!Hopf--Rinow}
     Let $M$ be a Riemannian manifold, the following are equivalent:
     \begin{enumerate}[(1)]
         \item $M$ is geodesically complete.
@@ -115,7 +115,7 @@ Let $s=0$, we have
 \[\ddot{J}(t)+R(\dot{\gamma}(t),J(t))\dot{\gamma}(t)=0.\]
 We make it into a definition.
 
-\begin{defn}[Riemann curvature tensor]
+\begin{defn}[Riemann curvature tensor]\index{curvature!Riemann curvature tensor}
     Let $R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)\to\mathfrak{X}(M)$ defined by
     \[R(X,Y)Z=\nabla_Y\nabla_XZ-\nabla_X\nabla_YZ+\nabla_{[X,Y]}Z.\]
 \end{defn}
@@ -134,7 +134,7 @@ and
 \end{align*}
 We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
 
-\begin{eg}
+\begin{eg}\index{flat}
     $(\mathbb{R},\delta)$ has $R\equiv 0$.
     Any metric admits zero curvature is call \textbf{flat}.
 \end{eg}
@@ -150,7 +150,7 @@ We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
     Tedious calculation.
 \end{proof}
 
-\begin{defn}[Sectional curvature]
+\begin{defn}[Sectional curvature]\index{curvature!sectoinal}
     Let $p\in M$, $\pi\subset T_pM$ be a $2$-plane, $\pi=\Span\{X,Y\}$.
     Then define the sectional curvature at $p$ of $\pi$ as
     \[K_p(\pi):=\frac{R(X,Y,X,Y)}{|X|^2|Y|^2-\langle X,Y\rangle^2}.\]
@@ -172,13 +172,13 @@ If all sectional curvature at $p$ is constant $K_p$, then
 \[R_p(X,Y,Z,W)=K_p(\langle X,Z\rangle\langle Y,W\rangle-\langle X,W\rangle\langle Y,Z\rangle)\]
 
 For a theorem about constant sectoinal curvature, we mention here Schur's Theorem.
-\begin{thm}[Schur]
+\begin{thm}[Schur]\index{theorem!Schur}
     Let $(M^n,g)$ be a Riemannian manifold, $n\geq 3$.
     If $K_p(\pi)$ is independent of $\pi\subset T_pM$ for any $p\in M$, then $M$ has constant sectional curvature.
 \end{thm}
 
 We define another two important curvature.
-\begin{defn}[Ricci curvature]
+\begin{defn}[Ricci curvature]\index{curvature!Ricci}
     Let $(M^n,g)$ be a Riemannian manifold.
     Define \textbf{Ricci curvature tensor} $\Ric:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
     \[\Ric_p(X)=\sum_{i=1}^nR_p(e_i,X)e_i,\]
@@ -186,7 +186,7 @@ We define another two important curvature.
     It's easy to check the definition is independent from the choice of orthonormal frame, and $\Ric$ is self-adjoint.
 \end{defn}
 
-\begin{defn}[Scalar curvature]
+\begin{defn}[Scalar curvature]\index{curvature!scalar}
     Let $(M^n,g)$ be a Riemannian manifold.
     We define \textbf{Scalar curvature} $\Scal\in C^\infty(M)$ as
     \[\Scal(p)=\sum_{i=1}^n\langle\Ric_p(e_i),e_i(p)\rangle\]
@@ -198,13 +198,13 @@ We define another two important curvature.
 \end{defn}
 
 We also mention here
-\begin{thm}[Schur]
+\begin{thm}[Schur]\index{theorem!Schur}
     Let $M^n$ be an Einstein manifold with $n\geq 3$, then $M$ has constant scalar curvature.    
 \end{thm}
 
 \section{Jacobi Fields}
 
-\begin{defn}
+\begin{defn}\index{Jacobi field}
     Let $\gamma$ be a geodesic, a vector field $J$ along $\gamma$ is called a \textbf{Jacobi field} if $\ddot{J}+R(\dot{\gamma},J)\dot{\gamma}=0$.
 \end{defn}
 
@@ -225,8 +225,9 @@ Above discussion can be summarized as the following proposition.
 \end{prop}
 
 The next proposition shows only the Jacobi field at tangential direction are interesting.
-\begin{prop}\label{decomposition of Jacobi fields}
-    Let $J$ be a Jacobi field along $\gamma$, we have the decomposition $J(t)=J^\perp(t)+(at+b)\dot{\gamma}(t)$, where $J^\perp(t)\perp\dot{\gamma}(t)$. 
+\begin{prop}\label{decomposition of Jacobi fields}\index{Jacobi field!normal}
+    Let $J$ be a Jacobi field along $\gamma$, we have the decomposition $J(t)=J^\perp(t)+(at+b)\dot{\gamma}(t)$, where $J^\perp(t)\perp\dot{\gamma}(t)$.
+    If a Jacobi field is perpendicular to $\gamma$, we call it a \textbf{normal Jacobi field}
 \end{prop}
 \begin{proof}
     We have
@@ -238,7 +239,7 @@ The next proposition shows only the Jacobi field at tangential direction are int
 \end{proof}
 
 We have the following Gauss Lemma.
-\begin{prop}[Gauss Lemma]
+\begin{prop}[Gauss Lemma]\index{lemma!Gauss}
     $\langle\exp_{p*}|_v(\xi),\dot{\gamma}_v(1)\rangle=\langle\gamma,v\rangle$.
 \end{prop}
 \begin{proof}
@@ -279,7 +280,7 @@ We have the following Gauss Lemma.
 \section{Some Local Charts}
 In this section, we adopt the traditional terminology ``coordinate'' to mean chart.
 
-First we introduce the geodesic normal coordinate.
+First we introduce the geodesic normal coordinate.\index{geodesic normal coordinate}
 Given a Riemannian manifold $(M,g)$ and $p\in M$, there exists an $\varepsilon>0$ such that $\exp_p:B_\varepsilon(0)\to\exp_p(B_\varepsilon(0))=:B_\varepsilon(p)$ is an diffeomorphism.
 Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha^i\}$ be the dual basis of $\{e_i\}$, then we construct the \textbf{geodesic normal coordinate}
 \[q\in B_\varepsilon(p)\mapsto(\alpha^1(\exp_p^{-1}(q)),\cdots,\alpha^n(\exp_p^{-1}(q))).\]
@@ -296,7 +297,7 @@ Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha
     Let $y\to 0$ and we obtain the conclusion.
 \end{proof}
 
-Next we introduce the geodesic polar coordinate.
+Next we introduce the geodesic polar coordinate.\index{geodesic polar coordinate}
 Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean space $(T_pM,g_p)$, and we define the \textbf{geodesic polar coordinate} by
 \[q\in B_\varepsilon(p)\backslash\{p\}\mapsto(r(\exp_p^{-1}(q)),\theta^1(\exp_p^{-1}(q)),\cdots,\theta^{n-1}(\exp_p^{-1}(q))).\]
 
@@ -334,7 +335,7 @@ Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean spac
 \end{cor}
 
 As an application, we prove geodesics are locally length-minimizing.
-\begin{prop}\label{locally length-min}
+\begin{prop}\label{locally length-min}\index{geodesic!locally length minimizing}
     Let $\gamma:[0,1]\to M$ be a geodesic in $B_\varepsilon(p)$, $\tilde{\gamma}:[0,1]\to M$ be any curve in $B_\varepsilon(p)$ with $\gamma(0)=\tilde{\gamma}(0)=p$, $\gamma(1)=\tilde{\gamma}(1)=q$.
     Then $L(\gamma)\leq L(\tilde{\gamma})$.
 \end{prop}
@@ -354,7 +355,7 @@ As an application, we prove geodesics are locally length-minimizing.
 
 \section{Conjugate Points}
 
-\begin{defn}[Conjugate points]
+\begin{defn}[Conjugate points]\index{conjugate point}
     If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \textbf{conjugate point} of $p$ along $\gamma$.
 \end{defn}
 

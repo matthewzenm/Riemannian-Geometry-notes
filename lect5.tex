@@ -8,7 +8,7 @@ Finally, as an application, we prove Cheng's maximal radius theorem.
 
 We first state and prove the Rauch comparison theorem.
 
-\begin{thm}[Rauch comparison]\label{Rauch}
+\begin{thm}[Rauch comparison]\label{Rauch}\index{theorem!Rauch comparison}
     Let $M^n,\tilde{M}^n$ be Riemannian manifolds, $\gamma:[0,a]\to M$, $\tilde{\gamma}:[0,a]\to\tilde{M}$ be unit speed geodesics, and $J,\tilde{J}$ be Jacobi fields along $\gamma,\tilde{\gamma}$ respectively, such that $J(0)=\tilde{J}(0)=0$, $\langle\dot{J}(0),\dot{\gamma}(0)\rangle=\left\langle\dot{\tilde{J}}(0),\dot{\tilde{\gamma}}(0)\right\rangle$, $|\dot{J}(0)|=\left|\dot{\tilde{J}}(0)\right|$.
     Assume that
     \begin{enumerate}[(1)]
@@ -80,7 +80,7 @@ The corollary implies the following important theorem.
 
 Theorem~\ref{C-H 1}~is known as the first part of the celebrated Cartan--Hadamard Theorem.
 We state the rest part of the theorem as follows.
-\begin{thm}[Cartan--Hadamard]
+\begin{thm}[Cartan--Hadamard]\index{theorem!Cartan--Hadamard}
     Let $M^n$ be a complete Riemannian manifold with $\operatorname{Sect}\leq 0$, then the universal cover of $M$ is diffeomorphic to $\mathbb{R}^n$.
 \end{thm}
 \begin{proof}[Part of the Proof]
@@ -103,7 +103,7 @@ We state the rest part of the theorem as follows.
 We stop here, and refer to Peter Peterson's \emph{Riemannian Geometry}, 3rd ed., Lemma 5.6.4.
 
 We mention something more.
-Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
+Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.\index{space form}
 This can be found in Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 5.
 
 \section{Cut Points and Distance Function}
@@ -127,7 +127,7 @@ Given $v\in T_pM$, $|v|=1$, $\gamma_v:[0,+\infty)\to M$ be a geodesic with $\gam
 Notice that $\gamma_v|_{[0,t_0]}$ is length-minimizing if $d(p,\gamma_v(t_0))=t_0$.
 If $\gamma_v$ contains conjugate points, then $\gamma_v$ is in general not locally length-minimizing.
 
-\begin{defn}
+\begin{defn}\index{cut point}\index{cut locus}
     Under above settings, let $t_0=\sup\{t\in(0,+\infty)|\ d(p,\gamma_v(t))=t\}$.
     If $t_0<+\infty$, we call $\gamma_v(t_0)$ the \textbf{cut point} of $p$ along $\gamma_v$.
     Define $\Cut(p)$ to be the set of all cut points of $p$, called the \textbf{cut locus} of $p$.
@@ -209,7 +209,7 @@ The proof is complicated, so we refer to Wu Hung--Hsi et.\ al.'s \emph{Introduct
 \end{proof}
 
 Now we define the injective radius of a point and a manifold.
-\begin{defn}
+\begin{defn}\index{injective radius}
     Let $M$ be a Riemannian manifold, $p\in M$, we define the \textbf{injective radius} by
     \begin{gather*}
         \inj(p):=\sup\{r\in(0,+\infty)|\ B_r(p)\subset\Sigma(p)\}\\
@@ -233,7 +233,7 @@ We now discuss some differential properties of distance function.
 Let $p\in M$, denote $d_p:M\to\mathbb{R}$, $d_p(q)=d(p,q)$.
 By triangle inequality, $d_p$ is Lipschitz continuous.
 But we have more to say.
-\begin{prop}\label{dp smooth}
+\begin{prop}\label{dp smooth}\index{distance!smooth}
     Let $p\in M$, we have $d_p\in C^\infty(M\backslash(\{p\}\cup\Cut(p)))$.
     Moreover, $|\nabla d_p|=1$ at where $d_p$ is smooth.
 \end{prop}
@@ -287,7 +287,7 @@ Now we are well-prepared to march towards Hessian comparison theorem and Lap\-la
 \section{Hessian and Laplace Comparison Theorems}
 
 We first state and prove Hessian comparison theorem.
-\begin{thm}[Hessian comparison]
+\begin{thm}[Hessian comparison]\index{theorem!Hessian comparison}
     Let $\gamma:[0,l]\to M$, $\tilde{\gamma}:[0,l]\to M$ be geodesics without cut points of $\gamma(0)$ and $\tilde{\gamma}(0)$ respectively.
     Assume $K_{\gamma(t)}(\dot{\gamma}(t),v)\geq K_{\tilde{\gamma}(t)}\left(\dot{\tilde{\gamma}}(t),\tilde{v}\right)$ for $|v|=|\tilde{v}|=1$.
     Then $\nabla^2d_p(X,X)\leq\tilde{\nabla}^2\tilde{d}_{\tilde{p}}\left(\tilde{X},\tilde{X}\right)$, for all $X\in T_{\gamma(t)}M$, $\tilde{X}\in T_{\tilde{\gamma}(t)}M$, with $|X|=|\tilde{X}|$, $\langle X,\dot{\gamma}\rangle=\left\langle\tilde{X},\dot{\tilde{\gamma}}\right\rangle$.
@@ -314,7 +314,7 @@ We first state and prove Hessian comparison theorem.
 \end{eg}
 
 Now we state the Laplace comparison theorem.
-\begin{thm}
+\begin{thm}\index{theorem!Laplace comparison}
     Let $(M^n,g)$ be a Riemannian manifold, $M_K^n$ be a Riemannian manifold with constant sectional curvature $K$.
     Let $\gamma:[0,l]\to M$, $\gamma_K:[0,l]\to M$ be geodesics without cut points.
     Assume $\Ric\geq(n-1)Kg$, then $\Delta d_p|_{\gamma(l)}\leq\Delta_kd_k|_{\gamma_K(l)}$.
@@ -377,7 +377,7 @@ Now we state the Laplace comparison theorem.
 In this section we assume all the manifolds appear are orientable.
 
 We first introduce the Riemann volume form.
-\begin{defn}
+\begin{defn}\index{volume form}
     Let $(M^n,g)$ be a Riemannian manifold, define an $n$-form $\d\Vol_g$ as 
     \[\d\Vol_g(e_1,\cdots,e_n)=1\]
     for an orthonormal basis $\{e_i\}$ in $T_pM$ for any $p\in M$.
@@ -391,7 +391,7 @@ the Riemann volume form is well-defined.
 Locally we have
 \[\d\Vol_g=\sqrt{\det(g_{ij})}\d{x^1}\wedge\cdots\wedge\d{x^n}.\]
 
-\begin{defn}
+\begin{defn}\index{volume}
     Let $\Omega\subset M$, the \textbf{volume} of $\Omega$ is defined as
     \[\Vol(\Omega):=\int_\Omega\d\Vol_g.\]
     If $M$ is compact, we can also define
@@ -424,7 +424,7 @@ and denote $\mathscr{J}=\sqrt{\det(g_{ij})}$.
 \end{proof}
 
 Thus we have the following Bishop's theorem.
-\begin{thm}[Bishop]\label{Bishop}
+\begin{thm}[Bishop]\label{Bishop}\label{theorem!Bishop}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
     Let $\gamma:[0,l]\to M$ be a geodesic without cut points.
     Then $\frac{\mathscr{J}}{\mathscr{J}_K}(r)$ is nonincreasing with respective to $r$.
@@ -441,7 +441,7 @@ Thus we have the following Bishop's theorem.
 \end{proof}
 
 Now we can state and prove Bishop--Gromov comparison theorem, which is also known as volume comparison theorem.
-\begin{thm}[Bishop--Gromov comparison]\label{Bishop Gromov}
+\begin{thm}[Bishop--Gromov comparison]\label{Bishop Gromov}\index{Bishop--Gromov comparison}\index{volume comparison}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
     Define geodesic annuli $A_{s,r}(p):=\{\exp_p(tv)|\ s<t<\min{r,t_v},\ v\in S_p\}$ and annuli $A^K_{r,s}$ in constant sectional curvature space $M_K$ with radii $r<s$.
     Then we have
@@ -503,17 +503,17 @@ Before proving the theorem, we need a lemma from calculus.
 \end{proof}
 
 As a corollary, we have another theorem of Bishop.
-\begin{thm}[Bishop]
+\begin{thm}[Bishop]\index{theorem!Bishop}
     Let Riemannian manifold $(M^n,g)$ satisfy $\Ric\geq(n-1)Kg>0$, then $\Vol(M)\leq\Vol(\mathbb{S}^n(1/\sqrt{K}))$.
     The equality holds if and only if $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
 \end{thm}
 \begin{proof}
     The inequality holds from Bonnet--Myers theorem and volume comparison theorem.
-    The equality holds if and only if the equality holds in Lapalce comparison theorem, that is, $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
+    The equality holds if and only if the equality holds in Laplace comparison theorem, that is, $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
 \end{proof}
 
 The important application of volume comparison theorem is Cheng's maximal radius theorem.
-\begin{thm}[Cheng]
+\begin{thm}[Cheng]\index{theorem!maximal radius}
     If $(M^n,g)$ is a Riemannian manifold with $\Ric\geq(n-1)Kg$, and $\operatorname{diam}(M)=\pi/\sqrt{K}$, then $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
 \end{thm}
 \begin{proof}
@@ -541,7 +541,7 @@ As for noncompact manifolds, volume comparison theorem has following corollary.
 
 The corollary gives an upper bound of the growth of the volume of geodesic ball.
 Moreover, the following Calabi--Yau theorem (not the one in complex geometry) gives a lower bound.
-\begin{thm}[Calabi--Yau]
+\begin{thm}[Calabi--Yau]\index{theorem!Calabi--Yau}
     Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol(B_r(p))\geq C(n)\Vol(B_1(p))r$.
 \end{thm}
 For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Theorem 4.1 in Chapter 1.

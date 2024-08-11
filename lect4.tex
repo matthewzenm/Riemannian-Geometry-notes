@@ -6,7 +6,7 @@ Regarding the second variation formula as a quadric form, we have the notion of 
 We will explain the relation between index form and conjugate points.
 Finally, we will briefly mention the Morse Index Theorem.
 
-Let $\gamma:[0,a]\to M$ be a curve, we define two functional
+Let $\gamma:[0,a]\to M$ be a curve, we define two functional\index{length functional}\index{energy functional}
 \begin{align*}
     &L(\gamma)=\int_0^a|\dot{\gamma}(t)|\d{t}\\
     &E(\gamma)=\int_0^a\frac{1}{2}|\dot{\gamma}(t)|^2\d{t}.
@@ -29,13 +29,13 @@ Our aim is to prove the converse.
 
 \section{First Variation Formula}
 
-\begin{defn}[Variation]
+\begin{defn}[Variation]\index{variation}
     Let $\gamma_0:[0,a]\to M$ be a curve, a \textbf{variation} of $\gamma_0$ is a differentiable map $\gamma:[0,a]\times(-\varepsilon,\varepsilon)\to M$ such that $\gamma(t,0)=\gamma_0(t)$.
     If $\gamma(0,s)=\gamma_0(0)$, $\gamma(a,s)=\gamma_0(a)$ for any $s\in(-\varepsilon,\varepsilon)$, then we call it a \textbf{proper variation}.
     We call $\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\gamma(t,s)=:V(t)$ the \textbf{variation vector field}.
 \end{defn}
 
-\begin{prop}[First variation formula]
+\begin{prop}[First variation formula]\index{first variation formula}
     Let $\gamma(t,s)$ be a variation, its energy $\displaystyle E(s)=\int_0^a\frac{1}{2}\left|\frac{\partial{}}{\partial{t}}\gamma(t,s)\right|^2\d{t}$, then we have
     \[E'(0)=\left.\langle V,\dot{\gamma}\rangle\right|^a_0-\int_0^a\left\langle V(t),\nabla_{\dot{\gamma}_0(t)}\dot{\gamma}_0(t)\right\rangle\d{t}.\]
 \end{prop}
@@ -71,7 +71,7 @@ Now we can give a proof of energy-minimizing curves are length-minimizing geode\
 
 Since we concentrate on critical points of variation of energy, we define second variation formula only for geodesics.
 
-\begin{prop}[Second variation formula]
+\begin{prop}[Second variation formula]\index{second variation formula}
     Let $\gamma_0:[0,a]\to M$ be a geodesic, then
     \[E''(0)=\int_0^a\left(|\dot{V}(t)|^2-\langle R(\dot{\gamma}_0(t),V(t))\dot{\gamma}_0(t),V(t)\rangle\right)\d{t}+\boxed{\langle\nabla_{V(t)}V(t),\dot{\gamma}_0(t)\rangle|_0^a}.\]
     The boxed term is called \textbf{boundary term}, and it vanishes when the variation is proper.
@@ -92,7 +92,7 @@ Since we concentrate on critical points of variation of energy, we define second
 \end{proof}
 
 We now use second variation formula to prove the famous Bonnet--Myers Theorem.
-\begin{thm}[Bonnet--Myers]
+\begin{thm}[Bonnet--Myers]\index{theorem!Bonnet--Myers}
     Let $(M^n,g)$ be a complete Riemannian manifold with $\Ric\geq(n-1)Kg>0$,
     then $\operatorname{diam}(M,g)\leq\pi/\sqrt{K}$.
     In particular, $M$ is compact.
@@ -146,7 +146,7 @@ Involving some theory of covering spaces, we have the following corollary.
 
 \section{Index Form}
 
-\begin{defn}[Index form]
+\begin{defn}[Index form]\index{index form}
     Let $\gamma:[0,a]\to M$ be a geodesic.
     The \textbf{index form} of $\gamma$ is a biliear form on $\mathscr{V}:=\{\text{vector fields along }\gamma\}$ defined by
     \[I(X,Y)=\int_0^a(\langle\dot{X},\dot{Y}\rangle-\langle R(\dot{\gamma},{X})\dot{\gamma},{Y}\rangle)\d{t}\]
@@ -206,7 +206,7 @@ Next theorem shows the positive definiteness of $I$ is related to conjugate poin
 \end{proof}
 
 Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{Index Lemma}.
-\begin{prop}[Index Lemma]
+\begin{prop}[Index Lemma]\index{lemma!Index}
     Assume $\gamma$ is a geodesic without conjugate points.
     Let $U\in\mathscr{V}$ with $U(0)=0$, $J$ be a Jacobi field such that $J(0)=0$, $J(a)=U(a)$, then $I(J,J)\leq I(U,U)$.
     The equality holds if and only if $U=J$.
@@ -254,7 +254,7 @@ Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{Index Lemm
 \end{proof}
 
 Translating Theorem~\ref{prejacobi}~into language of geometry, we have the following Jacobi Theorem.
-\begin{thm}[Jacobi]
+\begin{thm}[Jacobi]\index{theorem!Jacobi}
     Let $\gamma:[0,a]\to M$ be a geodesic, then
     \begin{enumerate}[(1)]
         \item If $\gamma$ has no conjugate points of $\gamma(0)$, then $\gamma$ is length-minimizing under any small proper variation.
@@ -263,8 +263,8 @@ Translating Theorem~\ref{prejacobi}~into language of geometry, we have the follo
 \end{thm}
 
 Finally we mention something about \emph{Morse index}.
-Define Morse index
+Define Morse index\index{Morse index}
 \[\operatorname{ind}(\gamma)=\max\{\dim S|\ S\leq\mathscr{V}_0,\ I\text{ is negative definite on }S\}\]
-The famous \emph{Morse Index Theorem} claims
+The famous \emph{Morse Index Theorem} claims\index{theorem!Morse index}
 \[\operatorname{ind}(\gamma)=\#\{\text{conjugate points (counting multiplicity)}\}<+\infty\]
 For more information, one can refer to John Milnor's \emph{Morse Theory}.

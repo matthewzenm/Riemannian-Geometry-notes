@@ -3,7 +3,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
 
 \section{Differentiable Manifolds and Maps}
 
-\begin{defn}
+\begin{defn}\index{differentiable manifold}
     Let $M^n$ be a Hausdorff space with countable topological basis.
     If there exists an open cover $\{U_\alpha\}$ of $M$, and homeomorphisms $\varphi_\alpha:U_\alpha\to\varphi_\alpha(U_\alpha)$ onto its image $\varphi_\alpha(U_\alpha)\subset\mathbb{R}^n$ open, such that
     \begin{enumerate}[(1)]
@@ -62,7 +62,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
 \end{eg}
 
 We now give the definition of differentiable maps.
-\begin{defn}
+\begin{defn}\index{differentiable map}
     A map $f:M\to N$ is \textbf{differentiable} at $p\in M$ if there exists local chart $(U,\varphi)$ of $p$ and $(V,\psi)$ of $f(p)$, such that $\psi\circ f\circ\varphi^{-1}$ is differentiable at $\varphi(p)$.
 \end{defn}
 
@@ -84,7 +84,7 @@ We now give the definition of differentiable maps.
 
 \section{Tangent Spaces and Tangent Maps}
 
-\begin{defn}
+\begin{defn}\index{tangent space}
     Let $\gamma:I\to M$ be a curve, $\gamma(0)=p$.
     We define the \textbf{tangent vector along $\gamma$ at $p$} as a mapping $\dot{\gamma}(0):C^\infty_p(M)\to\mathbb{R}$, $\dot{\gamma}(0)f=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)$.
     Then we define the \textbf{tangent space at $p$}
@@ -122,7 +122,7 @@ Using equation~\eqref{local derivative}, we can describe $T_pM$ as a vector spac
     Then by~\eqref{local derivative}, $\dot{\gamma}(0)$ is a linear combination of $\left.\frac{\partial{}}{\partial{x^i}}\right|_p$'s, hence $T_pM\subset\Span\left\{\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right\}$.
 \end{proof}
 
-\begin{defn}[Tangent maps]
+\begin{defn}[Tangent maps]\index{tangent map}
     Let $f:M\to N$ be a differentiable map, we define $f_{*p}:T_pM\to T_{f(p)}M$ as
     \[f_{*p}(v)(g)=v(g\circ f)\]
     for any $g\in C^\infty_{f(p)}N$.
@@ -142,11 +142,11 @@ In particular, we have
 \[f_{*p}\left(\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right)=\sum_j\left.\frac{\partial{}}{\partial{x^i}}(\psi\circ f\circ\varphi^{-1})^j\right|_{\varphi(p)}\left.\frac{\partial{}}{\partial{y^j}}\right|_{f(p)}\]
 
 We can easy to verity the following chain rule:
-\begin{prop}
+\begin{prop}\index{chain rule}
     Let $f:M\to N$, $g:N\to P$ be differentiable maps, then we have $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
 \end{prop}
 
-\begin{defn}[Diffeomorphism]
+\begin{defn}[Diffeomorphism]\index{diffeomorphism}
     A map $f:M\to N$ is called a \textbf{diffeomorphism} if $f$ is bijective, and $f,f^{-1}$ are both differentiable.
 \end{defn}
 
@@ -165,7 +165,7 @@ This proposition can be easily proved by chain rule.
 \end{rem}
 
 \section{Tangent Bundles and Vector Fields}
-\begin{defn}[Tangent bundle]
+\begin{defn}[Tangent bundle]\index{tangent bundle}
     Assume differentiable manifold $M^n$ has atlas $\{U_\alpha,\varphi_\alpha\}$, define
     \begin{gather*}
         TM:=\bigsqcup_{p\in M}T_pM\\
@@ -188,7 +188,7 @@ This proposition can be easily proved by chain rule.
     We call $T_pM$ a \textbf{fiber} over $p$, and $\pi:TM\to M$ the projection.
 \end{defn}
 
-\begin{defn}[Vector field]
+\begin{defn}[Vector field]\index{vector field}
     A \textbf{vector field} is a differentiable map $X:M\to TM$ such that $X(p)\in T_pM$.
 \end{defn}
 
@@ -202,7 +202,7 @@ This proposition can be easily proved by chain rule.
 
 This proposition is equivalent to $X$ can be a mapping $C^\infty(M)\to C^\infty(M)$ defined by $Xf(p)=X(p)f$.
 
-\begin{defn}[Lie bracket]
+\begin{defn}[Lie bracket]\index{Lie bracket}
     For $X,Y\in\mathfrak{X}(M)$, define $[X,Y]=XY-YX$, then $[X,Y]\in\mathfrak{X}(M)$.
 \end{defn}
 \begin{rem}
