@@ -2,26 +2,26 @@
 In our last topic class we discuss the Bernstein problem for minimal surfaces.
 We first introduce some motivation for the problem.
 
-Let $u:\Omega\subset\mathbb{R}^{n-1}\to\mathbb{R}$ be a function, then its graph $(x^1,\cdots,x^{n-1},u(x^1,\cdots,x^{n-1}))$ is a minimal surface if and only if it satisfies the following \textbf{minimal surface equation} (MSE):
+Let $u:\Omega\subset\mathbb{R}^{n-1}\to\mathbb{R}$ be a function, then its graph $(x^1,\cdots,x^{n-1},u(x^1,\cdots,x^{n-1}))$ is a minimal surface if and only if it satisfies the following \textbf{minimal surface equation} (MSE):\index{minimal surface equation}
 \[\div\left(\frac{\nabla u}{\sqrt{1+|\nabla u|^2}}\right)=0.\]
 When $n=3$, MSE is found by Lagrange in 1762.
 
 If we do not restrict us on graph, then we have the following Plateau problem.
-\begin{pro}[Plateau]
+\begin{pro}[Plateau]\index{Plateau problem}
     Let $\Gamma\subset\mathbb{R}^3$ be a simple closed curve, find an area-minimizing surface $\Sigma\subset\mathbb{R}^3$ such that $\partial\Sigma=\Gamma$.
 \end{pro}
 
 This was solved by Douglas--Rado in 1930s.
 Please refer to Struwe's \emph{Calculus of Variation} for more discussion.
 
-But for minimal graph (i.e.\ a minimal surface that is a graph), we have the following Bernstein's theorem.
-\begin{thm}[Bernstein, 1916]
+But for minimal graph (i.e.\ a minimal surface that is a graph)\index{minimal graph}, we have the following Bernstein's theorem.
+\begin{thm}[Bernstein, 1916]\index{theorem!Bernstein}
     Let $u:\mathbb{R}^2\to\mathbb{R}$ be a function that satisfies MSE (called \textbf{entire graph}), then $u$ is an affine function, that is
     \[u(x)=\vec{a}\cdot x+b.\]
 \end{thm}
 
 Then we have the Bernstein problem.
-\begin{pro}[Bernstein]
+\begin{pro}[Bernstein]\index{Bernstein problem}
     Let $u:\mathbb{R}^{n-1}\to\mathbb{R}$ be an entire graph in $\mathbb{R}^n$.
     Is the graph of $u$ an affine graph?
     In other words, is entire minimal graph in $\mathbb{R}^n$ a hyperplane?
@@ -40,7 +40,7 @@ The timeline is
 \end{itemize}
 
 We have the following fact.
-\begin{prop}
+\begin{prop}\index{minimal graph!area-minimizing}
     A minimal graph in $\mathbb{R}^n$ is area-minimizing.
 \end{prop}
 \begin{proof}
@@ -79,7 +79,7 @@ We have the following fact.
 
 We now discuss the conception of stability.
 This is used to solve the problem that when minimal surfaces actually minimizes area.
-\begin{defn}[Stability]
+\begin{defn}[Stability]\index{stability}
     We call the surface $\Sigma$ is \textbf{stable} if for any proper variation $f:\Sigma\times(-\varepsilon,\varepsilon)\to M$ the second variation is nonnegative, that is,
     \[\left.\frac{\d^2{}}{\d{t^2}}\right|_{t=0}|\Sigma_t|=\int_\Sigma(|\nabla^\perp X|^2-|\langle\II,X\rangle|^2-\tr_\Sigma\langle R^M(\bullet,X)\bullet,X\rangle)\geq 0,\]
     where $X$ is the variation vector field.
@@ -92,7 +92,7 @@ This is used to solve the problem that when minimal surfaces actually minimizes 
 \end{defn}
 
 About stability, we have the following theorem.
-\begin{thm}[Fischer--Colbrie--Schoen]
+\begin{thm}[Fischer--Colbrie--Schoen]\index{theorem!Fischer--Colbrie--Schoen}
     A surface $\Sigma$ is stable if and only if there is a $u\in C^\infty(\Sigma)$ with $u>0$, such that
     \[(\Delta+|h|^2+\Ric(N,N))u=0.\]
 \end{thm}
@@ -133,7 +133,7 @@ This is a corollary of following theorem.
 \end{rem}
 
 Before we procced our discuss, we need the following monotonicity formula.
-\begin{thm}[Monotonicity formula]
+\begin{thm}[Monotonicity formula]\index{monotonicity formula}
     Let $\Sigma^k\subset\mathbb{R}^n$ be a minimal submanifold, $x_0\in\mathbb{R}^n$.
     Then for $r>s$ we have
     \[\frac{|\Sigma^k\cap B^n_r(x_0)|}{r^k}-\frac{|\Sigma^k\cap B^n_s(x_0)|}{r^k}=\int_{(B^n_r(x_0)\backslash B^n_s(x_0))\cap\Sigma}\frac{|(x-x_0)^\perp|^2}{|x-x_0|^{k+2}}\d{A}.\]
@@ -163,7 +163,7 @@ Before we procced our discuss, we need the following monotonicity formula.
 Monotonicity formula is useful with the notion of cone.
 We now introduce the conception of cone.
 
-\begin{defn}
+\begin{defn}\index{cone}
     Let $\Sigma^{k-1}\subset\mathbb{S}^{n-1}$ be a $(k-1)$-dimensional submanifold in $\mathbb{S}^{n-1}$.
     Then the \textbf{cone} over $\Sigma$ is defined as
     \[\mathscr{C}_\Sigma:=\left\{x\in\mathbb{R}^n\left|\ \frac{x}{|x|}\in\Sigma\right.\right\}.\]
@@ -207,7 +207,7 @@ Now we can outline the proof of Bernstein problem.
 \end{enumerate}
 
 Finally we discuss the stable Bernstein problem.
-\begin{pro}[Stable Bernstein]
+\begin{pro}[Stable Bernstein]\index{stable Bernstein problem}
     Let $\Sigma^{n-1}\subset\mathbb{R}^n$ ($n\leq 7$) be a stable complete two-sided minimal hypersurface.
     Is $\Sigma$ flat?
 \end{pro}

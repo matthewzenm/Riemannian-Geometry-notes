@@ -10,7 +10,7 @@ We now supply some background materials on tensors.
 
 First we introduce the notion of tensors and differential forms.
 In this section, we will not give proof of any proposition, please refer to any book on differentiable manifolds for proofs.
-\begin{defn}
+\begin{defn}\index{tensor}
     Let $M$ be a differentiable manifold.
     An \textbf{$(r,s)$-tensor} $T$ is a $C^\infty(M)$-multi\-linear map
     \[T:\underbrace{\mathfrak{X}(M)^*\times\cdots\times\mathfrak{X}(M)^*}_{r}\times\underbrace{\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)}_{s}\to C^\infty(M),\]
@@ -22,7 +22,7 @@ In this section, we will not give proof of any proposition, please refer to any 
     We often define $(0,0)$-tensors to be smooth functions, and identify $(1,0)$-tensors with vector fields.
 \end{rem}
 
-\begin{defn}
+\begin{defn}\index{tensor product}
     Let $\omega,\eta\in\mathfrak{X}(M)^*$.
     The \textbf{tensor product} of $\omega,\eta$, denoted by $\omega\otimes\eta$, is defined as
     \begin{align*}
@@ -41,7 +41,7 @@ In this section, we will not give proof of any proposition, please refer to any 
     \[\d{x^i}\left(\frac{\partial{}}{\partial{x^j}}\right)=\delta_{ij}.\]
 \end{prop}
 
-\begin{defn}
+\begin{defn}\index{differential form}
     A \textbf{differential form} on $M$ of order $r$ is a skew-symmetric $(0,r)$-tensor.
     The space of differential form of order $r$ is denoted by $\bigwedge\nolimits^rM$.
 \end{defn}
@@ -53,7 +53,7 @@ In this section, we will not give proof of any proposition, please refer to any 
     for any $(0,r)$-tensor $\omega$ and $X_i\in\mathfrak{X}(M)$, $i=1,\cdots,r$.
 \end{prop}
 
-\begin{defn}
+\begin{defn}\index{wedge product}
     We have a bilinear map $\wedge:\bigwedge\nolimits^r(M)\times\bigwedge\nolimits^s(M)\to\bigwedge\nolimits^{r+s}(M)$ defined by the commutative diagram
     \[\begin{tikzcd}
         \mathfrak{T}^r(M)\times\mathfrak{T}^s(M) \ar[r,"\otimes"] \ar[d,"\pi\times\pi"] & \mathfrak{T}^{r+s}(M) \ar[d,"\pi"] \\
@@ -67,7 +67,7 @@ In this section, we will not give proof of any proposition, please refer to any 
     for indices $1\leq i_1<\cdots<i_r\leq n$.
 \end{prop}
 
-\begin{defn}
+\begin{defn}\index{exterior differential}
     We define the \textbf{exterior differential} of a form $\omega$ by writing
     \[\omega=\omega_{i_1\cdots i_r}\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}\]
     on a local chart and define
@@ -78,11 +78,11 @@ In this section, we will not give proof of any proposition, please refer to any 
     One can check this definition does not depend on the choice of local chart.
 \end{defn}
 
-\section{Musical Isomorphisms}
+\section{Musical Isomorphisms}\index{musical isomorphism}
 Let $(M^n,g)$ be a Riemannian manifold.
 For simplicity, we only discuss the musical isomorphisms of $(1,0)$- and $(0,1)$-tensors.
 
-\begin{defn}
+\begin{defn}\index{lowering index}
     Let $X$ be a vector field (i.e.\ $(1,0)$-tensor), and on a local chart we have $X=X^i\partial_i$.
     Then we define a $(0,1)$-tensor $X^\flat$ by
     \[X^\flat_j=g_{ij}X^i.\]
@@ -90,7 +90,7 @@ For simplicity, we only discuss the musical isomorphisms of $(1,0)$- and $(0,1)$
     Then $X\mapsto X^\flat$ gives an isomorphism of $\mathfrak{X}(M)\to\mathfrak{X}(M)^*$.
 \end{defn}
 
-\begin{defn}
+\begin{defn}\index{raising index}
     Let $\omega$ be a $1$-form, we define $\omega^\sharp$ to be the vector field such that for any $1$-form $\eta$, we have
     \[\eta(\omega^\sharp)=\omega(\eta^\flat).\]
     Then $\omega\mapsto\omega^\sharp$ gives an isomorphism of $\mathfrak{X}(M)^*\to\mathfrak{X}(M)$.
@@ -101,7 +101,7 @@ Locally, if $\omega=\omega_i\d{x^i}$, we have $(\omega^\sharp)^j=g^{ij}\omega_i$
 Notice that the indices of $X^\flat$ are lowered and of $\omega^\sharp$ are raised, this explains why we use musical notation to define these isomorphisms.
 
 Using raising index, we can define the gradient of a function.
-\begin{defn}
+\begin{defn}\index{gradient}
     Let $f\in C^\infty(M)$.
     The \textbf{gradient} of $f$ is defined as $\nabla f:=(\d{f})^\sharp$.
 \end{defn}
@@ -111,7 +111,7 @@ By definition, $\nabla f$ has local expression
 
 \section{Contraction and Trace}
 
-\begin{defn}
+\begin{defn}\index{contraction}
     Let $T$ be a $(r,s)$-tensor, by \textbf{contract $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
     \begin{align*}
         &(\tr_{ij}T)_p(\omega_1,\cdots,\widehat{\omega_i},\cdots,\omega_r,X_1,\cdots,\widehat{X_j},\cdots,X_s)\\
@@ -125,7 +125,7 @@ Respective to a local chart, if the tensor has local expression
 then $\tr_{ij}T$ has local expression
 \[(\tr_{ij}T)_{\mu_1\cdots\widehat{\mu_{j}}\cdots\mu_s}^{\nu_1\cdots\widehat{\nu_{i}}\cdots\nu_r}=T_{\mu_1\cdots\mu_{j-1}m\mu_{j+1}\cdots\mu_s}^{\nu_1\cdots\nu_{i-1}m\nu_{i+1}\cdots\nu_r}\]
 
-\begin{defn}
+\begin{defn}\index{trace}
     If $L$ is a $(1,1)$-tensor, we define its \textbf{trace} by $\tr{L}=\tr_{11}L$.
 \end{defn}
 
@@ -135,7 +135,7 @@ and on a local chart
 \[L^i_j=g^{ik}S_{jk}.\]
 Then we have the definition
 
-\begin{defn}
+\begin{defn}\index{trace!of bilinear form}
     The trace of a symmetric $(0,2)$-tensor is defined as the trace of its corresponding $(1,1)$-tensor.
 \end{defn}
 
@@ -144,7 +144,7 @@ We have
 \[\tr{S}=L^i_i=g^{ij}S_{ij}.\]
 
 We use trace to define the norm of a symmetric $(0,2)$-tensor.
-\begin{defn}
+\begin{defn}\index{norm of bilinear form}
     Let $S$ be a symmetric $(0,2)$-tensor, with corresponding linear transformation $L$.
     Then we define its norm by $|S|^2:=\tr(L\circ L)$.
 \end{defn}
@@ -156,7 +156,7 @@ then contract the indices we have
 
 \section{Covariant Derivative}
 
-\begin{defn}
+\begin{defn}\index{covariant derivative!of tensor}
     Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \textbf{covariant derivative} of $T$ as
     \[\nabla_XT(Y_1,\cdots,Y_r)=XT(Y_1,\cdots,Y_r)-\sum_{i=1}^rT(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\]
     for any vector fields $Y_1,\cdots,Y_r$.
@@ -222,12 +222,12 @@ Moreover, we can consider second covariant derivative.
 
 Next we discuss curvature of tensors.
 
-\begin{defn}[Curvature operator]
+\begin{defn}[Curvature operator]\index{curvature!tensor operator}
     Let $X,Y$ be vector fields, define an endomorphism $R(X,Y)$ of $(0,r)$-tensors as
     \[R(X,Y)T=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{[X,Y]}T.\]
 \end{defn}
 
-\begin{prop}[Ricci identity]\label{Ricci identity}
+\begin{prop}[Ricci identity]\label{Ricci identity}\index{Ricci identity}
     For a $(0,r)$-tensor $T$ and vector fields $X,Y$, we have
     \begin{align*}
         (\nabla^2_{Y,X}-\nabla^2_{X,Y})T=R(X,Y)T=-\sum_{i=1}^nT(Y_1,\cdots,R(X,Y)Y_i,\cdots,Y_r)
@@ -251,7 +251,7 @@ Next we discuss curvature of tensors.
 
 Now we introduce some differential operators.
 
-\begin{defn}
+\begin{defn}\index{Hessian}
     Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
     Define the \textbf{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
     Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \textbf{Laplacian} of $f$, denoted by $\Delta f$.
@@ -266,12 +266,12 @@ Now we introduce some differential operators.
     This is just the equation~\ref{2nd cov}.
 \end{proof}
 
-\begin{defn}
+\begin{defn}\index{divergence}
     Let $M$ be a differentiable manifold, $X\in\mathfrak{X}(M)$.
     Then we define the \textbf{divergence} of $X$ to be $\tr(Y\mapsto\nabla_YX)$.
 \end{defn}
 
-\begin{thm}[Divergence theorem]
+\begin{thm}[Divergence theorem]\index{theorem!divergence}
     Let $\Omega$ be a region in $\mathbb{R}^n$ with $\Sigma:=\partial\Omega$ smooth.
     Let $X\in\mathfrak{X}(\Omega)$, then we have
     \[\int_\Sigma\langle X,N\rangle\d{A}=\int_\Omega\div{X}\d\Vol,\]
