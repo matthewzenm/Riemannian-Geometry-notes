@@ -48,7 +48,7 @@ We first need a lemma.
         &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;j}(f_{;iij}-f_{;k}R_{jii}^k)\quad\text{(Ricci identity)}\\
         &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;j}f_{;iij}+\sum_{i,j}f_{;k}R_{iji}^k\\
         &=\sum_{i,j}f^2_{;ij}+\sum_{i,j}f_{;iij}f_{;j}+\sum_{j}f_{;j}f_{;k}\Ric_j^k\\
-        &=|\nabla f|^2+\langle\Delta\nabla f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\qedhere
+        &=|\nabla f|^2+\langle\nabla\Delta f,\nabla f\rangle+\langle\Ric(\nabla f),\nabla f\rangle.\qedhere
     \end{align*}
 \end{proof}
 
@@ -148,7 +148,8 @@ Before we start the proof, we first state some results from theory of partial di
         f:\mathbb{R}\times N&\to M\\
         (t,p)&\mapsto\exp_{B^+(p)}(t\nabla B^+(p)).
     \end{align*}
-    Since $\nabla^2B^+=0$, $\nabla B^+$ is parallel, so we can give $f^{-1}(x)$ of $x\in M$ by taking the integral curve of $\nabla f$ passing $x$ and trace back to $N$, ODE theory shows $f^{-1}$ is smooth.
+    Since $0=\nabla^2B^+=\nabla(\d{B^+})$, $\nabla B^+$ is parallel by the commutativity of musical isomorphism and covariant derivative.
+    So we can give $f^{-1}(x)$ of $x\in M$ by taking the integral curve of $\nabla B^+$ passing $x$ and trace back to $N$, ODE theory shows $f^{-1}$ is smooth.
     Therefore $f$ is a diffeomorphism.
     We need to show $f$ induces a product metric on $\mathbb{R}\times N$.
     Let $(U,\varphi)$ be a local chart of $N$, with coordinate $(x^1,\cdots,x^{n-1})$, define the Fermi coordinate $(x^1,\cdots,x^{n-1},t)$ by

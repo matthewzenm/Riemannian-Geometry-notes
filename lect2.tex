@@ -51,7 +51,8 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
         \item Let $f:(M,g)\to(N,h)$ be an immersion, if $g=f^*h$, then $f$ is called a \textbf{local isometry}.
         If $f:M\to N$ is a diffeomorphism, then $f$ is called an \textbf{isometry}.
         \item The standard metric on $\mathbb{S}^n$ is the induced metric by the embedding $i:\mathbb{S}^n\hookrightarrow(\mathbb{R}^{n+1},\delta_{ij})$.
-        \item If $(M_1,g_1),(M_2,g_2)$ are Riemannian manifolds, then their product manifold has product metric $g_1\times g_2$.
+        \item If $(M_1,g_1),(M_2,g_2)$ are Riemannian manifolds, then their product manifold has product metric $g_1\times g_2$, which is given by
+        \[(g_1\times g_2)((X_1,Y_1),(X_2,Y_2))=g_1(X_1,X_2)+g_2(Y_1,Y_2).\]
         In particular, equip $\mathbb{S}^1$ with standard metric $g$, $(\mathbb{T}^n,g^n)=(\mathbb{S}^1\times\cdots\times\mathbb{S}^1,g\times\cdots\times g)$ is the flat torus (we will explain the word ``flat'' later).
         \item Let $f:M\to(N,g)$ be a covering map, then $f^*g$ is a Riemannian metric on $M$, called Riemannian covering map.
         In particular, let $\Isom(M):=\{f:M\to M|\ f\ \text{is isometry}\}$ denote the isometry group of $M$, $\Gamma\subset\Isom(M)$ be a subgroup, then $M/\Gamma$ is a manifold, and $f:M\to M/\Gamma$ is a Riemannian covering map.
@@ -172,6 +173,10 @@ Choose a local chart $(U,\varphi)$, let $Y=Y^i\frac{\partial{}}{\partial{x^i}}$,
         &=\left(\dot{Y}^k(t)+Y^j(t)\dot{\gamma}^i(t)\Gamma^k_{ij}(\gamma(t))\right)\frac{\partial{}}{\partial{x^k}}\quad\text{(chain rule)}
     \end{aligned}\label{parallel}
 \end{equation}
+
+\begin{rem}
+    We consider only \emph{regular} curves, that is, $\dot\gamma(t)\neq 0$ for all $t$.
+\end{rem}
 
 \begin{defn}[Parallel transport]\index{parallel transport}
     Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
