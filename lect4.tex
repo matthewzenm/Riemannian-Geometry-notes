@@ -30,9 +30,9 @@ Our aim is to prove the converse.
 \section{First Variation Formula}
 
 \begin{defn}[Variation]\index{variation}
-    Let $\gamma_0:[0,a]\to M$ be a curve, a \textbf{variation} of $\gamma_0$ is a differentiable map $\gamma:[0,a]\times(-\varepsilon,\varepsilon)\to M$ such that $\gamma(t,0)=\gamma_0(t)$.
-    If $\gamma(0,s)=\gamma_0(0)$, $\gamma(a,s)=\gamma_0(a)$ for any $s\in(-\varepsilon,\varepsilon)$, then we call it a \textbf{proper variation}.
-    We call $\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\gamma(t,s)=:V(t)$ the \textbf{variation vector field}.
+    Let $\gamma_0:[0,a]\to M$ be a curve, a \emph{variation} of $\gamma_0$ is a differentiable map $\gamma:[0,a]\times(-\varepsilon,\varepsilon)\to M$ such that $\gamma(t,0)=\gamma_0(t)$.
+    If $\gamma(0,s)=\gamma_0(0)$, $\gamma(a,s)=\gamma_0(a)$ for any $s\in(-\varepsilon,\varepsilon)$, then we call it a \emph{proper variation}.
+    We call $\left.\frac{\partial{}}{\partial{s}}\right|_{s=0}\gamma(t,s)=:V(t)$ the \emph{variation vector field}.
 \end{defn}
 
 \begin{prop}[First variation formula]\index{first variation formula}
@@ -74,7 +74,7 @@ Since we concentrate on critical points of variation of energy, we define second
 \begin{prop}[Second variation formula]\index{second variation formula}
     Let $\gamma_0:[0,a]\to M$ be a geodesic, then
     \[E''(0)=\int_0^a\left(|\dot{V}(t)|^2-\langle R(\dot{\gamma}_0(t),V(t))\dot{\gamma}_0(t),V(t)\rangle\right)\d{t}+\boxed{\langle\nabla_{V(t)}V(t),\dot{\gamma}_0(t)\rangle|_0^a}.\]
-    The boxed term is called \textbf{boundary term}, and it vanishes when the variation is proper.
+    The boxed term is called \emph{boundary term}, and it vanishes when the variation is proper.
 \end{prop}
 \begin{proof}
     We take the expression of $E'(s)$ from the proof of first variation formula and differentiate
@@ -148,7 +148,7 @@ Involving some theory of covering spaces, we have the following corollary.
 
 \begin{defn}[Index form]\index{index form}
     Let $\gamma:[0,a]\to M$ be a geodesic.
-    The \textbf{index form} of $\gamma$ is a biliear form on $\mathscr{V}:=\{\text{vector fields along }\gamma\}$ defined by
+    The \emph{index form} of $\gamma$ is a biliear form on $\mathscr{V}:=\{\text{vector fields along }\gamma\}$ defined by
     \[I(X,Y)=\int_0^a(\langle\dot{X},\dot{Y}\rangle-\langle R(\dot{\gamma},{X})\dot{\gamma},{Y}\rangle)\d{t}\]
 \end{defn}
 
@@ -157,11 +157,11 @@ Involving some theory of covering spaces, we have the following corollary.
 \end{lem}
 \begin{proof}
     First we observe
-    \[I(U,Y)=-\int_0^a\langle\ddot{V}+R(\dot{\gamma},V)\dot{\gamma},Y\rangle\d{t}\]
-    If $V$ is a Jacobi field, then $\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}=0$, which implies $I(U,Y)=0$.
-    Conversely, if $I(U,Y)=0$ for any $Y\in\mathscr{V}_0$, we choose $Y=\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}$, then
-    \[0=-\int_0^a|\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}|^2\d{t},\]
-    this implies $\ddot{V}+R(\dot{\gamma},V)\dot{\gamma}=0$, that is, $V$ is a Jacobi field.
+    \[I(U,Y)=-\int_0^a\langle\ddot{V}+R(\dot{\gamma},U)\dot{\gamma},Y\rangle\d{t}\]
+    If $U$ is a Jacobi field, then $\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}=0$, which implies $I(U,Y)=0$.
+    Conversely, if $I(U,Y)=0$ for any $Y\in\mathscr{V}_0$, we choose $Y=\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}$, then
+    \[0=-\int_0^a|\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}|^2\d{t},\]
+    this implies $\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}=0$, that is, $U$ is a Jacobi field.
 \end{proof}
 
 We observe if a Jacobi field $J$ is not in $\mathscr{V}_0$, the above integration by parts is changed into

@@ -12,10 +12,10 @@ First we introduce the notion of tensors and differential forms.
 In this section, we will not give proof of any proposition, please refer to any book on differentiable manifolds for proofs.
 \begin{defn}\index{tensor}
     Let $M$ be a differentiable manifold.
-    An \textbf{$(r,s)$-tensor} $T$ is a $C^\infty(M)$-multi\-linear map
+    An \emph{$(r,s)$-tensor} $T$ is a $C^\infty(M)$-multi\-linear map
     \[T:\underbrace{\mathfrak{X}(M)^*\times\cdots\times\mathfrak{X}(M)^*}_{r}\times\underbrace{\mathfrak{X}(M)\times\cdots\times\mathfrak{X}(M)}_{s}\to C^\infty(M),\]
     where $\mathfrak{X}(M)^*$ denotes the dual module of $\mathfrak{X}(M)$ over $C^\infty(M)$.
-    $(0,s)$-tensors are called \textbf{covariant tensors}, and $(r,0)$-tensors are called \textbf{contravariant tensors}.
+    $(0,s)$-tensors are called \emph{covariant tensors}, and $(r,0)$-tensors are called \emph{contravariant tensors}.
 \end{defn}
 
 \begin{rem}
@@ -24,7 +24,7 @@ In this section, we will not give proof of any proposition, please refer to any 
 
 \begin{defn}\index{tensor product}
     Let $\omega,\eta\in\mathfrak{X}(M)^*$.
-    The \textbf{tensor product} of $\omega,\eta$, denoted by $\omega\otimes\eta$, is defined as
+    The \emph{tensor product} of $\omega,\eta$, denoted by $\omega\otimes\eta$, is defined as
     \begin{align*}
         \omega\otimes\eta:\mathfrak{X}(M)\times\mathfrak{X}(M)&\to C^\infty(M)\\
         (X,Y)&\mapsto\omega(X)\cdot\eta(Y).
@@ -42,7 +42,7 @@ In this section, we will not give proof of any proposition, please refer to any 
 \end{prop}
 
 \begin{defn}\index{differential form}
-    A \textbf{differential form} on $M$ of order $r$ is a skew-symmetric $(0,r)$-tensor.
+    A \emph{differential form} on $M$ of order $r$ is a skew-symmetric $(0,r)$-tensor.
     The space of differential form of order $r$ is denoted by $\bigwedge\nolimits^rM$.
 \end{defn}
 
@@ -68,7 +68,7 @@ In this section, we will not give proof of any proposition, please refer to any 
 \end{prop}
 
 \begin{defn}\index{exterior differential}
-    We define the \textbf{exterior differential} of a form $\omega$ by writing
+    We define the \emph{exterior differential} of a form $\omega$ by writing
     \[\omega=\omega_{i_1\cdots i_r}\d{x^{i_1}}\wedge\cdots\wedge\d{x^{i_r}}\]
     on a local chart and define
     \begin{align*}
@@ -103,7 +103,7 @@ Notice that the indices of $X^\flat$ are lowered and of $\omega^\sharp$ are rais
 Using raising index, we can define the gradient of a function.
 \begin{defn}\index{gradient}
     Let $f\in C^\infty(M)$.
-    The \textbf{gradient} of $f$ is defined as $\nabla f:=(\d{f})^\sharp$.
+    The \emph{gradient} of $f$ is defined as $\nabla f:=(\d{f})^\sharp$.
 \end{defn}
 
 By definition, $\nabla f$ has local expression
@@ -112,7 +112,7 @@ By definition, $\nabla f$ has local expression
 \section{Contraction and Trace}
 
 \begin{defn}\index{contraction}
-    Let $T$ be a $(r,s)$-tensor, by \textbf{contract $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
+    Let $T$ be a $(r,s)$-tensor, by \emph{contract $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
     \begin{align*}
         &(\tr_{ij}T)_p(\omega_1,\cdots,\widehat{\omega_i},\cdots,\omega_r,X_1,\cdots,\widehat{X_j},\cdots,X_s)\\
         =&\sum_{k=1}^nT_p(\omega_1,\cdots,\omega_{i-1},\eta_k,\omega_{i+1},\cdots,\omega_r,X_1,\cdots,X_{j-1},e_k,X_{j+1},\cdots,X_s)
@@ -126,7 +126,7 @@ then $\tr_{ij}T$ has local expression
 \[(\tr_{ij}T)_{\mu_1\cdots\widehat{\mu_{j}}\cdots\mu_s}^{\nu_1\cdots\widehat{\nu_{i}}\cdots\nu_r}=T_{\mu_1\cdots\mu_{j-1}m\mu_{j+1}\cdots\mu_s}^{\nu_1\cdots\nu_{i-1}m\nu_{i+1}\cdots\nu_r}\]
 
 \begin{defn}\index{trace}
-    If $L$ is a $(1,1)$-tensor, we define its \textbf{trace} by $\tr{L}=\tr_{11}L$.
+    If $L$ is a $(1,1)$-tensor, we define its \emph{trace} by $\tr{L}=\tr_{11}L$.
 \end{defn}
 
 We know that a symmetric $(0,2)$-tensor $S$ (i.e.\ a bilinear form) is one-to-one corresponding to a $(1,1)$-tensor $L$ (i.e.\ a linear transformation), the correspondence is given by
@@ -157,11 +157,11 @@ then contract the indices we have
 \section{Covariant Derivative}
 
 \begin{defn}\index{covariant derivative!of tensor}
-    Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \textbf{covariant derivative} of $T$ as
+    Let $T$ be a $(0,r)$-tensor ($r\geq 0$), then we define the \emph{covariant derivative} of $T$ as
     \[\nabla_XT(Y_1,\cdots,Y_r)=XT(Y_1,\cdots,Y_r)-\sum_{i=1}^rT(Y_1,\cdots,\nabla_XY_i,\cdots,Y_r)\]
     for any vector fields $Y_1,\cdots,Y_r$.
     Notice that if $T$ is a function (i.e., $(0,0)$-tensor), the minus summation term does not exist.
-    Moreover, we define the \textbf{covariant differential} of $T$ as
+    Moreover, we define the \emph{covariant differential} of $T$ as
     \[\nabla T(Y_1,\cdots,Y_r,X)=\nabla_XT(Y_1,\cdots,Y_r).\]
 \end{defn}
 
@@ -253,8 +253,8 @@ Now we introduce some differential operators.
 
 \begin{defn}\index{Hessian}
     Let $(M,g)$ be a Riemannian manifold, $f\in C^\infty(M)$.
-    Define the \textbf{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
-    Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \textbf{Laplacian} of $f$, denoted by $\Delta f$.
+    Define the \emph{Hessian} of $f$ to be a $(0,2)$-tensor $\nabla^2f$.
+    Ricci identity shows $\nabla^2f$ is symmetric, hence we define its trace to be the \emph{Laplacian} of $f$, denoted by $\Delta f$.
 \end{defn}
 
 \begin{prop}
@@ -268,7 +268,7 @@ Now we introduce some differential operators.
 
 \begin{defn}\index{divergence}
     Let $M$ be a differentiable manifold, $X\in\mathfrak{X}(M)$.
-    Then we define the \textbf{divergence} of $X$ to be $\tr(Y\mapsto\nabla_YX)$.
+    Then we define the \emph{divergence} of $X$ to be $\tr(Y\mapsto\nabla_YX)$.
 \end{defn}
 
 \begin{thm}[Divergence theorem]\index{theorem!divergence}

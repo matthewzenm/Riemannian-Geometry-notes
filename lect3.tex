@@ -7,7 +7,7 @@ Finally, we will introduce the notion of conjugate points.
 
 \section{Geodesics and Exponential Maps}
 \begin{defn}\index{geodesic}
-    A curve $\gamma:[0,1]\to M$ is called a \textbf{geodesic} if $\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0$.
+    A curve $\gamma:[0,1]\to M$ is called a \emph{geodesic} if $\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0$.
 \end{defn}
 
 \begin{rem}
@@ -33,7 +33,7 @@ Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
 
 \begin{defn}[Exponential map]\index{exponential map}
     Let $U\subset T_pM$ be a neighborhood of origin, such that for any $v\in U$, $\gamma_v(1)$ is defined (such neighborhood exists by Proposition~\ref{geodesic in nbhd}).
-    We define the \textbf{exponential map} at p to be
+    We define the \emph{exponential map} at p to be
     \begin{align*}
         \exp_p:U&\to M\\
         v&\mapsto\gamma_v(1)
@@ -72,7 +72,7 @@ Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
 \end{eg}
 
 \begin{defn}\label{geodesically completeness}
-    If $\exp_p$ can be defined on whole $T_pM$ for any $p\in M$, we say $M$ is \textbf{geodesically complete}.
+    If $\exp_p$ can be defined on whole $T_pM$ for any $p\in M$, we say $M$ is \emph{geodesically complete}.
 \end{defn}
 
 We have the following important theorem.
@@ -136,7 +136,7 @@ We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
 
 \begin{eg}\index{flat}
     $(\mathbb{R},\delta)$ has $R\equiv 0$.
-    Any metric admits zero curvature is call \textbf{flat}.
+    Any metric admits zero curvature is call \emph{flat}.
 \end{eg}
 
 \begin{prop}
@@ -180,7 +180,7 @@ For a theorem about constant sectoinal curvature, we mention here Schur's Theore
 We define another two important curvature.
 \begin{defn}[Ricci curvature]\index{curvature!Ricci}
     Let $(M^n,g)$ be a Riemannian manifold.
-    Define \textbf{Ricci curvature tensor} $\Ric:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
+    Define \emph{Ricci curvature tensor} $\Ric:\mathfrak{X}(M)\to\mathfrak{X}(M)$ as
     \[\Ric_p(X)=\sum_{i=1}^nR_p(e_i,X)e_i,\]
     where $\{e_i\}$ is an orthonormal frame around $p$.
     It's easy to check the definition is independent from the choice of orthonormal frame, and $\Ric$ is self-adjoint.
@@ -188,13 +188,13 @@ We define another two important curvature.
 
 \begin{defn}[Scalar curvature]\index{curvature!scalar}
     Let $(M^n,g)$ be a Riemannian manifold.
-    We define \textbf{Scalar curvature} $\Scal\in C^\infty(M)$ as
+    We define \emph{Scalar curvature} $\Scal\in C^\infty(M)$ as
     \[\Scal(p)=\sum_{i=1}^n\langle\Ric_p(e_i),e_i(p)\rangle\]
     for an orthonormal frame $\{e_i\}$ around $p$.
 \end{defn}
 
 \begin{defn}
-    Let $(M,g)$ be a Riemannian manifold, if $\Ric=\lambda(p)g$ for a $\lambda\in C^\infty(M)$, we call $M$ an \textbf{Einstein manifold}.
+    Let $(M,g)$ be a Riemannian manifold, if $\Ric=\lambda(p)g$ for a $\lambda\in C^\infty(M)$, we call $M$ an \emph{Einstein manifold}.
 \end{defn}
 
 We also mention here
@@ -205,7 +205,7 @@ We also mention here
 \section{Jacobi Fields}
 
 \begin{defn}\index{Jacobi field}
-    Let $\gamma$ be a geodesic, a vector field $J$ along $\gamma$ is called a \textbf{Jacobi field} if $\ddot{J}+R(\dot{\gamma},J)\dot{\gamma}=0$.
+    Let $\gamma$ be a geodesic, a vector field $J$ along $\gamma$ is called a \emph{Jacobi field} if $\ddot{J}+R(\dot{\gamma},J)\dot{\gamma}=0$.
 \end{defn}
 
 Let $\{e_i(t)\}$ be a parallel orthonormal frame along $\gamma$, $J(t)=\sum_if_i(t)e_i(t)$.
@@ -227,7 +227,7 @@ Above discussion can be summarized as the following proposition.
 The next proposition shows only the Jacobi field at tangential direction are interesting.
 \begin{prop}\label{decomposition of Jacobi fields}\index{Jacobi field!normal}
     Let $J$ be a Jacobi field along $\gamma$, we have the decomposition $J(t)=J^\perp(t)+(at+b)\dot{\gamma}(t)$, where $J^\perp(t)\perp\dot{\gamma}(t)$.
-    If a Jacobi field is perpendicular to $\gamma$, we call it a \textbf{normal Jacobi field}
+    If a Jacobi field is perpendicular to $\gamma$, we call it a \emph{normal Jacobi field}
 \end{prop}
 \begin{proof}
     We have
@@ -263,7 +263,7 @@ We have the following Gauss Lemma.
 \begin{eg}
     We calculate the Jacobi field on Riemannian manifolds admit a constant sectional curvature.
     By scaling the metric, we can assume $K=0,1,-1$.
-    The corresponding simply connected complete Riemannian manifolds are called \textbf{space forms}\index{space form}, which are $\mathbb{R}^n,\mathbb{S}^n,\mathbb{H}^n$.
+    The corresponding simply connected complete Riemannian manifolds are called \emph{space forms}\index{space form}, which are $\mathbb{R}^n,\mathbb{S}^n,\mathbb{H}^n$.
     The Jacobi field equation is
     \[\begin{cases}
         \ddot{J}(t)+KJ(t)=0,\\
@@ -282,7 +282,7 @@ In this section, we adopt the traditional terminology ``coordinate'' to mean cha
 
 First we introduce the geodesic normal coordinate.\index{geodesic normal coordinate}
 Given a Riemannian manifold $(M,g)$ and $p\in M$, there exists an $\varepsilon>0$ such that $\exp_p:B_\varepsilon(0)\to\exp_p(B_\varepsilon(0))=:B_\varepsilon(p)$ is an diffeomorphism.
-Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha^i\}$ be the dual basis of $\{e_i\}$, then we construct the \textbf{geodesic normal coordinate}
+Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha^i\}$ be the dual basis of $\{e_i\}$, then we construct the \emph{geodesic normal coordinate}
 \[q\in B_\varepsilon(p)\mapsto(\alpha^1(\exp_p^{-1}(q)),\cdots,\alpha^n(\exp_p^{-1}(q))).\]
 
 \begin{prop}
@@ -298,7 +298,7 @@ Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha
 \end{proof}
 
 Next we introduce the geodesic polar coordinate.\index{geodesic polar coordinate}
-Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean space $(T_pM,g_p)$, and we define the \textbf{geodesic polar coordinate} by
+Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean space $(T_pM,g_p)$, and we define the \emph{geodesic polar coordinate} by
 \[q\in B_\varepsilon(p)\backslash\{p\}\mapsto(r(\exp_p^{-1}(q)),\theta^1(\exp_p^{-1}(q)),\cdots,\theta^{n-1}(\exp_p^{-1}(q))).\]
 
 \begin{prop}
@@ -356,7 +356,7 @@ As an application, we prove geodesics are locally length-minimizing.
 \section{Conjugate Points}
 
 \begin{defn}[Conjugate points]\index{conjugate point}
-    If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \textbf{conjugate point} of $p$ along $\gamma$.
+    If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \emph{conjugate point} of $p$ along $\gamma$.
 \end{defn}
 
 \begin{prop}

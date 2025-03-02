@@ -14,7 +14,7 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 
 \begin{defn}\index{metric}
     Let $M^n$ be a differentiable manifold.
-    A \textbf{metric} (or Riemannian metric) on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
+    A \emph{metric} (or Riemannian metric) on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
     \begin{enumerate}
         \item $g_p(X,Y)=g_p(Y,X)$;
         \item $g_p(X,X)\geq 0$, $g_p(X,X)=0\iff X=0$.
@@ -48,8 +48,8 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
     \begin{enumerate}[(1)]
         \item $\mathbb{R}^n$ has the Euclidean metric $g=\sum_{i=1}^n\d{x^i}\otimes\d{x^i}$, $g_{ij}=\delta_{ij}$.
         \item Let $f:M\to(N,h)$ be an immersion, then we define $f^*h(X,Y)|_p=h(f_{*p}X,f_{*p}Y)$, $f^*h$ is the induced metric from $h$ by immersion.
-        \item Let $f:(M,g)\to(N,h)$ be an immersion, if $g=f^*h$, then $f$ is called a \textbf{local isometry}.
-        If $f:M\to N$ is a diffeomorphism, then $f$ is called an \textbf{isometry}.
+        \item Let $f:(M,g)\to(N,h)$ be an immersion, if $g=f^*h$, then $f$ is called a \emph{local isometry}.
+        If $f:M\to N$ is a diffeomorphism, then $f$ is called an \emph{isometry}.
         \item The standard metric on $\mathbb{S}^n$ is the induced metric by the embedding $i:\mathbb{S}^n\hookrightarrow(\mathbb{R}^{n+1},\delta_{ij})$.
         \item If $(M_1,g_1),(M_2,g_2)$ are Riemannian manifolds, then their product manifold has product metric $g_1\times g_2$, which is given by
         \[(g_1\times g_2)((X_1,Y_1),(X_2,Y_2))=g_1(X_1,X_2)+g_2(Y_1,Y_2).\]
@@ -67,12 +67,12 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 \section{Metric Structure}
 
 \begin{defn}\index{distance}
-    Let $\gamma:[0,1]\to M$ be a curve, define its \textbf{length} to be
+    Let $\gamma:[0,1]\to M$ be a curve, define its \emph{length} to be
     \begin{align*}
         L(\gamma)&:=\int_0^1|\dot{\gamma}(t)|\d{t}\\
         &=\int_0^1\sqrt{g(\gamma(t))(\dot{\gamma}(t),\dot{\gamma}(t))}\d{t}
     \end{align*}
-    Let $p,q\in M$, define their \textbf{distance} to be
+    Let $p,q\in M$, define their \emph{distance} to be
     \[d(p,q)=\inf_{\gamma\in C_{p,q}}L(\gamma)\]
     where $C_{p,q}$ denotes the collection of all smooth curve joining $p$ and $q$.
 \end{defn}
@@ -115,11 +115,11 @@ For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd
         \item $\nabla_X(Y+Z)=\nabla_XY+\nabla_XZ$,
         \item $\nabla_X(fY)=(Xf)Y+f\nabla_XY$,
     \end{enumerate}
-    then $\nabla$ is called an \textbf{affine connection} on $M$.
+    then $\nabla$ is called an \emph{affine connection} on $M$.
 \end{defn}
 
 \begin{defn}\index{Levi--Civita connection}
-    An affine connection $\nabla$ on Riemannian manifold $(M,g)$ is called \textbf{Levi--Civita connection} if it satisfies
+    An affine connection $\nabla$ on Riemannian manifold $(M,g)$ is called \emph{Levi--Civita connection} if it satisfies
     \begin{itemize}
         \item[(LC1)] $Xg(Y,Z)=g(\nabla_XY,Z)+g(Y,\nabla_XZ)$,
         \item[(LC2)] $\nabla_XY-\nabla_YX-[X,Y]=0$.
@@ -180,7 +180,7 @@ Choose a local chart $(U,\varphi)$, let $Y=Y^i\frac{\partial{}}{\partial{x^i}}$,
 
 \begin{defn}[Parallel transport]\index{parallel transport}
     Let $\gamma:[0,1]\to M$ be a curve, $Y$ is a vector field along $\gamma$.
-    If $\nabla Y/\d{t}=0$, then we call $Y$ is \textbf{parallel} along $\gamma$.
+    If $\nabla Y/\d{t}=0$, then we call $Y$ is \emph{parallel} along $\gamma$.
 \end{defn}
 
 \begin{prop}\label{parallel transport!existence}

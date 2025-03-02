@@ -10,9 +10,9 @@ In this lecture, we review some basic notions of differentiable manifolds.
         \item $M=\bigcup_\alpha U_\alpha$,
         \item if $U_\alpha\cap U_\beta\neq\varnothing$, then $\varphi_\alpha^{-1}\circ\varphi_\beta:\varphi_\beta(U_\alpha\cap U_\beta)\to\varphi_\alpha(U_\alpha\cap U_\beta)$ is differentiable (we mean $C^\infty$ here),
     \end{enumerate}
-    then $M$ is called an \textbf{$n$-dimensional differentiable manifold}.
+    then $M$ is called an \emph{$n$-dimensional differentiable manifold}.
 
-    Moreover, we call $(U_\alpha,\varphi_\alpha)$ a \textbf{local chart}, $\{(U_\alpha,\varphi_\alpha)\}$ an \textbf{atlas}, and we say the atlas induces a \textbf{differentiable structure} on $M$.
+    Moreover, we call $(U_\alpha,\varphi_\alpha)$ a \emph{local chart}, $\{(U_\alpha,\varphi_\alpha)\}$ an \emph{atlas}, and we say the atlas induces a \emph{differentiable structure} on $M$.
 \end{defn}
 
 \begin{rem}
@@ -35,7 +35,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
             (y^1,\cdots,y^n)&\mapsto\left(\frac{y^1}{\sum_i(y^i)^2},\cdots,\frac{y^n}{\sum_i(y^i)^2}\right)
         \end{align*}
         is clearly differentiable.
-        \item Let $M_1^{n_1},M_2^{n_2}$ be differentiable manifolds, then $M_1\times M_2$ has the \textbf{product manifold} structure.
+        \item Let $M_1^{n_1},M_2^{n_2}$ be differentiable manifolds, then $M_1\times M_2$ has the \emph{product manifold} structure.
         To be precise, let $M_1,M_2$ have atlas $\{U_\alpha,\varphi_\alpha\},\{(V_\beta,\psi_\beta)\}$, then $M_1\times M_2$ has atlas $(U_\alpha\times V_\beta,\varphi_\alpha\times\psi_\beta)$.
         In particular, we have
         \begin{itemize}
@@ -63,7 +63,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
 
 We now give the definition of differentiable maps.
 \begin{defn}\index{differentiable map}
-    A map $f:M\to N$ is \textbf{differentiable} at $p\in M$ if there exists local chart $(U,\varphi)$ of $p$ and $(V,\psi)$ of $f(p)$, such that $\psi\circ f\circ\varphi^{-1}$ is differentiable at $\varphi(p)$.
+    A map $f:M\to N$ is \emph{differentiable} at $p\in M$ if there exists local chart $(U,\varphi)$ of $p$ and $(V,\psi)$ of $f(p)$, such that $\psi\circ f\circ\varphi^{-1}$ is differentiable at $\varphi(p)$.
 \end{defn}
 
 \begin{rem}
@@ -71,7 +71,7 @@ We now give the definition of differentiable maps.
         \item If $\tilde{\varphi},\tilde{\psi}$ are another chart at $p$ and $f(p)$, then we have
         \[\tilde{\psi}\circ f\circ\tilde{\varphi}^{-1}=(\tilde{\psi}\circ\psi^{-1})\circ(\psi\circ f\circ\varphi^{-1})\circ(\varphi\circ\tilde{\varphi})\]
         is still differentiable at $p$ by the compatiblility of charts, so differentiable maps are well-defined.
-        \item When $N=\mathbb{R}$, $f$ is also called a \textbf{differentiable function}. 
+        \item When $N=\mathbb{R}$, $f$ is also called a \emph{differentiable function}. 
     \end{enumerate}
 \end{rem}
 
@@ -79,20 +79,20 @@ We now give the definition of differentiable maps.
     We use $C^\infty(M,N)$ to denote the $\mathbb{R}$-vector space of differentiable maps between $M$ and $N$,
     $C^\infty(M)$ to denote the $\mathbb{R}$-algebra of differentiable functions on $M$.
     We use $C^\infty_p(M)$ to denote the $\mathbb{R}$-algebra of germs of differentiable functions at $p$.
-    We often use $\gamma:I\subset\mathbb{R}\to M$ to denote a \textbf{differentiable curve} on $M$.
+    We often use $\gamma:I\subset\mathbb{R}\to M$ to denote a \emph{differentiable curve} on $M$.
 \end{symb}
 
 \section{Tangent Spaces and Tangent Maps}
 
 \begin{defn}\index{tangent space}
     Let $\gamma:I\to M$ be a curve, $\gamma(0)=p$.
-    We define the \textbf{tangent vector along $\gamma$ at $p$} as a mapping $\dot{\gamma}(0):C^\infty_p(M)\to\mathbb{R}$, $\dot{\gamma}(0)f=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)$.
-    Then we define the \textbf{tangent space at $p$}
+    We define the \emph{tangent vector along $\gamma$ at $p$} as a mapping $\dot{\gamma}(0):C^\infty_p(M)\to\mathbb{R}$, $\dot{\gamma}(0)f=\left.\frac{\d{}}{\d{t}}\right|_{t=0}(f\circ\gamma)(t)$.
+    Then we define the \emph{tangent space at $p$}
     \[T_pM:=\{\dot{\gamma}(0)|\ \gamma:I\to M\ \text{differentiable},\ \gamma(0)=o=p\}.\]
 \end{defn}
 
 \begin{prop}
-    We have the \textbf{Leibniz rule} $\dot{\gamma}(0)(fg)=(\dot{\gamma}(0)g)f(p)+(\dot{\gamma}(0)f)g(p)$.
+    We have the \emph{Leibniz rule} $\dot{\gamma}(0)(fg)=(\dot{\gamma}(0)g)f(p)+(\dot{\gamma}(0)f)g(p)$.
     So a tangent vector is a \emph{derivative} on $C^\infty_p(M)$.
 \end{prop}
 
@@ -147,7 +147,7 @@ We can easy to verity the following chain rule:
 \end{prop}
 
 \begin{defn}[Diffeomorphism]\index{diffeomorphism}
-    A map $f:M\to N$ is called a \textbf{diffeomorphism} if $f$ is bijective, and $f,f^{-1}$ are both differentiable.
+    A map $f:M\to N$ is called a \emph{diffeomorphism} if $f$ is bijective, and $f,f^{-1}$ are both differentiable.
 \end{defn}
 
 \begin{prop}\label{diffeo to iso}
@@ -185,11 +185,11 @@ This proposition can be easily proved by chain rule.
     \end{gather*}
     Clearly it is differentiable, then $\{(\pi^{-1}(U_\alpha),\Phi_\alpha)\}$ induces a differentiable structure on $TM$.
 
-    We call $T_pM$ a \textbf{fiber} over $p$, and $\pi:TM\to M$ the projection.
+    We call $T_pM$ a \emph{fiber} over $p$, and $\pi:TM\to M$ the projection.
 \end{defn}
 
 \begin{defn}[Vector field]\index{vector field}
-    A \textbf{vector field} is a differentiable map $X:M\to TM$ such that $X(p)\in T_pM$.
+    A \emph{vector field} is a differentiable map $X:M\to TM$ such that $X(p)\in T_pM$.
 \end{defn}
 
 \begin{symb}
