@@ -14,7 +14,7 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 
 \begin{defn}\index{metric}
     Let $M^n$ be a differentiable manifold.
-    A \emph{metric} (or Riemannian metric) on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
+    A \emph{metric} (or \emph{Riemannian metric}) on $M$ is a smooth assignment on each $T_pM$, $\forall p\in M$, a symmetric positive definite bilinear form $g_p$, that is for $X,Y\in T_pM$ we have
     \begin{enumerate}
         \item $g_p(X,Y)=g_p(Y,X)$;
         \item $g_p(X,X)\geq 0$, $g_p(X,X)=0\iff X=0$.
@@ -31,16 +31,17 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 \end{prop}
 \begin{proof}
     We use partition of unity.
-    Let $\{U_\alpha,x_\alpha^i\}$ be a locally finite atlas of $M$, $\{\phi_\alpha\}$ be a partition of unity subordinate to $\{U_\alpha\}$, i.e., $\operatorname{supp}\phi_\alpha\subset\subset U_\alpha$ and $\sum_\alpha\phi_\alpha=1$.
+    Let $\{U_\alpha,x_\alpha^i\}$ be a locally finite atlas of $M$, $\{\varphi_\alpha\}$ be a partition of unity subordinate to $\{U_\alpha\}$, i.e., $\operatorname{supp}\varphi_\alpha\subset\subset U_\alpha$ and $\sum_\alpha\varphi_\alpha=1$.
     On the local chart $(U_\alpha,x_\alpha^i)$, let $g_\alpha=\sum_{i=1}^n\d{x_\alpha^i}\otimes\d{x_\alpha^i}$.
     Set
-    \[g=\sum_{\alpha}\phi_\alpha g_\alpha,\]
+    \[g=\sum_{\alpha}\varphi_\alpha g_\alpha,\]
     we can check $g$ is indeed a Riemannian metric on $M$.
 \end{proof}
 
 \begin{rem}
     For an $n$-form $\omega\in\bigwedge^nM$ with $\operatorname{supp}\omega$ compact, we can define its integral as
-    \[\int_M\omega=\sum_\alpha\int_M\phi_\alpha\omega\]
+    \[\int_M\omega=\sum_\alpha\int_M\varphi_\alpha^*\omega\]
+    for an oriented altas $\{\varphi_\alpha\}$.
     One can check the definition is independent from the choice of partition of unity.
 \end{rem}
 
@@ -69,11 +70,11 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
 \begin{defn}\index{distance}
     Let $\gamma:[0,1]\to M$ be a curve, define its \emph{length} to be
     \begin{align*}
-        L(\gamma)&:=\int_0^1|\dot{\gamma}(t)|\d{t}\\
+        L[\gamma]&:=\int_0^1|\dot{\gamma}(t)|\d{t}\\
         &=\int_0^1\sqrt{g(\gamma(t))(\dot{\gamma}(t),\dot{\gamma}(t))}\d{t}
     \end{align*}
     Let $p,q\in M$, define their \emph{distance} to be
-    \[d(p,q)=\inf_{\gamma\in C_{p,q}}L(\gamma)\]
+    \[d(p,q)=\inf_{\gamma\in C_{p,q}}L[\gamma]\]
     where $C_{p,q}$ denotes the collection of all smooth curve joining $p$ and $q$.
 \end{defn}
 
@@ -93,10 +94,10 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
     Choose a local chart $(U,\varphi)$ such that $\varphi(U)=B_r(0)$, $q\notin U$.
     By Jordan--Brouwer Separation Theorem, $\gamma$ must intersect $\partial{U}$ at $s:=\gamma(c)$.
     Then we have
-    \[L(\gamma)\geq L(\gamma|_{[0,c]})=\int_0^c\sqrt{g_{ij}\dot{x}^i(\gamma(t))\dot{x}^j(\gamma(t))}\d{t}\]
+    \[L[\gamma]\geq L[\gamma|_{[0,c]}]=\int_0^c\sqrt{g_{ij}\dot{x}^i(\gamma(t))\dot{x}^j(\gamma(t))}\d{t}\]
     Regarding $g:\overline{U}\times\mathbb{S}^{n-1}\to\mathbb{R}$, $g$ is a continuous function on a compact set, thus it attains its minimum $g(x)(v,v)\geq m$, and $m>0$ since $v\in\mathbb{S}^{n-1}\neq 0$.
     Thus we have
-    \[L(\gamma|_{[0,c]})\geq m\int_0^c|\dot{x}(\gamma(t))|\d{t}\geq mr>0\]
+    \[L[\gamma|_{[0,c]}]\geq m\int_0^c|\dot{x}(\gamma(t))|\d{t}\geq mr>0\]
     $mr$ does not depend on $\gamma$, hence $d(p,q)\geq mr>0$.
 \end{proof}
 
@@ -104,7 +105,7 @@ Moreover, we introduce the covariant derivative of a vector field along a curve,
     $(M,d)$ with metric topology coincides with its original topology.
 \end{prop}
 
-For a proof, we refer to John Lee's \emph{Introduction to Smooth Manifolds}, 2nd ed., Theo\-rem 13.29.
+For a proof, we refer to~\cite[Theorem~13.29]{Lee}.
 
 \section{Levi--Civita Connection}
 

@@ -8,7 +8,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
     If there exists an open cover $\{U_\alpha\}$ of $M$, and homeomorphisms $\varphi_\alpha:U_\alpha\to\varphi_\alpha(U_\alpha)$ onto its image $\varphi_\alpha(U_\alpha)\subset\mathbb{R}^n$ open, such that
     \begin{enumerate}[(1)]
         \item $M=\bigcup_\alpha U_\alpha$,
-        \item if $U_\alpha\cap U_\beta\neq\varnothing$, then $\varphi_\alpha^{-1}\circ\varphi_\beta:\varphi_\beta(U_\alpha\cap U_\beta)\to\varphi_\alpha(U_\alpha\cap U_\beta)$ is differentiable (we mean $C^\infty$ here),
+        \item if $U_\alpha\cap U_\beta\neq\varnothing$, then $\varphi_\alpha\circ\varphi_\beta^{-1}:\varphi_\beta(U_\alpha\cap U_\beta)\to\varphi_\alpha(U_\alpha\cap U_\beta)$ is differentiable (we mean $C^\infty$ here),
     \end{enumerate}
     then $M$ is called an \emph{$n$-dimensional differentiable manifold}.
 
@@ -21,9 +21,10 @@ In this lecture, we review some basic notions of differentiable manifolds.
 
 \begin{eg}We illustrate some examples of differentiable manifolds.
     \begin{enumerate}[(1)]
-        \item $\mathbb{R}^n$ itself is a differentiable manifolds, with single local chart $(\mathbb{R}^n,\mathrm{id})$.
+        \item $\mathbb{R}^n$ itself is a differentiable manifold, with single local chart $(\mathbb{R}^n,\mathrm{id})$.
         \item $\mathbb{S}^n:=\{x\in\mathbb{R}^{n+1}|\ (x^1)^2+\cdots+(x^{n+1})^2=1\}$.
-        We use stereographic projection as local chart. Define the stereographic projection from north pole
+        We use stereographic projection as local charts.
+        Define the stereographic projection from north pole
         \begin{align*}
             \varphi_N:&\mathbb{S}^n\backslash\{(0,\cdots,0,1)\}\to\mathbb{R}^n\\
             &x\mapsto\left(\frac{x^1}{1+x^{n+1}},\cdots,\frac{x^n}{1+x^{n+1}}\right)
@@ -36,7 +37,7 @@ In this lecture, we review some basic notions of differentiable manifolds.
         \end{align*}
         is clearly differentiable.
         \item Let $M_1^{n_1},M_2^{n_2}$ be differentiable manifolds, then $M_1\times M_2$ has the \emph{product manifold} structure.
-        To be precise, let $M_1,M_2$ have atlas $\{U_\alpha,\varphi_\alpha\},\{(V_\beta,\psi_\beta)\}$, then $M_1\times M_2$ has atlas $(U_\alpha\times V_\beta,\varphi_\alpha\times\psi_\beta)$.
+        To be precise, let $M_1,M_2$ have atlases $\{U_\alpha,\varphi_\alpha\},\{(V_\beta,\psi_\beta)\}$, then $M_1\times M_2$ has atlas $(U_\alpha\times V_\beta,\varphi_\alpha\times\psi_\beta)$.
         In particular, we have
         \begin{itemize}
             \item (flat) $n$-torus $\mathbb{T}^n=\mathbb{S}^1\times\cdots\times\mathbb{S}^1$ ($n$ times);
@@ -113,7 +114,7 @@ Using equation~\eqref{local derivative}, we can describe $T_pM$ as a vector spac
     \[T_pM=\Span\left\{\left.\frac{\partial{}}{\partial{x^i}}\right|_p\right\}\]
     where $\partial{}/\partial{x^i}|_p$ is the tangent vector of $\sigma_i(t)=\varphi^{-1}(\varphi(p)+te_i)$, $e_i=(0,\cdots,1,\cdots,0)$ with only $i$-th component being $1$.
     Thus we have
-    \[\left.\frac{\partial{}}{\partial{x^i}}\right|_pf=\left.\frac{\partial{}}{\partial{x^i}}(f\circ\varphi^{-1})\right|_\varphi(p)\]
+    \[\left.\frac{\partial{}}{\partial{x^i}}\right|_pf=\left.\frac{\partial{}}{\partial{x^i}}(f\circ\varphi^{-1})\right|_{\varphi(p)}\]
 \end{prop}
 \begin{proof}
     Clearly $T_pM$ has natural vector space structure.

@@ -12,12 +12,12 @@ If we do not restrict us on graph, then we have the following Plateau problem.
 \end{pro}
 
 This was solved by Douglas--Rado in 1930s.
-Please refer to Struwe's \emph{Calculus of Variation} for more discussion.
+Please refer to~\cite{Struwe}~for more discussion.
 
 But for minimal graph (i.e.\ a minimal surface that is a graph)\index{minimal graph}, we have the following Bernstein's theorem.
 \begin{thm}[Bernstein, 1916]\index{theorem!Bernstein}
     Let $u:\mathbb{R}^2\to\mathbb{R}$ be a function that satisfies MSE (called \emph{entire graph}), then $u$ is an affine function, that is
-    \[u(x)=\vec{a}\cdot x+b.\]
+    \[u(x)=\mathbf{a}\cdot x+b.\]
 \end{thm}
 
 Then we have the Bernstein problem.
@@ -30,13 +30,13 @@ Then we have the Bernstein problem.
 Bernstein problem is also solved.
 The timeline is
 \begin{itemize}
-    \item Bernstein solved $n=3$ case in 1916.
-    \item Fleming gave an important alternative method in 1960s.
-    \item De Giorgi solved $n=4$ case enlightened by Fleming.
-    \item Almgren solved $n=5$ case in 1966.
-    \item J.\ Simons solved $n\leq 8$ cases in 1968.
+    \item Bernstein solved $n=3$ case in 1916\footnote{I didn't find a reference for this.}.
+    \item Fleming~\cite{Fleming}~gave an important alternative method in 1962.
+    \item De Giorgi~\cite{deGiorgi}~relaxed Fleming's condition in 1965.
+    \item Almgren~\cite{Almgren}~solved $n=4$ case in 1966.
+    \item J.\ Simons~\cite{Simons}~solved $n\leq 8$ cases in 1968.
     \item The problem is false when $n\geq 9$.
-    Counterexample was given by Bombien--de~Giorgi--Ginsti in 1969.
+    Counterexample was given by Bombien--de~Giorgi--Ginsti~\cite{Bombieri}~in 1969.
 \end{itemize}
 
 We have the following fact.
@@ -62,13 +62,13 @@ We have the following fact.
 
 \begin{rem}
     This fact is closely related to calibrated geometry.
-    We refer to Harvey and Lawson's \emph{Calibrated Geometries} (1982).
+    We refer to Harvey and Lawson's \emph{An Introduction to Potential Theory in Calibrated Geometry}~\cite{Harvey-Lawson}.
 \end{rem}
 
 \begin{cor}
     Let $\Sigma_u$ be an entire minimal graph, and $B_R\subset\mathbb{R}^n$.
     Then
-    \[A(\Sigma_n\cap B_r)\leq\frac{1}{2}\omega_{n-1}R^{n-1},\]
+    \[A[\Sigma_n\cap B_r]\leq\frac{1}{2}\omega_{n-1}R^{n-1},\]
     that is, $\Sigma_u$ has Euclidean area growth.
 \end{cor}
 \begin{proof}
@@ -81,7 +81,7 @@ We now discuss the conception of stability.
 This is used to solve the problem that when minimal surfaces actually minimizes area.
 \begin{defn}[Stability]\index{stability}
     We call the surface $\Sigma$ is \emph{stable} if for any proper variation $f:\Sigma\times(-\varepsilon,\varepsilon)\to M$ the second variation is nonnegative, that is,
-    \[\left.\frac{\d^2{}}{\d{t^2}}\right|_{t=0}|\Sigma_t|=\int_\Sigma(|\nabla^\perp X|^2-|\langle\II,X\rangle|^2-\tr_\Sigma\langle R^M(\bullet,X)\bullet,X\rangle)\geq 0,\]
+    \[\left.\frac{\d^2{}}{\d{t^2}}\right|_{t=0}|\Sigma_t|=\int_\Sigma(|\nabla^\perp X|^2-|\langle\II,X\rangle|^2-\tr_\Sigma\langle R^M(\cdot,X)\cdot,X\rangle)\geq 0,\]
     where $X$ is the variation vector field.
     When $\Sigma$ has codimension $1$, let $X=\varphi N$ with $N$ be a unit normal vector field, $\varphi\in C^\infty_c(\Sigma)$.
     Then the condition is equivalent to
@@ -92,10 +92,13 @@ This is used to solve the problem that when minimal surfaces actually minimizes 
 \end{defn}
 
 About stability, we have the following theorem.
-\begin{thm}[Fischer--Colbrie--Schoen]\index{theorem!Fischer--Colbrie--Schoen}
+\begin{thm}[Fischer-Colbrie--Schoen]\index{theorem!Fischer-Colbrie--Schoen}
     A surface $\Sigma$ is stable if and only if there is a $u\in C^\infty(\Sigma)$ with $u>0$, such that
     \[(\Delta+|h|^2+\Ric(N,N))u=0.\]
 \end{thm}
+\begin{proof}
+    See~\cite{Fischer-Colbrie-Schoen}.
+\end{proof}
 
 We now give a proof of $2$-dimensional Bernstein problem.
 This is a corollary of following theorem.
@@ -144,7 +147,7 @@ Before we procced our discuss, we need the following monotonicity formula.
     \[\frac{\d{}}{\d{r}}\left(\frac{|\Sigma^k\cap B_r|}{r^k}\right)=r^{-k}\int_{\Sigma\cap\partial B_r}\frac{1}{|\nabla_\Sigma|x||}-kr^{-k-1}|\Sigma\cap B_r|,\]
     here we use the coarea formula
     \[|\Sigma^k\cap B_r|=|\{x\in\Sigma|\ |x|\leq r\}=\int_0^r\int_{\Sigma\cap\partial B_r}\frac{1}{|\nabla_\Sigma|x||},\]
-    a proof can be found on Mei Jiaqiang's \emph{Mathematical Analysis}.
+    a proof can be found on~\cite{Mei}.
     Since $\Sigma^k$ is minimal, we have $\div\nolimits_{\Sigma\cap B_r}(x^\perp)=0$ as in Minkowski's formula.
     Then
     \begin{align*}
@@ -198,7 +201,7 @@ Now we can outline the proof of Bernstein problem.
     Therefore
     \[\omega_{n-1}\leq\frac{|\Sigma\cap B_r|}{r^{n-1}}\leq\lim_{r\to\infty}\frac{\Sigma\cap B_r}{r^{n-1}}=\frac{|\mathscr{C}\cap B_r|}{r^{n-1}}=\omega_{n-1},\]
     hence $\Sigma$ is a cone, and therefore is flat.
-    \item Simons 1968:
+    \item Simons:
     Area-minimizing cone with possible singularity at $0$ in $\mathbb{R}^n$ ($n\leq 7$) is flat.
     Roughly speaking, the proof is analysing stability and the following Simons' inequality\footnote{We think Prof.\ Xia mistakenly wrote ``identity''.}
     \[\Delta_\Sigma|h|^2\geq -2|h|^4+2\left(1+\frac{2}{n-1}\right)|\nabla_\Sigma|h||^2.\]
@@ -214,26 +217,26 @@ Finally we discuss the stable Bernstein problem.
 
 We have the following progress.
 \begin{itemize}
-    \item $n=3$ case is solved by Fischer--Colbrie--Schoen--do~Carmo--Peng in 1980.
-    \item $n=4$ case is solved by Chodosh--Li in 2021.
-    Catino--Mastrolia--Roncoroni gave an alternative approach in 2023.
-    \item $n=5$ case is solved by Chodosh--Li--Stryker in 2024/01.
-    \item $n=6$ case is solved by Mazet in 2024/05.
+    \item $n=3$ case is solved by Fischer-Colbrie, Schoen, do~Carmo and Peng~\cite{doCarmo-Peng}~in 1979.
+    \item $n=4$ case is solved by Chodosh and Li~\cite{Chodosh-Li1}~in 2021.
+    Catino, Mastrolia and Roncoroni~\cite{Catino}~gave an alternative approach in 2022.
+    \item $n=5$ case is solved by Chodosh, Li and Stryker~\cite{Chodosh-Li2}~in 2024/01.
+    \item $n=6$ case is solved by Mazet~\cite{Mazet}~in 2024/05.
     \item $n=7$ case is still open.
 \end{itemize}
 
 On the other hand, we have the following results.
 \begin{itemize}
-    \item Schoen--Simon--Yau 1976: Assume $|\Sigma\cap B_R|\leq CR^{n-1}|$, then stable Bernstein problem is true for $n\leq 6$.
-    \item Bellettini 2023: the $n=7$ case of extensions of above theorem is true.
+    \item Schoen--Simon--Yau 1976~\cite{Schoen-Simon-Yau}: Assume $|\Sigma\cap B_R|\leq CR^{n-1}$, then stable Bernstein problem is true for $n\leq 6$.
+    \item Bellettini 2023~\cite{Bellettini}: the $n=7$ case of extensions of above theorem is true.
 \end{itemize}
 These two results uses de Giorgi--Mozer iteration on Simons inequality.
 
 At last we give some reference books.
 \begin{itemize}
-    \item Colding--Minicozi: \emph{A Course in Minimal Surface}.
-    \item L. Simon: \emph{Geometric Measure Theory}.
-    \item F. Maggi: \emph{Geometric Measure Theory}.
-    \item Y. Xin: \emph{Geometry of Submanifold}.
-    \item Chodosh: Lecture notes.   
+    \item Colding--Minicozi: \emph{A Course in Minimal Surface}~\cite{Colding-Minicozzi}.
+    \item L. Simon: \emph{Geometric Measure Theory}~\cite{Simon}.
+    \item F. Maggi: \emph{Sets of Finite Perimeter and Geometric Variational Problems}~\cite{Maggi}.
+    \item Y. Xin: \emph{Minimal Submanifolds of Higher Codimension}~\cite{Xin}.
+    \item Chodosh: Lecture notes, check the url at~\url{https://www.web.stanford.edu/~ochodosh/notes.html}.
 \end{itemize}

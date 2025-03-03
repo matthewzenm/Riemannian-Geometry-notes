@@ -98,15 +98,25 @@ As a first application, we use Bochner formula to provide an alternative proof o
 \end{cor}
 
 Before we start the proof, we first state some results from theory of partial differential equations.
-\begin{thm}[Maximum principle]\index{theorem!maximum principle}
-    If $f\in H^2(M)$ satisfies $\Delta f\leq 0$ in weak sense, and $f$ attains its local minimum, then $f$ is constant.
+\begin{thm}[Mean value property]\index{theorem!mean value property}
+    Let $M^n$ be a complete Riemannian manifold with $\Ric\geq 0$.
+    If a Lipschitz function $f$ on $M$ satisfies $f\geq 0$, $\Delta f\leq 0$ in distribution sense, then for any $p\in M$ and $R$ sufficiently small, we have
+    \[f(p)\geq\frac{1}{\Vol[\mathbb{S}^{n-1}]R^n}\int_{B_R(p)}f\d{\Vol_M},\]
+    where $B_R(p)$ is the geodesic ball centered at $p$ with radius $R$.
 \end{thm}
+\begin{proof}
+    See~\cite[Chapter~1.~Proposition~2.1]{Shoen-Yau}.
+\end{proof}
 
 \begin{thm}[Weyl's lemma]\index{lemma!Weyl}
-    If $f\in H^2(M)$ satisfies $\Delta f=0$, then $f$ is smooth and harmonic.
+    If $f\in W^{2,1}(M)$ satisfies $\Delta f=0$, then $f$ is smooth and harmonic.
 \end{thm}
+\begin{proof}
+    See~\cite[Lemma~2]{Weyl}.
+\end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{Cheeger Gromoll}]
+\begin{proof}[Proof of Theorem~\ref{Cheeger Gromoll}]%
+    \footnote{This proof is modified after~\cite[Section~1.2]{Shoen-Yau}.}
     The proof uses the \emph{Busemann function}.
     We first define and discuss some properties of Busemann function.
 
@@ -122,27 +132,31 @@ Before we start the proof, we first state some results from theory of partial di
     We first have
     \[B^+(x)+B^-(x)=\lim_{t\to+\infty}(d(x,\gamma(t))+d(x,\gamma(-t))-2t)\geq 0,\]
     and the equality holds when $x\in\gamma(\mathbb{R})$.
-    Moreover, by Laplace comparison theorme we have
+    Moreover, by Laplace comparison theorem we have
     \[\Delta b^+_t\leq\frac{n-1}{b^+_t+t},\]
     hence for any test function $\varphi\in C^\infty_c(M)$, $\varphi\geq 0$ we have
     \begin{align*}
         \int_Mb^+_t\Delta\varphi&=\int_M\varphi\Delta b^+_t=\int_M\varphi\Delta d(x,\gamma(t))\\
         &\leq\int_M\varphi\cdot\frac{n-1}{b^+_t+t}.
     \end{align*}
-    By Lebesgue Dominated Convergence Theorem, let $t\to+\infty$ we have
+    Let $t\to+\infty$ we have
     \[\int_M\varphi\Delta B^+=\int_M B^+\Delta\varphi\leq 0,\]
     then $\Delta B^+\leq 0$ in weak sense.
     Similarly $\Delta B^-\leq 0$ in weak sense.
     Hence $\Delta(B^++B^-)\leq 0$, $B^++B^-\geq 0$, and $(B^++B^-)(\gamma(t_0))=0$.
-    Then $B^++B^-$ satisfies the assumption of maximum principle, this implies $B^++B^-\equiv 0$ on $M$.
-    Thus $\Delta B^+=\Delta B^-=0$, by Weyl's lemma $B^+$ and $B^-$ are smooth and harmonic.
+    Take the limit of $|b_t^+(x)-b_t^+(y)|\leq d(x,y)$, we obtain that $B^+$ is Lipschitz, so is $B^-$.
+    Hence $B^++B^-$ is Lipschitz.
+    Then $B^++B^-$ satisfies the assumption of mean value property, that is
+    \[(B^++B^-)(p)\geq\frac{1}{\Vol[\mathbb{S}^{n-1}]R^n}\int_{B_R(p)}(B^++B^-)\d{\Vol_{M}}.\]
+    Let $p\in\gamma(\mathbb{R})$, we obtain $\Delta(B^++B^-)=0$ in distribution sense.
+    Thus $\Delta B^+=\Delta B^-=0$ in distribution sense, by Weyl's lemma $B^+$ and $B^-$ are smooth and harmonic.
     Moreover, since $|\nabla d(x,\gamma(t))|=1$ holds almost everywhere, we have $|B^+|=1$.
     Using Bochner formula, we have
     \[0=\Delta\frac{1}{2}|\nabla B^+|^2=|\nabla^2B^+|^2+\langle\nabla\Delta B^+,\nabla B^+\rangle+\langle\Ric(\nabla B^+),\nabla B^+\rangle\geq|\nabla^2B^+|^2,\]
     hence $\nabla^2B^+=0$.
 
     Now we come to the geometric part.
-    Let $s\in\mathbb{R}$ be a regular value of $B^+$, define $N=\{x\in M|\ B^+(x)=s\}$, then $N$ is a regular submanifold of codimension $1$ by Implicit Function Theorem.
+    Let $s\in\mathbb{R}$ be a regular value of $B^+$, define $N=\{x\in M|\ B^+(x)=s\}$, then $N$ is a regular submanifold of codimension $1$ by implicit function theorem.
     Now we introduce the map
     \begin{align*}
         f:\mathbb{R}\times N&\to M\\

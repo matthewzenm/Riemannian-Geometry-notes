@@ -38,7 +38,7 @@ In this section, we will not give proof of any proposition, please refer to any 
     Then on a local chart $(U,\varphi)$, $\mathfrak{T}^{r,s}|_U$ is free with basis
     \[\left\{\frac{\partial{}}{\partial{x^{i_1}}}\otimes\cdots\otimes\frac{\partial{}}{\partial{x^{i_r}}}\otimes\d{x^{j_1}}\otimes\cdots\otimes\d{x^{j_s}}\right\}\]
     for all indices $1\leq i_1,\cdots,i_r\leq n$, $1\leq j_1,\cdots,j_s\leq n$, where
-    \[\d{x^i}\left(\frac{\partial{}}{\partial{x^j}}\right)=\delta_{ij}.\]
+    \[\d{x^i}\left(\frac{\partial{}}{\partial{x^j}}\right)=\delta^i_j.\]
 \end{prop}
 
 \begin{defn}\index{differential form}
@@ -48,7 +48,7 @@ In this section, we will not give proof of any proposition, please refer to any 
 
 \begin{prop}
     There is a map
-    $\pi:\mathfrak{T}^r(M)\to\bigwedge\nolimits^rM$ as a quotient map of $C^\infty(M)$ modules given by
+    $\pi:\mathfrak{T}^r(M)\to\bigwedge\nolimits^rM$ as a quotient map of $C^\infty(M)$ mo\-dules given by
     \[\omega(X_1,\cdots,X_r)\mapsto\frac{1}{r!}\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)\omega\left(X_{\sigma(1)},\cdots,X_{\sigma(r)}\right)\]
     for any $(0,r)$-tensor $\omega$ and $X_i\in\mathfrak{X}(M)$, $i=1,\cdots,r$.
 \end{prop}
@@ -112,7 +112,7 @@ By definition, $\nabla f$ has local expression
 \section{Contraction and Trace}
 
 \begin{defn}\index{contraction}
-    Let $T$ be a $(r,s)$-tensor, by \emph{contract $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
+    Let $T$ be a $(r,s)$-tensor, by \emph{contracting $i,j$ indices of $T$} ($1\leq i\leq r$, $1\leq j\leq s$) we mean a tensor $\tr_{ij}T$ defined by
     \begin{align*}
         &(\tr_{ij}T)_p(\omega_1,\cdots,\widehat{\omega_i},\cdots,\omega_r,X_1,\cdots,\widehat{X_j},\cdots,X_s)\\
         =&\sum_{k=1}^nT_p(\omega_1,\cdots,\omega_{i-1},\eta_k,\omega_{i+1},\cdots,\omega_r,X_1,\cdots,X_{j-1},e_k,X_{j+1},\cdots,X_s)
@@ -120,7 +120,7 @@ By definition, $\nabla f$ has local expression
     with $\{e_k\}_{k=1}^n$ be an orthonormal basis of $T_pM$ and $\{\eta_k\}_{k=1}^n$ be the dual basis.
 \end{defn}
 
-Respective to a local chart, if the tensor has local expression
+With respective to a local chart, if the tensor has local expression
 \[T=T_{\mu_1\cdots\mu_s}^{\nu_1\cdots\nu_r}\frac{\partial{}}{\partial{x^{\nu_1}}}\otimes\cdots\otimes\frac{\partial{}}{\partial{x^{\nu_r}}}\otimes\d{x^{\mu_1}}\otimes\cdots\otimes\d{x^{\mu_s}},\]
 then $\tr_{ij}T$ has local expression
 \[(\tr_{ij}T)_{\mu_1\cdots\widehat{\mu_{j}}\cdots\mu_s}^{\nu_1\cdots\widehat{\nu_{i}}\cdots\nu_r}=T_{\mu_1\cdots\mu_{j-1}m\mu_{j+1}\cdots\mu_s}^{\nu_1\cdots\nu_{i-1}m\nu_{i+1}\cdots\nu_r}\]
@@ -234,7 +234,7 @@ Next we discuss curvature of tensors.
     \end{align*}
 \end{prop}
 \begin{proof}
-    Using equation~\ref{2nd cov}, we have
+    Using equation~\eqref{2nd cov}, we have
     \begin{align*}
         (\nabla^2_{Y,X}-\nabla^2_{X,Y})T&=\nabla_Y\nabla_XT-\nabla_{\nabla_YX}T-\nabla_X\nabla_YT+\nabla_{\nabla_XY}T\\
         &=\nabla_Y\nabla_XT-\nabla_X\nabla_YT+\nabla_{(\nabla_XY-\nabla_YX)}T\\
@@ -263,7 +263,7 @@ Now we introduce some differential operators.
     \[\nabla^2f(X,Y)=Y(Xf)-(\nabla_YX)(f).\]
 \end{prop}
 \begin{proof}
-    This is just the equation~\ref{2nd cov}.
+    This is just the~\eqref{2nd cov}.
 \end{proof}
 
 \begin{defn}\index{divergence}
@@ -272,9 +272,11 @@ Now we introduce some differential operators.
 \end{defn}
 
 \begin{thm}[Divergence theorem]\index{theorem!divergence}
-    Let $\Omega$ be a region in $\mathbb{R}^n$ with $\Sigma:=\partial\Omega$ smooth.
-    Let $X\in\mathfrak{X}(\Omega)$, then we have
-    \[\int_\Sigma\langle X,N\rangle\d{A}=\int_\Omega\div{X}\d\Vol,\]
+    Let $M$ be an orientable Riemannian manifold with boudary, with $\Sigma:=\partial M$ smooth.
+    Let $X\in\mathfrak{X}(M)$, then we have
+    \[\int_\Sigma\langle X,N\rangle\d{A_\Sigma}=\int_\Omega\div{X}\d{\Vol_M},\]
     where $N$ is the outward unit normal vector field of $\Sigma$.
 \end{thm}
-Please refer to any book on calculus for the proof.
+\begin{proof}
+    See~\cite[Theorem~16.32]{Lee}.
+\end{proof}

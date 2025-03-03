@@ -25,7 +25,7 @@ Since the solution of an ODE relies continuously on initial value, we have the f
     For any $p\in M$, there exists a neighborhood $V$ of $p$, such that there exists $\delta>0,\varepsilon>0$ and a differentiable map $\gamma:(-\delta,\delta)\times\mathscr{U}\to M$, where $\mathscr{U}=\{(q,v)\in TV|\ q\in V,\ v\in T_pM,\ |v|<\varepsilon\}$, such that $\gamma(t;q,v)$ is a geodesic with $\gamma(0)=q,\dot{\gamma}(0)=v$.
 \end{prop}
 The idea of the proof is the ODE theorem we mentioned above, but the proof is not simply using only ODE theory.
-A proof of an equivalent proposition can be found in Wu Hung--Hsi, et.\ al.'s \emph{Introduction to Riemannian Geometry} Chapter 3, Lemma 1.
+A proof of an equivalent proposition can be found in~\cite[Chapter~3.~Lemma~1]{Wu}.
 
 Observe that $\gamma(\lambda t;p,v)=\gamma(t;p,\lambda v)$.
 Denote $\gamma(t;p,v)=\gamma_v(t)$, then above observation can be written as $\gamma_{\lambda v}(t)=\gamma_v(\lambda t)$.
@@ -58,7 +58,7 @@ Therefore, we can shorten the initial vector to lengthen the domain of geodesic.
     There is a ball $B_\varepsilon(0)\subset T_pM$ such that $\exp_p:B_\varepsilon(0)\to M$ is a diffeomorphism onto its image.
 \end{cor}
 \begin{proof}
-    Since $\exp_{p*}|_0$ is identity, it is nondegenerate, the corollary follows by Inverse Function Theorem.
+    Since $\exp_{p*}|_0$ is identity, it is nondegenerate, the corollary follows by inverse function theorem.
 \end{proof}
 
 \begin{eg}
@@ -88,7 +88,7 @@ We have the following important theorem.
 \end{thm}
 
 We will not prove Hopf--Rinow theorem here.
-For a proof, one can refer to Peter Petersen's \emph{Riemannian Geometry}, 3rd ed., Theorem 5.7.1.
+For a proof, one can refer to~\cite[Theorem~5.7.1]{Petersen}.
 
 \section{Curvature}\label{sect of curv}
 
@@ -129,8 +129,8 @@ Using a more simple notation $\partial_i=\partial{}/\partial{x^i}$, we have
 \end{align*}
 and
 \begin{align*}
-    R_{ijk}^l&=(\partial_j\Gamma^l_{ik}-\partial_i\Gamma^l_{jk}+\Gamma^m_{ik}\Gamma^l_{jm}-\Gamma^m_{jk}\Gamma^l_{im})\partial_l\\
-    &=\partial^2g+\partial g*\partial g
+    R_{ijk}^l&=(\partial_j\Gamma^l_{ik}-\partial_i\Gamma^l_{jk}+\Gamma^m_{ik}\Gamma^l_{jm}-\Gamma^m_{jk}\Gamma^l_{im})\partial_l%\\
+    % &=\partial^2g+\partial g*\partial g
 \end{align*}
 We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
 
@@ -158,14 +158,14 @@ We also define $R_{ijkl}=R_{ijk}^mg_{ml}$, or $R(X,Y,Z,W)=g(R(X,Y)Z,W)$.
 
 \begin{rem}
     One can show sectional curvature does not depend on the choice of basis.
-    A proof can be found in Manfredo do Carmo's \emph{Riemannian Geometry}, Proposition 3.1.
+    A proof can be found at~\cite[Proposition~3.1]{doCarmo}.
 \end{rem}
 
 \begin{prop}
     Let $M$ be a Riemannian manifold.
     $R(X,Y,Z,W)$ as a $(0,4)$-tensor is determined by all $K_p(\pi)$.
 \end{prop}
-For a proof, see Wu Hung--Hsi et. al., \emph{Introduction to Riemannian Geometry}, Chapter 2 Lemma 2.
+For a proof, see~\cite[Chapter~2.~Lemma~2]{Wu}.
 
 We mention one little observation.
 If all sectional curvature at $p$ is constant $K_p$, then
@@ -209,7 +209,7 @@ We also mention here
 \end{defn}
 
 Let $\{e_i(t)\}$ be a parallel orthonormal frame along $\gamma$, $J(t)=\sum_if_i(t)e_i(t)$.
-Define $a_{ij}(t)=\langle R(\dot{\gamma}(t),e_i(t))\dot{\gamma}(t),e_j(t)\rangle$, then the qeuation for Jacobi field is equivalent to
+Define $a_{ij}(t)=\langle R(\dot{\gamma}(t),e_i(t))\dot{\gamma}(t),e_j(t)\rangle$, then the equation for Jacobi field is equivalent to
 \[\ddot{f}_i(t)+\sum_ja_ij(t)f_j(t)=0,\ i=1,2,\cdots,n.\]
 By ODE theory, given $f_i(0),\dot{f}_i(0)$, $i=1,2,\cdots,n$, the $f_i(t)$'s are uniquely determined.
 Translating into language of Jacobi field, we have a Jacobi field is uniquely determined by $J(0)$ and $\dot{J}(0)$.
@@ -224,10 +224,10 @@ Above discussion can be summarized as the following proposition.
     Let $M^n$ be a Riemannian manifold, $\gamma$ be a geodesic, then $\dim\mathscr{J}(\gamma)=2n$.
 \end{prop}
 
-The next proposition shows only the Jacobi field at tangential direction are interesting.
+The next proposition shows only the Jacobi field at normal direction are interesting.
 \begin{prop}\label{decomposition of Jacobi fields}\index{Jacobi field!normal}
     Let $J$ be a Jacobi field along $\gamma$, we have the decomposition $J(t)=J^\perp(t)+(at+b)\dot{\gamma}(t)$, where $J^\perp(t)\perp\dot{\gamma}(t)$.
-    If a Jacobi field is perpendicular to $\gamma$, we call it a \emph{normal Jacobi field}
+    If a Jacobi field is perpendicular to $\gamma$, we call it a \emph{normal Jacobi field}.
 \end{prop}
 \begin{proof}
     We have
@@ -239,7 +239,7 @@ The next proposition shows only the Jacobi field at tangential direction are int
 \end{proof}
 
 We have the following Gauss Lemma.
-\begin{prop}[Gauss Lemma]\index{lemma!Gauss}
+\begin{prop}[Gauss Lemma]\label{gauss lemma}\index{lemma!Gauss}
     $\langle\exp_{p*}|_v(\xi),\dot{\gamma}_v(1)\rangle=\langle\xi,v\rangle$.
 \end{prop}
 \begin{proof}
@@ -287,10 +287,10 @@ Let $\{e_i\}$ be an orthonormal basis of Euclidean space $(T_pM,g_p)$, $\{\alpha
 
 \begin{prop}
     Under geodesic normal coordinate, we have
-    \[g_{ij}(p)=\delta_{ij},\ \Gamma^k_{ij}(p)=0\]
+    \[g_{ij}(p)=\delta_{ij},\ \Gamma^k_{ij}(p)=0.\]
 \end{prop}
 \begin{proof}
-    Since $\exp_p$ is a diffeomorphism, we have $\left.\frac{\partial{}}{\partial{x^i}}\right|_p=\exp_{p*}|_0(e_i)=e_i$, hence $g_{ij}=g_p(e_i,e_j)=\delta_{ij}$.
+    We have $\left.\frac{\partial{}}{\partial{x^i}}\right|_p=\exp_{p*}|_0(e_i)=e_i$, hence $g_{ij}=\delta_p(e_i,e_j)=\delta_{ij}$.
     Moreover, let $x(t)=ty$ for $y\in T_pM\backslash\{0\}$, then $x(t)$ is the coordinate of some geodesic in $B_\varepsilon(p)$, thus it satisfies the equation
     \[\ddot{x}^k(t)+\Gamma^k_{ij}(x(t))\dot{x}^i(t)\dot{x}^j(t)=0.\]
     Since $\ddot{x}^k(t)=0$, $\dot{x}^i(t)=y^i\neq 0$, we must have $\Gamma^k_{ij}(ty)=0$.
@@ -304,6 +304,7 @@ Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean spac
 \begin{prop}
     Under geodesic polar coordinate, we have
     \[g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{r}}\right)=1,\ g\left(\frac{\partial{}}{\partial{r}},\frac{\partial{}}{\partial{\theta^i}}\right)=0\]
+    at $q\neq p$ near $p$.
 \end{prop}
 \begin{proof}
     To make things clear, we write the inverse of geodesic polar coordinate as
@@ -331,13 +332,13 @@ Let $(r,\theta^1,\cdots,\theta^{n-1})$ be the polar coordinate on Euclidean spac
 
 \begin{cor}
     Under geodesic polar coordinate, the metric tensor has local expression
-    \[g=\d{r^2}+g_{ij}(r,\theta)\d{\theta^i}\otimes\d{\theta^j}\]
+    \[g=\d{r^2}+g_{ij}(r,\theta)\d{\theta^i}\otimes\d{\theta^j}.\]
 \end{cor}
 
 As an application, we prove geodesics are locally length-minimizing.
 \begin{prop}\label{locally length-min}\index{geodesic!locally length minimizing}
     Let $\gamma:[0,1]\to M$ be a geodesic in $B_\varepsilon(p)$, $\tilde{\gamma}:[0,1]\to M$ be any curve in $B_\varepsilon(p)$ with $\gamma(0)=\tilde{\gamma}(0)=p$, $\gamma(1)=\tilde{\gamma}(1)=q$.
-    Then $L(\gamma)\leq L(\tilde{\gamma})$.
+    Then $L[\gamma]\leq L[\tilde{\gamma}]$.
 \end{prop}
 \begin{proof}
     Let $q=\exp_p(v)$, $\varphi$ be the geodesic polar coordinate, then we have
@@ -345,9 +346,9 @@ As an application, we prove geodesics are locally length-minimizing.
     such that $\omega_0,\omega(t)\in\mathbb{S}^{n-1}$, $r(1)=r_0$.
     Therefore
     \begin{align*}
-        L(\gamma)&=\int_0^1g_{\gamma(t)}(\dot{\gamma}(t),\dot{\gamma}(t))\d{t}\\
+        L[\gamma]&=\int_0^1g_{\gamma(t)}(\dot{\gamma}(t),\dot{\gamma}(t))\d{t}\\
         &=\int_0^1|v|\d{t}=r_0\\
-        L(\tilde{\gamma})&=\int_0^1(|\dot{r}(t)|^2+g_{ij}\dot{\theta}^i(t)\dot{\theta}^j(t))^{1/2}\d{t}\\
+        L[\tilde{\gamma}]&=\int_0^1(|\dot{r}(t)|^2+g_{ij}\dot{\theta}^i(t)\dot{\theta}^j(t))^{1/2}\d{t}\\
         &\geq\int_0^1|\dot{r}(t)|\d{t}\\
         &\geq\int_0^1\dot{r}(t)=r_0\qedhere
     \end{align*}
@@ -356,7 +357,7 @@ As an application, we prove geodesics are locally length-minimizing.
 \section{Conjugate Points}
 
 \begin{defn}[Conjugate points]\index{conjugate point}
-    If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \emph{conjugate point} of $p$ along $\gamma$.
+    If $\exp_{p*}|_{\dot{\gamma}_v(t_0)}$ is degenerate at $\dot{\gamma}_v(t_0)$, then we call $\gamma_v(t_0)$ a \emph{conjugate point} of $p$ along $\gamma_v$.
 \end{defn}
 
 \begin{prop}

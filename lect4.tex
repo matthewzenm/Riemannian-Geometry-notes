@@ -1,25 +1,25 @@
 \chapter{Variation Formula and Index Form}
 In this lecture we introduce the variation of energy.
 The variation formulae are closely related to minimizing property of geodesics.
-As an application of second variation formula, we introduce the Bonnet--Myers Theorem.
+As an application of second variation formula, we introduce the Bonnet--Myers theorem.
 Regarding the second variation formula as a quadric form, we have the notion of index form.
 We will explain the relation between index form and conjugate points.
-Finally, we will briefly mention the Morse Index Theorem.
+Finally, we will briefly mention the Morse index theorem.
 
 Let $\gamma:[0,a]\to M$ be a curve, we define two functional\index{length functional}\index{energy functional}
 \begin{align*}
-    &L(\gamma)=\int_0^a|\dot{\gamma}(t)|\d{t}\\
-    &E(\gamma)=\int_0^a\frac{1}{2}|\dot{\gamma}(t)|^2\d{t}.
+    &L[\gamma]=\int_0^a|\dot{\gamma}(t)|\d{t}\\
+    &E[\gamma]=\int_0^a\frac{1}{2}|\dot{\gamma}(t)|^2\d{t}.
 \end{align*}
 Then by Cauchy--Schwarz inequality, we have
-\[L(\gamma)^2\leq 2aE(\gamma),\]
+\[L[\gamma]^2\leq 2aE[\gamma],\]
 with equality holds if and only if $|\dot{\gamma}(t)|=\text{const}$.
 \begin{prop}\label{length-min implies energy-min}
     If $\gamma$ is a length-minimizing geodesic, then $\gamma$ is energy-minimizing.
 \end{prop}
 \begin{proof}
     Let $\tilde{\gamma}$ be another curve, then
-    \[2aE(\gamma)=L^2(\gamma)\leq L^2(\tilde{\gamma})\leq 2aE(\tilde{\gamma})\qedhere\]
+    \[2aE[\gamma]=L^2[\gamma]\leq L^2[\tilde{\gamma}]\leq 2aE[\tilde{\gamma}]\qedhere\]
 \end{proof}
 
 Our aim is to prove the converse.
@@ -59,12 +59,12 @@ Our aim is to prove the converse.
 
 Now we can give a proof of energy-minimizing curves are length-minimizing geode\-sics.
 \begin{proof}[Proof of Proposition~\ref{energy-min implies length-min}]
-    Let $\gamma:[0,a]\to M$ be a curve such that for any $\tilde{\gamma}:[0,1]\to M$ with $\gamma(0)=\tilde{\gamma}(0)$, $\gamma(1)=\tilde{\gamma}(1)$, the inequality $E(\gamma)\leq E(\tilde{\gamma})$ holds, we show that $L(\gamma)\leq L(\tilde{\gamma})$.
+    Let $\gamma:[0,a]\to M$ be a curve such that for any $\tilde{\gamma}:[0,1]\to M$ with $\gamma(0)=\tilde{\gamma}(0)$, $\gamma(1)=\tilde{\gamma}(1)$, the inequality $E[\gamma]\leq E[\tilde{\gamma}]$ holds, we show that $L[\gamma]\leq L[\tilde{\gamma}]$.
     Let $\gamma(t,s)$ be any variation with $\gamma(t,0)=\gamma$, then $\gamma$ is a critical point of $E(s)$.
     Hence by Corollary~\ref{critical pt for energy var}, $\gamma$ is a geodesic.
     Then we can reparameterize $\tilde{\gamma}$ into arc-length, obtaining $\hat{\tilde{\gamma}}$.
     Therefore
-    \[L^2(\gamma)=2aE(\gamma)\leq 2aE\left(\hat{\tilde{\gamma}}\right)=L^2\left(\hat{\tilde{\gamma}}\right)=L^2(\tilde{\gamma})\qedhere\]
+    \[L^2[\gamma]=2aE[\gamma]\leq 2aE\left[\hat{\tilde{\gamma}}\right]=L^2\left[\hat{\tilde{\gamma}}\right]=L^2[\tilde{\gamma}].\qedhere\]
 \end{proof}
 
 \section{Second Variation Formula}
@@ -91,7 +91,7 @@ Since we concentrate on critical points of variation of energy, we define second
     the last term is $0$, hence second variation formula holds by taking $s=0$.
 \end{proof}
 
-We now use second variation formula to prove the famous Bonnet--Myers Theorem.
+We now use second variation formula to prove the famous Bonnet--Myers theorem.
 \begin{thm}[Bonnet--Myers]\index{theorem!Bonnet--Myers}
     Let $(M^n,g)$ be a complete Riemannian manifold with $\Ric\geq(n-1)Kg>0$,
     then $\operatorname{diam}(M,g)\leq\pi/\sqrt{K}$.
@@ -140,7 +140,7 @@ Involving some theory of covering spaces, we have the following corollary.
         \item We cannot weaken the condition to $K=0$, in fact, even $\operatorname{Sect}>0$ is not enough.
         The surface $z=x^2+y^2$ in $\mathbb{R}^3$ is an counterexample.
         \item If $(M^n,g)$ satisfies $\Ric\geq(n-1)g>0$ and $\operatorname{diam}(M,g)=\pi$, then $M$ must isometric to $\mathbb{S}^n$.
-        This is Cheng's Maximal Diameter Theorem.
+        This is Cheng's maximal diameter theorem.
     \end{enumerate}
 \end{rem}
 
@@ -157,7 +157,7 @@ Involving some theory of covering spaces, we have the following corollary.
 \end{lem}
 \begin{proof}
     First we observe
-    \[I(U,Y)=-\int_0^a\langle\ddot{V}+R(\dot{\gamma},U)\dot{\gamma},Y\rangle\d{t}\]
+    \[I(U,Y)=-\int_0^a\langle\ddot{U}+R(\dot{\gamma},U)\dot{\gamma},Y\rangle\d{t}\]
     If $U$ is a Jacobi field, then $\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}=0$, which implies $I(U,Y)=0$.
     Conversely, if $I(U,Y)=0$ for any $Y\in\mathscr{V}_0$, we choose $Y=\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}$, then
     \[0=-\int_0^a|\ddot{U}+R(\dot{\gamma},U)\dot{\gamma}|^2\d{t},\]
@@ -175,7 +175,7 @@ This will be useful in some calculation.
 
 Next theorem shows the positive definiteness of $I$ is related to conjugate points.
 \begin{thm}\label{prejacobi}
-    Let $\gamma[0,a]\to M$ be a geodesic, $I$ be its index form.
+    Let $\gamma:[0,a]\to M$ be a geodesic, $I$ be its index form.
     \begin{enumerate}[(1)]
         \item If $\gamma$ has no conjugate points of $\gamma(0)$, then $I$ is positive definite on $\mathscr{V}_0$.
         \item If $\gamma(a)$ is the only conjugate point of $\gamma(0)$, then $I$ is positive semidefinite but not positive definite.
@@ -205,8 +205,8 @@ Next theorem shows the positive definiteness of $I$ is related to conjugate poin
     This proves $I$ being positive definite.
 \end{proof}
 
-Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{Index Lemma}.
-\begin{prop}[Index Lemma]\index{lemma!Index}
+Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{index lemma}.
+\begin{prop}[Index lemma]\index{lemma!Index}
     Assume $\gamma$ is a geodesic without conjugate points.
     Let $U\in\mathscr{V}$ with $U(0)=0$, $J$ be a Jacobi field such that $J(0)=0$, $J(a)=U(a)$, then $I(J,J)\leq I(U,U)$.
     The equality holds if and only if $U=J$.
@@ -247,24 +247,24 @@ Before proving the rest of Theorem~\ref{prejacobi}, we need the \emph{Index Lemm
     Then we have $I(V,V)=I_{[0,t_0]}(J_1,J_1)=0$, and\footnote{Actually we allow piecewise smooth curve in variation and index form.}
     \begin{align*}
         I(U,U)&=I_{[0,t_0-\delta]}(J_1,J_1)+I_{[t_0-\delta,t_0+\delta]}(J_2,J_2)\\
-        &<I_{[0,t_0-\delta]}(V,V)+I_{[t_0-\delta,t_0+\delta]}(V,V)\quad\text{(Index Lemma)}\\
+        &<I_{[0,t_0-\delta]}(V,V)+I_{[t_0-\delta,t_0+\delta]}(V,V)\quad\text{(index lemma)}\\
         &=I(V,V)\\
         &=0\qedhere
     \end{align*}
 \end{proof}
 
-Translating Theorem~\ref{prejacobi}~into language of geometry, we have the following Jacobi Theorem.
+Translating Theorem~\ref{prejacobi}~into language of geometry, we have the following Jacobi theorem.
 \begin{thm}[Jacobi]\index{theorem!Jacobi}
     Let $\gamma:[0,a]\to M$ be a geodesic, then
     \begin{enumerate}[(1)]
         \item If $\gamma$ has no conjugate points of $\gamma(0)$, then $\gamma$ is length-minimizing under any small proper variation.
-        \item If there is a $t_0\in(0,a)$ such that $\gamma(t_0)$ is conjugate to $\gamma(0)$, then there is a proper variation $\gamma_s(t)$ such that $L(\gamma_s)<L(\gamma)$ for all $s$.
+        \item If there is a $t_0\in(0,a)$ such that $\gamma(t_0)$ is conjugate to $\gamma(0)$, then there is a proper variation $\gamma_s(t)$ such that $L[\gamma_s]<L[\gamma]$ for all $s$.
     \end{enumerate}
 \end{thm}
 
 Finally we mention something about \emph{Morse index}.
 Define Morse index\index{Morse index}
-\[\operatorname{ind}(\gamma)=\max\{\dim S|\ S\leq\mathscr{V}_0,\ I\text{ is negative definite on }S\}\]
-The famous \emph{Morse Index Theorem} claims\index{theorem!Morse index}
-\[\operatorname{ind}(\gamma)=\#\{\text{conjugate points (counting multiplicity)}\}<+\infty\]
-For more information, one can refer to John Milnor's \emph{Morse Theory}.
+\[\operatorname{ind}[\gamma]=\max\{\dim S|\ S\leq\mathscr{V}_0,\ I\text{ is negative definite on }S\}\]
+The famous \emph{Morse index theorem} claims\index{theorem!Morse index}
+\[\operatorname{ind}[\gamma]=\#\{\text{conjugate points (counting multiplicity)}\}<+\infty\]
+For more information, one can refer to~\cite{Milnor}.

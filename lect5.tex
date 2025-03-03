@@ -66,7 +66,7 @@ We first state and prove the Rauch comparison theorem.
 \end{proof}
 
 \begin{cor}
-    If Riemannian manifold $(M^n,g)$ satisfies $\operatorname{Sect}\leq 0$, then $|J(t)|\geq t|\dot{J}(0)|$, that is, $\left|\exp_{p*}|_v(w)\right|\geq|w|$.
+    If Riemannian manifold $(M^n,g)$ satisfies whose sectional curvature $K\leq 0$, then $|J(t)|\geq t|\dot{J}(0)|$, that is, $\left|\exp_{p*}|_v(w)\right|\geq|w|$.
 \end{cor}
 \begin{proof}
     Compare $(M^n,g)$ with Euclidean space $(\mathbb{R}^n,\delta)$.
@@ -74,11 +74,11 @@ We first state and prove the Rauch comparison theorem.
 
 The corollary implies the following important theorem.
 \begin{thm}\label{C-H 1}
-    Let $M$ be a complete Riemannian manifold with $\operatorname{Sect}\leq 0$, $p\in M$ be any point.
+    Let $M$ be a complete Riemannian manifold with sectional curvature $K\leq 0$, $p\in M$ be any point.
     Then $M$ has no conjugate points of $p$.
 \end{thm}
 
-Theorem~\ref{C-H 1}~is known as the first part of the celebrated Cartan--Hadamard Theorem.
+Theorem~\ref{C-H 1}~is known as the first part of the celebrated Cartan--Hadamard theorem.
 We state the rest part of the theorem as follows.
 \begin{thm}[Cartan--Hadamard]\index{theorem!Cartan--Hadamard}
     Let $M^n$ be a complete Riemannian manifold with $\operatorname{Sect}\leq 0$, then the universal cover of $M$ is diffeomorphic to $\mathbb{R}^n$.
@@ -91,7 +91,7 @@ We state the rest part of the theorem as follows.
     We show that $\exp_p^*g$ is complete.
     Let $\gamma_v(t):[0,+\infty)\to T_pM, t\mapsto vt$ for any unit vector $v\in T_pM$, then $\exp_p(\gamma)$ is a geodesic in $(M,g)$.
     By the definition of $\exp_p^*g$, $\gamma_v(t)$ is a geodesic in $(T_pM,\exp_p^*g)$, hence the exponential map $\exp_0:T_0(T_pM)\to T_pM$ is well-defined at $0\in T_pM$.
-    Hence by Hopf--Rinow Theorem, $\exp_p^*g$ is complete.
+    Hence by Hopf--Rinow theorem, $\exp_p^*g$ is complete.
     Now the proof reduces to the following proposition.
 \end{proof}
 
@@ -100,15 +100,15 @@ We state the rest part of the theorem as follows.
     Then $N$ is complete and $f$ is a covering map.
 \end{prop}
 
-We stop here, and refer to Peter Peterson's \emph{Riemannian Geometry}, 3rd ed., Lemma 5.6.4.
+We stop here, and refer to~\cite[Lemma~5.6.4]{Petersen}.
 
 We mention something more.
-Cartan--Hadamard Theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
-This can be found in Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 5.
+Cartan--Hadamard theorem can be used to prove the uniqueness of space forms, that is, simply connected complete constant sectional curvature Riemannian manifolds are unique up to an isometry.
+This can be found in~\cite[Chapter~5]{Wu}.
 
 \section{Cut Points and Distance Function}
 
-From this section, we assume the Riemannian manifold $(M,g)$ appear in the context is complete.
+From this section, we assume the Riemannian manifold $(M,g)$ appears in the context is complete.
 
 We start this section by an example.
 
@@ -119,7 +119,7 @@ We start this section by an example.
     Denote $p=\gamma(0)$, $q=\gamma(\pi)$.
     Then $\gamma|_{[0,\pi]}$ is a length-minimizing geodesic joining $p$ and $q$.
     But it is not the only length-minimizing geodesic joining $p$ and $q$, since $-\gamma|_{[\pi,2\pi]}$ is another one.
-    Then $q$ spoils the uniqueness of length-minimizing geodesic starts from $p$, without being conjugate to $p$.
+    Then $q$ spoils the uniqueness of length-minimizing geodesic starting from $p$, without being conjugate to $p$.
     This inspires us to define the notion of \emph{cut points}.
 \end{eg}
 
@@ -187,7 +187,7 @@ We have the following properties of $\tau$ and cut locus.
         \item $\Cut(p)$ is of zero-measure.
     \end{enumerate}
 \end{prop}
-The proof is complicated, so we refer to Wu Hung--Hsi et.\ al.'s \emph{Introduction to Riemannian Geometry}, Chapter 10.
+The proof is complicated, so we refer to~\cite[Chapter~10]{Wu}.
 
 \begin{prop}
     Denote $\Sigma(p)=\{tv|\ v\in S_p,\ t\in[0,\tau(v))\}$, then
@@ -262,7 +262,7 @@ Now we compute the Hessian of $d_p$ for some situation.
         \nabla^2d_p(\nabla d_p,X)&=X(\nabla d_p)(d_p)-(\nabla_X(\nabla d_p))(d_p)\\
         &=X\langle\nabla d_p,\nabla d_p\rangle-\langle\nabla_X(\nabla d_p),\nabla d_p\rangle\\
         &=X\langle\nabla d_p,\nabla d_p\rangle-\frac{1}{2}X\langle\nabla d_p,\nabla d_p\rangle\\
-        &=0.\quad\text{(Since $|\nabla d_p|=1$)}\qedhere
+        &=0.\quad\text{(Since $|\nabla d_p|=1$.)}\qedhere
     \end{align*}
 \end{proof}
 
@@ -343,7 +343,7 @@ Now we state the Laplace comparison theorem.
     where $h_{ij}(t)=f_K(t)\delta_{ij}$, $\ddot{f}_K+Kf_K=0$.
     Define $U_i=\sum_{j=1}^{n-1}h_{ij}(t)e_j(t)$ along $\gamma$ in $M$, $i=1,\cdots,n-1$.
     Then $J_i(0)=U_i(0)=0$, $J_i(l)=U_i(l)$.
-    By Index Lemma, we have
+    By index lemma, we have
     \[\sum_{i=1}^{n-1}I(J_i,J_i)\leq\sum_{i=1}^{n-1}(U_i,U_i).\]
     Moreover, we have
     \begin{gather*}
@@ -369,7 +369,7 @@ Now we state the Laplace comparison theorem.
         \item The case of $K=0$ is $\Delta d_p\leq\frac{n-1}{d_p}$.
         This inequality also holds in the sence of distribution, that is, for any $\varphi\in C^\infty_c(M)$, $\varphi\geq 0$, we have
         \[\int_Md_p\Delta\varphi\leq\int_M\frac{n-1}{d_p}\cdot\varphi.\]
-        For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Proposition 1.1 in Chapter 1.
+        For a proof, we refer to~\cite[Chapter~1.~Proposition~1.1]{Shoen-Yau}
     \end{enumerate}
 \end{rem}
 
@@ -393,9 +393,9 @@ Locally we have
 
 \begin{defn}\index{volume}
     Let $\Omega\subset M$, the \emph{volume} of $\Omega$ is defined as
-    \[\Vol(\Omega):=\int_\Omega\d\Vol_g.\]
+    \[\Vol[\Omega]:=\int_\Omega\d\Vol_g.\]
     If $M$ is compact, we can also define
-    \[\Vol(M):=\int_M\d\Vol_g.\]
+    \[\Vol[M]:=\int_M\d\Vol_g.\]
 \end{defn}
 
 Integration on manifold is defined by partition of unity, this is almost impossible to compute.
@@ -443,18 +443,20 @@ Thus we have the following Bishop's theorem.
 Now we can state and prove Bishop--Gromov comparison theorem, which is also known as volume comparison theorem.
 \begin{thm}[Bishop--Gromov comparison]\label{Bishop Gromov}\index{Bishop--Gromov comparison}\index{volume comparison}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
-    Define geodesic annuli $A_{s,r}(p):=\{\exp_p(tv)|\ s<t<\min{r,t_v},\ v\in S_p\}$ and annuli $A^K_{r,s}$ in constant sectional curvature space $M_K$ with radii $r<s$.
+    Define geodesic annulus
+    \[A_{s,r}(p):=\{\exp_p(tv)|\ s<t<\min{r,t_v},\ v\in S_p\}\]
+    and annulus $A^K_{r,s}$ in constant sectional curvature space $M_K$ with radii $r<s$.
     Then we have
-    \[\frac{\Vol(A_{r_3,r_4}(p))}{\Vol_K(A^K_{r_3,r_4})}\leq\frac{\Vol(A_{r_1,r_2}(p))}{\Vol_K(A^K_{r_1,r_2})}\]
+    \[\frac{\Vol[A_{r_3,r_4}(p)]}{\Vol_K[A^K_{r_3,r_4}]}\leq\frac{\Vol[A_{r_1,r_2}(p)]}{\Vol_K[A^K_{r_1,r_2}]}\]
     provided $r_1<\min\{r_2,r_3\}<\max\{r_2,r_3\}<r_4$.
 \end{thm}
 
 \begin{cor}
     \begin{enumerate}[(1)]
         \item Let $r_1=r_3=0$ in Theorem~\ref{Bishop Gromov}, we have
-        \[\frac{\Vol(B_{r_2}(p))}{\Vol_K(B_{r_2}^K)}\leq\frac{\Vol(B_{r_1}(p))}{\Vol_K(B_{r_1}^K)}\]
+        \[\frac{\Vol[B_{r_2}(p)]}{\Vol_K[B_{r_2}^K]}\leq\frac{\Vol[B_{r_1}(p)]}{\Vol_K[B_{r_1}^K]}\]
         provided $r_1<r_2$.
-        \item Moreover, let $r_1\to 0$, we have $\Vol(B_r(p))\leq\Vol_K(B_r^K)$.
+        \item Moreover, let $r_1\to 0$, we have $\Vol[B_r(p)]\leq\Vol_K[B_r^K]$.
     \end{enumerate}
 \end{cor}
 
@@ -472,13 +474,13 @@ Before proving the theorem, we need a lemma from calculus.
         \int_s^{r_1}f\int_s^{r_2}g-\int_s^{r_2}f\int_s^{r_1}g&=\int_s^{r_1}f\left(\int_s^{r_1}g+\int_{r_1}^{r_2}g\right)-\left(\int_s^{r_1}f+\int_{r_1}^{r_2}f\right)\int_s^{r_1}g\\
         &=\int_s^{r_1}f\int_{r_1}^{r_2}g-\int_{r_1}^{r_2}f\int_s^{r_1}g
     \end{align*}
-    By Intermediate Value Theorem, there exists $s\leq t_1\leq r_1\leq t_2\leq r_2$ such that
+    By intermediate value theorem, there exists $s\leq t_1\leq r_1\leq t_2\leq r_2$ such that
     \[\frac{\int_s^{r_1}f}{\int_s^{r_1}g}=\frac{f(t_1)}{g(t_1)}\geq\frac{f(t_2)}{g(t_2)}=\frac{\int_{r_1}^{r_2}f}{\int_{r_1}^{r_2}g}.\]
     Hence the lemma is proved.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{Bishop Gromov}]
-    We just need to show $\Vol(A_{s,r}(p))/\Vol(A_{s,r}^K)$ is nonincreasing with respective to $r,s$.
+    We just need to show $\Vol[A_{s,r}(p)]/\Vol[A_{s,r}^K]$ is nonincreasing with respective to $r,s$.
     Using geodesic polar coordinate, denote
     \[\chi(r,\theta)=\begin{cases}
         1, & r<t_\theta,\\
@@ -495,8 +497,8 @@ Before proving the theorem, we need a lemma from calculus.
     Then by Bonnet--Myers theorem, $t_\theta<\pi/\sqrt{K}$ if $K>0$, then $\frac{\chi}{\chi_K}(t,\theta)$ is nonincreasing with respective to $t$.
     Now we have
     \begin{align*}
-        \frac{\Vol(A_{s,r}(p))}{\Vol_K(A^K_{s,r})}&=\frac{\int_{S_p}\int_r^s\chi(r,\theta)\mathscr{J}(r,\theta)\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{\theta^{n-1}}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\\
-        &=\frac{1}{\Vol{\mathbb{S}^{n-1}}}\int_{S_p}\frac{\int_r^s\chi(t,\theta)\mathscr{J}(t,\theta)\d{t}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\d{\theta}
+        \frac{\Vol[A_{s,r}(p)]}{\Vol_K[A^K_{s,r}]}&=\frac{\int_{S_p}\int_r^s\chi(r,\theta)\mathscr{J}(r,\theta)\d{r}\wedge\d{\theta^1}\wedge\cdots\wedge\d{\theta^{n-1}}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\\
+        &=\frac{1}{\Vol[\mathbb{S}^{n-1}]}\int_{S_p}\frac{\int_r^s\chi(t,\theta)\mathscr{J}(t,\theta)\d{t}}{\int_r^s\chi_K(t)\mathscr{J}_K(t)\d{t}}\d{\theta}
     \end{align*}
     Using Theorem~\ref{Bishop}, we have $\frac{\chi\mathscr{J}}{\chi_K\mathscr{J}_K}$ is nonincreasing (with respective to $t$).
     Then the theorem follows by above lemma.
@@ -504,7 +506,7 @@ Before proving the theorem, we need a lemma from calculus.
 
 As a corollary, we have another theorem of Bishop.
 \begin{thm}[Bishop]\index{theorem!Bishop}
-    Let Riemannian manifold $(M^n,g)$ satisfy $\Ric\geq(n-1)Kg>0$, then $\Vol(M)\leq\Vol(\mathbb{S}^n(1/\sqrt{K}))$.
+    Let Riemannian manifold $(M^n,g)$ satisfy $\Ric\geq(n-1)Kg>0$, then $\Vol[M]\leq\Vol[\mathbb{S}^n(1/\sqrt{K})]$.
     The equality holds if and only if $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
 \end{thm}
 \begin{proof}
@@ -522,13 +524,13 @@ The important application of volume comparison theorem is Cheng's maximal radius
     Consider $B_r(p)$ and $B_{\pi-r}(q)$, by triangle inequality, we have $B_r(p)\cap B_{\pi-r}(q)=\varnothing$.
     Hence we have
     \begin{align*}
-        \Vol(M)&\geq\Vol(B_r(p))+\Vol(B_{\pi-r}(q))\\
-        &=\frac{\Vol(B_r(p))}{\Vol_1(B_r^1)}\cdot\Vol_1(B_r^1)+\frac{\Vol(B_{\pi-r}(q))}{\Vol_1(B_{\pi-r}^1)}\cdot\Vol_1(B_{\pi-r}^1)\\
-        &\geq\frac{\Vol(B_\pi(p))}{\Vol_1(B_\pi^1)}\cdot\Vol_1(B_r^1)+\frac{\Vol(B_\pi(q))}{\Vol_1(B_\pi^1)}\cdot\Vol_1(B_{\pi-r}^1)\\
-        &=\frac{\Vol(M)}{\Vol(\mathbb{S}^n)}(\Vol_1(B_r^1)+\Vol_1(B_{\pi-r}^1))\\
-        &=\Vol(M),
+        \Vol[M]&\geq\Vol[B_r(p)]+\Vol[B_{\pi-r}(q)]\\
+        &=\frac{\Vol[B_r(p)]}{\Vol_1[B_r^1]}\cdot\Vol_1[B_r^1]+\frac{\Vol[B_{\pi-r}(q)]}{\Vol_1[B_{\pi-r}^1]}\cdot\Vol_1[B_{\pi-r}^1]\\
+        &\geq\frac{\Vol[B_\pi(p)]}{\Vol_1[B_\pi^1]}\cdot\Vol_1[B_r^1]+\frac{\Vol[B_\pi(q)]}{\Vol_1[B_\pi^1]}\cdot\Vol_1[B_{\pi-r}^1]\\
+        &=\frac{\Vol[M]}{\Vol[\mathbb{S}^n]}(\Vol_1[B_r^1]+\Vol_1[B_{\pi-r}^1])\\
+        &=\Vol[M],
     \end{align*}
-    where the second inequality is Bishop--Gromov comparison theorem, and last equality is $\Vol_1(B_r^1)+\Vol_1(B_{\pi-r}^1)=\Vol(\mathbb{S}^n)$ on $\mathbb{S}^n$.
+    where the second inequality is Bishop--Gromov comparison theorem, and last equality is $\Vol_1[B_r^1]+\Vol_1[B_{\pi-r}^1]=\Vol[\mathbb{S}^n]$ on $\mathbb{S}^n$.
     Hence the equality in Bishop--Gromov comparison theorem holds, that is, the equality in Laplace comparison theorem holds.
     Then $M$ must be isometric to $\mathbb{S}^n$.
 \end{proof}
@@ -536,12 +538,12 @@ The important application of volume comparison theorem is Cheng's maximal radius
 As for noncompact manifolds, volume comparison theorem has following corollary.
 
 \begin{cor}
-    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol(B_r(p))\leq\omega_nr^n=\Vol_0(B_r^0)$.
+    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol[B_r(p)]\leq\omega_nr^n=\Vol_0[B_r^0]$.
 \end{cor}
 
 The corollary gives an upper bound of the growth of the volume of geodesic ball.
 Moreover, the following Calabi--Yau theorem (not the one in complex geometry) gives a lower bound.
 \begin{thm}[Calabi--Yau]\index{theorem!Calabi--Yau}
-    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol(B_r(p))\geq C(n)\Vol(B_1(p))r$.
+    Let $M$ be a complete noncompact Riemannian manifold with $\Ric\geq 0$, then $\Vol[B_r(p)]\geq C(n)\Vol[B_1(p)]r$.
 \end{thm}
-For a proof, we refer to Schoen, Yau's \emph{Lectures on Differential Geometry}, Theorem 4.1 in Chapter 1.
+For a proof, we refer to~\cite[Chapter~1.~Theorem~4.1]{Shoen-Yau}.

@@ -1,9 +1,9 @@
 \chapter{Heintze--Karcher Comparison Theorem}
 
 Now we finished our tour in basic classes, and enter the topic classes.
-We first go through geometry of submanifolds rapidly, and then provide the Heintze--Karcher comparison theorem.
+We first go through the geometry of submanifolds rapidly, and then provide the Heintze--Karcher comparison theorem.
 After this, we give two applications:
-Alexandorv's theorem on constan mean curvature (CMC) hypersurface and Levy--Gromov isoperimetric inequality.
+Alexandorv's theorem on constant mean curvature (CMC) hypersurfaces and Levy--Gromov isoperimetric inequality.
 
 \section{Geometry of Submanifolds}
 
@@ -18,7 +18,7 @@ There is a decomposition $\nabla_XY=(\nabla_XY)^\top+(\nabla_XY)^\perp$ for $X,Y
 Now we need the conception of normal bundle.
 \begin{defn}\index{normal bundle}
     Let $\Sigma$ be a submanifold of $M$, then for any $p\in\Sigma$, we have the decomposition
-    \[T_pM=T_p\Sigma+N_p\Sigma,\]
+    \[T_pM=T_p\Sigma\oplus N_p\Sigma,\]
     where $N_p\Sigma$ is the orthogonal complement of $T_p\Sigma$.
     Then define the \emph{normal bundle} of $\Sigma$ to be
     \[N\Sigma=\bigsqcup_{p\in\Sigma}N_p\Sigma.\]
@@ -65,6 +65,7 @@ We have the following Weingarten formula.
 
 We mention here the Gauss--Codazzi equations.
 The proof is pure calculation, so we omit the proof and without having effect on our course.
+For a proof, see~\cite[Theorem~3.2.4~and~3.2.5]{Petersen}
 \begin{thm}\index{theorem!Gauss--Codazzi}
     Let $\Sigma\subset M$ be Riemannian manifolds, then we have\\
     Gauss equation
@@ -78,11 +79,11 @@ Lastly, we define the mean curvature of a submanifold.
 \begin{defn}\index{mean curvature}
     Let $\Sigma$ be a submanifold of $M$, with second fundamental form $\II$.
     Then the \emph{mean curvature vector} of $\Sigma$ is defined as
-    \[\vec{H}(p)=\tr\II|_p=\sum_{i=1}^k\II(e_i,e_i),\]
+    \[\mathbf{H}(p)=\tr\II|_p=\sum_{i=1}^k\II(e_i,e_i),\]
     where $\{e_i\}$ is an orthonormal basis at $p\in\Sigma$.
 
     In particular, if $\Sigma$ is a hypersurface (i.e.\ of codimension $1$) and two-sided (i.e.\ there is a normal unit vector field $N\in\Gamma(N\Sigma)$), then we have
-    \[\vec{H}=HN,\ \II=hN,\]
+    \[\mathbf{H}=HN,\ \II=hN,\]
     where $H$ is a function on $\Sigma$, and $h$ is a symmetric $(0,2)$-tensor on $\Sigma$.
 \end{defn}
 
@@ -107,7 +108,7 @@ Let $\Omega$ be a region enclosed by $\Sigma$, and $N$ be an inward unit normal 
 Consider for $p\in\Sigma$, let $\gamma_{N(p)}(t)=\exp_p(tN(p))$.
 Define
 \[\tau(p)=\sup\{t\in(0,+\infty)|\ d(\gamma_{N(p)},\Sigma)=t\},\]
-then Kasue showed in 1980s that
+then Kasue showed in 1980s that\footnote{I didn't find a reference for this.}
 \[\Cut(\Sigma)=\{q\in M|\ q=\exp_p(\tau(p)N(p))\}\]
 is of zero-measure.
 
@@ -116,7 +117,7 @@ Then we state the theorem.
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg$.
     Let $\Sigma\subset M$ be an embedded closed hypersurface that encloses $\Omega$.
     Then
-    \[\Vol(\Omega)\leq\int_\Sigma\int_0^{\tau(p)}\left(\sn'_K(r)-\frac{H(p)}{n-1}\sn_K(r)\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p),\]
+    \[\Vol[\Omega]\leq\int_\Sigma\int_0^{\tau(p)}\left(\sn'_K(r)-\frac{H(p)}{n-1}\sn_K(r)\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p),\]
     where
     \[\sn_K(r)=\begin{cases}
         \frac{1}{\sqrt{K}}\sin(\sqrt{K}r), & K>0,\\
@@ -160,7 +161,7 @@ Then we state the theorem.
 \begin{rem}
     \begin{enumerate}[(1)]
         \item More precise estimation can show that
-        \[\Vol(\Omega)\leq\int_\Sigma\int_0^{\tau(p)}\prod_{i=1}^{n-1}(\sn'_K(r)-\kappa_i(p)\sn_K(r))\d{r}\d\Vol_\Sigma(p),\]
+        \[\Vol[\Omega]\leq\int_\Sigma\int_0^{\tau(p)}\prod_{i=1}^{n-1}(\sn'_K(r)-\kappa_i(p)\sn_K(r))\d{r}\d\Vol_\Sigma(p),\]
         where $\kappa_i$ are the principal curvatures.
         This implies Heintze--Karcher's estimate by AM-GM inequality.
         \item $\Phi_K^{n-1}(p,r)\d{r}\d\Vol_\Sigma$ cannot be regarded as volume form of $M_K$.
@@ -169,7 +170,7 @@ Then we state the theorem.
 
 \section{Alexandorv's Theorem}
 
-The first application of Heintze--Karcher volume estimate is Alexandorv's theorem on CMC hypersurface.
+The first application of Heintze--Karcher volume estimate is Alexandorv's theorem on CMC hypersurfaces.
 
 Before we start to discuss the theorem, we first need to discuss the first variation formula of area functional (we use area to denote the volume of a submanifold), in order to introduce the notion of minimal submanifolds.
 
@@ -177,11 +178,11 @@ Before we start to discuss the theorem, we first need to discuss the first varia
     \footnote{This version is different from which on class. We introduce the notion of proper variation, instead of $\operatorname{supp}X$ being compact.}
     Let $\varphi:\Sigma^k\hookrightarrow(M^n,g)$ is an isometric immersion.
     Let area functional be
-    \[A(\Sigma^k)=\int_{\Sigma^k}\d{A_{\varphi^*g}}.\]
+    \[A[\Sigma^k]=\int_{\Sigma^k}\d{A_{\varphi^*g}}.\]
     Let $f:\Sigma\times(-\varepsilon,\varepsilon)\to M$ be a family of immersions, denote $f(\Sigma,t)=\Sigma_t$, and suppose $f(p,0)=p$ for all $p\in M$.
     Let $X:=\left.\frac{\partial{}}{\partial{t}}\right|_{t=0}f\in TM$ be the variation vector field.
     Then we have
-    \[\left.\frac{\d{}}{\d{t}}\right|_{t=0}A(\Sigma_t)=-\int_\Sigma\langle\vec{H},X\rangle\d{A_\Sigma}.\]
+    \[\left.\frac{\d{}}{\d{t}}\right|_{t=0}A[\Sigma_t]=-\int_\Sigma\langle\mathbf{H},X\rangle\d{A_\Sigma}.\]
 \end{prop}
 \begin{proof}
     Let $f^*_tg=g_t$, and
@@ -195,11 +196,15 @@ Before we start to discuss the theorem, we first need to discuss the first varia
         &=\frac{1}{\det{g_0}}\cdot\frac{1}{2}\cdot\sqrt{\det{g_0}}\cdot g^{ij}_0\left.\frac{\partial{}}{\partial{t}}\right|_{t=0}g_{ij}\\
         &=\frac{1}{2}g_0^{ij}\left(\left\langle\nabla_{\partial_t}\frac{\partial{f}}{\partial{x_i}},\frac{\partial{f}}{\partial{x_j}}\right\rangle+\left\langle\frac{\partial{f}}{\partial{x_i}},\nabla_{\partial_t}\frac{\partial{f}}{\partial{x_j}}\right\rangle\right)\\
         &=g^{ij}_0\left\langle\nabla_{\partial_i}\frac{\partial{f}}{\partial{t}},\frac{\partial{f}}{\partial{x^j}}\right\rangle\\
-        &=g^{ij}_0\left\langle S_{X}\left(\frac{\partial{f}}{\partial{x^i}}\right),\frac{\partial{f}}{\partial{x^j}}\right\rangle\\
-        &=-\left\langle g^{ij}_0\II\left(\frac{\partial{f}}{\partial{x^i}},\frac{\partial{f}}{\partial{x^j}}\right),X\right\rangle\\
-        &=-\langle \vec{H},X\rangle.
+        &=g^{ij}_0\left\langle\nabla_{\partial_i}X^\perp,\frac{\partial{f}}{\partial{x^j}}\right\rangle+g^{ij}_0\left\langle\nabla_{\partial_i}X^\top,\frac{\partial{f}}{\partial{x^j}}\right\rangle\\
+        &=-\left\langle g^{ij}_0\II\left(\frac{\partial{f}}{\partial{x^i}},\frac{\partial{f}}{\partial{x^j}}\right),X\right\rangle+\div{X^\top}\\
+        &=-\langle\mathbf{H},X^\perp\rangle+\div{X^\top}.
     \end{align*}
-    Take integral we obtain the required formula.
+    Notice that $\langle\mathbf{H},X^\perp\rangle=\langle\mathbf{H},X\rangle$, take integral we have
+    \[\left.\frac{\d{}}{\d{t}}\right|_{t=0}A[\Sigma_t]=-\int_{\Sigma_0}\langle\mathbf{H},X\rangle\d{A_{\Sigma_0}}+\int_{\Sigma_0}\div{X^\top}\d{A_{\Sigma_0}}.\]
+    Since the variation fixes boundary, we have $X|_{\partial\Sigma_0}=0$, then by divergence theorem, let $N$ denote the outer normal vector field of $\partial\Sigma_0$, we have
+    \[\int_{\Sigma_0}\div{X^\top}\d{A_{\Sigma_0}}=\int_{\partial\Sigma_0}\langle X^\top,N\rangle\d{A_{\partial\Sigma_0}}=0.\]
+    Hence we proved the first variation formula for area.
 \end{proof}
 
 \begin{cor}
@@ -221,8 +226,8 @@ Now we state Alexandorv's theorem.
 \end{thm}
 
 \begin{rem}
-    The original proof of Alexandorv in 1958 used the celebrated \emph{moving plane method} in theory of PDE.
-    However, we will use a geometric approach to prove the theorem, following the work of Montiel and Ros in 1991.
+    The original proof of Alexandorv in 1962~\cite{Aleksandrov}~used the celebrated \emph{moving plane method} in theory of PDE.
+    However, we will use a geometric approach to prove the theorem, following the work of Montiel and Ros in 1991~\cite{Montiel-Ros}.
 \end{rem}
 
 Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formula as preparation.
@@ -231,7 +236,7 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     Let $(M,g)$ be a compact Riemannian manifold with $\Ric\geq 0$.
     Let $\Sigma=\partial M$, and assume $\Sigma$ is a CMC submanifold with $H_\Sigma>0$.
     Then
-    \[\Vol(M)\leq\frac{n}{n+1}\int_\Sigma\frac{1}{H}\d{A}.\]
+    \[\Vol[M]\leq\frac{n}{n+1}\int_\Sigma\frac{1}{H}\d{A}.\]
     The equality holds if and only if $\Sigma$ is umbilical.
 \end{thm}
 \begin{proof}
@@ -242,7 +247,7 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     \[r\leq\frac{n-1}{H(p)}.\]
     Hence by Heintze--Karcher comparison theorem again, we have
     \begin{align*}
-        \Vol(M)&\leq\int_\Sigma\int_0^{\tau(p)}\left(1-\frac{H(p)}{n-1}r\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p)\\
+        \Vol[M]&\leq\int_\Sigma\int_0^{\tau(p)}\left(1-\frac{H(p)}{n-1}r\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p)\\
         &\leq\int_\Sigma\int_{0}^{(n-1)/H(p)}\left(1-\frac{H(p)}{n-1}r\right)^{n-1}\d{r}\d\Vol_{\Sigma}(p)\\
         &=\int_\Sigma\frac{n}{n+1}\cdot\frac{1}{H(p)}\d\Vol_\Sigma(p).
     \end{align*}
@@ -281,20 +286,20 @@ Before we prove Alexandorv's theorem, we need Ros' theorem and Minkowski's formu
     Now we complete the proof.
     We have
     \begin{align*}
-        nH\Vol(\Omega)&=H\int_\Omega n &\\
+        nH\Vol[\Omega]&=H\int_\Omega n &\\
         &=H\int_\Omega\div\nolimits_{\mathbb{R}^n}x &\\
-        &=-H\int_\Sigma\langle x,N\rangle & \text{(Divergence theorem)}\\
+        &=-H\int_\Sigma\langle x,N\rangle & \text{(divergence theorem)}\\
         &=(n-1)|\Sigma|. & \text{(Minkowski's formula)}
     \end{align*}
-    Then $\Vol(\Omega)=\frac{n-1}{n}\int_\Sigma\frac{1}{H}$.
+    Then $\Vol[\Omega]=\frac{n-1}{n}\int_\Sigma\frac{1}{H}$.
     This means the equality in Ros' theorem holds, then $\Sigma$ is umbilical in $\mathbb{R}^n$.
     Hence $\Sigma$ must be a round sphere.
 \end{proof}
 
 \begin{rem}
     If $\Sigma\hookrightarrow\mathbb{R}^3$ is an immersion, then there exists closed CMC immersion which is not a round shpere.
-    A first counterexample was given by Wente in 1986, called Wente's torus.
-    Kapouleas constructed CMC immersions for any topology in 1990.
+    A first counterexample was given by Wente in 1986, called Wente's torus~\cite{Wente}.
+    Kapouleas constructed CMC immersions for any topology in 1990~\cite{Kapouleas}.
 \end{rem}
 
 \section{Levy--Gromov Isoperimetric Inequality}
@@ -303,13 +308,13 @@ We introduce another application of Heintze--Karcher volume estimate, which is t
 
 We first recall isoperimetric problem.
 In $\mathbb{R}^n$, among $C^1$ bounded domain with fixed volume, round ball minimizes the boundary area.
-Schmidt proved in 1930s, that in $\mathbb{S}^n$ the same result holds.
+Schmidt proved in 1930s, that in $\mathbb{S}^n$ the same result holds\footnote{I didn't find a reference for this.}.
 
 First we need a conception.
 \begin{defn}
     Let $(M^n,g)$ be a Riemannian manifold, $v\in(0,\Vol(M))$.
     Then we define the \emph{isoperimetric profile} to be
-    \[I_M(v)=\inf\{A(\partial\Omega)|\ \Omega\subset M^n,\ \Vol(\Omega)=v\}.\]
+    \[I_M(v)=\inf\{A(\partial\Omega)|\ \Omega\subset M^n,\ \Vol[\Omega]=v\}.\]
 \end{defn}
 \begin{eg}
     The isoperimetric profile of $\mathbb{R}^n$ is easy, one can calculate
@@ -317,16 +322,16 @@ First we need a conception.
 \end{eg}
 
 By abuse of notation, we have the following geometric quantity:
-Take $\beta\in(0,1]$, consider $B(\beta)$ be a geodesic ball on $\mathbb{S}^n$ such that $\Vol(B(\beta))=\beta\Vol(\mathbb{S}^n)$.
+Take $\beta\in(0,1]$, consider $B(\beta)$ be a geodesic ball on $\mathbb{S}^n$ such that $\Vol[B(\beta)]=\beta\Vol[\mathbb{S}^n]$.
 Then we denote
-\[I(\beta)=\frac{A(\partial B(\beta))}{\Vol(\mathbb{S}^n)}.\]
+\[I(\beta)=\frac{A[\partial B(\beta)]}{\Vol[\mathbb{S}^n]}.\]
 
-Now we can state Levy and Gromov's isometric inequality.
+Now we can state Levy and Gromov's isoperimetric inequality.
 \begin{thm}[Levy--Gromov]\label{Levy Gromov}\index{theorem!Levy--Gromov}
     Let $(M^n,g)$ be a Riemannian manifold with $\Ric\geq(n-1)Kg>0$.
-    Let $\Omega\subset M$ be a bounded region such that $\Vol(\Omega)=\beta\Vol(M)$.
+    Let $\Omega\subset M$ be a bounded region such that $\Vol[\Omega]=\beta\Vol[M]$.
     Then
-    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq I(\beta)=\frac{A(\partial B(\beta))}{\Vol(\mathbb{S}^n)}.\]
+    \[\frac{A[\partial\Omega]}{\Vol[M]}\geq I(\beta)=\frac{A[\partial B(\beta)]}{\Vol[\mathbb{S}^n]}.\]
     That is, $I_M(\beta)\geq I(\beta)$.
     The equality holds if and only if $M$ is isometric to $\mathbb{S}^n(1/\sqrt{K})$.
 \end{thm}
@@ -336,7 +341,7 @@ Now we can state Levy and Gromov's isometric inequality.
     Let $\Omega$ be an isoperimetric region, that is, $\Omega$ minimizes $A(\partial\Omega)$.
     We want to ask its existence and regularity problems.
     Firstly, since $M$ is positively curved, Bonnet--Myers theorem implies $M$ is compact, and calculus of variation shows isoperimetric region exists.
-    Secondly, geometric measure theory shows $H_{\partial\Omega}$ is constant for regular points.
+    Secondly, geome\-tric measure theory shows $H_{\partial\Omega}$ is constant for regular points.
     These discussions are far beyond our scope, so we just mention them here.
 \end{rem}
 
@@ -347,27 +352,27 @@ Now we can state Levy and Gromov's isometric inequality.
     Hence the distance function must satisfy
     \[\tau(p)\leq\cot^{-1}\left(\frac{H_0}{n-1}\right)=:r_0.\]
     Then by Heintze--Karcher volume estimate, we have
-    \[\Vol(\Omega)\leq\int_{\partial\Omega}\int_0^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\d\Vol_{\partial\Omega}.\]
+    \[\Vol[\Omega]\leq\int_{\partial\Omega}\int_0^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\d\Vol_{\partial\Omega}.\]
     The integrand of outer integral is a constant by Remark~\ref{rem under L-G}, hence we have
     \begin{align*}
-        \Vol(\Omega)&\leq A(\partial\Omega)\int_{0}^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\\
-        &=A(\partial\Omega)\frac{\Vol(B_{r_0})}{A(\partial B_{r_0})},
+        \Vol[\Omega]&\leq A[\partial\Omega]\int_{0}^{r_0}\left(\cos{r}-\frac{H_0}{n-1}\sin{r}\right)^{n-1}\d{r}\\
+        &=A[\partial\Omega]\frac{\Vol[B_{r_0}]}{A[\partial B_{r_0}]},
     \end{align*}
     where $B_{r_0}$ is the geodesic ball of radius $r_0$ in $\mathbb{S}^n$.
-    Set $a(r_0)=\frac{A(\partial B_{r_0})}{\Vol(B_{r_0})}$, the above inequality can be written
-    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq\beta a(r_0).\]
+    Set $a(r_0)=\frac{A[\partial B_{r_0}]}{\Vol[B_{r_0}]}$, the above inequality can be written
+    \[\frac{A[\partial\Omega]}{\Vol[M]}\geq\beta a(r_0).\]
     Same work on $\Omega^c$ shows
-    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq(1-\beta)a(\pi-r_0).\]
+    \[\frac{A[\partial\Omega]}{\Vol[M]}\geq(1-\beta)a(\pi-r_0).\]
     Hence
-    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq\inf\{\beta a(r_0),(1-\beta)a(\pi-r_0)\},\]
+    \[\frac{A[\partial\Omega]}{\Vol[M]}\geq\inf\{\beta a(r_0),(1-\beta)a(\pi-r_0)\},\]
     and monotonicity shows the infimum is attained when $\beta a(t_0)=(1-\beta)a(\pi-t_0)$ for some $t_0$, and in this situation we can calculate that $\beta a(r_0)=I(\beta)$.
     Hence we have the inequality
-    \[\frac{A(\partial\Omega)}{\Vol(M)}\geq I(\beta).\]
+    \[\frac{A[\partial\Omega]}{\Vol[M]}\geq I(\beta).\]
     If the equality holds, then the equality holds in Heintze--Karcher volume estimate, this shows $M$ is isometric to $\mathbb{S}^n$.
 \end{proof}
 
 \begin{rem}
-    Bayle gave an alternative proof in his doctoral thesis in 2004.
+    Bayle gave an alternative proof in his doctoral thesis in 2004~\cite{Bayle}.
     He uses the function
     \[f(v)=I^{\frac{n}{n-1}}_M(v)\]
     and uses second variation formula for area functional to obtain
@@ -375,7 +380,7 @@ Now we can state Levy and Gromov's isometric inequality.
     Moreover, if $M=\mathbb{S}^n$, then the equality holds.
     Thus one can use comparison theorem in ODE theory to obtain the result.
 
-    Klatag (2017) applies this method to metric measure space $\mathrm{RCD}(K,n)$ using optimal transport.
+    % Klatag (2017) applies this method to metric measure space $\mathrm{RCD}(K,n)$ using optimal transport.
 \end{rem}
 
 As a finale, we quote some remarkable works of Brendle.
@@ -384,9 +389,9 @@ As a finale, we quote some remarkable works of Brendle.
     If $M$ is a noncompact, complete Riemannian manifold with $\Ric\geq 0$.
     Assume $M$ has Euclidean volume growth.
     Let $\Omega\subset M$ bounded, then
-    \[A(\partial\Omega)^{\frac{n}{n-1}}\geq n|B_1|^{1/n}\Vol(\Omega)^{\frac{n-1}{n}}\theta^{1/n},\]
+    \[A[\partial\Omega]^{\frac{n}{n-1}}\geq n|B_1|^{1/n}\Vol[\Omega]^{\frac{n-1}{n}}\theta^{1/n},\]
     where
-    \[\theta=\lim_{r\to\infty}\frac{\Vol(B_r)}{|B_1|r^n}\]
+    \[\theta=\lim_{r\to\infty}\frac{\Vol[B_r]}{|B_1|r^n}\]
     is the asymptotic volume ratio of $M$.
     The equality holds if and only if $\Omega\subset\mathbb{R}^n$.
 \end{thm}
@@ -396,7 +401,7 @@ Cabre used ABP (Alexandorv--Bakelman--Pucci) method to prove isoperimetric inequ
 \begin{thm}[Brendle]\index{theorem!Brendle}
     Let $\Sigma^n\subset\mathbb{R}^{n+k}$ be a minimal submanifold.
     Then
-    \[|\partial\Sigma|\geq n|B_1|^{1/n}\Vol(\Sigma)^{\frac{n-1}{n}}\]
+    \[|\partial\Sigma|\geq n|B_1|^{1/n}\Vol[\Sigma]^{\frac{n-1}{n}}\]
     when $k\leq 2$.
     The equality holds if and only if $\Sigma\cong\mathbb{B}^n\subset\mathbb{R}^n$.
 \end{thm}
@@ -408,4 +413,4 @@ Our last theorem is
     \[\int_\Sigma H+|\partial\Sigma|\geq n|B_1|^{1/n}|\Sigma|^\frac{n-1}{n}.\]
 \end{thm}
 
-Please refer to \emph{The Isoperimetric Inequality} (Brendle--Eichmair, 2024) for detailed discussion.
+Please refer to~\cite{Brendle-Eichmair}~for detailed discussion.
